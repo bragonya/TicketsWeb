@@ -1,0 +1,20 @@
+footer {
+    height: 80px;
+    width: 100%;
+    overflow: hidden;
+    background: rgba(0,0,0,0.8);
+    a {
+        color: white;
+        padding: 10px;
+        float: left;
+        line-height: 4;
+        transition: all 0.2s;
+        &:hover {
+            color: $orange;
+            text-decoration: none;
+        }
+        &:last-of-type {
+            float: right;
+        }
+    }
+}

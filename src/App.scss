@@ -1,0 +1,23 @@
+@import '../styles/variables';
+@import '../styles/navbar';
+@import '../styles/footer';
+@import '../styles/landingapge/index';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,500,700,900&display=swap');
+
+body {
+    font-family: $font;
+    color: $grey;
+    main {
+        padding-top: 75px;
+    }
+
+    .btn-orange {
+        background-color: $orange;
+        color: white;
+        transition: all 0.2s;
+        &:hover {
+            background-color: $orange_hover;
+        }
+    }
+}
