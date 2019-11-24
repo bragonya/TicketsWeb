@@ -14,7 +14,7 @@ export default function App() {
   return (
     <Router>
       <div>
-        <nav className="navbar navbar-expand-md fixed-top">
+        <nav className="navbar navbar-expand-sm fixed-top">
           <div className="row navbar-wrapper">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>

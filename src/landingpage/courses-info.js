@@ -2,7 +2,7 @@ import React from "react";
 class Coursesinfo extends React.Component {
     render() {
         return (
-            <div className="section container">
+            <div className="section container courses-info">
                 <h2>Acerca de los cursos</h2>
                 <div className="row">
                     <div className="col-6">
@@ -11,10 +11,10 @@ class Coursesinfo extends React.Component {
                             que serán capaces de aplicar inmediatamente después del curso para incrementar la calidad de su
                             trabajo, especialmente en cuanto a función y estética, pero siempre de una forma sencilla.</p>
                     </div>
-                    <div className="col-6">
+                    <div className="col-6 d-flex">
                         <img src="/svg/undraw_detailed_analysis_xn7y.svg" alt="" className="img-fluid" />
                     </div>
-                    <div className="col-6">
+                    <div className="col-6 d-flex">
                         <img src="/svg/undraw_windy_day_x63l.svg" alt="" className="img-fluid" />
                     </div>
                     <div className="col-6 my-5">
@@ -33,8 +33,8 @@ class Coursesinfo extends React.Component {
                     </div>
                     <div className="col-12 mt-4">
                         <div className="row">
-                            <div className="col-1"></div>
-                            <div className="col-5 ml-auto">
+                            {/* <div className="col-1 col-sm-hidden"></div> */}
+                            <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 ml-auto card-wrapper">
                                 <div class="card">
                                     <div class="card-body text-left">
                                         <h5 class="card-title">Primera parte</h5>
@@ -62,7 +62,7 @@ class Coursesinfo extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-5 mr-auto">
+                            <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto mt-sm-4 mt-4 mt-md-auto mt-lg-auto mt-xl-auto card-wrapper">
                                 <div class="card">
                                     <div class="card-body text-left">
                                         <h5 class="card-title">Segunda parte</h5>
@@ -90,7 +90,7 @@ class Coursesinfo extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-1"></div>
+                            {/* <div className="col-1 col-sm-hidden"></div> */}
                         </div>
                     </div>
 
@@ -99,8 +99,8 @@ class Coursesinfo extends React.Component {
                     </div>
                     <div className="col-12 mt-4">
                         <div className="row">
-                            <div className="col-1"></div>
-                            <div className="col-5 ml-auto">
+                            {/* <div className="col-1 col-sm-hidden"></div> */}
+                            <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto card-wrapper">
                                 <div class="card">
                                     <div class="card-body text-left">
                                         <h5 class="card-title">Introducción Teoría</h5>
@@ -121,7 +121,7 @@ class Coursesinfo extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-5 mr-auto">
+                            <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto mt-sm-4 mt-4 mt-md-auto mt-lg-auto mt-xl-auto card-wrapper">
                                 <div class="card">
                                     <div class="card-body text-left">
                                         <h5 class="card-title">Hands-onPractica</h5>
@@ -141,7 +141,7 @@ class Coursesinfo extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-1"></div>
+                            {/* <div className="col-1 col-sm-hidden"></div> */}
                         </div>
                     </div>
 

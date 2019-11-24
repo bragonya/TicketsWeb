@@ -11,16 +11,36 @@ class Header extends React.Component {
                 <div className="event-info">
                     <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
                         <li>
-                            <i class="fa fa-map-marker "></i> Ciudad de Guatemala
+                            <table>
+                                <tr>
+                                    <td><i class="fa fa-map-marker "></i></td>
+                                    <td> Ciudad de Guatemala</td>
+                                </tr>
+                            </table>
 						</li>
                         <li>
-                            <i class="fa fa-calendar"></i>25/05/2020
+                            <table>
+                                <tr>
+                                    <td><i class="fa fa-calendar"></i></td>
+                                    <td>25/05/2020</td>
+                                </tr>
+                            </table>
 						</li>
                         <li>
-                            <i class="fa fa-microphone"></i>8 Expositores
+                            <table>
+                                <tr>
+                                    <td><i class="fa fa-microphone"></i></td>
+                                    <td>8 Expositores</td>
+                                </tr>
+                            </table>
 						</li>
                         <li>
-                            <i class="fa fa-ticket"></i>107 tickets restantes
+                            <table>
+                                <tr>
+                                    <td><i class="fa fa-ticket"></i></td>
+                                    <td>107 tickets restantes</td>
+                                </tr>
+                            </table>
 						</li>
                     </ul>
                     <h1>2 dias para adquirir conocimientos de las técnicas más útiles.</h1>

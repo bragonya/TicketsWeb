@@ -1,33 +1,77 @@
 .navbar {
-    background: $black;
-    .navbar-wrapper {
-        width: 1140px;
-        margin: auto;
-        .navbar-collapse {
-            .nav-item {
-                a {
-                    color: white;
-                    text-transform: uppercase;
-                    font-size: 16px;
-                    line-height: 2.5;
-                    padding: 10px 20px;
-                    transition: all 0.2s;
-                    &:hover {
-                        text-decoration: none;
-                        color: $orange;
-                    }
-                    &.active {
-                        color: $orange;
-                    }
-                }
-            }
-            .btn-orange {
-                height: 100%;
-                line-height: 3;
-                text-transform: uppercase;
-                padding: 5px 24px;
-                font-weight: bold;
-            }
+  background: $black;
+  height: 75px;
+  .navbar-wrapper {
+    width: 1140px;
+    margin: auto;
+    .navbar-collapse {
+      .nav-item {
+        a {
+          color: white;
+          text-transform: uppercase;
+          font-size: 16px;
+          line-height: 2.5;
+          padding: 10px 20px;
+          transition: all 0.2s;
+          &:hover {
+            text-decoration: none;
+            color: $orange;
+          }
+          &.active {
+            color: $orange;
+          }
         }
+      }
+      .btn-orange {
+        height: 100%;
+        line-height: 3;
+        text-transform: uppercase;
+        padding: 5px 24px;
+        font-weight: bold;
+      }
+      &.collapse {
+        background: $black;
+      }
+      &.collapsing,
+      &.collapse.show {
+        position: relative;
+        top: 27px;
+        background: $black;
+        .btn-orange {
+          width: 100%;
+          height: max-content;
+        }
+        &:after {
+          position: absolute;
+          content: "";
+          left: -15px;
+          right: -15px;
+          bottom: 0;
+          top: 0;
+          background: $black;
+          z-index: -1;
+        }
+      }
     }
+
+    .navbar-toggler {
+      .navbar-toggler-icon {
+        &:after {
+          content: "\f039";
+          font-family: "FontAwesome";
+          color: white;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    .navbar-expand-md .navbar-collapse {
+      display: -webkit-box !important;
+      display: -ms-flexbox !important;
+      display: flex !important;
+      -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+    }
+  }
 }
