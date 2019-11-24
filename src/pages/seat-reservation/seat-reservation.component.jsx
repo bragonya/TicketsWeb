@@ -1,12 +1,10 @@
 import React from 'react';
 
-import MainStage from '../../components/main-stage/main-stage.component';
+import Croquis from '../../components/croquis/croquis.component';
 
 const SeatReservationPage = () =>(
-    <MainStage
-        onSelectSeat={seatId => {
-            console.log("selected - " + seatId);
-        }}
-    />
+    <React.Fragment>
+        <Croquis/>
+    </React.Fragment>
 );
 export default SeatReservationPage;

@@ -8,6 +8,8 @@
 body {
     font-family: $font;
     color: $grey;
+    position: relative;
+    min-width: 200px;
     main {
         padding-top: 75px;
     }
@@ -21,3 +23,4 @@ body {
         }
     }
 }
+
