@@ -72,18 +72,19 @@ const MainStage = props => {
     const clientRect = stage.getClientRect({ skipTransform: true });
 
     const scaleToFit = size.width / clientRect.width;
-    setScale(scaleToFit);
+    //setScale(scaleToFit);
     setScaleToFit(scaleToFit);
     setVirtualWidth(clientRect.width);
   }, [jsonData, size]);
 
   // togle scale on double clicks or taps
   const toggleScale = React.useCallback(() => {
-    if (scale === 1) {
+    /*if (scale === 1) {
       setScale(scaleToFit);
     } else {
       setScale(1);
-    }
+    }*/
+    setScale(1);
   }, [scale, scaleToFit]);
 
   let lastSectionPosition = 0;
@@ -100,9 +101,11 @@ const MainStage = props => {
     <div
       style={{
         position: "relative",
-        backgroundColor: "lightgrey",
+        //backgroundColor: "lightgrey",
         width: "100vw",
-        height: "100vh"
+        height: "140vh",
+        paddingLeft:"10px",
+        paddingTop:"10px"
       }}
       ref={containerRef}
     >
@@ -127,13 +130,18 @@ const MainStage = props => {
         <Layer>
           {jsonData.seats.sections.map((section, index) => {
             const height = layout.getSectionHeight(section);
-            const position = lastSectionPosition + layout.SECTIONS_MARGIN;
+            var position = lastSectionPosition-50 /*+ layout.SECTIONS_MARGIN*/;
+            const newY = index%2?lastSectionPosition - height:position;
+
             lastSectionPosition = position + height;
             const width = layout.getSectionWidth(section);
 
-            const offset = (maxSectionWidth - width) / 2;
-            console.log(section);
+            var offset = (maxSectionWidth - width) / 2;
+            const newX = index%2?width+170:offset+60;
+            offset=newX;
+            position=newY;
             return (
+              
               <Section
                 x={offset}
                 y={position}
