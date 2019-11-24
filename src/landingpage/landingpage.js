@@ -9,7 +9,7 @@ import Contact from "./contact";
 class LandingPage extends React.Component {
     render() {
         return (
-            <main role="main" class="landingpage">
+            <main role="main" className="landingpage">
                 <Header></Header>
                 <Coursesinfo></Coursesinfo>
                 <CTA></CTA>

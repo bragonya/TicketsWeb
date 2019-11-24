@@ -9,18 +9,18 @@ class Header extends React.Component {
                     <h2>Enrique Díaz - Odontología Independiente</h2>
                 </div>
                 <div className="event-info">
-                    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+                    <ul className="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
                         <li>
-                            <i class="fa fa-map-marker "></i> Ciudad de Guatemala
+                            <i className="fa fa-map-marker "></i> Ciudad de Guatemala
 						</li>
                         <li>
-                            <i class="fa fa-calendar"></i>25/05/2020
+                            <i className="fa fa-calendar"></i>25/05/2020
 						</li>
                         <li>
-                            <i class="fa fa-microphone"></i>8 Expositores
+                            <i className="fa fa-microphone"></i>8 Expositores
 						</li>
                         <li>
-                            <i class="fa fa-ticket"></i>107 tickets restantes
+                            <i className="fa fa-ticket"></i>107 tickets restantes
 						</li>
                     </ul>
                     <h1>2 dias para adquirir conocimientos de las técnicas más útiles.</h1>

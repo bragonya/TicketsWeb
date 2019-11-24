@@ -1,41 +1,23 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
   Route,
-  Link
+  Switch
 } from "react-router-dom";
 
-import { } from "./App.scss"
+import  "./App.scss"
 
 import LandingPage from "./landingpage/landingpage"
-import MainStage from "./components/main-stage/main-stage.component";
-
+import SeatReservationPage from './pages/seat-reservation/seat-reservation.component';
+import HeaderMain from './components/header-main/header-main.component';
 
 export default function App() {
   return (
-    <MainStage
-      onSelectSeat={seatId => {
-        console.log("selected - " + seatId);
-      }}
-    />)
-    
-}
-
-function Home() {
-  return <LandingPage></LandingPage>
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
-function Register() {
-  return <h2>Registro</h2>;
-}
-function Pricing() {
-  return <h2>Pricing</h2>;
+        <div>
+          <HeaderMain/>
+          <Switch>
+            <Route exact path='/' component={LandingPage}/>
+            <Route  path='/reservation' component={SeatReservationPage}/>
+          </Switch>
+        </div>
+  );
 }
