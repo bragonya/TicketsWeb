@@ -1,9 +1,14 @@
 import React from 'react';
 import './croquis.styles.scss';
+
 import Section from '../section/new-section.component';
+import LegendCroquis from '../legend-croquis/legend-croquis.component';
+
 const Croquis = () =>(
     <div className="container">
+        
 	    <div className="box box-1">
+            <LegendCroquis/>
             <div className="grid-row">
                 <Section title='Sala Lounge' rows={['A','B']} cols={Array.from({length:5},(v,k)=>k+1)}/>
                 <hr></hr>

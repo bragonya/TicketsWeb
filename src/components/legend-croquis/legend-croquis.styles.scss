@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Acme&display=swap");
+@import '../../master';
+
+.rowX {
+    margin: 20px auto;
+    max-width: 300px;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr; /* Size of items defined inside container */
+    position: relative;
+    
+}
+
+
+.circle {
+    width: 40px;
+    height: 40px;
+    font-family: 'Acme', sans-serif;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    
+    &.free{
+        background: $seat-free-color;
+    }
+
+    &.blocked{
+        background: $seat-blocked-color;
+    }
+
+    &.sold{
+        background: $seat-sold-color;
+    }
+
+  }
