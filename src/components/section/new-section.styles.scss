@@ -2,7 +2,7 @@
 
 h3{
   font-family: 'Roboto';
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .grid-row {
@@ -216,14 +216,67 @@ table {
 
 th, td {
   font-size: 50%;
-  text-align: left;
+  text-align: center;
   padding: 8px;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 992px) {
+@media (max-width: 992px) {
   /* For mobile phones: */
   th, td {
-      font-size: 30%;
+      font-size: 25%;
   }
 }
+
+@media (max-width: 1125px) {
+  /* For mobile phones: */
+  th, td {
+    font-size: 34%;
+    padding: 2px;
+  }
+  h3{
+    font-family: 'Roboto';
+    font-size: 12px;
+  }
+  .container{
+    padding-top: 150px;
+  }
+}
+
+@media (max-width: 458px) {
+  /* For mobile phones: */
+  
+  h3{
+    font-family: 'Roboto';
+    font-size: 10px;
+    color: blue;
+  }
+  th, td {
+    font-size: 30%;
+    padding: 1px;
+  }
+  .container{
+    padding-top: 100px;
+  }
+}
+
+@media (max-width: 345px) {
+  /* For mobile phones: */
+  
+  h3{
+    font-family: 'Roboto';
+    font-size: 8px;
+    color: goldenrod;
+  }
+  th, td {
+    font-size: 25%;
+    padding: 1px;
+  }
+  .container{
+    padding-top: 50px;
+  }
+  .container{
+    overflow: hidden;
+  }
+}
+
