@@ -9,15 +9,13 @@ const Section = ({title,rows, cols}) =>{
     return (
         <div style={{"overflow":"auto"}}>
             <h3>{title}</h3>    
-            <table> 
-                
+            <table>             
                 <thead>
                     <tr>
                         <td></td>
                         {cols.map(col=>(
                                 <td key={title+'-'+col}>{col}</td>      
-                        ))}
-                        
+                        ))}      
                     </tr>
                 </thead>
                 <tbody>
@@ -26,9 +24,9 @@ const Section = ({title,rows, cols}) =>{
                             <td>{row}</td>
                             {cols.map(col=>(
                                 col%2?<td key={row+'-'+col}>
-                                    <Logo  width={14} height={14} fill={'green'} className={'seat-free'} />
+                                    <Logo  width={15} height={14} fill={'green'} className={'seat-free'} />
                                 </td>:<td key={row+'-'+col} onClick={()=>alert(row+'-'+col)}>
-                                    <Logo width={14} height={14} fill={'gray'}/>
+                                    <Logo width={15} height={14} fill={'gray'}/>
                                 </td>
                             ))}
                         </tr>

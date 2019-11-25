@@ -9,13 +9,13 @@ const Croquis = () =>(
         
 	    <div className="box box-1">
             <LegendCroquis/>
-            <div className="grid-row">
+            <div className="grid-row lounge">
                 <Section title='Sala Lounge' rows={['A','B']} cols={Array.from({length:5},(v,k)=>k+1)}/>
                 <hr></hr>
                 <Section title='Sala Lounge' rows = {['C','D']} cols={Array.from({length:5},(v,k)=>k+1)}/>             
             </div>
             <hr/>
-            <div className="grid-row">
+            <div className="grid-row vip">
                 <Section title='VIP' rows={['A','B']} cols={Array.from({length:10},(v,k)=>k+1)}/>
                 <hr></hr>
                 <Section title='VIP' rows = {['C','D']} cols={Array.from({length:10},(v,k)=>k+1)}/>             

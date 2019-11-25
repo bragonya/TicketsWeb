@@ -24,7 +24,18 @@ h3{
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+  
+  &.vip{
+    padding-left: 15%;
+    justify-content: center;
+    width: 80%;
+  }
 
+  &.lounge{
+    padding-left: 15%;
+    justify-content: center;
+    width: 80%;
+  }
   a {
     text-decoration: none;
   }
