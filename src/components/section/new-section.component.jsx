@@ -2,11 +2,15 @@ import React from 'react';
 
 import './new-section.styles.scss';
 
+import { ReactComponent as Logo } from '../../assets/event_seat-24px.svg';
+
+
 const Section = ({title,rows, cols}) =>{
     return (
-        <div style={{"overflowX":"auto"}}>
-            <h3>{title}</h3>
+        <div style={{"overflow":"auto"}}>
+            <h3>{title}</h3>    
             <table> 
+                
                 <thead>
                     <tr>
                         <td></td>
@@ -20,12 +24,15 @@ const Section = ({title,rows, cols}) =>{
                         <tr key={row+'-'+title}>
                             <td>{row}</td>
                             {cols.map(col=>(
-                                col%2?<td key={row+'-'+col}><span>&#11093;</span></td>:<td key={row+'-'+col}><span>&#127761;</span></td>
+                                col%2?<td key={row+'-'+col}>
+                                    <Logo width={12} height={12} fill={'green'} />
+                                </td>:<td key={row+'-'+col} onClick={()=>alert(row+'-'+col)}>
+                                    <Logo width={12} height={12} fill={'gray'}/>
+                                </td>
                             ))}
                         </tr>
                     ))}
                 </tbody>
-                
             </table>
         </div>
 )};
