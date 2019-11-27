@@ -7,13 +7,13 @@ const LegendCroquis = () =>(
     
     <div className="rowX">
         <div className='circle free'>
-            Free
+            Libre
         </div>
         <div className='circle sold'>
-            Sold
+            Vendido
         </div>
         <div className='circle blocked'>
-            Blocked
+            Bloqueado
         </div>
     </div>
 );
