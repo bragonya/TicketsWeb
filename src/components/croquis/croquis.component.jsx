@@ -11,7 +11,6 @@ import main_stage from '../../assets/seat-structure';
 const Croquis = () =>{
     const {sections} = main_stage;
     const [SL1,SL2,VIP1,VIP2,PR1,PR2,PR3,PR4,E1,E2,E3,E4] = sections;
-    console.log(SL1);
     return (
         <div className="container">
             <div className="box box-1">

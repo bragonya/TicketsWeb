@@ -13,7 +13,6 @@ const Section = ({section}) =>{
     const sortedSizes = sizes.sort((a,b)=> b-a);
     const headers = Array.from({length: sortedSizes[0]}, (v, i) => i+1);
     
-    
     return (
         <div style={{"overflow":"auto"}}>
             <h3>{name}</h3>    
@@ -27,21 +26,17 @@ const Section = ({section}) =>{
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        colsNames.map((colname,index)=>(
+                {colsNames.map((colname,index)=>(
                             <tr key={colname+'tr'+index}>
                                 <td key={colname+''+index}>{colname}</td>
-
                                 {(rowsSeats[index]).map(({id,state})=>
                                     <td key={colname+'-'+id+'-'+index}>
                                         <Logo  
-                                            
                                             className={'seat seat-'+state} 
                                         />
                                     </td>
                                 )}    
                             </tr>
-                            
                         ))                
                     }
                 </tbody>
