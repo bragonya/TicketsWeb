@@ -10,8 +10,7 @@ const Section = ({section}) =>{
     const colsNames = seats_by_rows.map( ({row_name}) => row_name);
     const rowsSeats = seats_by_rows.map( ({seats}) => seats);
     const sizes = rowsSeats.map(row=> row.length);
-    const sortedSizes = sizes.sort((a,b)=> b-a);
-    const headers = Array.from({length: sortedSizes[0]}, (v, i) => i+1);
+    const headers = Array.from({length: Math.max.apply(Math,sizes)}, (v, i) => i+1);
     
     return (
         <div style={{"overflow":"auto"}}>
