@@ -25,16 +25,17 @@ h3{
   flex-flow: row wrap;
   justify-content: flex-start;
   
+  &.legend-stage{
+    flex-direction: column;
+  }
   &.vip{
-    padding-left: 15%;
     justify-content: center;
-    width: 80%;
   }
 
   &.lounge{
-    padding-left: 15%;
-    justify-content: center;
-    width: 80%;
+    margin-left: 200px;
+    margin-right: 200px;
+    justify-content: center;  
   }
   a {
     text-decoration: none;
@@ -50,9 +51,24 @@ th, td {
 }
 
 @media (max-width: 992px) {
+  .img-stage{
+    margin-left: 305px;
+    height: 10%;
+    width: 18%;
+  }
+  .grid-row{
+    &.lounge{
+      margin-left: 24%;
+      margin-right: 24%;
+  
+    }
+  }
+  
+
   th, td {
       font-size: 25%;
   }
+  
 }
 
 @media (max-width: 1125px) {
@@ -60,13 +76,18 @@ th, td {
     font-size: 34%;
     padding: 2px;
   }
-  h3{
-    
+  h3{ 
     font-size: 12px;
   }
   .container{
-    padding-top: 250px;
+    padding-top: 280px;
+  }
+  
+  .img-stage{
+    padding-top: 7px;
+    height: 180px;
   }
 }
+
 
 

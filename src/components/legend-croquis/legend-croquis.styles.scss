@@ -20,7 +20,10 @@
     color: #fff;
     line-height: 40px;
     text-align: center;
-    
+    //margin-right: 80px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+
     &.free{
         background: $seat-free-color;
     }

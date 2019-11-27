@@ -6,7 +6,7 @@
 	min-width: 768px;
 	display: flex;
 	flex-direction: column;
-    padding-top: 420px;
+    padding-top: 470px;
     
 	.box {
 		text-align: center;
@@ -25,6 +25,11 @@
 		background-color: white;
         height:460px;
 	}
+}
+.img-stage{
+	fill: #333;
+	height: 250px;
+	margin: -80px;
 }
 
 @media only screen and (max-height: 450px) {
