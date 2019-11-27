@@ -2,7 +2,7 @@ import React from 'react';
 
 import './section.styles.scss';
 
-import { ReactComponent as Logo } from '../../assets/event_seat-24px.svg';
+import { ReactComponent as Logo } from '../../assets/armchair.svg';
 
 
 const Section = ({section}) =>{
@@ -33,6 +33,7 @@ const Section = ({section}) =>{
                                     <td key={colname+'-'+id+'-'+index}>
                                         <Logo  
                                             className={'seat seat-'+state} 
+                                            
                                         />
                                     </td>
                                 )}    

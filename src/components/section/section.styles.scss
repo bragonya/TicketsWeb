@@ -13,17 +13,24 @@ h3{
 .seat{
   width:14px ;
   height:14px ;
-  //width:20px ;
-  //height:44px ;
   margin: -1px;
+  stroke: white;
+	
+
+  &:hover{
+    border: 1px solid darkgray ;
+  }
+  
   &.seat-sold{
     fill: $seat-sold-color;
+    fill-opacity: 0.8;
   }
   &.seat-free{
     fill: $seat-free-color;
   }
   &.seat-blocked{
     fill: $seat-blocked-color;
+    fill-opacity: 0.4;
   }
 }
 
