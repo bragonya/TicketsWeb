@@ -1,68 +1,53 @@
-import React from "react";
-import { Rect, Group, Text } from "../../konva-src/react-konva";
-import SubSection from "../sub-section/sub-section.component";
+import React from 'react';
 
-import {
-  SECTION_TOP_PADDING,
-  getSectionWidth,
-  getSubsectionWidth
-} from "../../layouts/layout";
+import './section.styles.scss';
 
-export default ({
-  section,
-  height,
-  x,
-  y,
-  onHoverSeat,
-  onSelectSeat,
-  onDeselectSeat,
-  selectedSeatsIds
-}) => {
-  const containerRef = React.useRef();
-  React.useEffect(() => {
-    containerRef.current.cache();
-    containerRef.current.getLayer().batchDraw();
-  });
-  const width = getSectionWidth(section);
-  let lastSubsectionX = 0;
-  return (
-    <Group y={y} x={x} ref={containerRef}>
-      <Rect
-        width={width}
-        height={height}
-        fill="white"
-        strokeWidth={1}
-        stroke="lightgrey"
-        cornerRadius={5}
-      />
-      {section.subsections.map(subsection => {
-        const subWidth = getSubsectionWidth(subsection);
-        const pos = lastSubsectionX;
-        lastSubsectionX += subWidth;
+import { ReactComponent as Logo } from '../../assets/event_seat-24px.svg';
 
-        return (
-          <SubSection
-            x={pos}
-            y={SECTION_TOP_PADDING}
-            key={subsection.name}
-            data={subsection}
-            width={subWidth}
-            height={height}
-            onHoverSeat={onHoverSeat}
-            onSelectSeat={onSelectSeat}
-            onDeselectSeat={onDeselectSeat}
-            selectedSeatsIds={selectedSeatsIds}
-          />
-        );
-      })}
-      <Text
-        text={section.name}
-        height={SECTION_TOP_PADDING}
-        width={width}
-        align="center"
-        verticalAlign="middle"
-        fontSize={20}
-      />
-    </Group>
-  );
+
+const Section = ({section}) =>{
+    const { name, seats_by_rows } = section;
+    const colsNames = seats_by_rows.map( ({row_name}) => row_name);
+    const rowsSeats = seats_by_rows.map( ({seats}) => seats);
+    const sizes = rowsSeats.map(row=> row.length);
+    const sortedSizes = sizes.sort((a,b)=> b-a);
+    const headers = Array.from({length: sortedSizes[0]}, (v, i) => i+1);
+    
+    
+    return (
+        <div style={{"overflow":"auto"}}>
+            <h3>{name}</h3>    
+            <table>             
+                <thead>
+                    <tr>
+                        <td></td>
+                        {headers.map(head=>(
+                                <td key={name+'-'+head}>{head}</td>      
+                        ))}      
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        colsNames.map((colname,index)=>(
+                            <tr key={colname+'tr'+index}>
+                                <td key={colname+''+index}>{colname}</td>
+
+                                {(rowsSeats[index]).map(({id,state})=>
+                                    <td key={colname+'-'+id+'-'+index}>
+                                        <Logo  
+                                            
+                                            className={'seat seat-'+state} 
+                                        />
+                                    </td>
+                                )}    
+                            </tr>
+                            
+                        ))                
+                    }
+                </tbody>
+            </table>
+        </div>
+    )
 };
+export default Section;
+

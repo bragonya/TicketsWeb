@@ -1,4 +1,4 @@
-export default seats = {
+const main_stage = {
     sections:[
         {
             name:'Sala Lounge',
@@ -8,11 +8,11 @@ export default seats = {
                     seats:[
                         {
                             id:1,
-                            state:'free'
+                            state:'sold'
                         },
                         {
                             id:2,
-                            state:'free'
+                            state:'blocked'
                         },
                         {
                             id:3,
@@ -230,6 +230,26 @@ export default seats = {
                         {
                             id:5,
                             state:'free'
+                        },
+                        {
+                            id:6,
+                            state:'free'
+                        },
+                        {
+                            id:7,
+                            state:'free'
+                        },
+                        {
+                            id:8,
+                            state:'free'
+                        },
+                        {
+                            id:9,
+                            state:'free'
+                        },
+                        {
+                            id:10,
+                            state:'free'
                         }
                     ]
                 },
@@ -254,6 +274,26 @@ export default seats = {
                         },
                         {
                             id:5,
+                            state:'free'
+                        },
+                        {
+                            id:6,
+                            state:'free'
+                        },
+                        {
+                            id:7,
+                            state:'free'
+                        },
+                        {
+                            id:8,
+                            state:'sold'
+                        },
+                        {
+                            id:9,
+                            state:'free'
+                        },
+                        {
+                            id:10,
                             state:'free'
                         }
                     ]
@@ -2966,3 +3006,5 @@ export default seats = {
         }
     ]
 };
+
+export default main_stage;

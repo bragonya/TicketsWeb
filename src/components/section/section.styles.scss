@@ -10,14 +10,21 @@ h3{
 
 }
 
-.seat-sold{
-  fill: $seat-sold-color;
-}
-.seat-free{
-  fill: $seat-free-color;
-}
-.seat-blocked{
-  fill: $seat-blocked-color;
+.seat{
+  width:14px ;
+  height:14px ;
+  //width:20px ;
+  //height:44px ;
+  margin: -1px;
+  &.seat-sold{
+    fill: $seat-sold-color;
+  }
+  &.seat-free{
+    fill: $seat-free-color;
+  }
+  &.seat-blocked{
+    fill: $seat-blocked-color;
+  }
 }
 
 .grid-row {
@@ -52,9 +59,13 @@ th, td {
 
 @media (max-width: 992px) {
   .img-stage{
-    margin-left: 305px;
+    //margin-left: 305px;
+    //margin: -140px;
+    //margin-left: 30%;
+    padding-left: 370px;
+    padding-right: 140px;
     height: 10%;
-    width: 18%;
+    width: 90%;
   }
   .grid-row{
     &.lounge{
@@ -81,6 +92,7 @@ th, td {
   }
   .container{
     padding-top: 280px;
+    
   }
   
   .img-stage{
