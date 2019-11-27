@@ -9,6 +9,7 @@ import {
 import { } from "./App.scss"
 
 import LandingPage from "./landingpage/landingpage"
+import SocketExample from "./socket_example"
 
 export default function App() {
   return (
@@ -80,7 +81,7 @@ function About() {
 }
 
 function Users() {
-  return <h2>Users</h2>;
+  return <SocketExample></SocketExample>
 }
 function Register() {
   return <h2>Registro</h2>;
