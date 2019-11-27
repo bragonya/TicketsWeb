@@ -1,4 +1,4 @@
-const main_stage = {
+const event_seats_structure = {
     sections:[
         {
             name:'Sala Lounge',
@@ -3007,4 +3007,4 @@ const main_stage = {
     ]
 };
 
-export default main_stage;
+export default event_seats_structure;

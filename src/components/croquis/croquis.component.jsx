@@ -6,10 +6,10 @@ import LegendCroquis from '../legend-croquis/legend-croquis.component';
 import './croquis.styles.scss';
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 
-import main_stage from '../../assets/seat-structure';
+import event_seats_structure from '../../assets/seat-structure';
 
 const Croquis = () =>{
-    const {sections} = main_stage;
+    const {sections} = event_seats_structure;
     const [SL1,SL2,VIP1,VIP2,PR1,PR2,PR3,PR4,E1,E2,E3,E4] = sections;
     return (
         <div className="container">
