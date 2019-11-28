@@ -35,9 +35,9 @@ class Coursesinfo extends React.Component {
                         <div className="row">
                             {/* <div className="col-1 col-sm-hidden"></div> */}
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 ml-auto card-wrapper">
-                                <div class="card">
-                                    <div class="card-body text-left">
-                                        <h5 class="card-title">Primera parte</h5>
+                                <div className="card">
+                                    <div className="card-body text-left">
+                                        <h5 className="card-title">Primera parte</h5>
                                         <h6>Diseño Sonrisa Digital</h6>
                                         <p className="card-text">
                                             Concepto. <br />
@@ -63,9 +63,9 @@ class Coursesinfo extends React.Component {
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto mt-sm-4 mt-4 mt-md-auto mt-lg-auto mt-xl-auto card-wrapper">
-                                <div class="card">
-                                    <div class="card-body text-left">
-                                        <h5 class="card-title">Segunda parte</h5>
+                                <div className="card">
+                                    <div className="card-body text-left">
+                                        <h5 className="card-title">Segunda parte</h5>
                                         <h6>Fotografia Video Dental</h6>
                                         <p className="card-text">
                                             Protocolo fotografico completo: 23 fotografias. <br />
@@ -101,9 +101,9 @@ class Coursesinfo extends React.Component {
                         <div className="row">
                             {/* <div className="col-1 col-sm-hidden"></div> */}
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto card-wrapper">
-                                <div class="card">
-                                    <div class="card-body text-left">
-                                        <h5 class="card-title">Introducción Teoría</h5>
+                                <div className="card">
+                                    <div className="card-body text-left">
+                                        <h5 className="card-title">Introducción Teoría</h5>
                                         <h6>Flowable Injection Technique</h6>
                                         <p className="card-text">
                                             Comunicación y entrevista con paciente. <br />
@@ -122,9 +122,9 @@ class Coursesinfo extends React.Component {
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto mt-sm-4 mt-4 mt-md-auto mt-lg-auto mt-xl-auto card-wrapper">
-                                <div class="card">
-                                    <div class="card-body text-left">
-                                        <h5 class="card-title">Hands-onPractica</h5>
+                                <div className="card">
+                                    <div className="card-body text-left">
+                                        <h5 className="card-title">Hands-onPractica</h5>
                                         <h6>Flowable Injection Technique</h6>
                                         <p className="card-text">
                                             Preparaciones para carilla tipo cerámica clasificación I,II,III. <br />
