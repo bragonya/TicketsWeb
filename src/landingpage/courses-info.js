@@ -19,7 +19,7 @@ class Coursesinfo extends React.Component {
                     </div>
                     <div className="col-6 my-5">
                         <h3>El participante aprenderá:</h3>
-                        <ul className="text-left my-4 mx-auto" style={{ 'max-width': '400px' }}>
+                        <ul className="text-left my-4 mx-auto" style={{ 'maxWidth': '400px' }}>
                             <li>Diseño de sonrisa digital DSD.</li>
                             <li>Fotografia & video en odontología.</li>
                             <li>Mock Up | Maqueta | Prototipo | APT</li>
@@ -39,7 +39,7 @@ class Coursesinfo extends React.Component {
                                     <div class="card-body text-left">
                                         <h5 class="card-title">Primera parte</h5>
                                         <h6>Diseño Sonrisa Digital</h6>
-                                        <p class="card-text">
+                                        <p className="card-text">
                                             Concepto. <br />
                                             Protocolo fotografico.<br />
                                             Protocolo de video.<br />
@@ -58,7 +58,7 @@ class Coursesinfo extends React.Component {
                                             <br />
                                             <br />
                                         </p>
-                                        {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
+                                        {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@ class Coursesinfo extends React.Component {
                                     <div class="card-body text-left">
                                         <h5 class="card-title">Segunda parte</h5>
                                         <h6>Fotografia Video Dental</h6>
-                                        <p class="card-text">
+                                        <p className="card-text">
                                             Protocolo fotografico completo: 23 fotografias. <br />
                                             Protocolo de video completo.<br />
                                             Equipo basico y avanzado.<br />
@@ -86,7 +86,7 @@ class Coursesinfo extends React.Component {
                                             Configuración basica & avanzada para video.<br />
                                             y mas...
                                         </p>
-                                        {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
+                                        {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@ class Coursesinfo extends React.Component {
                                     <div class="card-body text-left">
                                         <h5 class="card-title">Introducción Teoría</h5>
                                         <h6>Flowable Injection Technique</h6>
-                                        <p class="card-text">
+                                        <p className="card-text">
                                             Comunicación y entrevista con paciente. <br />
                                             Fotografía y video. <br />
                                             Análisis Estético. <br />
@@ -117,7 +117,7 @@ class Coursesinfo extends React.Component {
                                             Oclusión céntrica. <br />
                                             Y mas...
                                         </p>
-                                        {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
+                                        {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@ class Coursesinfo extends React.Component {
                                     <div class="card-body text-left">
                                         <h5 class="card-title">Hands-onPractica</h5>
                                         <h6>Flowable Injection Technique</h6>
-                                        <p class="card-text">
+                                        <p className="card-text">
                                             Preparaciones para carilla tipo cerámica clasificación I,II,III. <br />
                                             Cubeta transparente como realizarla paso a paso. <br />
                                             Silicona transparente uso y diferencias en marcas. <br />
@@ -137,7 +137,7 @@ class Coursesinfo extends React.Component {
                                             Acabado y terminado. <br />
                                             Pulido y alto brillo. <br />
                                         </p>
-                                        {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
+                                        {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
                             </div>

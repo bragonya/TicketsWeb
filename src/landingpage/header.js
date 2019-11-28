@@ -9,7 +9,7 @@ class Header extends React.Component {
                     <h2>Enrique Díaz - Odontología Independiente</h2>
                 </div>
                 <div className="event-info">
-                    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+                    <ul className="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
                         <li>
                             <table>
                                 <tr>
