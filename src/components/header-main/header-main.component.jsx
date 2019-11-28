@@ -20,8 +20,10 @@ const HeaderMain = () =>(
           <li className="nav-item">
             <Link to="/reservation" className="nav-link">Reservation</Link>
           </li>
+          <li className="nav-item">
+            <Link to="/register" className="nav-link btn btn-orange">Registro</Link>
+          </li>
         </ul>
-        <Link to="/register" className="btn btn-orange">Registro</Link>
       </div>
     </div>
   </nav>
