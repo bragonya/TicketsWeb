@@ -14,25 +14,24 @@ const Section = ({section}) =>{
     
     return (
         <div style={{"overflow":"auto"}}>
-            <h3>{name}</h3>    
+            <h3 className='h3-croquis'>{name}</h3>    
             <table>             
                 <thead>
-                    <tr>
-                        <td></td>
+                    <tr className='tr-croquis' >
+                        <td className='td-croquis'></td>
                         {headers.map(head=>(
-                                <td key={name+'-'+head}>{head}</td>      
+                                <td className='td-croquis' key={name+'-'+head}>{head}</td>      
                         ))}      
                     </tr>
                 </thead>
                 <tbody>
                 {colsNames.map((colname,index)=>(
-                            <tr key={colname+'tr'+index}>
-                                <td key={colname+''+index}>{colname}</td>
+                            <tr className='tr-croquis' key={colname+'tr'+index}>
+                                <td className='td-croquis' key={colname+''+index}>{colname}</td>
                                 {(rowsSeats[index]).map(({id,state})=>
-                                    <td key={colname+'-'+id+'-'+index}>
+                                    <td className='td-croquis' key={colname+'-'+id+'-'+index}>
                                         <Logo  
-                                            className={'seat seat-'+state} 
-                                            
+                                            className={'seat-croquis seat-'+state} 
                                         />
                                     </td>
                                 )}    

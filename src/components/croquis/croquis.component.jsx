@@ -12,25 +12,25 @@ const Croquis = () =>{
     const {sections} = event_seats_structure;
     const [SL1,SL2,VIP1,VIP2,PR1,PR2,PR3,PR4,E1,E2,E3,E4] = sections;
     return (
-        <div className="container">
-            <div className="box box-1">
-                <div className="grid-row legend-stage">
+        <div className="container-croquis">
+            <div className="box-croquis">
+                <div className="grid-row-croquis legend-stage">
                     <LegendCroquis/>
-                    <StageX className={'img-stage'} />
+                    <StageX className={'img-stage-croquis'} />
                 </div>
-                <div className="grid-row lounge">
+                <div className="grid-row-croquis lounge">
                     <Section key={'SL1'}  section = { SL1 }/>
                     <hr/>
                     <Section key={'SL2'} section = { SL2 }/>
                 </div>
                 <hr/>
-                <div className="grid-row vip">
+                <div className="grid-row-croquis vip">
                     <Section key={'VIP1'} section = { VIP1 }/>
                     <hr/>
                     <Section key={'VIP2'} section = { VIP2 }/>
                 </div>
                 <hr/>
-                <div className="grid-row">
+                <div className="grid-row-croquis">
                     <Section key={'P1'} section = { PR1 }/>
                     <hr/>
                     <Section key={'P2'} section = { PR2 }/>
@@ -42,7 +42,7 @@ const Croquis = () =>{
                         
                 </div>
                 <hr/>
-                <div className="grid-row">
+                <div className="grid-row-croquis">
                     <Section key={'E1'} section = { E1 }/>
                     <hr/>
                     <Section key={'E2'} section = { E2 }/>

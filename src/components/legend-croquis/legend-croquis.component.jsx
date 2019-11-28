@@ -5,14 +5,14 @@ import './legend-croquis.styles.scss';
 
 const LegendCroquis = () =>(
     
-    <div className="rowX">
-        <div className='circle free'>
+    <div className="row-legends-croquis">
+        <div className='circle-croquis free'>
             Libre
         </div>
-        <div className='circle sold'>
+        <div className='circle-croquis sold'>
             Vendido
         </div>
-        <div className='circle blocked'>
+        <div className='circle-croquis blocked'>
             Bloqueado
         </div>
     </div>

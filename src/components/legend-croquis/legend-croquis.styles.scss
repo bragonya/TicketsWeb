@@ -1,17 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Acme&display=swap");
 @import '../../master';
 
-.rowX {
+.row-legends-croquis {
     margin: 20px auto;
     max-width: 300px;
     display: grid;
     grid-template-columns: 2fr 2fr 1fr; /* Size of items defined inside container */
     position: relative;
-    
 }
 
 
-.circle {
+.circle-croquis {
     width: 48px;
     height: 48px;
     font-family: 'Acme', sans-serif;
