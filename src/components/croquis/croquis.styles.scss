@@ -1,0 +1,31 @@
+
+
+.container-croquis {
+	min-width: 768px;
+	display: flex;
+	flex-direction: column;
+	margin: 30px;
+	margin-top: 100px;
+	background: yellow;
+	.box-croquis {
+		text-align: center;
+		color: black;
+		font-family: sans-serif;
+		font-size: 22px;
+		
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background-image: linear-gradient(to top,rgba(255, 0, 0, 0.692), yellow);
+
+	}
+	
+}
+
+.img-stage-croquis{
+	fill: #333;
+	height: 250px;
+	margin: -80px;
+}
+
+

@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css?family=Acme&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Audiowide&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+@import '../../master';
+
+
+.h3-croquis{
+  font-family:  'Acme', sans-serif;
+  font-size: 18px;
+  position: relative;
+}
+
+.seat-croquis{
+  width:15px ;
+  height:15px ;
+  margin: -1px;
+  stroke: white;
+	
+  &:hover{
+    border: 1px solid darkgray ;
+  }
+  
+  &.seat-sold{
+    fill: $seat-sold-color;
+    fill-opacity: 0.8;
+  }
+  &.seat-free{
+    fill: $seat-free-color;
+  }
+  &.seat-blocked{
+    fill: $seat-blocked-color;
+    fill-opacity: 0.4;
+  }
+}
+
+.grid-row-croquis {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+
+  &.legend-stage{
+    flex-direction: column;
+  }
+  &.vip{
+    justify-content: center;
+  }
+
+  &.lounge{
+    margin-left: 200px;
+    margin-right: 200px;
+    justify-content: center;  
+  }
+}
+
+
+.tr-croquis, .td-croquis {
+  font-size: 70%;
+  text-align: center;
+  padding: 8px;
+  cursor: pointer;
+  &.col-letter{
+    font-family: 'Crimson Text', serif;
+    font-weight: bold;
+    color: #333;
+  }
+  &.col-number{
+    font-family: 'Audiowide', cursive;
+    color: #333;
+  }
+}
+
+
+@media (max-width: 853px) {
+  .img-stage-croquis{
+    height: 5;
+    width: 10;
+    size: 3px;
+  }
+}
+
+@media (max-width: 992px) {
+  .img-stage-croquis{
+    padding-left: 370px;
+    padding-right: 140px;
+    height: 10%;
+    width: 90%;
+  }
+  .grid-row-croquis{
+    &.lounge{
+      margin-left: 24%;
+      margin-right: 24%;
+    }
+  }
+  
+
+  
+  
+}
+
+@media (max-width: 1125px) {
+  
+  .tr-croquis, .td-croquis {
+    font-size: 67%;
+    padding: 4px;
+  }
+  .h3-croquis{ 
+    font-size: 13px;
+  }
+  
+  .img-stage-croquis{
+    padding-top: 7px;
+    height: 180px;
+  }
+}
+
+
+

@@ -15,19 +15,19 @@ class Contact extends React.Component {
                         <div className="col-12 text-center">
                             <h2>Contactenos</h2>
                             <form>
-                                <div class="form-group">
-                                    <label for="name">Nombre</label>
-                                    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="John" required />
+                                <div className="form-group">
+                                    <label htmlFor="name">Nombre</label>
+                                    <input type="text" className="form-control" id="name" aria-describedby="nameHelp" placeholder="John" required />
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="john@doe.com" required/>
+                                <div className="form-group">
+                                    <label htmlFor="email">Email</label>
+                                    <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="john@doe.com" required/>
                                 </div>
-                                <div class="form-group">
-                                    <label for="message">Mensaje</label>
+                                <div className="form-group">
+                                    <label htmlFor="message">Mensaje</label>
                                     <textarea name="message" id="message" rows="6" className="form-control" required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-orange">Enviar</button>
+                                <button type="submit" className="btn btn-orange">Enviar</button>
                             </form>
                         </div>
                     </div>

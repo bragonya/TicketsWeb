@@ -9,37 +9,45 @@ class Header extends React.Component {
                     <h2>Enrique Díaz - Odontología Independiente</h2>
                 </div>
                 <div className="event-info">
-                    <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+                    <ul className="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
                         <li>
                             <table>
-                                <tr>
-                                    <td><i class="fa fa-map-marker "></i></td>
-                                    <td> Ciudad de Guatemala</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td><i className="fa fa-map-marker "></i></td>
+                                        <td> Ciudad de Guatemala</td>
+                                    </tr>
+                                </tbody>
                             </table>
 						</li>
                         <li>
                             <table>
-                                <tr>
-                                    <td><i class="fa fa-calendar"></i></td>
-                                    <td>25/05/2020</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td><i className="fa fa-calendar"></i></td>
+                                        <td>25/05/2020</td>
+                                    </tr>
+                                </tbody>
                             </table>
 						</li>
                         <li>
                             <table>
-                                <tr>
-                                    <td><i class="fa fa-microphone"></i></td>
-                                    <td>8 Expositores</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td><i className="fa fa-microphone"></i></td>
+                                        <td>8 Expositores</td>
+                                    </tr>
+                                </tbody>
                             </table>
 						</li>
                         <li>
                             <table>
-                                <tr>
-                                    <td><i class="fa fa-ticket"></i></td>
-                                    <td>107 tickets restantes</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td><i className="fa fa-ticket"></i></td>
+                                        <td>107 tickets restantes</td>
+                                    </tr>
+                                </tbody>
                             </table>
 						</li>
                     </ul>
