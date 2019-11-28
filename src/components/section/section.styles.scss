@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Acme&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Audiowide&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 @import '../../master';
 
@@ -7,7 +9,6 @@
   font-family:  'Acme', sans-serif;
   font-size: 18px;
   position: relative;
-
 }
 
 .seat-croquis{
@@ -16,7 +17,6 @@
   margin: -1px;
   stroke: white;
 	
-
   &:hover{
     border: 1px solid darkgray ;
   }
@@ -55,11 +55,21 @@
 
 
 .tr-croquis, .td-croquis {
-  font-size: 50%;
+  font-size: 70%;
   text-align: center;
   padding: 8px;
   cursor: pointer;
+  &.col-letter{
+    font-family: 'Crimson Text', serif;
+    font-weight: bold;
+    color: #333;
+  }
+  &.col-number{
+    font-family: 'Audiowide', cursive;
+    color: #333;
+  }
 }
+
 
 @media (max-width: 853px) {
   .img-stage-croquis{
@@ -84,16 +94,14 @@
   }
   
 
-  .tr-croquis, .td-croquis {
-      font-size: 27%;
-  }
+  
   
 }
 
 @media (max-width: 1125px) {
   
   .tr-croquis, .td-croquis {
-    font-size: 34%;
+    font-size: 67%;
     padding: 4px;
   }
   .h3-croquis{ 

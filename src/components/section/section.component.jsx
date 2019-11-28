@@ -20,14 +20,14 @@ const Section = ({section}) =>{
                     <tr className='tr-croquis' >
                         <td className='td-croquis'></td>
                         {headers.map(head=>(
-                                <td className='td-croquis' key={name+'-'+head}>{head}</td>      
+                                <td className='td-croquis col-number' key={name+'-'+head}>{head}</td>      
                         ))}      
                     </tr>
                 </thead>
                 <tbody>
                 {colsNames.map((colname,index)=>(
                             <tr className='tr-croquis' key={colname+'tr'+index}>
-                                <td className='td-croquis' key={colname+''+index}>{colname}</td>
+                                <td className='td-croquis col-letter' key={colname+''+index}>{colname}</td>
                                 {(rowsSeats[index]).map(({id,state})=>
                                     <td className='td-croquis' key={colname+'-'+id+'-'+index}>
                                         <Logo  
