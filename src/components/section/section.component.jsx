@@ -6,7 +6,7 @@ import { ReactComponent as Logo } from '../../assets/armchair.svg';
 
 
 const Section = ({section}) =>{
-    const { name, seats_by_rows } = section;
+    const { key, name, seats_by_rows } = section;
     const colsNames = seats_by_rows.map( ({row_name}) => row_name);
     const rowsSeats = seats_by_rows.map( ({seats}) => seats);
     const sizes = rowsSeats.map(row=> row.length);
@@ -31,7 +31,7 @@ const Section = ({section}) =>{
                                 {(rowsSeats[index]).map(({id,state})=>
                                     <td className='td-croquis' key={colname+'-'+id+'-'+index}>
                                         <div className={'seat-croquis seat-'+state}>
-                                            <span id={name+id+colname} onClick={(evt)=>{document.getElementById(evt.target.id).innerHTML="&#9635;";}}>&#9634;</span>
+                                            <span id={key+id+colname} onClick={(evt)=>{document.getElementById(evt.target.id).innerHTML="&#9635;";}}>&#9634;</span>
                                         </div>
                                     </td>
                                 )}    

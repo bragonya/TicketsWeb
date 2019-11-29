@@ -1,6 +1,7 @@
 const event_seats_structure = {
     sections:[
         {
+            key:'SL1',
             name:'Sala Lounge',
             seats_by_rows:[
                 {
@@ -56,6 +57,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'SL2',
             name:'Sala Lounge',
             seats_by_rows:[
                 {
@@ -111,6 +113,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'VIP1',
             name:'VIP',
             seats_by_rows:[
                 {
@@ -206,6 +209,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'VIP2',
             name:'VIP',
             seats_by_rows:[
                 {
@@ -301,6 +305,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'PF1',
             name:'Profesionales',
             seats_by_rows:[
                 {
@@ -639,6 +644,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'PF2',
             name:'Profesionales',
             seats_by_rows:[
                 {
@@ -977,6 +983,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'PF3',
             name:'Profesionales',
             seats_by_rows:[
                 {
@@ -1315,6 +1322,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'PF4',
             name:'Profesionales',
             seats_by_rows:[
                 {
@@ -1653,6 +1661,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'E1',
             name:'Estudiantes',
             seats_by_rows:[
                 {
@@ -1991,6 +2000,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'E2',
             name:'Estudiantes',
             seats_by_rows:[
                 {
@@ -2329,6 +2339,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'E3',
             name:'Estudiantes',
             seats_by_rows:[
                 {
@@ -2667,6 +2678,7 @@ const event_seats_structure = {
             ]
         },
         {
+            key:'E4',
             name:'Estudiantes',
             seats_by_rows:[
                 {
