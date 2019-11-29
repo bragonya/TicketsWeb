@@ -4,15 +4,15 @@ import event_seats_structure from '../../assets/seat-structure';
 import {setStateToSeat} from './stage.utils';
 
 const INITIAL_STATE = {
-    stage : event_seats_structure
+    mainStage : event_seats_structure
 }
 
-const stageReducer = (state = INITIAL_STATE,action) =>{
+const stageReducer = (state = INITIAL_STATE, action) =>{
     switch(action.type){
         case StageActionsTypes.SET_STATE_SEAT:
             return {
                 ...state,
-                stage : setStateToSeat(state.stage,action.payload)
+                mainStage : setStateToSeat(state.mainStage,action.payload)
             }
         default:
             return state;

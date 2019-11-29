@@ -10,7 +10,10 @@ import LandingPage from "./landingpage/landingpage"
 import SeatReservationPage from './pages/seat-reservation/seat-reservation.component';
 import HeaderMain from './components/header-main/header-main.component';
 
-export default function App() {
+import {connect} from 'react-redux';
+
+const  App = ({currentUser}) => {
+  console.log(currentUser);
   return (
         <div>
           <HeaderMain/>
@@ -22,3 +25,9 @@ export default function App() {
         </div>
   );
 }
+
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+});
+
+export default connect(mapStateToProps)(App);

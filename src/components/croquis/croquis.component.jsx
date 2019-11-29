@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Section from '../section/section.component';
 import LegendCroquis from '../legend-croquis/legend-croquis.component';
@@ -6,10 +7,8 @@ import LegendCroquis from '../legend-croquis/legend-croquis.component';
 import './croquis.styles.scss';
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 
-import event_seats_structure from '../../assets/seat-structure';
-
-const Croquis = () =>{
-    const {sections} = event_seats_structure;
+const Croquis = ({mainStage}) =>{
+    const {sections} = mainStage;
     const [SL1,SL2,VIP1,VIP2,PR1,PR2,PR3,PR4,E1,E2,E3,E4] = sections;
     return (
         <div className="container-croquis">
@@ -56,4 +55,9 @@ const Croquis = () =>{
         </div>
     )
 };
-export default Croquis;
+
+const mapStateToProps =({ stage: { mainStage } }) =>({
+    mainStage
+});
+
+export default connect(mapStateToProps)(Croquis);
