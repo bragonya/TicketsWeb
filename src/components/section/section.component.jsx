@@ -13,7 +13,7 @@ const Section = ({section}) =>{
     const headers = Array.from({length: Math.max.apply(Math,sizes)}, (v, i) => i+1);
     
     return (
-        <div style={{"overflow":"auto"}}>
+        <div >
             <h3 className='h3-croquis'>{name}</h3>    
             <table>             
                 <thead>
@@ -30,9 +30,9 @@ const Section = ({section}) =>{
                                 <td className='td-croquis col-letter' key={colname+''+index}>{colname}</td>
                                 {(rowsSeats[index]).map(({id,state})=>
                                     <td className='td-croquis' key={colname+'-'+id+'-'+index}>
-                                        <Logo  
-                                            className={'seat-croquis seat-'+state} 
-                                        />
+                                        <div className={'seat-croquis seat-'+state}>
+                                            <span id={name+id+colname} onClick={(evt)=>{document.getElementById(evt.target.id).innerHTML="&#9635;";}}>&#9634;</span>
+                                        </div>
                                     </td>
                                 )}    
                             </tr>
