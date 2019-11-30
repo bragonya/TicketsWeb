@@ -23,7 +23,7 @@ let socket;
 export class App extends React.Component{
   constructor(props){
     super(props);
-    socket = io.connect("http://192.168.43.34:9000");
+    socket = io.connect("http://52.70.18.213");
     socket.emit('conectado',{message:'Ha funcionado Perron'});
     
     const { setSocket, setStateSeat } = this.props;
