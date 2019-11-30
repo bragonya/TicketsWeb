@@ -12,24 +12,22 @@
 }
 
 .seat-croquis{
-  width:15px ;
-  height:15px ;
+  width:17px ;
+  height:17px ;
   margin: -1px;
-  stroke: white;
-	
-  &:hover{
-    border: 1px solid darkgray ;
-  }
+  font-size: 18px;
+  font-weight: bold;
+  
   
   &.seat-sold{
-    fill: $seat-sold-color;
+    color: $seat-sold-color;
     fill-opacity: 0.8;
   }
-  &.seat-free{
-    fill: $seat-free-color;
+  &.seat-free,&.seat-selected{
+    color: $seat-free-color;
   }
   &.seat-blocked{
-    fill: $seat-blocked-color;
+    color: $seat-blocked-color;
     fill-opacity: 0.4;
   }
 }

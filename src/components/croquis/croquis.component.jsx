@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Section from '../section/section.component';
 import LegendCroquis from '../legend-croquis/legend-croquis.component';
@@ -6,11 +7,9 @@ import LegendCroquis from '../legend-croquis/legend-croquis.component';
 import './croquis.styles.scss';
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 
-import event_seats_structure from '../../assets/seat-structure';
 
-const Croquis = () =>{
-    const {sections} = event_seats_structure;
-    const [SL1,SL2,VIP1,VIP2,PR1,PR2,PR3,PR4,E1,E2,E3,E4] = sections;
+const Croquis = ({mainStage}) =>{
+    const {SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4} = mainStage;
     return (
         <div className="container-croquis">
             <div className="box-croquis">
@@ -31,14 +30,14 @@ const Croquis = () =>{
                 </div>
                 <hr/>
                 <div className="grid-row-croquis">
-                    <Section key={'P1'} section = { PR1 }/>
+                    <Section key={'P1'} section = { PF1 }/>
                     <hr/>
-                    <Section key={'P2'} section = { PR2 }/>
+                    <Section key={'P2'} section = { PF2 }/>
 
                     <hr/><hr/>
-                    <Section key={'P3'} section = { PR3 }/>
+                    <Section key={'P3'} section = { PF3 }/>
                     <hr/>
-                    <Section key={'P4'} section = { PR4 }/>
+                    <Section key={'P4'} section = { PF4 }/>
                         
                 </div>
                 <hr/>
@@ -56,4 +55,9 @@ const Croquis = () =>{
         </div>
     )
 };
-export default Croquis;
+
+const mapStateToProps =({ stage: { mainStage } }) =>({
+    mainStage
+});
+
+export default connect(mapStateToProps)(Croquis);
