@@ -17,7 +17,7 @@ const Seat = ({seatdata,setStateSeat,conexionSocket,cartItems,addSeatCart,remove
             onClick:
                 state==='free' || state==='selected'?
                 (evt)=>{
-                    if(cartItems.length===4) return ;
+                    if(cartItems.length==5 && state==='free') return ;
                     document.getElementById(`i${key}${id}${colname}`).style.backgroundColor= state==='free'?'black':'white';
                     const seatModified = {
                         columna : id,
