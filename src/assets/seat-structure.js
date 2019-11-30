@@ -3,6 +3,7 @@ const event_seats_structure = {
         SL1 : {
             key:'SL1',
             name:'Sala Lounge',
+            price: 7000,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -61,6 +62,7 @@ const event_seats_structure = {
     SL2:{
             key:'SL2',
             name:'Sala Lounge',
+            price: 7000,
             seats_by_rows:[
                 {
                     row_name: 'C',
@@ -119,6 +121,7 @@ const event_seats_structure = {
     VIP1:{
             key:'VIP1',
             name:'VIP',
+            price: 6000,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -217,6 +220,7 @@ const event_seats_structure = {
     VIP2:{
             key:'VIP2',
             name:'VIP',
+            price: 6000,
             seats_by_rows:[
                 {
                     row_name: 'C',
@@ -315,6 +319,7 @@ const event_seats_structure = {
     PF1:{
             key:'PF1',
             name:'Profesionales',
+            price: 5000,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -656,6 +661,7 @@ const event_seats_structure = {
     PF2:{
             key:'PF2',
             name:'Profesionales',
+            price: 5000,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -997,6 +1003,7 @@ const event_seats_structure = {
     PF3:{
             key:'PF3',
             name:'Profesionales',
+            price: 5000,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -1338,6 +1345,7 @@ const event_seats_structure = {
     PF4:{
             key:'PF4',
             name:'Profesionales',
+            price: 5000,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -1679,6 +1687,7 @@ const event_seats_structure = {
     E1:{
             key:'E1',
             name:'Estudiantes',
+            price: 4000.23,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -2020,6 +2029,7 @@ const event_seats_structure = {
     E2:{
             key:'E2',
             name:'Estudiantes',
+            price: 4000.23,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -2361,6 +2371,7 @@ const event_seats_structure = {
     E3:{
             key:'E3',
             name:'Estudiantes',
+            price: 4000,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -2702,6 +2713,7 @@ const event_seats_structure = {
     E4:{
             key:'E4',
             name:'Estudiantes',
+            price: 4000.23,
             seats_by_rows:[
                 {
                     row_name: 'A',
