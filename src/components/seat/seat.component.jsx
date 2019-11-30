@@ -31,12 +31,12 @@ const Seat = ({seatdata,setStateSeat,conexionSocket}) =>{
                 
     }
     return (
-        state==='selected'?
-        <span {...properties} >
-            &#9635;
-        </span>:
+        state==='free'?
         <span {...properties} >
             &#9634;
+        </span>:
+        <span {...properties} >
+            &#9635;
         </span>
 )};
 
