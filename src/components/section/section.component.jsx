@@ -1,11 +1,12 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import './section.styles.scss';
 
 import { ReactComponent as Logo } from '../../assets/armchair.svg';
+import { setStateSeat } from '../../redux/stage/stage.actions';
+import { CONST_SEAT_STATES } from '../../assets/constants';
 
-
-const Section = ({section}) =>{
+const Section = ({section,setStateSeat}) =>{
     const { key, name, seats_by_rows } = section;
     const colsNames = seats_by_rows.map( ({row_name}) => row_name);
     const rowsSeats = seats_by_rows.map( ({seats}) => seats);
@@ -31,7 +32,22 @@ const Section = ({section}) =>{
                                 {(rowsSeats[index]).map(({id,state})=>
                                     <td className='td-croquis' key={colname+'-'+id+'-'+index}>
                                         <div className={'seat-croquis seat-'+state}>
-                                            <span id={key+id+colname} onClick={(evt)=>{document.getElementById(evt.target.id).innerHTML="&#9635;";}}>&#9634;</span>
+                                            <span 
+                                                id={key+id+colname} 
+                                                onClick={
+                                                    (evt)=>{
+                                                        document.getElementById(evt.target.id).innerHTML="&#9635;";
+                                                        setStateSeat({
+                                                            columna : id,
+                                                            fila : colname,
+                                                            seccion : key,
+                                                            estado : CONST_SEAT_STATES.blocked
+                                                        });
+                                                    }
+                                                }
+                                            >
+                                            &#9634;
+                                            </span>
                                         </div>
                                     </td>
                                 )}    
@@ -43,5 +59,14 @@ const Section = ({section}) =>{
         </div>
     )
 };
-export default Section;
+
+
+const mapDispatchToProps = dispatch => ({
+    setStateSeat: seat => dispatch(setStateSeat(seat))
+});
+
+export default connect(
+    null,
+    mapDispatchToProps)
+    (Section);
 

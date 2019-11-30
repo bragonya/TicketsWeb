@@ -1,6 +1,6 @@
 const event_seats_structure = {
-    sections:[
-        {
+    
+        SL1 : {
             key:'SL1',
             name:'Sala Lounge',
             seats_by_rows:[
@@ -55,8 +55,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    SL2:{
             key:'SL2',
             name:'Sala Lounge',
             seats_by_rows:[
@@ -111,8 +113,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    VIP1:{
             key:'VIP1',
             name:'VIP',
             seats_by_rows:[
@@ -207,8 +211,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    VIP2:{
             key:'VIP2',
             name:'VIP',
             seats_by_rows:[
@@ -303,8 +309,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    PF1:{
             key:'PF1',
             name:'Profesionales',
             seats_by_rows:[
@@ -642,8 +650,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    PF2:{
             key:'PF2',
             name:'Profesionales',
             seats_by_rows:[
@@ -981,8 +991,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    PF3:{
             key:'PF3',
             name:'Profesionales',
             seats_by_rows:[
@@ -1320,8 +1332,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    PF4:{
             key:'PF4',
             name:'Profesionales',
             seats_by_rows:[
@@ -1659,8 +1673,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    E1:{
             key:'E1',
             name:'Estudiantes',
             seats_by_rows:[
@@ -1998,8 +2014,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    E2:{
             key:'E2',
             name:'Estudiantes',
             seats_by_rows:[
@@ -2337,8 +2355,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    E3:{
             key:'E3',
             name:'Estudiantes',
             seats_by_rows:[
@@ -2676,8 +2696,10 @@ const event_seats_structure = {
                     ]
                 }
             ]
-        },
-        {
+        }
+    ,
+    
+    E4:{
             key:'E4',
             name:'Estudiantes',
             seats_by_rows:[
@@ -3016,7 +3038,7 @@ const event_seats_structure = {
                 }
             ]
         }
-    ]
+    
 };
 
 export default event_seats_structure;

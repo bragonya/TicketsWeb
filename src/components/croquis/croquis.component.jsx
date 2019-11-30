@@ -7,9 +7,10 @@ import LegendCroquis from '../legend-croquis/legend-croquis.component';
 import './croquis.styles.scss';
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 
+
 const Croquis = ({mainStage}) =>{
-    const {sections} = mainStage;
-    const [SL1,SL2,VIP1,VIP2,PR1,PR2,PR3,PR4,E1,E2,E3,E4] = sections;
+    const {SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4} = mainStage;
+    console.log(SL1);
     return (
         <div className="container-croquis">
             <div className="box-croquis">
@@ -30,14 +31,14 @@ const Croquis = ({mainStage}) =>{
                 </div>
                 <hr/>
                 <div className="grid-row-croquis">
-                    <Section key={'P1'} section = { PR1 }/>
+                    <Section key={'P1'} section = { PF1 }/>
                     <hr/>
-                    <Section key={'P2'} section = { PR2 }/>
+                    <Section key={'P2'} section = { PF2 }/>
 
                     <hr/><hr/>
-                    <Section key={'P3'} section = { PR3 }/>
+                    <Section key={'P3'} section = { PF3 }/>
                     <hr/>
-                    <Section key={'P4'} section = { PR4 }/>
+                    <Section key={'P4'} section = { PF4 }/>
                         
                 </div>
                 <hr/>
