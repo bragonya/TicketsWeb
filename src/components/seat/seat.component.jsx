@@ -14,7 +14,7 @@ const Seat = ({seatdata,setStateSeat,conexionSocket}) =>{
             onClick:
                 state==='free' || state==='selected'?
                 (evt)=>{
-                    document.getElementById(evt.target.id).innerHTML="&#9635;";
+                    document.getElementById(`i${key}${id}${colname}`).style.backgroundColor= state==='free'?'black':'white';
                     const seatModified = {
                         columna : id,
                         fila : colname,
@@ -33,10 +33,10 @@ const Seat = ({seatdata,setStateSeat,conexionSocket}) =>{
     return (
         state==='free'?
         <span {...properties} >
-            &#9634;
+            <i id={`i${key}${id}${colname}`} className="fas fa-chair"></i>
         </span>:
         <span {...properties} >
-            &#9635;
+            <i id={`i${key}${id}${colname}`} className="fas fa-chair"></i>
         </span>
 )};
 
