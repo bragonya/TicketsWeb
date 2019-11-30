@@ -7,7 +7,7 @@ import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 
 import './header-main.styles.scss';
 
-const HeaderMain = ({itemsCount}) =>(
+const HeaderMain = ({ itemsCount }) =>(
     <nav className="navbar navbar-expand-md fixed-top">
     <div className="row navbar-wrapper">
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,13 +27,12 @@ const HeaderMain = ({itemsCount}) =>(
           <li className="nav-item">
             <Link to="/reservation" className="nav-link">Reservacion</Link>
           </li>
-
+          
           {itemsCount?
               <li className="nav-item ">
                <Link to="/checkout" className="nav-link btn btn-orange fadein">Comprar</Link>
              </li>:null 
           }
-          
         </ul>
       </div>
     </div>
