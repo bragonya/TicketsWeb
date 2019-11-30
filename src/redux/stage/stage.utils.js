@@ -12,7 +12,11 @@ export const setStateToSeat = (mainStage,seatToSet) =>{
                     }else{
                         return {
                             ...row,
-                            seats: row.seats.map(seat=>seat.id!==seatToSet.columna?seat:{id:seatToSet.columna,state:seatToSet.estado})
+                            seats: row.seats.map(seat=>
+                                seat.id!==seatToSet.columna?seat:(
+                                                                  seat.state==='selected' && seatToSet.estado==='blocked'?
+                                                                    seat:{id:seatToSet.columna,state:seatToSet.estado})
+                                                )
                         }
                     }
                 })

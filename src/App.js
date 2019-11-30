@@ -6,6 +6,7 @@ import {
 import io from "socket.io-client";
 
 import { setSocket } from './redux/user/user.actions';
+import { setStateSeat } from './redux/stage/stage.actions';
 
 import  "./App.scss"
 import SocketExample from "./socket_example"
@@ -20,11 +21,20 @@ let socket;
 export class App extends React.Component{
   constructor(props){
     super(props);
-    socket = io.connect("http://192.168.43.34:9000");
+    socket = io.connect("http://192.168.1.36:9000");
     socket.emit('conectado',{message:'Ha funcionado Perron'});
-    this.props.setSocket(socket);
+    
+    const { setSocket, setStateSeat } = this.props;
+    setSocket(socket);
+    socket.on('newSeatModified',function(seat){
+      setStateSeat(seat);
+    });
   }
 
+  componentWillUnmount() {
+    socket.disconnect()
+    console.log("Disconnecting Socket as component will unmount");
+  }
   render(){
     const { currentUser } = this.props;
     return (
@@ -45,7 +55,8 @@ const mapStateToProps = ({ user }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setSocket: socket => dispatch(setSocket(socket))
+  setSocket : socket => dispatch(setSocket(socket)),
+  setStateSeat : seat => dispatch(setStateSeat(seat))
 });
 
 
