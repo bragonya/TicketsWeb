@@ -1,5 +1,6 @@
 export const CONST_SEAT_STATES={
     free:'free',
     blocked:'blocked',
-    sold:'sold'
+    sold:'sold',
+    selected:'selected'
 }

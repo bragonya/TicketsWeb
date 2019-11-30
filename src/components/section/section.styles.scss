@@ -23,7 +23,7 @@
     color: $seat-sold-color;
     fill-opacity: 0.8;
   }
-  &.seat-free{
+  &.seat-free,&.seat-selected{
     color: $seat-free-color;
   }
   &.seat-blocked{
