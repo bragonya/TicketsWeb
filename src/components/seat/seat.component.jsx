@@ -4,16 +4,20 @@ import { createStructuredSelector } from 'reselect';
 
 import { CONST_SEAT_STATES } from '../../assets/constants';
 import { setStateSeat } from '../../redux/stage/stage.actions';
+import { addSeatCart, removeSeatCart } from '../../redux/cart/cart.actions';
 import { selectConexionSocket }from '../../redux/user/user.selectors';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
 
-const Seat = ({seatdata,setStateSeat,conexionSocket}) =>{
-    const { id, colname, state , key} = seatdata;
+
+const Seat = ({seatdata,setStateSeat,conexionSocket,cartItems,addSeatCart,removeSeatCart}) =>{
+    const { id, colname, state , key , price} = seatdata;
     var properties={
         key:`'span-'${key}${id}${colname}`,
             id:`${key}${id}${colname}`,
             onClick:
                 state==='free' || state==='selected'?
                 (evt)=>{
+                    if(cartItems.length===4) return ;
                     document.getElementById(`i${key}${id}${colname}`).style.backgroundColor= state==='free'?'black':'white';
                     const seatModified = {
                         columna : id,
@@ -21,12 +25,15 @@ const Seat = ({seatdata,setStateSeat,conexionSocket}) =>{
                         seccion : key,
                         estado : state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.selected
                     };
-
                     conexionSocket.emit('seatModified',{...seatModified,estado:state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.blocked});
                     setStateSeat({
                         ...seatModified
                     });
-
+                    if(state==='selected'){
+                        removeSeatCart({...seatModified,price});
+                    }else{
+                        addSeatCart({...seatModified,price});
+                    }
                 }:()=>{}
                 
     }
@@ -41,11 +48,14 @@ const Seat = ({seatdata,setStateSeat,conexionSocket}) =>{
 )};
 
 const mapStateToProps = createStructuredSelector({
-    conexionSocket: selectConexionSocket
+    conexionSocket: selectConexionSocket,
+    cartItems : selectCartItems
 });
 
 const mapDispatchToProps = dispatch => ({
-    setStateSeat: seat => dispatch(setStateSeat(seat))
+    setStateSeat: seat => dispatch(setStateSeat(seat)),
+    addSeatCart:  seat => dispatch(addSeatCart(seat)),
+    removeSeatCart:  seat => dispatch(removeSeatCart(seat))
 });
 
 

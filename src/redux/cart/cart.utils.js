@@ -1,8 +1,12 @@
 
-export const removeSeatCart = (items,seatToAdd)=>{
-    return items.filter(seat=> 
-                            seat.row !== seatToAdd.fila 
-                            && seat.id !== seatToAdd.columna 
-                            && seat.section !== seatToAdd.seccion
-                        )
+export const removeSeatFromCart = (items,seatToRemove)=>{
+    const {fila,columna,seccion} = seatToRemove;
+    console.log(seatToRemove);
+    console.log(items);
+    return items.filter(seat=> seat.key!=Object.values({fila,columna,seccion}).join(""))
 };
+
+export const addSeatToCart = (items,seatToAdd)=>{
+    const {fila,columna,seccion} = seatToAdd;
+    return [...items,{...seatToAdd,key:Object.values({fila,columna,seccion}).join("")}]
+}

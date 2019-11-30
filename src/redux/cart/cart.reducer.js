@@ -1,8 +1,8 @@
-import { CartActionsTypes } from './cart.actions';
-import { removeSeatCart } from './cart.utils';
+import { CartActionsTypes } from './cart.types';
+import { removeSeatFromCart, addSeatToCart } from './cart.utils';
 
 const INITIAL_STATE = {
-    items : [],
+    items : []
 }
 
 const cartReducer = (state = INITIAL_STATE,action) =>{
@@ -10,12 +10,12 @@ const cartReducer = (state = INITIAL_STATE,action) =>{
         case CartActionsTypes.ADD_SEAT_CART:
             return {
                 ...state,
-                items : [...items,action.payload]
+                items : addSeatToCart(state.items,action.payload)
             }
         case CartActionsTypes.REMOVE_SEAT_CART:
             return{
                 ...state,
-                items: removeSeatCart(items,action.payload)
+                items: removeSeatFromCart(state.items,action.payload)
             }    
         default:
             return state;
