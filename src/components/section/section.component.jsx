@@ -31,10 +31,12 @@ const Section = ({section,setStateSeat}) =>{
                                 <td className='td-croquis col-letter' key={colname+''+index}>{colname}</td>
                                 {(rowsSeats[index]).map(({id,state})=>
                                     <td className='td-croquis' key={colname+'-'+id+'-'+index}>
-                                        <div className={'seat-croquis seat-'+state}>
+                                        <div className={'seat-croquis seat-'+state} >
                                             <span 
+                                                
                                                 id={key+id+colname} 
                                                 onClick={
+                                                    state==='free'?
                                                     (evt)=>{
                                                         document.getElementById(evt.target.id).innerHTML="&#9635;";
                                                         setStateSeat({
@@ -43,7 +45,7 @@ const Section = ({section,setStateSeat}) =>{
                                                             seccion : key,
                                                             estado : CONST_SEAT_STATES.blocked
                                                         });
-                                                    }
+                                                    }:()=>{}
                                                 }
                                             >
                                             &#9634;
