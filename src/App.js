@@ -24,7 +24,9 @@ export class App extends React.Component{
   constructor(props){
     super(props);
     socket = io.connect("http://52.70.18.213");
-    socket.emit('conectado',{message:'Ha funcionado Perron'});
+    socket.emit('connected',{},(initialStage)=>{
+      console.log(initialStage);
+    });
     
     const { setSocket, setStateSeat } = this.props;
     setSocket(socket);
@@ -34,8 +36,7 @@ export class App extends React.Component{
   }
 
   componentWillUnmount() {
-    socket.disconnect()
-    console.log("Disconnecting Socket as component will unmount");
+    socket.disconnect();
   }
   render(){
     const { currentUser } = this.props;
