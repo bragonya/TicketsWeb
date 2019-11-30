@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { CONST_SEAT_STATES } from '../../assets/constants';
 import { setStateSeat } from '../../redux/stage/stage.actions';
-
+import { selectConexionSocket }from '../../redux/user/user.selectors';
 
 const Seat = ({seatdata,setStateSeat,conexionSocket}) =>{
     const { id, colname, state , key} = seatdata;
@@ -39,8 +40,8 @@ const Seat = ({seatdata,setStateSeat,conexionSocket}) =>{
         </span>
 )};
 
-const mapStateToProps = ({ user }) => ({
-    conexionSocket: user.conexionSocket
+const mapStateToProps = createStructuredSelector({
+    conexionSocket: selectConexionSocket
 });
 
 const mapDispatchToProps = dispatch => ({

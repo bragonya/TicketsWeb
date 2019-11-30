@@ -4,9 +4,8 @@ import {
   Switch
 } from "react-router-dom";
 import io from "socket.io-client";
-
-import { setSocket } from './redux/user/user.actions';
-import { setStateSeat } from './redux/stage/stage.actions';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import  "./App.scss"
 import SocketExample from "./socket_example"
@@ -14,7 +13,10 @@ import LandingPage from "./landingpage/landingpage"
 import SeatReservationPage from './pages/seat-reservation/seat-reservation.component';
 import HeaderMain from './components/header-main/header-main.component';
 
-import {connect} from 'react-redux';
+
+import { setSocket } from './redux/user/user.actions';
+import { setStateSeat } from './redux/stage/stage.actions';
+import { selectCurrentUser } from './redux/user/user.selectors';
 
 let socket;
 
@@ -50,8 +52,8 @@ export class App extends React.Component{
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
