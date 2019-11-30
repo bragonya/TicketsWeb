@@ -5,7 +5,7 @@ import { CONST_SEAT_STATES } from '../../assets/constants';
 import { setStateSeat } from '../../redux/stage/stage.actions';
 
 
-const Seat = ({seatdata,setStateSeat}) =>{
+const Seat = ({seatdata,setStateSeat,conexionSocket}) =>{
     const { id, colname, state , key} = seatdata;
     var properties={
         key:`'span-'${key}${id}${colname}`,
@@ -14,12 +14,18 @@ const Seat = ({seatdata,setStateSeat}) =>{
                 state==='free' || state==='selected'?
                 (evt)=>{
                     document.getElementById(evt.target.id).innerHTML="&#9635;";
-                    setStateSeat({
+                    const seatModified = {
                         columna : id,
                         fila : colname,
                         seccion : key,
                         estado : state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.selected
+                    };
+
+                    conexionSocket.emit('seatModified',{...seatModified,estado:state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.blocked});
+                    setStateSeat({
+                        ...seatModified
                     });
+
                 }:()=>{}
                 
     }
@@ -33,10 +39,13 @@ const Seat = ({seatdata,setStateSeat}) =>{
         </span>
 )};
 
+const mapStateToProps = ({ user }) => ({
+    conexionSocket: user.conexionSocket
+});
 
 const mapDispatchToProps = dispatch => ({
     setStateSeat: seat => dispatch(setStateSeat(seat))
 });
 
 
-export default connect(null,mapDispatchToProps)(Seat);
+export default connect(mapStateToProps,mapDispatchToProps)(Seat);

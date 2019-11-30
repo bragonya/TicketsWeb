@@ -3,6 +3,9 @@ import {
   Route,
   Switch
 } from "react-router-dom";
+import io from "socket.io-client";
+
+import { setSocket } from './redux/user/user.actions';
 
 import  "./App.scss"
 import SocketExample from "./socket_example"
@@ -12,22 +15,38 @@ import HeaderMain from './components/header-main/header-main.component';
 
 import {connect} from 'react-redux';
 
-const  App = ({currentUser}) => {
-  console.log(currentUser);
-  return (
-        <div>
-          <HeaderMain/>
-          <Switch>
-            <Route exact path='/' component={LandingPage}/>
-            <Route  path='/reservation' component={SeatReservationPage}/>
-            <Route  path='/socket' component={SocketExample}/>
-          </Switch>
-        </div>
-  );
+let socket;
+
+export class App extends React.Component{
+  constructor(props){
+    super(props);
+    socket = io.connect("http://192.168.43.34:9000");
+    socket.emit('conectado',{message:'Ha funcionado Perron'});
+    this.props.setSocket(socket);
+  }
+
+  render(){
+    const { currentUser } = this.props;
+    return (
+      <div>
+        <HeaderMain/>
+        <Switch>
+          <Route exact path='/' component={LandingPage}/>
+          <Route  path='/reservation' component={SeatReservationPage}/>
+          <Route  path='/socket' component={SocketExample}/>
+        </Switch>
+      </div>
+      )
+  }
 }
 
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  setSocket: socket => dispatch(setSocket(socket))
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
