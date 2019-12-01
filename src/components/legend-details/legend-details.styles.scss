@@ -1,10 +1,9 @@
 .legend-details{
     width: 25%;
     display: flex;
-    position: fixed;
+    position: absolute;
     min-height: 100px;
     border: 1px solid darkgrey;
-    
     font-size: 15px;
     align-items: center;
     flex-direction: column;

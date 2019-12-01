@@ -2,7 +2,6 @@ import React from 'react';
 
 import './section.styles.scss';
 
-import { ReactComponent as Logo } from '../../assets/armchair.svg';
 import Seat from '../seat/seat.component';
 
 const Section = ({section}) =>{
