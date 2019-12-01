@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Section from '../section/section.component';
 import LegendCroquis from '../legend-croquis/legend-croquis.component';
+import LegendDetails  from '../legend-details/legend-details.component';
 
 import './croquis.styles.scss';
 import { ReactComponent as StageX } from '../../assets/stage.svg';
@@ -13,6 +14,9 @@ const Croquis = ({mainStage}) =>{
     return (
         <div className="container-croquis">
             <div className="box-croquis">
+                <div className="grid-row-croquis">
+                    <LegendDetails/>
+                </div>
                 <div className="grid-row-croquis legend-stage">
                     <LegendCroquis/>
                     <StageX className={'img-stage-croquis'} />

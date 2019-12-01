@@ -4,7 +4,6 @@ import React from 'react';
 import './legend-croquis.styles.scss';
 
 const LegendCroquis = () =>(
-    
     <div className="row-legends-croquis">
         <div className='circle-croquis free'>
             Libre

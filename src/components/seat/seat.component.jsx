@@ -41,6 +41,9 @@ const Seat = ({seatdata,setStateSeat,conexionSocket,cartItems,addSeatCart,remove
         state==='free'?
         <span {...properties} >
             <i id={`i${key}${id}${colname}`} className="fas fa-chair"></i>
+        </span>:state=='selected'?
+        <span {...properties} >
+        <i id={`i${key}${id}${colname}`} className="fas fa-chair" style={{backgroundColor:'black'}}></i>
         </span>:
         <span {...properties} >
             <i id={`i${key}${id}${colname}`} className="fas fa-chair"></i>
