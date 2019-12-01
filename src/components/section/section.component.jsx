@@ -10,7 +10,7 @@ const Section = ({section}) =>{
     const rowsSeats = seats_by_rows.map( ({seats}) => seats);
     const sizes = rowsSeats.map(row=> row.length);
     const headers = Array.from({length: Math.max.apply(Math,sizes)}, (v, i) => i+1);
-    
+    const arrayGreaterSize = getHeaderGreaterSize(rowsSeats,headers.length);
     return (
         <div >
             <h3 className='h3-croquis'>{name}</h3>    
@@ -19,7 +19,7 @@ const Section = ({section}) =>{
                     <tr className='tr-croquis' >
                         <td className='td-croquis'></td>
                         {headers.map(head=>(
-                                <td className='td-croquis col-number' key={`${name}'-'${head}`}>{head}</td>      
+                                <td className='td-croquis col-number' key={`${name}'-'${head}`}>{getNumberSeat(arrayGreaterSize,(head-1))}</td>      
                         ))}      
                     </tr>
                 </thead>
@@ -43,7 +43,13 @@ const Section = ({section}) =>{
     )
 };
 
-
+const getHeaderGreaterSize = (rowsSeats,headersSize) =>{
+    var result=rowsSeats.find(row=> row.length===headersSize);
+    return result?result:[];
+}
+const getNumberSeat = (seats,position) =>{
+    return position<=(seats.length-1)?seats[position].id:''
+}
 
 export default Section;
 
