@@ -36,32 +36,30 @@ class SignIn extends React.Component {
         return(
             <form onSubmit={this.handleSubmit}>
                 <div className="sign-in-htm">
-                        <FormInput
-                            name='email'
-                            type='email'
-                            handleChange={this.handleChange}
-                            value={this.state.email}
-                            label='email'
-                            required
-                        />
-                        <FormInput
-                            name='password'
-                            type='password'
-                            value={this.state.password}
-                            handleChange={this.handleChange}
-                            label='password'
-                            required
-                        />
-                   
+                    <FormInput
+                        name='email'
+                        type='email'
+                        handleChange={this.handleChange}
+                        value={this.state.email}
+                        label='Correo Electronico'
+                        required
+                    />
+                    <FormInput
+                        name='password'
+                        type='password'
+                        value={this.state.password}
+                        handleChange={this.handleChange}
+                        label='Contraseña'
+                        required
+                    />
                     <div className="container-group">
                         <div className="group">
-                            <input type="submit" className="button sign-in" value="Sign In"/>
+                            <input type="submit" className="button sign-in" value="Entrar"/>
                         </div>
                         <div className="group">
-                            <input type="submit"  onClick={signInWithGoogle} className="button" value="Sign In Google"/>
+                            <input type="submit"  onClick={signInWithGoogle} className="button" value="Entrar con Google"/>
                         </div>
                     </div>
-                    
                     <div className="foot-lnk">
                         <label htmlFor="tab-1">Olvidó Su Contraseña?</label>
                     </div>
