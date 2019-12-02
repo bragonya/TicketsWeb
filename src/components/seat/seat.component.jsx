@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-
+import { withRouter } from 'react-router-dom';
 import { CONST_SEAT_STATES } from '../../assets/constants';
 import { setStateSeat } from '../../redux/stage/stage.actions';
 import { addSeatCart, removeSeatCart } from '../../redux/cart/cart.actions';
 import { selectConexionSocket }from '../../redux/user/user.selectors';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 
-const Seat = ({seatdata,setStateSeat,conexionSocket,cartItems,addSeatCart,removeSeatCart}) =>{
+const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, history}) =>{
     const { id, colname, state , key , price} = seatdata;
     var properties={
         key:`'span-'${key}${id}${colname}`,
@@ -18,6 +19,7 @@ const Seat = ({seatdata,setStateSeat,conexionSocket,cartItems,addSeatCart,remove
                 state==='free' || state==='selected'?
                 (evt)=>{
                     if(cartItems.length===5 && state==='free') return ;
+                    if (!currentUser) history.push('/signinsignup');
                     document.getElementById(`i${key}${id}${colname}`).style.backgroundColor= state==='free'?'black':'white';
                     const seatModified = {
                         columna : id,
@@ -52,7 +54,8 @@ const Seat = ({seatdata,setStateSeat,conexionSocket,cartItems,addSeatCart,remove
 
 const mapStateToProps = createStructuredSelector({
     conexionSocket: selectConexionSocket,
-    cartItems : selectCartItems
+    cartItems : selectCartItems,
+    currentUser : selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -62,4 +65,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Seat);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Seat));

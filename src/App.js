@@ -18,12 +18,14 @@ import { setSocket } from './redux/user/user.actions';
 import { setStateSeat } from './redux/stage/stage.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
+import  SignInSignUpPage  from './pages/sign-in-sign-up-page/sign-in-sign-up-page.component';
+
 let socket;
 
 export class App extends React.Component{
   constructor(props){
     super(props);
-    socket = io.connect("http://192.168.1.36:4001");
+    socket = io.connect("http://localhost:4001");
     socket.emit('connected',{},(initialStage)=>{
       console.log(initialStage);
     });
@@ -48,6 +50,7 @@ export class App extends React.Component{
           <Route  path='/reservation' component={SeatReservationPage}/>
           <Route  path='/socket' component={SocketExample}/>
           <Route  path='/checkout' component={CheckOutPage}/>
+          <Route  path='/signinsignup' component={SignInSignUpPage}/>
         </Switch>
       </div>
       )
