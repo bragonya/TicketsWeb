@@ -14,6 +14,7 @@ import SeatReservationPage from './pages/seat-reservation/seat-reservation.compo
 import HeaderMain from './components/header-main/header-main.component';
 import CheckOutPage from './pages/checkout-page/checkout-page.component';
 import  SignInSignUpPage  from './pages/sign-in-sign-up-page/sign-in-sign-up-page.component';
+import AdminPage from './pages/admin-page/admin-page.component';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.util';
 import { setSocket } from './redux/user/user.actions';
@@ -91,6 +92,7 @@ export class App extends React.Component{
           />
           <Route  path='/reservation' component={SeatReservationPage}/>
           <Route  path='/socket' component={SocketExample}/>
+          <Route  path='/admin' component={AdminPage}/>
 
           <Route 
             exact 

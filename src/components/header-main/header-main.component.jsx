@@ -29,6 +29,9 @@ const HeaderMain = ({ itemsCount, currentUser, dispatch, history, cartItems }) =
             </li>:null
           }
           <li className="nav-item">
+                <Link to="/admin" className="nav-link">Admin</Link>
+          </li>
+          <li className="nav-item">
                 <Link to="/reservation" className="nav-link">Reservacion</Link>
           </li>
           {currentUser?
