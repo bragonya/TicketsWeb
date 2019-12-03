@@ -44,6 +44,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.setCustomParameters({ prompt: 'select_account' });
-  export const signInWithGoogle = () => auth.signInWithPopup(provider);
+  export const signInWithGoogle = (history) => 
+    auth.signInWithPopup(provider)
+    .then(result=>{
+        history.push('/reservation');
+    })
+    .catch(error=>console.log(error));
   
   export default firebase;

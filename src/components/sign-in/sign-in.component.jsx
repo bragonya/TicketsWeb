@@ -1,6 +1,8 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 
 import FormInput from "../form-input/form-input.component";
+
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.util';
 
@@ -33,6 +35,7 @@ class SignIn extends React.Component {
     };
 
     render(){
+        const { history } = this.props;
         return(
             <form onSubmit={this.handleSubmit}>
                 <div className="sign-in-htm">
@@ -57,7 +60,7 @@ class SignIn extends React.Component {
                             <input type="submit" className="button sign-in" value="Entrar"/>
                         </div>
                         <div className="group">
-                            <input type="submit"  onClick={signInWithGoogle} className="button" value="Entrar con Google"/>
+                            <input type="submit"  onClick={ ()=>{ signInWithGoogle(history); } } className="button" value="Entrar con Google"/>
                         </div>
                     </div>
                     <div className="foot-lnk">
@@ -69,4 +72,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn;
+export default withRouter(SignIn);

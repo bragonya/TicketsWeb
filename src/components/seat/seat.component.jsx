@@ -19,7 +19,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                 state==='free' || state==='selected'?
                 (evt)=>{
                     if(cartItems.length===5 && state==='free') return ;
-                    if (!currentUser) history.push('/signinsignup');
+                    if (!currentUser){ history.push('/signinsignup'); return; }
                     document.getElementById(`i${key}${id}${colname}`).style.backgroundColor= state==='free'?'black':'white';
                     const seatModified = {
                         columna : id,
