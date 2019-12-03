@@ -2,14 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
 
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { auth } from '../../firebase/firebase.util';
+import { clearItemsCart } from '../../redux/cart/cart.actions';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
+import { setStateSeat } from '../../redux/stage/stage.actions';
+import { CONST_SEAT_STATES } from '../../assets/constants';
 
 import './header-main.styles.scss';
 
-const HeaderMain = ({ itemsCount, currentUser }) =>(
+const HeaderMain = ({ itemsCount, currentUser, dispatch, history, cartItems }) =>(
     <nav className="navbar navbar-expand-md fixed-top">
     <div className="row navbar-wrapper">
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +43,19 @@ const HeaderMain = ({ itemsCount, currentUser }) =>(
                 </li>:
                 null
               }
-              <div className="nav-item"  onClick={()=> auth.signOut()}>
-                <Link to="/" className="nav-link" style={{fontStyle:'italic'}}>SIGN OUT</Link>
+              <div 
+                className="nav-item"
+                onClick={()=> 
+                  { 
+                    auth.signOut(); 
+                    cartItems.map(item=>{
+                        dispatch(setStateSeat({...item, estado:CONST_SEAT_STATES.free }))
+                    });
+                    dispatch(clearItemsCart());  
+                    history.push('/reservation');
+                  }
+                }>
+                <Link to="#" className="nav-link" style={{fontStyle:'italic'}}>SIGN OUT</Link>
               </div>
             </React.Fragment>
             :
@@ -52,8 +68,11 @@ const HeaderMain = ({ itemsCount, currentUser }) =>(
 );
 
 const mapStateToProps = createStructuredSelector({
-  itemsCount : selectCartItemsCount,
-  currentUser : selectCurrentUser
+  itemsCount  : selectCartItemsCount,
+  currentUser : selectCurrentUser,
+  cartItems   : selectCartItems
 });
 
-export default connect(mapStateToProps)(HeaderMain);
+
+
+export default withRouter(connect(mapStateToProps)(HeaderMain));

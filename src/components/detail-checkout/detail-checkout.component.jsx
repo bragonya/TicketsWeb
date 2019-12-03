@@ -9,7 +9,7 @@ const DetailCheckout = ({ cartItems, cartTotal}) => {
     console.log(cartTotal);
     
     return (
-        <div className="table" style={{overflowX:"auto;",margin:'100px'}}>
+        <div className="table" style={{overflowX:"auto",margin:'100px'}}>
             <table>
                 <thead>
                     <tr>

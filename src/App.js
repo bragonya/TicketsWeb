@@ -1,7 +1,8 @@
 import React from "react";
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from "react-router-dom";
 import io from "socket.io-client";
 import { connect } from 'react-redux';
@@ -19,6 +20,7 @@ import { setSocket } from './redux/user/user.actions';
 import { setStateSeat } from './redux/stage/stage.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { setCurrentUser } from './redux/user/user.actions';
+import { selectCartItemsCount } from './redux/cart/cart.selectors';
 
 import  "./App.scss"
 
@@ -70,16 +72,50 @@ export class App extends React.Component{
   }
 
   render(){
-    const { currentUser } = this.props;
+    const { currentUser, cartItemsCount } = this.props;
+    console.log(cartItemsCount);
     return (
       <div>
         <HeaderMain/>
         <Switch>
-          <Route exact path='/' component={LandingPage}/>
+        <Route 
+            exact 
+            path="/" 
+              render={() =>
+              currentUser? (
+              <Redirect to='/reservation'/>
+              ):(
+                <LandingPage/>
+              )
+            }
+          />
           <Route  path='/reservation' component={SeatReservationPage}/>
           <Route  path='/socket' component={SocketExample}/>
-          <Route  path='/checkout' component={CheckOutPage}/>
-          <Route  path='/signinsignup' component={SignInSignUpPage}/>
+
+          <Route 
+            exact 
+            path="/checkout" 
+            render={() =>
+              !cartItemsCount? (
+                <Redirect to='/reservation'/>
+                ):(
+                  <CheckOutPage/>
+                )
+              }
+          />
+
+          <Route 
+            exact 
+            path="/signinsignup" 
+            render={() =>
+              currentUser? (
+                <Redirect to='/reservation'/>
+                ):(
+                  <SignInSignUpPage/>
+                )
+              }
+          />
+          
         </Switch>
       </div>
       )
@@ -87,7 +123,8 @@ export class App extends React.Component{
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  cartItemsCount  : selectCartItemsCount
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -9,3 +9,8 @@ export const removeSeatCart = seat =>({
     type: CartActionsTypes.REMOVE_SEAT_CART,
     payload : seat
 });
+
+
+export const clearItemsCart =  () =>({
+    type: CartActionsTypes.CLEAR_SEATS_CART
+});
