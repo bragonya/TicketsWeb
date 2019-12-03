@@ -4,34 +4,47 @@ import { createStructuredSelector } from 'reselect';
 
 import { selectCartItems,selectCartTotal }  from '../../redux/cart/cart.selectors';
 
+import './detail-checkout.styles.scss';
+
 const DetailCheckout = ({ cartItems, cartTotal}) => {
-    console.log(cartItems);
-    console.log(cartTotal);
-    
     return (
-        <div className="table" style={{overflowX:"auto",margin:'100px'}}>
-            <table>
-                <thead>
-                    <tr>
-                        <td cope="col">Fila</td><td cope="col">Silla</td><td cope="col">Seccion</td><td cope="col">Precio</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        cartItems.map(({fila,columna,seccion,price,key})=>(
-                            <tr key={key}>
-                                <td key={`${fila}${key}`}>{fila}</td>
-                                <td key={`${columna}${key}`}>{columna}</td>
-                                <td key={`${seccion}${key}`}>{seccion}</td>
-                                <td key={`${price}${key}`}>{price}</td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
-            <h3>{cartTotal}</h3>
-        </div>
+        <div className='container'>
+
         
+            <div className="row justify-content-center" style={{ marginTop:'130px', minWidth:'300px'}}>
+                <div className="col">
+                <h2>Detalle de Compra</h2>
+                <table className="table table-hover">
+                    <thead >
+                        <tr className='thead-details-checkout'>
+                            <th cope="col">Fila</th><th cope="col">Silla</th><th cope="col">Seccion</th><th cope="col">Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            cartItems.map(({fila,columna,seccion,price,key})=>(
+                                <tr key={key}>
+                                    <td key={`${fila}${key}`}>{fila}</td>
+                                    <td key={`${columna}${key}`}>{columna}</td>
+                                    <td key={`${seccion}${key}`}>{seccion}</td>
+                                    <td key={`${price}${key}`}>{price}</td>
+                                </tr>
+                            ))
+                        }
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <h4 className=''>{`Total a pagar: ${cartTotal}`}</h4>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                </div>    
+            </div>
+        </div>    
     )
 };
 

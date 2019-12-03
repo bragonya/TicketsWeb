@@ -48,7 +48,7 @@ const HeaderMain = ({ itemsCount, currentUser, dispatch, history, cartItems }) =
                 onClick={()=> 
                   { 
                     auth.signOut(); 
-                    cartItems.map(item=>{
+                    cartItems.forEach(item=>{
                         dispatch(setStateSeat({...item, estado:CONST_SEAT_STATES.free }))
                     });
                     dispatch(clearItemsCart());  

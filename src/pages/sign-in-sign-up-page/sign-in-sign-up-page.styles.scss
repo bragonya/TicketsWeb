@@ -12,10 +12,8 @@
 	min-height:450px;
 	max-height: 450px;
 	position:relative;
-	background: #092137;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #092137, rgb(22, 22, 22));  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #092137, rgb(43, 42, 42)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+	background: #fff;  /* fallback for old browsers */
+	
 }
 .login-html{
 	width:100%;
@@ -56,7 +54,7 @@
 }
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab{
-	color:#fff;
+	color:#000000;
 	border-color:#1161ee;
 }
 .login-form{
@@ -66,7 +64,7 @@
 	transform-style:preserve-3d;
 }
 .login-form .group{
-	margin-bottom:15px;
+	margin-bottom:21px;
 	height: 10%;
 }
 .container-group{
@@ -75,26 +73,34 @@
 .login-form .group .label,
 .login-form .group .input,
 .login-form .group .button{
-	margin-top: 2%;
+	margin-top: 3%;
 	width:100%;
 	color:#fff;
 	display:block;
 	height: 18%;
 }
 
+.login-form .group .label{
+	color: #000000;
+}
 
 .login-form .group .input,
 .login-form .group .button{
 	border:none;
 	padding:15px 20px;
-	border-radius:25px;
+	border-radius:20px;
 	background:rgba(255,255,255,.1);
 }
+.login-form .group .input{
+	color: #000000;
+	border: 1px solid #000000;
+}
+
 .login-form .group input[data-type="password"]{
 	-webkit-text-security:circle;
 }
 .login-form .group .label{
-	color:#aaa;
+	color:#000000;
 	font-size:14px;
 	padding-bottom: 3%;
 }
@@ -164,5 +170,5 @@
 }
 .foot-lnk{
 	text-align:center;
-	color: #b5c6c7;
+	color: #000000;
 }
