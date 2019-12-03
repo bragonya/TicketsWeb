@@ -3,7 +3,10 @@
     display: flex;
     position: absolute;
     min-height: 100px;
-    border: 1px solid darkgrey;
+    border-top: 2px double darkgrey;
+    border-bottom: 2px groove darkgrey;
+    //background-color: orangered;
+    //color: white;
     font-size: 15px;
     align-items: center;
     flex-direction: column;

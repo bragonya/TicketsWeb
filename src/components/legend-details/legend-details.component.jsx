@@ -7,7 +7,6 @@ import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selector
 import './legend-details.styles.scss';
 
 const LegendDetails = ({ cartItems, cartTotal }) =>{
-    
     return(
         <React.Fragment>
         {cartTotal?

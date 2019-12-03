@@ -32,10 +32,13 @@
   }
 }
 
+
 .grid-row-croquis {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+
+  
 
   &.legend-stage{
     flex-direction: column;
@@ -51,6 +54,12 @@
   }
 }
 
+.grid-row-croquis-legends{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  
+}
 
 .tr-croquis, .td-croquis {
   font-size: 70%;
