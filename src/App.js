@@ -35,16 +35,16 @@ export class App extends React.Component{
       console.log(initialStage);
     });
     
-    const { setSocket, setStateSeat } = this.props;
+    const { setSocket, setStateSeat, setCurrentUser } = this.props;
     setSocket(socket);
     socket.on('newSeatModified',function(seat){
       setStateSeat(seat);
     });
-    var user = auth.currentUser;
-    console.log(user);
-
+    if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')))
   }
 
+  
+  
   componentDidMount(){
     const { setCurrentUser } = this.props;
 
@@ -59,13 +59,16 @@ export class App extends React.Component{
         });
       }
       setCurrentUser(userAuth);
+      localStorage.setItem('user',JSON.stringify(userAuth));
     });
   }
 
   componentWillUnmount() {
     socket.disconnect();
     this.unsubscribeFromAuth();
+    localStorage.removeItem('user');
   }
+
   render(){
     const { currentUser } = this.props;
     return (
