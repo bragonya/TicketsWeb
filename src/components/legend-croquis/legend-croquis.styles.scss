@@ -3,7 +3,7 @@
 
 .row-legends-croquis {
     //margin: 20px auto;
-    margin-left: 15%;
+    margin-left: 11%;
     max-width: 300px;
     display: flex;
     flex-direction: row;
@@ -37,3 +37,9 @@
     }
 }
 
+
+@media (max-width: 1125px) {
+    .row-legends-croquis {
+        margin-left: 15%;       
+    }   
+}

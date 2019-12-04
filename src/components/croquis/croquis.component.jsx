@@ -6,10 +6,9 @@ import LegendCroquis from '../legend-croquis/legend-croquis.component';
 import LegendDetails  from '../legend-details/legend-details.component';
 import LegendPrices from '../legend-prices/legend-prices.component';
 
+import { ReactComponent as StageX } from '../../assets/stage.svg';
 
 import './croquis.styles.scss';
-//import { ReactComponent as StageX } from '../../assets/stage.svg';
-
 
 const Croquis = ({mainStage}) =>{
     const {SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4} = mainStage;
@@ -17,7 +16,7 @@ const Croquis = ({mainStage}) =>{
         <React.Fragment>
         
         <div className="container-croquis">
-            
+        
             <div className="box-croquis">
                 <div className="grid-row-croquis legends">
                     <LegendDetails/>
@@ -26,9 +25,12 @@ const Croquis = ({mainStage}) =>{
                     <hr/>
                     <LegendPrices/>
                 </div>
+                <div className="grid-row-croquis vip" >
+                    <StageX className='img-stage-croquis'/>            
+                </div>
                 <div className="grid-row-croquis lounge">
                     <Section key={'SL1'}  section = { SL1 }/>
-                    <hr/>
+                    
                     <Section key={'SL2'} section = { SL2 }/>
                 </div>
                 <hr/>

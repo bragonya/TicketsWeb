@@ -48,9 +48,9 @@
   }
 
   &.lounge{
-    margin-left: 200px;
-    margin-right: 200px;
-    justify-content: center;  
+    margin-left: 350px;
+    margin-right: 350px;
+    justify-content: space-between;  
   }
 }
 
@@ -87,12 +87,7 @@
 }
 
 @media (max-width: 992px) {
-  .img-stage-croquis{
-    padding-left: 370px;
-    padding-right: 140px;
-    height: 10%;
-    width: 90%;
-  }
+  
   .grid-row-croquis{
     &.lounge{
       margin-left: 24%;
@@ -117,7 +112,13 @@
   
   .img-stage-croquis{
     padding-top: 7px;
-    height: 180px;
+    height: 170px;
+  }
+  .grid-row-croquis{
+    &.lounge{
+      margin-left: 30%;
+      margin-right: 30%;
+    }
   }
 }
 
