@@ -23,6 +23,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCartItemsCount } from './redux/cart/cart.selectors';
 
+
 import  "./App.scss"
 
 let socket;
@@ -35,7 +36,9 @@ export class App extends React.Component{
     super(props);
     socket = io.connect("http://localhost:4001");
     socket.emit('connected',{},(initialStage)=>{
-      console.log(initialStage);
+      initialStage.forEach(seat=>{
+        setStateSeat(seat);
+      });
     });
     
     const { setSocket, setStateSeat, setCurrentUser } = this.props;
@@ -132,7 +135,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
   setSocket : socket => dispatch(setSocket(socket)),
   setStateSeat : seat => dispatch(setStateSeat(seat)),
-  setCurrentUser : user => dispatch(setCurrentUser(user))
+  setCurrentUser : user => dispatch(setCurrentUser(user)),
 });
 
 

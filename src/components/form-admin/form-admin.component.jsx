@@ -84,6 +84,13 @@ class FormAdmin extends React.Component {
                     onChange={this.handleChange}
                     label='Carnet'
                 />
+                <FormInput
+                    type='text'
+                    name='noBoleta'
+                    value={noBoleta}
+                    onChange={this.handleChange}
+                    label='Numero Boleta'
+                />
                 <input type="submit" className="button" value="Aceptar"/>
             </div>
         )

@@ -10,11 +10,11 @@ const event_seats_structure = {
                     seats:[
                         {
                             id:1,
-                            state:'sold'
+                            state:'free'
                         },
                         {
                             id:2,
-                            state:'blocked'
+                            state:'free'
                         },
                         {
                             id:3,
@@ -300,7 +300,7 @@ const event_seats_structure = {
                         },
                         {
                             id:18,
-                            state:'sold'
+                            state:'free'
                         },
                         {
                             id:19,
