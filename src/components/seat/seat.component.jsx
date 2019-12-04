@@ -9,6 +9,7 @@ import { selectConexionSocket }from '../../redux/user/user.selectors';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
+import './seat.styles.scss';
 
 const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, history}) =>{
     const { id, colname, state , key , price} = seatdata;
@@ -42,7 +43,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
     return (
         state==='free'?
         <span {...properties} >
-            <i id={`i${key}${id}${colname}`} className="fas fa-chair"></i>
+            <i id={`i${key}${id}${colname}`} className="seat-element">C</i>
         </span>:state==='selected'?
         <span {...properties} >
         <i id={`i${key}${id}${colname}`} className="fas fa-chair" style={{backgroundColor:'black'}}></i>

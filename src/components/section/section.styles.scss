@@ -1,12 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Acme&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Audiowide&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Crimson+Text&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 @import '../../master';
 
 
 .h3-croquis{
-  font-family:  'Acme', sans-serif;
+  font-family:  'Roboto', sans-serif;
   font-size: 18px;
   position: relative;
 }
@@ -16,7 +13,7 @@
   height:17px ;
   margin: -1px;
   font-size: 18px;
-  font-weight: bold;
+  //font-weight: bold;
   
   
   &.seat-sold{
@@ -67,12 +64,12 @@
   padding: 8px;
   cursor: pointer;
   &.col-letter{
-    font-family: 'Crimson Text', serif;
+    font-family: 'Roboto';
     font-weight: bold;
     color: #333;
   }
   &.col-number{
-    font-family: 'Audiowide', cursive;
+    font-family: 'Roboto', cursive;
     color: #333;
   }
 }
