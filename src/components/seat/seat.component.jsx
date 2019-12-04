@@ -21,7 +21,6 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                 (evt)=>{
                     if(cartItems.length===5 && state==='free') return ;
                     if (!currentUser){ history.push('/signinsignup'); return; }
-                    //document.getElementById(`i${key}${id}${colname}`).style.backgroundColor= state==='free'?'black':'white';
                     const seatModified = {
                         columna : id,
                         fila : colname,
@@ -43,13 +42,13 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
     return (
         state==='free'?
         <span {...properties} >
-            <i id={`i${key}${id}${colname}`} className="seat-element">C</i>
+            <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
         </span>:state==='selected'?
         <span {...properties} >
-        <i id={`i${key}${id}${colname}`} className="seat-element">C</i>
+        <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
         </span>:
         <span {...properties} >
-            <i id={`i${key}${id}${colname}`} className="seat-element">C</i>
+            <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
         </span>
 )};
 
