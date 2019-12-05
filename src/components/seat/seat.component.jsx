@@ -10,7 +10,8 @@ import { selectConexionSocket }from '../../redux/user/user.selectors';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
-import DropdownOption from '../dropdown-option/dropdown-option.component';
+
+import PopoverGeneric from '../popover-generic/popover-generic.component';
 
 import './seat.styles.scss';
 
@@ -51,14 +52,14 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
         <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
         </span>:
         <span {...properties} >
-            <i 
-                id={`i${key}${id}${colname}`} 
-                className={"seat-element"}
-                data-toggle={"popover"} 
-                title={`Liberar Asiento ${colname}-${id}`}
-                data-content={'<DropdownOption/>'}
-            >A
-            </i>
+            <PopoverGeneric key={`Popover${key}${id}${colname}`} colname={colname} column={id} >
+                <i 
+                    key= {`i${key}${id}${colname}`} 
+                    id={`i${key}${id}${colname}`} 
+                    className={"seat-element"}
+                >A
+                </i>
+            </PopoverGeneric>
         </span>
 )};
 

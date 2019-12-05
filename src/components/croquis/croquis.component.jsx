@@ -14,7 +14,7 @@ const Croquis = ({mainStage}) =>{
     const {SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4} = mainStage;
     return (
         <React.Fragment>
-        
+            
         <div className="container-croquis">
         
             <div className="box-croquis">
