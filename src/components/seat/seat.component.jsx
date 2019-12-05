@@ -2,12 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
+
 import { CONST_SEAT_STATES } from '../../assets/constants';
 import { setStateSeat } from '../../redux/stage/stage.actions';
 import { addSeatCart, removeSeatCart } from '../../redux/cart/cart.actions';
 import { selectConexionSocket }from '../../redux/user/user.selectors';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
+
+import DropdownOption from '../dropdown-option/dropdown-option.component';
 
 import './seat.styles.scss';
 
@@ -50,10 +53,10 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
         <span {...properties} >
             <i 
                 id={`i${key}${id}${colname}`} 
-                className="seat-element"
-                data-toggle="popover" 
+                className={"seat-element"}
+                data-toggle={"popover"} 
                 title={`Liberar Asiento ${colname}-${id}`}
-                data-content="And here's some amazing content. It's very engaging. Right?"  
+                data-content={'<DropdownOption/>'}
             >A
             </i>
         </span>
