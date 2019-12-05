@@ -48,7 +48,14 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
         <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
         </span>:
         <span {...properties} >
-            <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
+            <i 
+                id={`i${key}${id}${colname}`} 
+                className="seat-element"
+                data-toggle="popover" 
+                title={`Liberar Asiento ${colname}-${id}`}
+                data-content="And here's some amazing content. It's very engaging. Right?"  
+            >A
+            </i>
         </span>
 )};
 

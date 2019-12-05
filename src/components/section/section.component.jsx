@@ -14,7 +14,7 @@ const Section = ({section}) =>{
     return (
         <div >
             <h3 className='h3-croquis'>{name}</h3>    
-            <table>             
+            <table id={`table${key}`}>             
                 <thead>
                     <tr className='tr-croquis' >
                         <td className='td-croquis'></td>
