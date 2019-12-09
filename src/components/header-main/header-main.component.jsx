@@ -17,6 +17,10 @@ import { CONST_SEAT_STATES } from '../../assets/constants';
 import './header-main.styles.scss';
 
 class HeaderMain  extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={};
+  }
 
   unlockAllSeats = () =>{
     const  { cartItems, clearItemsCart, setStateSeat, conexionSocket} = this.props;
@@ -33,12 +37,18 @@ class HeaderMain  extends React.Component{
     localStorage.removeItem('cartItems');
   }
 
+  collapseClick = () => {
+    if(window.innerWidth<=767){
+      document.getElementById("toogleButton").click();
+    }
+  }
+
   render(){
     const { itemsCount, currentUser, history, setCurrentUser } = this.props;
     return(
     <nav className="navbar navbar-expand-md fixed-top">
     <div className="row navbar-wrapper">
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button id = "toogleButton" className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarCollapse">
@@ -46,27 +56,27 @@ class HeaderMain  extends React.Component{
           
           {!currentUser?
             <li className="nav-item active">
-              <Link to="/" className="nav-link" onClick={() => collapseClick()}>Inicio</Link>
+              <Link to="/" className="nav-link" onClick={() => { this.collapseClick(); }}>Inicio</Link>
             </li>:null
           }
           <li className="nav-item">
                 <Link 
                       to="/reservation" 
                       className="nav-link"
-                      onClick={() => collapseClick()}>Reservacion</Link>
+                      onClick={() => { this.collapseClick(); }}>Reservacion</Link>
           </li>
           {currentUser?
             <React.Fragment>    
               
               <li className="nav-item">
-                <Link to="/about" className="nav-link" onClick={() => collapseClick()} >Sobre</Link>
+                <Link to="/about" className="nav-link" onClick={() => { this.collapseClick(); }} >Sobre</Link>
               </li>
               {itemsCount?
                 <li className="nav-item" >
                   <Link 
                         to="/checkout" 
                         className="nav-link btn btn-orange fadein"
-                        onClick={() => collapseClick()}>Comprar</Link>
+                        onClick={() => { this.collapseClick(); }}>Comprar</Link>
                 </li>:
                 null
               }
@@ -80,7 +90,7 @@ class HeaderMain  extends React.Component{
                     history.push('/reservation');
                   }
                 }>
-                <Link to="#" className="nav-link" style={{fontStyle:'italic'}} onClick={() => collapseClick()}>CERRAR SESION</Link>
+                <Link to="#" className="nav-link" style={{fontStyle:'italic'}} onClick={() => { this.collapseClick(); }}>CERRAR SESION</Link>
               </div>
             </React.Fragment>
             :
@@ -90,7 +100,11 @@ class HeaderMain  extends React.Component{
       </div>
     </div>
   </nav>
-)}}
+)}
+
+  
+
+}
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
@@ -104,10 +118,5 @@ const mapStateToProps = createStructuredSelector({
   cartItems   : selectCartItems,
   conexionSocket: selectConexionSocket
 });
-
-
-const collapseClick = () => {
-  document.getElementById("toogleButton").click();
-}
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(HeaderMain));
