@@ -5,6 +5,7 @@ import Section from '../section/section.component';
 import LegendCroquis from '../legend-croquis/legend-croquis.component';
 import LegendDetails  from '../legend-details/legend-details.component';
 import LegendPrices from '../legend-prices/legend-prices.component';
+import Clock from '../clock/clock.component';
 
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 
@@ -18,6 +19,9 @@ const Croquis = ({mainStage}) =>{
         <div className="container-croquis">
         
             <div className="box-croquis">
+                <div className="grid-row-croquis vip">
+                    <Clock/>
+                </div>
                 <div className="grid-row-croquis legends">
                     <LegendDetails/>
                     <hr/>

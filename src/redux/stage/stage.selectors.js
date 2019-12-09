@@ -7,3 +7,8 @@ export const selectMainStage = createSelector(
     stage => stage.mainStage
 );
 
+export const selectClockTime = createSelector(
+    [selectStage],
+    stage => stage.clockTime
+);
+

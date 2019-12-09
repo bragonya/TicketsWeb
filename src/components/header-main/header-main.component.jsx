@@ -4,18 +4,37 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
-import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
+
+import { selectCartItemsCount, selectCartItems } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser, selectConexionSocket } from '../../redux/user/user.selectors';
 
 import { setCurrentUser } from '../../redux/user/user.actions';
 import { clearItemsCart } from '../../redux/cart/cart.actions';
-import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { setStateSeat } from '../../redux/stage/stage.actions';
+
 import { CONST_SEAT_STATES } from '../../assets/constants';
 
 import './header-main.styles.scss';
 
-const HeaderMain = ({ itemsCount, currentUser, history, cartItems, setCurrentUser, clearItemsCart, setStateSeat }) =>(
+class HeaderMain  extends React.Component{
+
+  unlockAllSeats = () =>{
+    const  { cartItems, clearItemsCart, setStateSeat, conexionSocket} = this.props;
+    cartItems.forEach(item=>{
+      setStateSeat({...item, estado:CONST_SEAT_STATES.free })
+      conexionSocket.emit(
+        'seatModified',
+        {   ...item,
+          estado:CONST_SEAT_STATES.free
+        },()=>{}
+      );
+    });
+    clearItemsCart();
+  }
+
+  render(){
+    const { itemsCount, currentUser, history, setCurrentUser, conexionSocket } = this.props;
+    return(
     <nav className="navbar navbar-expand-md fixed-top">
     <div className="row navbar-wrapper">
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,8 +61,19 @@ const HeaderMain = ({ itemsCount, currentUser, history, cartItems, setCurrentUse
                 <Link to="/about" className="nav-link">Sobre</Link>
               </li>
               {itemsCount?
-                <li className="nav-item ">
-                  <Link to="/checkout" className="nav-link btn btn-orange fadein">Comprar</Link>
+                <li className="nav-item "
+                  onClick={()=>{
+                            conexionSocket.emit('countdownRestart',{},(clockFinishMessage)=>{
+                              this.unlockAllSeats();
+                              history.push('/reservation');
+                            });
+                          }
+                  }
+                >
+                  <Link 
+                        to="/checkout" 
+                        className="nav-link btn btn-orange fadein"
+                  >Comprar</Link>
                 </li>:
                 null
               }
@@ -51,11 +81,8 @@ const HeaderMain = ({ itemsCount, currentUser, history, cartItems, setCurrentUse
                 className="nav-item"
                 onClick={()=> 
                   { 
+                    this.unlockAllSeats();
                     setCurrentUser(null); 
-                    cartItems.forEach(item=>{
-                      setStateSeat({...item, estado:CONST_SEAT_STATES.free })
-                    });
-                    clearItemsCart();
                     localStorage.removeItem('user');
                     history.push('/reservation');
                   }
@@ -70,7 +97,7 @@ const HeaderMain = ({ itemsCount, currentUser, history, cartItems, setCurrentUse
       </div>
     </div>
   </nav>
-);
+)}}
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
@@ -81,7 +108,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = createStructuredSelector({
   itemsCount  : selectCartItemsCount,
   currentUser : selectCurrentUser,
-  cartItems   : selectCartItems
+  cartItems   : selectCartItems,
+  conexionSocket: selectConexionSocket
 });
 
 

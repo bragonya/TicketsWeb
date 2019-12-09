@@ -16,12 +16,14 @@ import CheckOutPage from './pages/checkout-page/checkout-page.component';
 import  SignInSignUpPage  from './pages/sign-in-sign-up-page/sign-in-sign-up-page.component';
 import AdminPage from './pages/admin-page/admin-page.component';
 
-import { setSocket } from './redux/user/user.actions';
-import { setStateSeat } from './redux/stage/stage.actions';
-import { selectCurrentUser } from './redux/user/user.selectors';
-import { setCurrentUser } from './redux/user/user.actions';
-import { selectCartItemsCount } from './redux/cart/cart.selectors';
+import { setSocket, setCurrentUser } from './redux/user/user.actions';
+import { setStateSeat, setClockTime } from './redux/stage/stage.actions';
+import { clearItemsCart } from './redux/cart/cart.actions';
 
+import { selectCurrentUser } from './redux/user/user.selectors';
+import { selectCartItemsCount, selectCartItems } from './redux/cart/cart.selectors';
+
+import { CONST_SEAT_STATES } from './assets/constants';
 
 import  "./App.scss"
 
@@ -34,38 +36,43 @@ export class App extends React.Component{
   constructor(props){
     super(props);
     socket = io.connect("http://localhost:4001");
+    
     socket.emit('connected',{},(initialStage)=>{
       initialStage.forEach(seat=>{
         setStateSeat(seat);
       });
     });
+
+    socket.emit('countdownStart',{},(clockFinishMessage)=>{
+      this.unlockAllSeats();
+    });
     
     const { setSocket, setStateSeat, setCurrentUser } = this.props;
     setSocket(socket);
+    
     socket.on('newSeatModified',function(seat){
       setStateSeat(seat);
     });
+
+    socket.on('countdownStart',function(time){
+      setClockTime(time);
+    });
+    
     if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')))
   }
 
-  
-  
-  componentDidMount(){
-    //const { setCurrentUser } = this.props;
-
-    /*this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
-      if(userAuth){
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot=>{
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        });
-      }
-      setCurrentUser(userAuth);
-      localStorage.setItem('user',JSON.stringify(userAuth));
-    });*/
+  unlockAllSeats = () =>{
+    const  { cartItems, clearItemsCart, setStateSeat } = this.props;
+    cartItems.forEach(item=>{
+      setStateSeat({...item, estado:CONST_SEAT_STATES.free })
+      socket.emit(
+        'seatModified',
+        {   ...item,
+          estado:CONST_SEAT_STATES.free
+        },()=>{}
+      );
+    });
+    clearItemsCart();
   }
 
   componentWillUnmount() {
@@ -128,13 +135,15 @@ export class App extends React.Component{
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  cartItemsCount  : selectCartItemsCount
+  cartItemsCount  : selectCartItemsCount,
+  cartItems   : selectCartItems
 });
 
 const mapDispatchToProps = dispatch => ({
   setSocket : socket => dispatch(setSocket(socket)),
   setStateSeat : seat => dispatch(setStateSeat(seat)),
   setCurrentUser : user => dispatch(setCurrentUser(user)),
+  clearItemsCart: ()  => dispatch(clearItemsCart())
 });
 
 

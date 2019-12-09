@@ -4,6 +4,9 @@ import { createStructuredSelector } from 'reselect';
 
 import { selectCartItems,selectCartTotal }  from '../../redux/cart/cart.selectors';
 
+
+import Clock from '../clock/clock.component';
+
 import './detail-checkout.styles.scss';
 
 const DetailCheckout = ({ cartItems, cartTotal}) => {
@@ -13,6 +16,7 @@ const DetailCheckout = ({ cartItems, cartTotal}) => {
         
             <div className="row justify-content-center" style={{ marginTop:'130px', minWidth:'300px'}}>
                 <div className="col">
+                <Clock/>
                 <h2>Detalle de Compra</h2>
                 <table className="table table-hover">
                     <thead >
