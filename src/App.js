@@ -16,7 +16,6 @@ import CheckOutPage from './pages/checkout-page/checkout-page.component';
 import  SignInSignUpPage  from './pages/sign-in-sign-up-page/sign-in-sign-up-page.component';
 import AdminPage from './pages/admin-page/admin-page.component';
 
-import { auth, createUserProfileDocument } from './firebase/firebase.util';
 import { setSocket } from './redux/user/user.actions';
 import { setStateSeat } from './redux/stage/stage.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
@@ -52,9 +51,9 @@ export class App extends React.Component{
   
   
   componentDidMount(){
-    const { setCurrentUser } = this.props;
+    //const { setCurrentUser } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
+    /*this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
       if(userAuth){
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot(snapShot=>{
@@ -66,7 +65,7 @@ export class App extends React.Component{
       }
       setCurrentUser(userAuth);
       localStorage.setItem('user',JSON.stringify(userAuth));
-    });
+    });*/
   }
 
   componentWillUnmount() {

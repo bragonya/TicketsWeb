@@ -1,10 +1,11 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+
+import { setCurrentUser } from '../../redux/user/user.actions';
 
 import FormInput from "../form-input/form-input.component";
 
-
-import { auth, signInWithGoogle } from '../../firebase/firebase.util';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -16,12 +17,9 @@ class SignIn extends React.Component {
         };
     }
 
-    handleSubmit = async event => {
+    handleSubmit = event => {
         event.preventDefault();
-        const { email, password } = this.state;
-    
         try {
-          await auth.signInWithEmailAndPassword(email, password);
           this.setState({ email: '', password: '' });
         } catch (error) {
           console.log(error);
@@ -30,12 +28,41 @@ class SignIn extends React.Component {
 
     handleChange = event => {
         const { value, name } = event.target;
-        console.log(this.state);
         this.setState({ [name]: value });
     };
 
+    consumeApi = () => {
+        const { props:{ history, setCurrentUser }, state:{ email, password } } = this;
+        fetch("http://localhost:4001/login", {
+            method: "post",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+        .then( response => response.json())
+        .then( response =>{
+            const { state, message, user } = response;
+            console.log(response);
+            if(state){
+                setCurrentUser(user);
+                localStorage.setItem('user',JSON.stringify(user));
+                history.push('/reservation');
+            }else{
+                alert(message);
+            }
+        })
+        .catch(err=>
+            console.log(err)
+        );
+    }
+
     render(){
-        const { history } = this.props;
+        const { email, password } = this.state;
         return(
             <form onSubmit={this.handleSubmit}>
                 <div className="sign-in-htm">
@@ -43,24 +70,26 @@ class SignIn extends React.Component {
                         name='email'
                         type='email'
                         handleChange={this.handleChange}
-                        value={this.state.email}
+                        value={email}
                         label='Correo Electronico'
                         required
                     />
                     <FormInput
                         name='password'
                         type='password'
-                        value={this.state.password}
+                        value={password}
                         handleChange={this.handleChange}
                         label='Contraseña'
                         required
                     />
                     <div className="container-group">
                         <div className="group">
-                            <input type="submit" className="button sign-in" value="Entrar"/>
-                        </div>
-                        <div className="group">
-                            <input type="submit"  onClick={ ()=>{ signInWithGoogle(history); } } className="button" value="Entrar con Google"/>
+                            <input 
+                                type="submit" 
+                                onClick = {this.consumeApi}
+                                className="button sign-in" 
+                                value="Entrar"
+                            />
                         </div>
                     </div>
                     <div className="foot-lnk">
@@ -72,4 +101,8 @@ class SignIn extends React.Component {
     }
 }
 
-export default withRouter(SignIn);
+const mapDispatchToProps = dispatch =>({
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default withRouter(connect(null,mapDispatchToProps)(SignIn));

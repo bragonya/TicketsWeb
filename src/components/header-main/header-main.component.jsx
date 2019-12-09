@@ -6,7 +6,8 @@ import { withRouter } from 'react-router-dom';
 
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { auth } from '../../firebase/firebase.util';
+
+import { setCurrentUser } from '../../redux/user/user.actions';
 import { clearItemsCart } from '../../redux/cart/cart.actions';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { setStateSeat } from '../../redux/stage/stage.actions';
@@ -14,7 +15,7 @@ import { CONST_SEAT_STATES } from '../../assets/constants';
 
 import './header-main.styles.scss';
 
-const HeaderMain = ({ itemsCount, currentUser, dispatch, history, cartItems }) =>(
+const HeaderMain = ({ itemsCount, currentUser, history, cartItems, setCurrentUser, clearItemsCart, setStateSeat }) =>(
     <nav className="navbar navbar-expand-md fixed-top">
     <div className="row navbar-wrapper">
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,15 +51,16 @@ const HeaderMain = ({ itemsCount, currentUser, dispatch, history, cartItems }) =
                 className="nav-item"
                 onClick={()=> 
                   { 
-                    auth.signOut(); 
+                    setCurrentUser(null); 
                     cartItems.forEach(item=>{
-                        dispatch(setStateSeat({...item, estado:CONST_SEAT_STATES.free }))
+                      setStateSeat({...item, estado:CONST_SEAT_STATES.free })
                     });
-                    dispatch(clearItemsCart());  
+                    clearItemsCart();
+                    localStorage.removeItem('user');
                     history.push('/reservation');
                   }
                 }>
-                <Link to="#" className="nav-link" style={{fontStyle:'italic'}}>SIGN OUT</Link>
+                <Link to="#" className="nav-link" style={{fontStyle:'italic'}}>CERRAR SESION</Link>
               </div>
             </React.Fragment>
             :
@@ -70,6 +72,12 @@ const HeaderMain = ({ itemsCount, currentUser, dispatch, history, cartItems }) =
   </nav>
 );
 
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
+  clearItemsCart: ()  => dispatch(clearItemsCart()),
+  setStateSeat  : seat => dispatch(setStateSeat(seat))
+});
+
 const mapStateToProps = createStructuredSelector({
   itemsCount  : selectCartItemsCount,
   currentUser : selectCurrentUser,
@@ -78,4 +86,4 @@ const mapStateToProps = createStructuredSelector({
 
 
 
-export default withRouter(connect(mapStateToProps)(HeaderMain));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(HeaderMain));
