@@ -94,7 +94,6 @@ export class App extends React.Component{
 
   render(){
     const { currentUser, cartItemsCount } = this.props;
-    console.log(cartItemsCount);
     return (
       <div>
         <HeaderMain/>

@@ -20,7 +20,6 @@ class SignInSigUpPage  extends React.Component{
 
     render(){
         const { check } =  this.state;
-        console.log(check);
         return(
         <div className='sign-in-and-sign-up'>
             
