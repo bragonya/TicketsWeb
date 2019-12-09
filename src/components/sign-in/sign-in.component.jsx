@@ -33,7 +33,7 @@ class SignIn extends React.Component {
 
     consumeApi = () => {
         const { props:{ history, setCurrentUser }, state:{ email, password } } = this;
-        fetch("http://localhost:4001/login", {
+        fetch("https://52.70.18.213:4001/login", {
             method: "post",
             headers: {
                 'Accept': 'application/json',

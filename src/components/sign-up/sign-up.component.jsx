@@ -35,7 +35,7 @@ class SignUp extends React.Component {
         }
     
         try {
-            let response = await fetch("http://localhost:4001/register", {
+            let response = await fetch("https://52.70.18.213:4001/register", {
                 method: "post",
                 headers: {
                     'Accept': 'application/json',
