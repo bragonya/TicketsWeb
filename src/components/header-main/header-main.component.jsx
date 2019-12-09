@@ -30,10 +30,11 @@ class HeaderMain  extends React.Component{
       );
     });
     clearItemsCart();
+    localStorage.removeItem('cartItems');
   }
 
   render(){
-    const { itemsCount, currentUser, history, setCurrentUser, conexionSocket } = this.props;
+    const { itemsCount, currentUser, history, setCurrentUser } = this.props;
     return(
     <nav className="navbar navbar-expand-md fixed-top">
     <div className="row navbar-wrapper">
@@ -52,7 +53,10 @@ class HeaderMain  extends React.Component{
                 <Link to="/admin" className="nav-link">Admin</Link>
           </li>
           <li className="nav-item">
-                <Link to="/reservation" className="nav-link">Reservacion</Link>
+                <Link 
+                      to="/reservation" 
+                      className="nav-link"
+                >Reservacion</Link>
           </li>
           {currentUser?
             <React.Fragment>    
@@ -61,15 +65,7 @@ class HeaderMain  extends React.Component{
                 <Link to="/about" className="nav-link">Sobre</Link>
               </li>
               {itemsCount?
-                <li className="nav-item "
-                  onClick={()=>{
-                            conexionSocket.emit('countdownRestart',{},(clockFinishMessage)=>{
-                              this.unlockAllSeats();
-                              history.push('/reservation');
-                            });
-                          }
-                  }
-                >
+                <li className="nav-item" >
                   <Link 
                         to="/checkout" 
                         className="nav-link btn btn-orange fadein"

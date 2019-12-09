@@ -37,12 +37,19 @@ export class App extends React.Component{
     super(props);
     socket = io.connect("http://localhost:4001");
     
+    
     socket.emit('connected',{},(initialStage)=>{
       initialStage.forEach(seat=>{
         setStateSeat(seat);
       });
     });
 
+    if (window.performance) {
+      if (performance.navigation.type === 1) {
+        this.unlockAllSeats();
+      }
+    }
+    
     socket.emit('countdownStart',{},(clockFinishMessage)=>{
       this.unlockAllSeats();
     });
@@ -62,7 +69,9 @@ export class App extends React.Component{
   }
 
   unlockAllSeats = () =>{
-    const  { cartItems, clearItemsCart, setStateSeat } = this.props;
+    const  { clearItemsCart, setStateSeat } = this.props;    
+    var    { cartItems } = this.props;
+    cartItems=cartItems.length? cartItems: JSON.parse(localStorage.getItem('cartItems')) || [] 
     cartItems.forEach(item=>{
       setStateSeat({...item, estado:CONST_SEAT_STATES.free })
       socket.emit(
@@ -73,12 +82,14 @@ export class App extends React.Component{
       );
     });
     clearItemsCart();
+    localStorage.removeItem('cartItems');
   }
 
   componentWillUnmount() {
     socket.disconnect();
     this.unsubscribeFromAuth();
     localStorage.removeItem('user');
+    localStorage.removeItem('cartItems');
   }
 
   render(){
@@ -99,19 +110,34 @@ export class App extends React.Component{
               )
             }
           />
-          <Route  path='/reservation' component={SeatReservationPage}/>
+
+          <Route  path='/reservation' render={({ history })=>{
+                                                  socket.emit('countdownStart',{},(clockFinishMessage)=>{
+                                                    this.unlockAllSeats();
+                                                    history.push('/reservation');
+                                                  });
+                                                  return <SeatReservationPage/>
+                                              }}
+            />
           <Route  path='/socket' component={SocketExample}/>
           <Route  path='/admin' component={AdminPage}/>
 
           <Route 
             exact 
             path="/checkout" 
-            render={() =>
-              !cartItemsCount? (
-                <Redirect to='/reservation'/>
-                ):(
-                  <CheckOutPage/>
-                )
+            render={({ history }) =>{
+                  if(cartItemsCount){
+                    socket.emit('countdownRestart',{},(clockFinishMessage)=>{
+                      this.unlockAllSeats();
+                      history.push('/reservation');
+                    });
+                  }
+                  return !cartItemsCount? (
+                  <Redirect to='/reservation'/>
+                  ):(
+                    <CheckOutPage/>
+                  )
+                }
               }
           />
 
