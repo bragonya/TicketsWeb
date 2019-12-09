@@ -1,50 +1,78 @@
 import React from 'react';
-
-import { auth, createUserProfileDocument } from '../../firebase/firebase.util';
-
-
 import FormInput from '../form-input/form-input.component';
 
-
-
 class SignUp extends React.Component {
-    constructor() {
-        super();
-    
+    constructor(props) {
+        super(props);
         this.state = {
-          displayName: '',
-          email: '',
-          password: '',
-          confirmPassword: ''
+            firstname:'',
+            lastname:'',
+            telephone:'',//number
+            email: '',
+            comment: '',
+            register_number: '',//number
+            university: '',    
+            password: '',
+            confirmPassword: ''
         };
     }
 
     handleSubmit = async event => {
         event.preventDefault();
     
-        const { displayName, email, password, confirmPassword } = this.state;
+        const { state:{
+                    firstname, lastname, telephone, email,
+                    comment, register_number, university, password, confirmPassword
+                },
+                props:{
+                    goSignIn
+                }
+              } = this;
     
         if (password !== confirmPassword) {
-          alert("passwords don't match");
+          alert("passwords no son iguales");
           return;
         }
     
         try {
-          const { user } = await auth.createUserWithEmailAndPassword(
-            email,
-            password
-          );
-    
-          await createUserProfileDocument(user, { displayName });
-    
-          this.setState({
-            displayName: '',
-            email: '',
-            password: '',
-            confirmPassword: ''
-          });
+            let response = await fetch("http://localhost:4001/register", {
+                method: "post",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstname:firstname,
+                    lastname:lastname,
+                    telephone:parseInt(telephone),
+                    email:email,
+                    comment:comment,
+                    register_number:parseInt(register_number),
+                    university:university,    
+                    password:password
+                })
+            });
+            let { state, message } = await response.json();
+            if(state){
+                alert(message);
+                this.setState({
+                    firstname:'',
+                    lastname:'',
+                    telephone:'',//number
+                    email: '',
+                    comment: '',
+                    register_number: '',//number
+                    university: '',    
+                    password: '',
+                    confirmPassword: ''
+                });
+                goSignIn();
+            }else{
+                alert(message);    
+            }
+
         } catch (error) {
-          console.error(error);
+            console.error(error);
         }
     };
     
@@ -55,17 +83,35 @@ class SignUp extends React.Component {
     };
     
     render(){
-        const { displayName, email, password, confirmPassword } = this.state;
+        const { firstname, lastname, telephone, email,
+            comment, register_number, university, password, confirmPassword 
+          } = this.state;
 
         return (            
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <div className="sign-up-htm">
                     <FormInput
                         type='text'
-                        name='displayName'
-                        value={displayName}
+                        name='firstname'
+                        value={firstname}
                         onChange={this.handleChange}
                         label='Nombre'
+                        required
+                    />
+                    <FormInput
+                        type='text'
+                        name='lastname'
+                        value={lastname}
+                        onChange={this.handleChange}
+                        label='Apellido'
+                        required
+                    />
+                    <FormInput
+                        type='number'
+                        name='telephone'
+                        value={telephone}
+                        onChange={this.handleChange}
+                        label='Telefono'
                         required
                     />
                     <FormInput
@@ -75,6 +121,30 @@ class SignUp extends React.Component {
                         onChange={this.handleChange}
                         label='Correo Electronico'
                         required
+                    />
+                    <FormInput
+                        type='number'
+                        name='register_number'
+                        value={register_number}
+                        onChange={this.handleChange}
+                        label='Numero Colegiado o Carnet'
+                        required
+                    />
+                    <FormInput
+                        type='text'
+                        name='university'
+                        value={university}
+                        onChange={this.handleChange}
+                        label='Universidad'
+                        required
+                    />
+                    <FormInput
+                        type='text'
+                        name='comment'
+                        value={comment}
+                        onChange={this.handleChange}
+                        label='Comentario'
+                        
                     />
                     <FormInput
                         type='password'
