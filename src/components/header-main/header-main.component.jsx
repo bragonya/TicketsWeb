@@ -46,30 +46,27 @@ class HeaderMain  extends React.Component{
           
           {!currentUser?
             <li className="nav-item active">
-              <Link to="/" className="nav-link">Inicio</Link>
+              <Link to="/" className="nav-link" onClick={() => collapseClick()}>Inicio</Link>
             </li>:null
           }
-          <li className="nav-item">
-                <Link to="/admin" className="nav-link">Admin</Link>
-          </li>
           <li className="nav-item">
                 <Link 
                       to="/reservation" 
                       className="nav-link"
-                >Reservacion</Link>
+                      onClick={() => collapseClick()}>Reservacion</Link>
           </li>
           {currentUser?
             <React.Fragment>    
               
               <li className="nav-item">
-                <Link to="/about" className="nav-link">Sobre</Link>
+                <Link to="/about" className="nav-link" onClick={() => collapseClick()} >Sobre</Link>
               </li>
               {itemsCount?
                 <li className="nav-item" >
                   <Link 
                         to="/checkout" 
                         className="nav-link btn btn-orange fadein"
-                  >Comprar</Link>
+                        onClick={() => collapseClick()}>Comprar</Link>
                 </li>:
                 null
               }
@@ -83,7 +80,7 @@ class HeaderMain  extends React.Component{
                     history.push('/reservation');
                   }
                 }>
-                <Link to="#" className="nav-link" style={{fontStyle:'italic'}}>CERRAR SESION</Link>
+                <Link to="#" className="nav-link" style={{fontStyle:'italic'}} onClick={() => collapseClick()}>CERRAR SESION</Link>
               </div>
             </React.Fragment>
             :
@@ -109,5 +106,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 
+const collapseClick = () => {
+  document.getElementById("toogleButton").click();
+}
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(HeaderMain));
