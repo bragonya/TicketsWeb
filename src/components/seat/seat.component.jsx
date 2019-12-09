@@ -31,15 +31,26 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                         seccion : key,
                         estado : state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.selected
                     };
-                    conexionSocket.emit('seatModified',{...seatModified,estado:state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.blocked});
-                    setStateSeat({
-                        ...seatModified
-                    });
-                    if(state==='selected'){
-                        removeSeatCart({...seatModified,price});
-                    }else{
-                        addSeatCart({...seatModified,price});
-                    }
+                    conexionSocket.emit(
+                        'seatModified',
+                        {   ...seatModified,
+                            estado:state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.blocked
+                        },
+                        ({ status, message})=>{
+                            if(status){
+                                setStateSeat({
+                                    ...seatModified
+                                });
+                                if(state==='selected'){
+                                    removeSeatCart({...seatModified,price});
+                                }else{
+                                    addSeatCart({...seatModified,price});
+                                }
+                            }else{
+                                alert(message);
+                            }
+                        }
+                    );
                 }:()=>{}
                 
     }
