@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Untitled1';
+    src: url('../../assets/seat-sources/seatsource.woff2') format('woff2'),
+        url('../../assets/seat-sources/seatsource.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+.seat-element{
+    font-family: 'Untitled1';
+}
+
+.popover {
+    
+    top: -90px !important;
+    left: 0px !important;
+}

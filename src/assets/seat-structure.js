@@ -3,17 +3,18 @@ const event_seats_structure = {
         SL1 : {
             key:'SL1',
             name:'Sala Lounge',
+            price: 7000,
             seats_by_rows:[
                 {
                     row_name: 'A',
                     seats:[
                         {
                             id:1,
-                            state:'sold'
+                            state:'free'
                         },
                         {
                             id:2,
-                            state:'blocked'
+                            state:'free'
                         },
                         {
                             id:3,
@@ -61,28 +62,29 @@ const event_seats_structure = {
     SL2:{
             key:'SL2',
             name:'Sala Lounge',
+            price: 7000,
             seats_by_rows:[
                 {
                     row_name: 'C',
                     seats:[
                         {
-                            id:1,
+                            id:6,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:7,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:8,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:10,
                             state:'free'
                         }
                     ]
@@ -91,23 +93,23 @@ const event_seats_structure = {
                     row_name: 'D',
                     seats:[
                         {
-                            id:1,
+                            id:6,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:7,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:8,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:10,
                             state:'free'
                         }
                     ]
@@ -119,6 +121,7 @@ const event_seats_structure = {
     VIP1:{
             key:'VIP1',
             name:'VIP',
+            price: 6000,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -217,48 +220,49 @@ const event_seats_structure = {
     VIP2:{
             key:'VIP2',
             name:'VIP',
+            price: 6000,
             seats_by_rows:[
                 {
                     row_name: 'C',
                     seats:[
                         {
-                            id:1,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:16,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:9,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:10,
+                            id:20,
                             state:'free'
                         }
                     ]
@@ -267,43 +271,43 @@ const event_seats_structure = {
                     row_name: 'D',
                     seats:[
                         {
-                            id:1,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:16,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:8,
-                            state:'sold'
-                        },
-                        {
-                            id:9,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:10,
+                            id:19,
+                            state:'free'
+                        },
+                        {
+                            id:20,
                             state:'free'
                         }
                     ]
@@ -315,6 +319,7 @@ const event_seats_structure = {
     PF1:{
             key:'PF1',
             name:'Profesionales',
+            price: 5000,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -656,40 +661,41 @@ const event_seats_structure = {
     PF2:{
             key:'PF2',
             name:'Profesionales',
+            price: 5000,
             seats_by_rows:[
                 {
                     row_name: 'A',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -698,35 +704,35 @@ const event_seats_structure = {
                     row_name: 'C',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -735,35 +741,35 @@ const event_seats_structure = {
                     row_name: 'E',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -772,35 +778,35 @@ const event_seats_structure = {
                     row_name: 'G',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -809,35 +815,35 @@ const event_seats_structure = {
                     row_name: 'I',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -846,35 +852,35 @@ const event_seats_structure = {
                     row_name: 'K',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -883,35 +889,35 @@ const event_seats_structure = {
                     row_name: 'M',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -920,35 +926,35 @@ const event_seats_structure = {
                     row_name: 'O',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -957,35 +963,35 @@ const event_seats_structure = {
                     row_name: 'Q',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -997,40 +1003,41 @@ const event_seats_structure = {
     PF3:{
             key:'PF3',
             name:'Profesionales',
+            price: 5000,
             seats_by_rows:[
                 {
                     row_name: 'A',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -1039,35 +1046,35 @@ const event_seats_structure = {
                     row_name: 'C',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -1076,35 +1083,35 @@ const event_seats_structure = {
                     row_name: 'E',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -1113,35 +1120,35 @@ const event_seats_structure = {
                     row_name: 'G',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -1150,35 +1157,35 @@ const event_seats_structure = {
                     row_name: 'I',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -1187,35 +1194,35 @@ const event_seats_structure = {
                     row_name: 'K',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -1224,35 +1231,35 @@ const event_seats_structure = {
                     row_name: 'M',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -1261,35 +1268,35 @@ const event_seats_structure = {
                     row_name: 'O',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -1298,35 +1305,35 @@ const event_seats_structure = {
                     row_name: 'Q',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -1338,40 +1345,41 @@ const event_seats_structure = {
     PF4:{
             key:'PF4',
             name:'Profesionales',
+            price: 5000,
             seats_by_rows:[
                 {
                     row_name: 'A',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -1380,35 +1388,35 @@ const event_seats_structure = {
                     row_name: 'C',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -1417,35 +1425,35 @@ const event_seats_structure = {
                     row_name: 'E',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -1454,35 +1462,35 @@ const event_seats_structure = {
                     row_name: 'G',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -1491,35 +1499,35 @@ const event_seats_structure = {
                     row_name: 'I',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -1528,35 +1536,35 @@ const event_seats_structure = {
                     row_name: 'K',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -1565,35 +1573,35 @@ const event_seats_structure = {
                     row_name: 'M',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -1602,35 +1610,35 @@ const event_seats_structure = {
                     row_name: 'O',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -1639,35 +1647,35 @@ const event_seats_structure = {
                     row_name: 'Q',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -1679,6 +1687,7 @@ const event_seats_structure = {
     E1:{
             key:'E1',
             name:'Estudiantes',
+            price: 4000.23,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -2020,40 +2029,41 @@ const event_seats_structure = {
     E2:{
             key:'E2',
             name:'Estudiantes',
+            price: 4000.23,
             seats_by_rows:[
                 {
                     row_name: 'A',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -2062,35 +2072,35 @@ const event_seats_structure = {
                     row_name: 'C',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -2099,35 +2109,35 @@ const event_seats_structure = {
                     row_name: 'E',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -2136,35 +2146,35 @@ const event_seats_structure = {
                     row_name: 'G',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -2173,35 +2183,35 @@ const event_seats_structure = {
                     row_name: 'I',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -2210,35 +2220,35 @@ const event_seats_structure = {
                     row_name: 'K',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -2247,35 +2257,35 @@ const event_seats_structure = {
                     row_name: 'M',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -2284,35 +2294,35 @@ const event_seats_structure = {
                     row_name: 'O',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -2321,35 +2331,35 @@ const event_seats_structure = {
                     row_name: 'Q',
                     seats:[
                         {
-                            id:1,
+                            id:9,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:10,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:11,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:12,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:13,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:14,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:15,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:16,
                             state:'free'
                         }
                     ]
@@ -2361,40 +2371,41 @@ const event_seats_structure = {
     E3:{
             key:'E3',
             name:'Estudiantes',
+            price: 4000,
             seats_by_rows:[
                 {
                     row_name: 'A',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -2403,35 +2414,35 @@ const event_seats_structure = {
                     row_name: 'C',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -2440,35 +2451,35 @@ const event_seats_structure = {
                     row_name: 'E',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -2477,35 +2488,35 @@ const event_seats_structure = {
                     row_name: 'G',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -2514,35 +2525,35 @@ const event_seats_structure = {
                     row_name: 'I',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -2551,35 +2562,35 @@ const event_seats_structure = {
                     row_name: 'K',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -2588,35 +2599,35 @@ const event_seats_structure = {
                     row_name: 'M',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -2625,35 +2636,35 @@ const event_seats_structure = {
                     row_name: 'O',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -2662,35 +2673,35 @@ const event_seats_structure = {
                     row_name: 'Q',
                     seats:[
                         {
-                            id:1,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:18,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:19,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:20,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:21,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:22,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:23,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:24,
                             state:'free'
                         }
                     ]
@@ -2702,40 +2713,41 @@ const event_seats_structure = {
     E4:{
             key:'E4',
             name:'Estudiantes',
+            price: 4000.23,
             seats_by_rows:[
                 {
                     row_name: 'A',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -2744,35 +2756,35 @@ const event_seats_structure = {
                     row_name: 'C',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -2781,35 +2793,35 @@ const event_seats_structure = {
                     row_name: 'E',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -2818,35 +2830,35 @@ const event_seats_structure = {
                     row_name: 'G',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -2855,35 +2867,35 @@ const event_seats_structure = {
                     row_name: 'I',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -2892,35 +2904,35 @@ const event_seats_structure = {
                     row_name: 'K',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -2929,35 +2941,35 @@ const event_seats_structure = {
                     row_name: 'M',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -2966,35 +2978,35 @@ const event_seats_structure = {
                     row_name: 'O',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]
@@ -3003,35 +3015,35 @@ const event_seats_structure = {
                     row_name: 'Q',
                     seats:[
                         {
-                            id:1,
+                            id:25,
                             state:'free'
                         },
                         {
-                            id:2,
+                            id:26,
                             state:'free'
                         },
                         {
-                            id:3,
+                            id:27,
                             state:'free'
                         },
                         {
-                            id:4,
+                            id:28,
                             state:'free'
                         },
                         {
-                            id:5,
+                            id:29,
                             state:'free'
                         },
                         {
-                            id:6,
+                            id:30,
                             state:'free'
                         },
                         {
-                            id:7,
+                            id:31,
                             state:'free'
                         },
                         {
-                            id:8,
+                            id:32,
                             state:'free'
                         }
                     ]

@@ -3,23 +3,38 @@ import { connect } from 'react-redux';
 
 import Section from '../section/section.component';
 import LegendCroquis from '../legend-croquis/legend-croquis.component';
+import LegendDetails  from '../legend-details/legend-details.component';
+import LegendPrices from '../legend-prices/legend-prices.component';
+import Clock from '../clock/clock.component';
 
-import './croquis.styles.scss';
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 
+import './croquis.styles.scss';
 
 const Croquis = ({mainStage}) =>{
     const {SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4} = mainStage;
     return (
+        <React.Fragment>
+            
         <div className="container-croquis">
+        
             <div className="box-croquis">
-                <div className="grid-row-croquis legend-stage">
+                <div className="grid-row-croquis vip">
+                    <Clock/>
+                </div>
+                <div className="grid-row-croquis legends">
+                    <LegendDetails/>
+                    <hr/>
                     <LegendCroquis/>
-                    <StageX className={'img-stage-croquis'} />
+                    <hr/>
+                    <LegendPrices/>
+                </div>
+                <div className="grid-row-croquis vip" >
+                    <StageX className='img-stage-croquis'/>            
                 </div>
                 <div className="grid-row-croquis lounge">
                     <Section key={'SL1'}  section = { SL1 }/>
-                    <hr/>
+                    
                     <Section key={'SL2'} section = { SL2 }/>
                 </div>
                 <hr/>
@@ -53,6 +68,7 @@ const Croquis = ({mainStage}) =>{
                 </div>
             </div>
         </div>
+        </React.Fragment>
     )
 };
 

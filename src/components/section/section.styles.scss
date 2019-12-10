@@ -1,12 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Acme&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Audiowide&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Crimson+Text&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 @import '../../master';
 
 
 .h3-croquis{
-  font-family:  'Acme', sans-serif;
+  font-family:  'Roboto', sans-serif;
   font-size: 18px;
   position: relative;
 }
@@ -16,15 +13,18 @@
   height:17px ;
   margin: -1px;
   font-size: 18px;
-  font-weight: bold;
+  //font-weight: bold;
   
   
   &.seat-sold{
     color: $seat-sold-color;
     fill-opacity: 0.8;
   }
-  &.seat-free,&.seat-selected{
+  &.seat-free{
     color: $seat-free-color;
+  }
+  &.seat-selected{
+    color: $seat-selected-color;
   }
   &.seat-blocked{
     color: $seat-blocked-color;
@@ -32,10 +32,13 @@
   }
 }
 
+
 .grid-row-croquis {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+
+  
 
   &.legend-stage{
     flex-direction: column;
@@ -45,12 +48,18 @@
   }
 
   &.lounge{
-    margin-left: 200px;
-    margin-right: 200px;
-    justify-content: center;  
+    margin-left: 350px;
+    margin-right: 350px;
+    justify-content: space-between;  
   }
 }
 
+.grid-row-croquis-legends{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  
+}
 
 .tr-croquis, .td-croquis {
   font-size: 70%;
@@ -58,12 +67,12 @@
   padding: 8px;
   cursor: pointer;
   &.col-letter{
-    font-family: 'Crimson Text', serif;
+    font-family: 'Roboto';
     font-weight: bold;
     color: #333;
   }
   &.col-number{
-    font-family: 'Audiowide', cursive;
+    font-family: 'Roboto', cursive;
     color: #333;
   }
 }
@@ -78,12 +87,7 @@
 }
 
 @media (max-width: 992px) {
-  .img-stage-croquis{
-    padding-left: 370px;
-    padding-right: 140px;
-    height: 10%;
-    width: 90%;
-  }
+  
   .grid-row-croquis{
     &.lounge{
       margin-left: 24%;
@@ -108,7 +112,13 @@
   
   .img-stage-croquis{
     padding-top: 7px;
-    height: 180px;
+    height: 170px;
+  }
+  .grid-row-croquis{
+    &.lounge{
+      margin-left: 30%;
+      margin-right: 30%;
+    }
   }
 }
 

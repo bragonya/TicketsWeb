@@ -1,0 +1,11 @@
+
+export const removeSeatFromCart = (items,seatToRemove)=>{
+    const {fila,columna,seccion} = seatToRemove;
+    return items.filter(seat=> seat.key !== Object.values({fila,columna,seccion}).join(""))
+};
+
+export const addSeatToCart = (items,seatToAdd)=>{
+    const {fila,columna,seccion} = seatToAdd;
+    localStorage.setItem('cartItems',JSON.stringify([...items,{...seatToAdd,key:Object.values({fila,columna,seccion}).join("")}]));
+    return [...items,{...seatToAdd,key:Object.values({fila,columna,seccion}).join("")}]
+}

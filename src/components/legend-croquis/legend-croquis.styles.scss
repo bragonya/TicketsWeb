@@ -1,27 +1,29 @@
-@import url("https://fonts.googleapis.com/css?family=Acme&display=swap");
+
 @import '../../master';
 
 .row-legends-croquis {
-    margin: 20px auto;
+    //margin: 20px auto;
+    margin-left: 11%;
     max-width: 300px;
-    display: grid;
-    grid-template-columns: 2fr 2fr 1fr; /* Size of items defined inside container */
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: 3fr 3fr 5fr; /* Size of items defined inside container */
+    //position: relative;
 }
 
 
 .circle-croquis {
-    width: 48px;
-    height: 48px;
-    font-family: 'Acme', sans-serif;
+    width: 54px;
+    height: 54px;
+    font-family: 'Roboto', sans-serif;
     border-radius: 50%;
     font-size: 11px;
     color: #fff;
-    line-height: 48px;
+    line-height: 53px;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 40px;
-
+    margin-top: 10px;
+    //margin-bottom: 40px;
+    margin-left: 10px;
     &.free{
         background: $seat-free-color;
     }
@@ -35,3 +37,9 @@
     }
 }
 
+
+@media (max-width: 1125px) {
+    .row-legends-croquis {
+        margin-left: 15%;       
+    }   
+}
