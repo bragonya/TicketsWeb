@@ -35,7 +35,7 @@ export class App extends React.Component{
 
   constructor(props){
     super(props);
-    socket = io.connect("https://52.70.18.213:4001",{
+    socket = io.connect("https://odontologiaindependiente.com:4001",{
       secure: true
     });
     
