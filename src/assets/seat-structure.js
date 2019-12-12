@@ -1,5 +1,5 @@
 const event_seats_structure = {
-    
+    KANO:{
         SL1 : {
             key:'SL1',
             name:'Sala Lounge',
@@ -116,6 +116,76 @@ const event_seats_structure = {
                 }
             ]
         }
+    },
+    KIM:{
+    
+        SL1 : {
+            key:'SL1',
+            name:'Sala Lounge',
+            price: 7000,
+            seats_by_rows:[
+                {
+                    row_name: 'A',
+                    seats:[
+                        {
+                            id:1,
+                            state:'free'
+                        },
+                        {
+                            id:2,
+                            state:'free'
+                        },
+                        {
+                            id:3,
+                            state:'free'
+                        },
+                        {
+                            id:4,
+                            state:'free'
+                        },
+                        {
+                            id:5,
+                            state:'free'
+                        }
+                    ]
+                }
+            ]
+        }
+    ,
+    
+    SL2:{
+            key:'SL2',
+            name:'Sala Lounge',
+            price: 7000,
+            seats_by_rows:[
+                {
+                    row_name: 'A',
+                    seats:[
+                        {
+                            id:6,
+                            state:'free'
+                        },
+                        {
+                            id:7,
+                            state:'free'
+                        },
+                        {
+                            id:8,
+                            state:'free'
+                        },
+                        {
+                            id:9,
+                            state:'free'
+                        },
+                        {
+                            id:10,
+                            state:'free'
+                        }
+                    ]
+                }
+                
+            ]
+        }
     ,
     
     VIP1:{
@@ -165,6 +235,14 @@ const event_seats_structure = {
                         {
                             id:10,
                             state:'free'
+                        },
+                        {
+                            id:11,
+                            state:'free'
+                        },
+                        {
+                            id:12,
+                            state:'free'
                         }
                     ]
                 },
@@ -209,6 +287,14 @@ const event_seats_structure = {
                         },
                         {
                             id:10,
+                            state:'free'
+                        },
+                        {
+                            id:11,
+                            state:'free'
+                        },
+                        {
+                            id:12,
                             state:'free'
                         }
                     ]
@@ -355,6 +441,10 @@ const event_seats_structure = {
                         {
                             id:8,
                             state:'free'
+                        },
+                        {
+                            id:9,
+                            state:'free'
                         }
                     ]
                 },
@@ -391,6 +481,10 @@ const event_seats_structure = {
                         },
                         {
                             id:8,
+                            state:'free'
+                        },
+                        {
+                            id:9,
                             state:'free'
                         }
                     ]
@@ -429,6 +523,10 @@ const event_seats_structure = {
                         {
                             id:8,
                             state:'free'
+                        },
+                        {
+                            id:9,
+                            state:'free'
                         }
                     ]
                 },
@@ -465,6 +563,10 @@ const event_seats_structure = {
                         },
                         {
                             id:8,
+                            state:'free'
+                        },
+                        {
+                            id:9,
                             state:'free'
                         }
                     ]
@@ -503,6 +605,10 @@ const event_seats_structure = {
                         {
                             id:8,
                             state:'free'
+                        },
+                        {
+                            id:9,
+                            state:'free'
                         }
                     ]
                 },
@@ -539,6 +645,10 @@ const event_seats_structure = {
                         },
                         {
                             id:8,
+                            state:'free'
+                        },
+                        {
+                            id:9,
                             state:'free'
                         }
                     ]
@@ -577,79 +687,9 @@ const event_seats_structure = {
                         {
                             id:8,
                             state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'O',
-                    seats:[
-                        {
-                            id:1,
-                            state:'free'
                         },
                         {
-                            id:2,
-                            state:'free'
-                        },
-                        {
-                            id:3,
-                            state:'free'
-                        },
-                        {
-                            id:4,
-                            state:'free'
-                        },
-                        {
-                            id:5,
-                            state:'free'
-                        },
-                        {
-                            id:6,
-                            state:'free'
-                        },
-                        {
-                            id:7,
-                            state:'free'
-                        },
-                        {
-                            id:8,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'Q',
-                    seats:[
-                        {
-                            id:1,
-                            state:'free'
-                        },
-                        {
-                            id:2,
-                            state:'free'
-                        },
-                        {
-                            id:3,
-                            state:'free'
-                        },
-                        {
-                            id:4,
-                            state:'free'
-                        },
-                        {
-                            id:5,
-                            state:'free'
-                        },
-                        {
-                            id:6,
-                            state:'free'
-                        },
-                        {
-                            id:7,
-                            state:'free'
-                        },
-                        {
-                            id:8,
+                            id:9,
                             state:'free'
                         }
                     ]
@@ -667,10 +707,6 @@ const event_seats_structure = {
                     row_name: 'A',
                     seats:[
                         {
-                            id:9,
-                            state:'free'
-                        },
-                        {
                             id:10,
                             state:'free'
                         },
@@ -696,6 +732,14 @@ const event_seats_structure = {
                         },
                         {
                             id:16,
+                            state:'free'
+                        },
+                        {
+                            id:17,
+                            state:'free'
+                        },
+                        {
+                            id:18,
                             state:'free'
                         }
                     ]
@@ -704,10 +748,6 @@ const event_seats_structure = {
                     row_name: 'C',
                     seats:[
                         {
-                            id:9,
-                            state:'free'
-                        },
-                        {
                             id:10,
                             state:'free'
                         },
@@ -733,6 +773,14 @@ const event_seats_structure = {
                         },
                         {
                             id:16,
+                            state:'free'
+                        },
+                        {
+                            id:17,
+                            state:'free'
+                        },
+                        {
+                            id:18,
                             state:'free'
                         }
                     ]
@@ -741,10 +789,6 @@ const event_seats_structure = {
                     row_name: 'E',
                     seats:[
                         {
-                            id:9,
-                            state:'free'
-                        },
-                        {
                             id:10,
                             state:'free'
                         },
@@ -770,6 +814,14 @@ const event_seats_structure = {
                         },
                         {
                             id:16,
+                            state:'free'
+                        },
+                        {
+                            id:17,
+                            state:'free'
+                        },
+                        {
+                            id:18,
                             state:'free'
                         }
                     ]
@@ -778,10 +830,6 @@ const event_seats_structure = {
                     row_name: 'G',
                     seats:[
                         {
-                            id:9,
-                            state:'free'
-                        },
-                        {
                             id:10,
                             state:'free'
                         },
@@ -807,6 +855,14 @@ const event_seats_structure = {
                         },
                         {
                             id:16,
+                            state:'free'
+                        },
+                        {
+                            id:17,
+                            state:'free'
+                        },
+                        {
+                            id:18,
                             state:'free'
                         }
                     ]
@@ -815,10 +871,6 @@ const event_seats_structure = {
                     row_name: 'I',
                     seats:[
                         {
-                            id:9,
-                            state:'free'
-                        },
-                        {
                             id:10,
                             state:'free'
                         },
@@ -844,6 +896,14 @@ const event_seats_structure = {
                         },
                         {
                             id:16,
+                            state:'free'
+                        },
+                        {
+                            id:17,
+                            state:'free'
+                        },
+                        {
+                            id:18,
                             state:'free'
                         }
                     ]
@@ -852,10 +912,6 @@ const event_seats_structure = {
                     row_name: 'K',
                     seats:[
                         {
-                            id:9,
-                            state:'free'
-                        },
-                        {
                             id:10,
                             state:'free'
                         },
@@ -881,6 +937,14 @@ const event_seats_structure = {
                         },
                         {
                             id:16,
+                            state:'free'
+                        },
+                        {
+                            id:17,
+                            state:'free'
+                        },
+                        {
+                            id:18,
                             state:'free'
                         }
                     ]
@@ -889,10 +953,6 @@ const event_seats_structure = {
                     row_name: 'M',
                     seats:[
                         {
-                            id:9,
-                            state:'free'
-                        },
-                        {
                             id:10,
                             state:'free'
                         },
@@ -919,79 +979,13 @@ const event_seats_structure = {
                         {
                             id:16,
                             state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'O',
-                    seats:[
+                        },
                         {
-                            id:9,
+                            id:17,
                             state:'free'
                         },
                         {
-                            id:10,
-                            state:'free'
-                        },
-                        {
-                            id:11,
-                            state:'free'
-                        },
-                        {
-                            id:12,
-                            state:'free'
-                        },
-                        {
-                            id:13,
-                            state:'free'
-                        },
-                        {
-                            id:14,
-                            state:'free'
-                        },
-                        {
-                            id:15,
-                            state:'free'
-                        },
-                        {
-                            id:16,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'Q',
-                    seats:[
-                        {
-                            id:9,
-                            state:'free'
-                        },
-                        {
-                            id:10,
-                            state:'free'
-                        },
-                        {
-                            id:11,
-                            state:'free'
-                        },
-                        {
-                            id:12,
-                            state:'free'
-                        },
-                        {
-                            id:13,
-                            state:'free'
-                        },
-                        {
-                            id:14,
-                            state:'free'
-                        },
-                        {
-                            id:15,
-                            state:'free'
-                        },
-                        {
-                            id:16,
+                            id:18,
                             state:'free'
                         }
                     ]
@@ -1000,689 +994,8 @@ const event_seats_structure = {
         }
     ,
     
-    PF3:{
-            key:'PF3',
-            name:'Profesionales',
-            price: 5000,
-            seats_by_rows:[
-                {
-                    row_name: 'A',
-                    seats:[
-                        {
-                            id:17,
-                            state:'free'
-                        },
-                        {
-                            id:18,
-                            state:'free'
-                        },
-                        {
-                            id:19,
-                            state:'free'
-                        },
-                        {
-                            id:20,
-                            state:'free'
-                        },
-                        {
-                            id:21,
-                            state:'free'
-                        },
-                        {
-                            id:22,
-                            state:'free'
-                        },
-                        {
-                            id:23,
-                            state:'free'
-                        },
-                        {
-                            id:24,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'C',
-                    seats:[
-                        {
-                            id:17,
-                            state:'free'
-                        },
-                        {
-                            id:18,
-                            state:'free'
-                        },
-                        {
-                            id:19,
-                            state:'free'
-                        },
-                        {
-                            id:20,
-                            state:'free'
-                        },
-                        {
-                            id:21,
-                            state:'free'
-                        },
-                        {
-                            id:22,
-                            state:'free'
-                        },
-                        {
-                            id:23,
-                            state:'free'
-                        },
-                        {
-                            id:24,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'E',
-                    seats:[
-                        {
-                            id:17,
-                            state:'free'
-                        },
-                        {
-                            id:18,
-                            state:'free'
-                        },
-                        {
-                            id:19,
-                            state:'free'
-                        },
-                        {
-                            id:20,
-                            state:'free'
-                        },
-                        {
-                            id:21,
-                            state:'free'
-                        },
-                        {
-                            id:22,
-                            state:'free'
-                        },
-                        {
-                            id:23,
-                            state:'free'
-                        },
-                        {
-                            id:24,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'G',
-                    seats:[
-                        {
-                            id:17,
-                            state:'free'
-                        },
-                        {
-                            id:18,
-                            state:'free'
-                        },
-                        {
-                            id:19,
-                            state:'free'
-                        },
-                        {
-                            id:20,
-                            state:'free'
-                        },
-                        {
-                            id:21,
-                            state:'free'
-                        },
-                        {
-                            id:22,
-                            state:'free'
-                        },
-                        {
-                            id:23,
-                            state:'free'
-                        },
-                        {
-                            id:24,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'I',
-                    seats:[
-                        {
-                            id:17,
-                            state:'free'
-                        },
-                        {
-                            id:18,
-                            state:'free'
-                        },
-                        {
-                            id:19,
-                            state:'free'
-                        },
-                        {
-                            id:20,
-                            state:'free'
-                        },
-                        {
-                            id:21,
-                            state:'free'
-                        },
-                        {
-                            id:22,
-                            state:'free'
-                        },
-                        {
-                            id:23,
-                            state:'free'
-                        },
-                        {
-                            id:24,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'K',
-                    seats:[
-                        {
-                            id:17,
-                            state:'free'
-                        },
-                        {
-                            id:18,
-                            state:'free'
-                        },
-                        {
-                            id:19,
-                            state:'free'
-                        },
-                        {
-                            id:20,
-                            state:'free'
-                        },
-                        {
-                            id:21,
-                            state:'free'
-                        },
-                        {
-                            id:22,
-                            state:'free'
-                        },
-                        {
-                            id:23,
-                            state:'free'
-                        },
-                        {
-                            id:24,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'M',
-                    seats:[
-                        {
-                            id:17,
-                            state:'free'
-                        },
-                        {
-                            id:18,
-                            state:'free'
-                        },
-                        {
-                            id:19,
-                            state:'free'
-                        },
-                        {
-                            id:20,
-                            state:'free'
-                        },
-                        {
-                            id:21,
-                            state:'free'
-                        },
-                        {
-                            id:22,
-                            state:'free'
-                        },
-                        {
-                            id:23,
-                            state:'free'
-                        },
-                        {
-                            id:24,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'O',
-                    seats:[
-                        {
-                            id:17,
-                            state:'free'
-                        },
-                        {
-                            id:18,
-                            state:'free'
-                        },
-                        {
-                            id:19,
-                            state:'free'
-                        },
-                        {
-                            id:20,
-                            state:'free'
-                        },
-                        {
-                            id:21,
-                            state:'free'
-                        },
-                        {
-                            id:22,
-                            state:'free'
-                        },
-                        {
-                            id:23,
-                            state:'free'
-                        },
-                        {
-                            id:24,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'Q',
-                    seats:[
-                        {
-                            id:17,
-                            state:'free'
-                        },
-                        {
-                            id:18,
-                            state:'free'
-                        },
-                        {
-                            id:19,
-                            state:'free'
-                        },
-                        {
-                            id:20,
-                            state:'free'
-                        },
-                        {
-                            id:21,
-                            state:'free'
-                        },
-                        {
-                            id:22,
-                            state:'free'
-                        },
-                        {
-                            id:23,
-                            state:'free'
-                        },
-                        {
-                            id:24,
-                            state:'free'
-                        }
-                    ]
-                }
-            ]
-        }
-    ,
     
-    PF4:{
-            key:'PF4',
-            name:'Profesionales',
-            price: 5000,
-            seats_by_rows:[
-                {
-                    row_name: 'A',
-                    seats:[
-                        {
-                            id:25,
-                            state:'free'
-                        },
-                        {
-                            id:26,
-                            state:'free'
-                        },
-                        {
-                            id:27,
-                            state:'free'
-                        },
-                        {
-                            id:28,
-                            state:'free'
-                        },
-                        {
-                            id:29,
-                            state:'free'
-                        },
-                        {
-                            id:30,
-                            state:'free'
-                        },
-                        {
-                            id:31,
-                            state:'free'
-                        },
-                        {
-                            id:32,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'C',
-                    seats:[
-                        {
-                            id:25,
-                            state:'free'
-                        },
-                        {
-                            id:26,
-                            state:'free'
-                        },
-                        {
-                            id:27,
-                            state:'free'
-                        },
-                        {
-                            id:28,
-                            state:'free'
-                        },
-                        {
-                            id:29,
-                            state:'free'
-                        },
-                        {
-                            id:30,
-                            state:'free'
-                        },
-                        {
-                            id:31,
-                            state:'free'
-                        },
-                        {
-                            id:32,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'E',
-                    seats:[
-                        {
-                            id:25,
-                            state:'free'
-                        },
-                        {
-                            id:26,
-                            state:'free'
-                        },
-                        {
-                            id:27,
-                            state:'free'
-                        },
-                        {
-                            id:28,
-                            state:'free'
-                        },
-                        {
-                            id:29,
-                            state:'free'
-                        },
-                        {
-                            id:30,
-                            state:'free'
-                        },
-                        {
-                            id:31,
-                            state:'free'
-                        },
-                        {
-                            id:32,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'G',
-                    seats:[
-                        {
-                            id:25,
-                            state:'free'
-                        },
-                        {
-                            id:26,
-                            state:'free'
-                        },
-                        {
-                            id:27,
-                            state:'free'
-                        },
-                        {
-                            id:28,
-                            state:'free'
-                        },
-                        {
-                            id:29,
-                            state:'free'
-                        },
-                        {
-                            id:30,
-                            state:'free'
-                        },
-                        {
-                            id:31,
-                            state:'free'
-                        },
-                        {
-                            id:32,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'I',
-                    seats:[
-                        {
-                            id:25,
-                            state:'free'
-                        },
-                        {
-                            id:26,
-                            state:'free'
-                        },
-                        {
-                            id:27,
-                            state:'free'
-                        },
-                        {
-                            id:28,
-                            state:'free'
-                        },
-                        {
-                            id:29,
-                            state:'free'
-                        },
-                        {
-                            id:30,
-                            state:'free'
-                        },
-                        {
-                            id:31,
-                            state:'free'
-                        },
-                        {
-                            id:32,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'K',
-                    seats:[
-                        {
-                            id:25,
-                            state:'free'
-                        },
-                        {
-                            id:26,
-                            state:'free'
-                        },
-                        {
-                            id:27,
-                            state:'free'
-                        },
-                        {
-                            id:28,
-                            state:'free'
-                        },
-                        {
-                            id:29,
-                            state:'free'
-                        },
-                        {
-                            id:30,
-                            state:'free'
-                        },
-                        {
-                            id:31,
-                            state:'free'
-                        },
-                        {
-                            id:32,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'M',
-                    seats:[
-                        {
-                            id:25,
-                            state:'free'
-                        },
-                        {
-                            id:26,
-                            state:'free'
-                        },
-                        {
-                            id:27,
-                            state:'free'
-                        },
-                        {
-                            id:28,
-                            state:'free'
-                        },
-                        {
-                            id:29,
-                            state:'free'
-                        },
-                        {
-                            id:30,
-                            state:'free'
-                        },
-                        {
-                            id:31,
-                            state:'free'
-                        },
-                        {
-                            id:32,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'O',
-                    seats:[
-                        {
-                            id:25,
-                            state:'free'
-                        },
-                        {
-                            id:26,
-                            state:'free'
-                        },
-                        {
-                            id:27,
-                            state:'free'
-                        },
-                        {
-                            id:28,
-                            state:'free'
-                        },
-                        {
-                            id:29,
-                            state:'free'
-                        },
-                        {
-                            id:30,
-                            state:'free'
-                        },
-                        {
-                            id:31,
-                            state:'free'
-                        },
-                        {
-                            id:32,
-                            state:'free'
-                        }
-                    ]
-                },
-                {
-                    row_name: 'Q',
-                    seats:[
-                        {
-                            id:25,
-                            state:'free'
-                        },
-                        {
-                            id:26,
-                            state:'free'
-                        },
-                        {
-                            id:27,
-                            state:'free'
-                        },
-                        {
-                            id:28,
-                            state:'free'
-                        },
-                        {
-                            id:29,
-                            state:'free'
-                        },
-                        {
-                            id:30,
-                            state:'free'
-                        },
-                        {
-                            id:31,
-                            state:'free'
-                        },
-                        {
-                            id:32,
-                            state:'free'
-                        }
-                    ]
-                }
-            ]
-        }
-    ,
+    
     
     E1:{
             key:'E1',
@@ -3051,6 +2364,7 @@ const event_seats_structure = {
             ]
         }
     
+}
 };
 
 export default event_seats_structure;
