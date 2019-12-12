@@ -43,20 +43,19 @@ const Croquis = ({ mainStage, currentUser }) =>{
                 </div>
                 <div className="grid-row-croquis lounge KIM">
                     <Section key={'SL1'}  section = { SL1 }/>
+                    <hr/>
                     <Section key={'SL2'} section = { SL2 }/>
                 </div>
                 <hr/>
                 <div className="grid-row-croquis vip KIM">
                     <Section key={'VIP1'} section = { VIP1 }/>
-                    
+                    <hr/>
                     <Section key={'VIP2'} section = { VIP2 }/>
                 </div>
                 <hr/>
                 <div className="grid-row-croquis profesionales KIM">
                     <Section key={'P1'} section = { PF1 }/>
-                    
-
-                    <hr/><hr/>
+                    <hr/>
                     <Section key={'P2'} section = { PF2 }/>
                     
                     

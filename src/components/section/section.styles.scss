@@ -44,28 +44,30 @@
     flex-direction: column;
   }
   &.vip{
-    &.KIM{
-      margin-left: 14%;
-      margin-right: 19%;
-      justify-content: space-between;
-    }
     margin-left: 265px;
     margin-right: 260px;
     justify-content: center;
+
+    &.KIM{
+      margin-left: 14%;
+      margin-right: 9%;
+      justify-content: center;
+    }
+    
   }
 
   &.lounge{
     &.KIM{
       margin-left: 31%;
-      margin-right: 31%;
-      justify-content: space-between;
+      margin-right: 30.4%;
+      justify-content: center;
     }  
   }
   &.profesionales{
     &.KIM{
       margin-left: 21%;
       margin-right: 21%;
-      justify-content: space-between;
+      justify-content: center;
     }
   }
 }
@@ -130,12 +132,7 @@
     padding-top: 7px;
     height: 170px;
   }
-  .grid-row-croquis{
-    &.lounge{
-      margin-left: 30%;
-      margin-right: 30%;
-    }
-  }
+  
 }
 
 

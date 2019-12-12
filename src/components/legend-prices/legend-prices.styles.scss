@@ -1,11 +1,13 @@
+.col-auto{
+  &.custom{
+    border-collapse: separate;
+    border-spacing: 15px;
+    border-style: outset;
+  }
+}
 .legend-prices{
-  //width: 25%;
   display: flex;
-  //position: absolute;
   min-height: 100px;
-  border-style: outset;
-  //border-bottom: 2px inset darkgrey;
-  //border-top: 2px inset rgb(82, 81, 81);
   font-size: 15px;
   align-items: flex-end;
   flex-direction: column;
@@ -20,7 +22,9 @@
   }
   .price{
     font-family: 'Courier New', Courier, monospace;
+    
   }
+  
 
 }
 

@@ -6,7 +6,7 @@ import './legend-prices.styles.scss';
 const LegendPrices = () => (
     <div className='legend-prices'>
         <div className='row'>
-            <div className='col-auto'>
+            <div className='col-auto custom'>
                 <div className='name'>
                         LOUNGE: Q6000
                 </div>    
