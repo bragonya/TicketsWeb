@@ -3,7 +3,7 @@ const event_seats_structure = {
         SL1 : {
             key:'SL1',
             name:'Sala Lounge',
-            price: 7000,
+            price: 1800,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -62,7 +62,7 @@ const event_seats_structure = {
     SL2:{
             key:'SL2',
             name:'Sala Lounge',
-            price: 7000,
+            price: 1800,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -120,7 +120,7 @@ const event_seats_structure = {
     VIP1:{
         key:'VIP1',
         name:'VIP',
-        price: 6000,
+        price: 1600,
         seats_by_rows:[
             {
                 row_name: 'A',
@@ -235,7 +235,7 @@ const event_seats_structure = {
     VIP2:{
             key:'VIP2',
             name:'VIP',
-            price: 6000,
+            price: 1600,
             seats_by_rows:[
                 {
                     row_name: 'A',
@@ -366,7 +366,7 @@ const event_seats_structure = {
     PF1:{
         key:'PF1',
         name:'Profesionales',
-        price: 5000,
+        price: 1450,
         seats_by_rows:[
             {
                 row_name: 'A',
@@ -662,7 +662,7 @@ const event_seats_structure = {
     PF2:{
         key:'PF2',
         name:'Profesionales',
-        price: 5000,
+        price: 1450,
         seats_by_rows:[
             {
                 row_name: 'A',
@@ -956,7 +956,7 @@ const event_seats_structure = {
     PF3:{
         key:'PF3',
         name:'Profesionales',
-        price: 5000,
+        price: 1450,
         seats_by_rows:[
             {
                 row_name: 'A',
@@ -1252,7 +1252,7 @@ const event_seats_structure = {
     PF4:{
         key:'PF4',
         name:'Profesionales',
-        price: 5000,
+        price: 1450,
         seats_by_rows:[
             {
                 row_name: 'A',

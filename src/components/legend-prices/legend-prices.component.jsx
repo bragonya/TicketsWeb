@@ -8,16 +8,16 @@ const LegendPrices = () => (
         <div className='row'>
             <div className='col-auto custom'>
                 <div className='name'>
-                        LOUNGE: Q6000
+                        LOUNGE: Q1800
                 </div>    
                 <div className='name'>
-                        VIP: Q5000
+                        VIP: Q1600
                 </div>    
                 <div className='name'>
-                        PROFESIONAL: Q4000
+                        PROFESIONAL: Q1450
                 </div>
                 <div className='name'>
-                        ESTUDIANTE:Q3000
+                        ESTUDIANTE:Q750
                 </div>
             </div>
         </div>
