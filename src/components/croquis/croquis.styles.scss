@@ -30,7 +30,23 @@
 	position: sticky;
 	//background-color: aqua;
 	clip-path:  polygon(0 30%, 100% 30%, 100% 49%, 60% 49%, 60% 70%, 41% 70%, 41% 49%, 0 49%);
+	path{
+		fill: rgb(34, 24, 10);
+	}
+}
 
+
+.img-dentis-croquis{
+	width: 90px;
+	height: 80px;
+	
+	margin: -128px;
+	position: sticky;
+	path{
+		fill:white;
+		
+	}
+	transform: rotate(270deg);
 }
 
 

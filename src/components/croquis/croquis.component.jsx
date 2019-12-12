@@ -12,6 +12,7 @@ import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectMainStage } from '../../redux/stage/stage.selectors';
 
 import { ReactComponent as StageX } from '../../assets/stage.svg';
+import { ReactComponent as DentistX } from '../../assets/dentist.svg';
 
 import './croquis.styles.scss';
 
@@ -43,6 +44,9 @@ const Croquis = ({ mainStage, currentUser }) =>{
                 </div>
                 <div className="grid-row-croquis vip" >
                     <StageX className='img-stage-croquis'/>            
+                </div>
+                <div className="grid-row-croquis vip" >
+                    <DentistX className='img-dentis-croquis'/>            
                 </div>
                 <div className="grid-row-croquis lounge KIM">
                     <Section key={'SL1'}  section = { SL1 }/>
