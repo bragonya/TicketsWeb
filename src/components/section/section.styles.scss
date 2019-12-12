@@ -44,12 +44,14 @@
     flex-direction: column;
   }
   &.vip{
+    margin-left: 265px;
+    margin-right: 260px;
     justify-content: center;
   }
 
   &.lounge{
-    margin-left: 350px;
-    margin-right: 350px;
+    margin-left: 420px;
+    margin-right: 410px;
     justify-content: space-between;  
   }
 }

@@ -65,7 +65,7 @@ const event_seats_structure = {
             price: 7000,
             seats_by_rows:[
                 {
-                    row_name: 'C',
+                    row_name: 'A',
                     seats:[
                         {
                             id:6,
@@ -90,7 +90,7 @@ const event_seats_structure = {
                     ]
                 },
                 {
-                    row_name: 'D',
+                    row_name: 'B',
                     seats:[
                         {
                             id:6,
@@ -223,7 +223,7 @@ const event_seats_structure = {
             price: 6000,
             seats_by_rows:[
                 {
-                    row_name: 'C',
+                    row_name: 'A',
                     seats:[
                         {
                             id:11,
@@ -268,7 +268,7 @@ const event_seats_structure = {
                     ]
                 },
                 {
-                    row_name: 'D',
+                    row_name: 'B',
                     seats:[
                         {
                             id:11,

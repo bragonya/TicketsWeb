@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import Section from '../section/section.component';
 import LegendCroquis from '../legend-croquis/legend-croquis.component';
@@ -7,11 +8,14 @@ import LegendDetails  from '../legend-details/legend-details.component';
 import LegendPrices from '../legend-prices/legend-prices.component';
 import Clock from '../clock/clock.component';
 
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectMainStage } from '../../redux/stage/stage.selectors';
+
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 
 import './croquis.styles.scss';
 
-const Croquis = ({mainStage}) =>{
+const Croquis = ({ mainStage, currentUser }) =>{
     const {SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4} = mainStage;
     return (
         <React.Fragment>
@@ -19,9 +23,11 @@ const Croquis = ({mainStage}) =>{
         <div className="container-croquis">
         
             <div className="box-croquis">
-                <div className="grid-row-croquis vip">
-                    <Clock/>
-                </div>
+                {currentUser?
+                    <div className="grid-row-croquis vip">
+                        <Clock/>
+                    </div>:null
+                }
                 <div className="grid-row-croquis legends">
                     <LegendDetails/>
                     <hr/>
@@ -72,8 +78,9 @@ const Croquis = ({mainStage}) =>{
     )
 };
 
-const mapStateToProps =({ stage: { mainStage } }) =>({
-    mainStage
+const mapStateToProps = createStructuredSelector({
+    mainStage: selectMainStage,
+    currentUser: selectCurrentUser
 });
 
 export default connect(mapStateToProps)(Croquis);
