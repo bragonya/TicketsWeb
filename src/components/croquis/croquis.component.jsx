@@ -18,8 +18,8 @@ import './croquis.styles.scss';
 
 const Croquis = ({ mainStage, currentUser }) =>{
     const {
-            KIM:{SL1,SL2,VIP1,VIP2,PF1,PF2}
-            /*KANO:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}*/
+            /*KIM:{SL1,SL2,VIP1,VIP2,PF1,PF2}*/
+            KANO:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}
           } = mainStage;
     return (
         <React.Fragment>
@@ -28,7 +28,7 @@ const Croquis = ({ mainStage, currentUser }) =>{
         
             <div className="box-croquis">
                 <div className="grid-row-croquis vip">
-                    <h3><strong>Curso de KIM</strong> </h3>
+                    <h3><strong>Curso de KANO</strong> </h3>
                 </div>
                 {currentUser?
                     <div className="grid-row-croquis vip">
@@ -60,12 +60,25 @@ const Croquis = ({ mainStage, currentUser }) =>{
                     <Section key={'VIP2'} section = { VIP2 }/>
                 </div>
                 <hr/>
-                <div className="grid-row-croquis profesionales KIM">
+                <div className="grid-row-croquis profesionales KANO">
                     <Section key={'P1'} section = { PF1 }/>
                     <hr/>
                     <Section key={'P2'} section = { PF2 }/>
-                    
-                        
+                    <hr/><hr/>
+                    <Section key={'P3'} section = { PF3 }/>
+                    <hr/>
+                    <Section key={'P4'} section = { PF4 }/>    
+                </div>
+                <hr/>
+                <div className="grid-row-croquis">
+                    <Section key={'E1'} section = { E1 }/>
+                    <hr/>
+                    <Section key={'E2'} section = { E2 }/>
+
+                    <hr/><hr/>
+                    <Section key={'E3'} section = { E3 }/>
+                    <hr/>
+                    <Section key={'E4'} section = { E4 }/>
                 </div>
             </div>
         </div>
