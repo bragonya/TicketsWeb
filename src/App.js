@@ -35,13 +35,14 @@ export class App extends React.Component{
 
   constructor(props){
     super(props);
-    socket = io.connect("https://odontologiaindependiente.com:4001",{
+    socket = io.connect("http://localhost:4001",{
       secure: true
     });
     
     
     socket.emit('connected',{},(initialStage)=>{
       initialStage.forEach(seat=>{
+        console.log(seat);
         setStateSeat(seat);
       });
     });
@@ -66,7 +67,7 @@ export class App extends React.Component{
     socket.on('countdownStart',function(time){
       setClockTime(time);
     });
-    
+    setCurrentUser({email:'rluis4490@gmail.com'});
     if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')))
   }
 

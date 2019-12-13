@@ -6,9 +6,9 @@ import { withRouter } from 'react-router-dom';
 import { CONST_SEAT_STATES } from '../../assets/constants';
 import { setStateSeat } from '../../redux/stage/stage.actions';
 import { addSeatCart, removeSeatCart } from '../../redux/cart/cart.actions';
-import { selectConexionSocket }from '../../redux/user/user.selectors';
+import { selectConexionSocket, selectCurrentUser }from '../../redux/user/user.selectors';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
+
 
 
 import PopoverGeneric from '../popover-generic/popover-generic.component';
@@ -16,7 +16,8 @@ import PopoverGeneric from '../popover-generic/popover-generic.component';
 import './seat.styles.scss';
 
 const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, history}) =>{
-    const { id, colname, state , key , price} = seatdata;
+    const { id, colname, state , key , price, course} = seatdata;
+    
     var properties={
         key:`'span-'${key}${id}${colname}`,
             id:`${key}${id}${colname}`,
@@ -29,6 +30,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                         columna : id,
                         fila : colname,
                         seccion : key,
+                        curso: course,
                         estado : state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.selected
                     };
                     conexionSocket.emit(

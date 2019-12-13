@@ -12,3 +12,8 @@ export const selectClockTime = createSelector(
     stage => stage.clockTime
 );
 
+export const selectCurrentCourse = createSelector(
+    [selectStage],
+    stage => stage.currentCourse
+);
+

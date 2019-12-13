@@ -5,6 +5,7 @@ import {setStateToSeat} from './stage.utils';
 
 const INITIAL_STATE = {
     mainStage : event_seats_structure,
+    currentCourse: 'KANO',
     clockTime : '' 
 }
 
