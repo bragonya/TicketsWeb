@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectCartItems,selectCartTotal }  from '../../redux/cart/cart.selectors';
+import { selectCartItems, selectCartTotal }  from '../../redux/cart/cart.selectors';
 
 import FormInput from '../form-input/form-input.component';
 
@@ -28,11 +28,9 @@ class DetailCheckout extends React.Component{
 
 
     render(){
-        const { cartItems, cartTotal, rowsInput } = this.props;
+        const { props:{cartItems, cartTotal}, state:{ rowsInput } } = this;
         return (
             <div className='container'>
-    
-            
                 <div className="row justify-content-center" style={{ marginTop:'130px', minWidth:'300px'}}>
                     <div className="col">
                     <Clock/>
@@ -40,7 +38,13 @@ class DetailCheckout extends React.Component{
                     <table className="table table-hover">
                         <thead >
                             <tr className='thead-details-checkout'>
-                                <th cope="col">Fila</th><th cope="col">Silla</th><th cope="col">Seccion</th><th cope="col">Precio</th>
+                                <th cope="col">Fila</th>
+                                <th cope="col">Silla</th>
+                                <th cope="col">Seccion</th>
+                                <th cope="col">Precio</th>
+                                <th cope="col">Nombre Asistente</th>
+                                <th cope="col">Carnet/Colegiado Asistente</th>
+                                <th cope="col">Universidad Asistente</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,13 +55,33 @@ class DetailCheckout extends React.Component{
                                         <td key={`${columna}${key}`}>{columna}</td>
                                         <td key={`${seccion}${key}`}>{seccion}</td>
                                         <td key={`${price}${key}`}>{price}</td>
-                                        <td key={`email${key}`}>
+                                        <td key={`name${key}`}>
                                             <FormInput
                                                 name={`name${key}`}
                                                 type='text'
                                                 handleChange={this.handleChange}
-                                                value={rowsInput[`name${key}`]}
-                                                label='Nombre del Asistente'
+                                                value={ rowsInput[`name${key}`]||""}
+                                                label=''
+                                                required
+                                            />
+                                        </td>
+                                        <td key={`register_number${key}`}>
+                                            <FormInput
+                                                name={`register_number${key}`}
+                                                type='number'
+                                                handleChange={this.handleChange}
+                                                value={ rowsInput[`register_number${key}`]||""}
+                                                label=''
+                                                required
+                                            />
+                                        </td>
+                                        <td key={`university${key}`}>
+                                            <FormInput
+                                                name={`university${key}`}
+                                                type='text'
+                                                handleChange={this.handleChange}
+                                                value={ rowsInput[`university${key}`]||""}
+                                                label=''
                                                 required
                                             />
                                         </td>
@@ -68,13 +92,27 @@ class DetailCheckout extends React.Component{
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <h4 className=''>{`Total a pagar: ${cartTotal}`}</h4>
-                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <h4 className=''>{`Total a pagar: ${cartTotal}`}</h4>    
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <input 
+                                    type="submit" 
+                                    onClick = {this.consumeApi}
+                                    className="button btn-success" 
+                                    value="Realizar Pago"
+                                />
                             </tr>
                         </tbody>
                     </table>
-                    
                     </div>    
                 </div>
             </div>    
