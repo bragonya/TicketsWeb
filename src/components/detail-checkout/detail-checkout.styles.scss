@@ -4,3 +4,12 @@
 .table td,tr {
     text-align: center;   
  }
+
+ .group{
+     &.detail::after{
+        content :"!Requerido para el diploma"; 
+        color: rgb(163, 45, 45);
+        display: grid;
+        float: center;
+     }
+ }

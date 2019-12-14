@@ -1,7 +1,7 @@
 import React from 'react';
 
-const FormInput = ({ handleChange, label, ...otherProps }) => (
-  <div className='group'>
+const FormInput = ({ handleChange,className, label, ...otherProps }) => (
+  <div className={className?`group${className}`:'group'}>
     {label ? (
       <label
         className={'label'}
