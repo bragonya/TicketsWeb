@@ -9,7 +9,11 @@ const FormInput = ({ handleChange,className, label, ...otherProps }) => (
         {label}
       </label>
     ) : null}
-    <input className='input' onChange={handleChange} {...otherProps} />
+    <input 
+      onInput={evt=>evt.target.setCustomValidity('')} 
+      onInvalid={evt=>evt.target.setCustomValidity('Este campo es requerido')} 
+      className='input' 
+      onChange={handleChange} {...otherProps} />
   </div>
 );
 

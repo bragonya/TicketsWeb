@@ -21,12 +21,22 @@ class DetailCheckout extends React.Component{
         const { value, name } = event.target;
         const { rowsInput } = this.state;
         var newrowsInput = {  ...rowsInput ,[name]: value};
-        console.log(rowsInput);
         this.setState({ rowsInput : newrowsInput });
     };
 
-    handleClickGoToPay = () =>{
+    handleSubmit = event => {
+        event.preventDefault();
+        try {
+          this.setState({ ...initialState });
+        } catch (error) {
+          console.log(error);
+        }
+    };
 
+    handleClickGoToPay = () =>{
+        /* 
+        NOTA: al primer asiento llenarle de forma automatica 
+        los campos requeridos para el diploma */
     }
 
     render(){
@@ -43,90 +53,92 @@ class DetailCheckout extends React.Component{
                         </div>
                         <Clock/>
                         <h2>Detalle de Compra</h2>
-                        <table className="table table-hover">
-                            <thead >
-                                <tr className='thead-details-checkout'>
-                                    <th cope="col">Fila</th>
-                                    <th cope="col">Silla</th>
-                                    <th cope="col">Seccion</th>
-                                    <th cope="col">Precio</th>
-                                    <th cope="col">Nombre Asistente</th>
-                                    <th cope="col">Carnet/Colegiado Asistente</th>
-                                    <th cope="col">Universidad Asistente</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    cartItems.map(({fila,columna,seccion,price,key})=>(
-                                        <tr key={key}>
-                                            <td key={`${fila}${key}`}>{fila}</td>
-                                            <td key={`${columna}${key}`}>{columna}</td>
-                                            <td key={`${seccion}${key}`}>{seccion}</td>
-                                            <td key={`${price}${key}`}>{price}</td>
-                                            <td key={`name${key}`}>
-                                                <FormInput
-                                                    name={`name${key}`}
-                                                    type='text'
-                                                    handleChange={this.handleChange}
-                                                    value={ rowsInput[`name${key}`]||""}
-                                                    label=''
-                                                    required
-                                                />
-                                            </td>
-                                            <td key={`register_number${key}`}>
-                                                <FormInput
-                                                    name={`register_number${key}`}
-                                                    type='number'
-                                                    handleChange={this.handleChange}
-                                                    value={ rowsInput[`register_number${key}`]||""}
-                                                    label=''
-                                                    required
-                                                />
-                                            </td>
-                                            <td key={`university${key}`}>
-                                                <FormInput
-                                                    name={`university${key}`}
-                                                    type='text'
-                                                    handleChange={this.handleChange}
-                                                    value={ rowsInput[`university${key}`]||""}
-                                                    label=''
-                                                    className=' detail'
-                                                    required
-                                                />
-                                            </td>
-                                        </tr>
-                                    ))
-                                }
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <h4 className=''>{`Total a pagar: ${cartTotal}`}</h4>    
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <input 
-                                            type="submit" 
-                                            onClick = {this.handleClickGoToPay}
-                                            className="button btn-success" 
-                                            value="Realizar Pago"
-                                        />
-                                    </td>
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
+                        <form onSubmit={this.handleSubmit}>
+                            <table className="table table-hover">
+                                <thead >
+                                    <tr className='thead-details-checkout'>
+                                        <th cope="col">Fila</th>
+                                        <th cope="col">Silla</th>
+                                        <th cope="col">Seccion</th>
+                                        <th cope="col">Precio</th>
+                                        <th cope="col">Nombre Asistente</th>
+                                        <th cope="col">Carnet/Colegiado Asistente</th>
+                                        <th cope="col">Universidad Asistente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        cartItems.map(({fila,columna,seccion,price,key})=>(
+                                            <tr key={key}>
+                                                <td key={`${fila}${key}`}>{fila}</td>
+                                                <td key={`${columna}${key}`}>{columna}</td>
+                                                <td key={`${seccion}${key}`}>{seccion}</td>
+                                                <td key={`${price}${key}`}>{price}</td>
+                                                <td key={`name${key}`}>
+                                                    <FormInput
+                                                        name={`name${key}`}
+                                                        type='text'
+                                                        handleChange={this.handleChange}
+                                                        value={ rowsInput[`name${key}`]||""}
+                                                        label=''
+                                                        required
+                                                    />
+                                                </td>
+                                                <td key={`register_number${key}`}>
+                                                    <FormInput
+                                                        name={`register_number${key}`}
+                                                        type='number'
+                                                        handleChange={this.handleChange}
+                                                        value={ rowsInput[`register_number${key}`]||""}
+                                                        label=''
+                                                        required
+                                                    />
+                                                </td>
+                                                <td key={`university${key}`}>
+                                                    <FormInput
+                                                        name={`university${key}`}
+                                                        type='text'
+                                                        handleChange={this.handleChange}
+                                                        value={ rowsInput[`university${key}`]||""}
+                                                        label=''
+                                                        className=' detail'
+                                                        required
+                                                    />
+                                                </td>
+                                            </tr>
+                                        ))
+                                    }
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <h4 className=''>{`Total a pagar: ${cartTotal}`}</h4>    
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <input 
+                                                type="submit" 
+                                                onClick = {this.handleClickGoToPay}
+                                                className="button btn-success" 
+                                                value="Realizar Pago"
+                                            />
+                                        </td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
                     </div>    
                 </div>
             </div>
