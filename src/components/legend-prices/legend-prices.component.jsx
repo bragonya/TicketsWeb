@@ -16,6 +16,9 @@ const LegendPrices = () => (
                 <div className='name'>
                         PROFESIONAL: Q1450
                 </div>
+                {/*<div className='name'>
+                        ESTUDIANTE: Q750
+</div>*/}
             </div>
         </div>
     </div>

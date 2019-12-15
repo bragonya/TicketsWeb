@@ -13,13 +13,14 @@ import { selectMainStage, selectCurrentCourse } from '../../redux/stage/stage.se
 
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 import { ReactComponent as DentistX } from '../../assets/dentist.svg';
+import { ReactComponent as ShootingX } from '../../assets/shooting_room.svg';
 
 import './croquis.styles.scss';
 
 const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
     const {
-            /*KIM:{SL1,SL2,VIP1,VIP2,PF1,PF2}*/
-            [currentCourse]:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}
+            KIM:{SL1,SL2,VIP1,VIP2,PF1,PF2}
+            /*[currentCourse]:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}*/
           } = mainStage;
     return (
         <React.Fragment>
@@ -28,7 +29,7 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
         
             <div className="box-croquis">
                 <div className="grid-row-croquis vip">
-                    <h3><strong>Curso de KANO</strong> </h3>
+                    <h3><strong>Curso de KIM</strong> </h3>
                 </div>
                 {currentUser?
                     <div className="grid-row-croquis vip">
@@ -48,6 +49,9 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
                 <div className="grid-row-croquis vip" >
                     <DentistX className='img-dentis-croquis'/>            
                 </div>
+                <div className="grid-row-croquis vip" >
+                    <ShootingX className='img-shooting-croquis'/>            
+                </div>
                 <div className="grid-row-croquis lounge KIM">
                     <Section key={'SL1'}  section = { {...SL1, course:currentCourse } }/>
                     <hr/>
@@ -60,16 +64,16 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
                     <Section key={'VIP2'} section = { {...VIP2, course:currentCourse} }/>
                 </div>
                 <hr/>
-                <div className="grid-row-croquis profesionales KANO">
+                <div className="grid-row-croquis profesionales KIM">
                     <Section key={'P1'} section = { {...PF1, course:currentCourse} }/>
                     <hr/>
                     <Section key={'P2'} section = { { ...PF2,course:currentCourse } }/>
-                    <hr/><hr/>
+                    {/*<hr/><hr/>
                     <Section key={'P3'} section = { {...PF3, course:currentCourse} }/>
                     <hr/>
-                    <Section key={'P4'} section = { {...PF4, course:currentCourse} }/>    
+                    <Section key={'P4'} section = { {...PF4, course:currentCourse} }/>    */}
                 </div>
-                <hr/>
+                {/*<hr/>
                 <div className="grid-row-croquis">
                     <Section key={'E1'} section = { {...E1, course:currentCourse} }/>
                     <hr/>
@@ -79,7 +83,7 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
                     <Section key={'E3'} section = { {...E3,course:currentCourse} }/>
                     <hr/>
                     <Section key={'E4'} section = { {...E4, course:currentCourse} }/>
-                </div>
+            </div>*/}
             </div>
         </div>
         </React.Fragment>
