@@ -8,6 +8,8 @@ import LegendDetails  from '../legend-details/legend-details.component';
 import LegendPrices from '../legend-prices/legend-prices.component';
 import Clock from '../clock/clock.component';
 
+import { CONST_SPEAKERS_ENUM } from '../../assets/constants';
+
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectMainStage, selectCurrentCourse } from '../../redux/stage/stage.selectors';
 
@@ -19,8 +21,7 @@ import './croquis.styles.scss';
 
 const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
     const {
-            KIM:{SL1,SL2,VIP1,VIP2,PF1,PF2}
-            /*[currentCourse]:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}*/
+            [currentCourse]:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}
           } = mainStage;
     return (
         <React.Fragment>
@@ -29,7 +30,7 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
         
             <div className="box-croquis">
                 <div className="grid-row-croquis vip">
-                    <h3><strong>Curso de KIM</strong> </h3>
+                    <h3><strong>Curso de { currentCourse }</strong> </h3>
                 </div>
                 {currentUser?
                     <div className="grid-row-croquis vip">
@@ -52,7 +53,8 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
                 <div className="grid-row-croquis vip" >
                     <ShootingX className='img-shooting-croquis'/>            
                 </div>
-                <div className="grid-row-croquis lounge KIM">
+
+                <div className={`grid-row-croquis lounge ${currentCourse}`}>
                     <Section key={'SL1'}  section = { {...SL1, course:currentCourse } }/>
                     <hr/>
                     <Section key={'SL2'} section = { {...SL2, course:currentCourse} }/>
@@ -64,16 +66,18 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
                     <Section key={'VIP2'} section = { {...VIP2, course:currentCourse} }/>
                 </div>
                 <hr/>
-                <div className="grid-row-croquis profesionales KIM">
+                <div className={`grid-row-croquis profesionales ${currentCourse}`}>
                     <Section key={'P1'} section = { {...PF1, course:currentCourse} }/>
                     <hr/>
                     <Section key={'P2'} section = { { ...PF2,course:currentCourse } }/>
-                    {/*<hr/><hr/>
+                    
+                    {currentCourse===CONST_SPEAKERS_ENUM.kano?<React.Fragment><hr/><hr/>
                     <Section key={'P3'} section = { {...PF3, course:currentCourse} }/>
                     <hr/>
-                    <Section key={'P4'} section = { {...PF4, course:currentCourse} }/>    */}
+                    <Section key={'P4'} section = { {...PF4, course:currentCourse} }/>
+                    </React.Fragment>:null}
                 </div>
-                {/*<hr/>
+                {currentCourse===CONST_SPEAKERS_ENUM.kano?<React.Fragment><hr/>
                 <div className="grid-row-croquis">
                     <Section key={'E1'} section = { {...E1, course:currentCourse} }/>
                     <hr/>
@@ -83,7 +87,7 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
                     <Section key={'E3'} section = { {...E3,course:currentCourse} }/>
                     <hr/>
                     <Section key={'E4'} section = { {...E4, course:currentCourse} }/>
-            </div>*/}
+                </div></React.Fragment>:null}
             </div>
         </div>
         </React.Fragment>

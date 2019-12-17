@@ -13,3 +13,8 @@ export const setSpeaker = time =>({
     type: StageActionsTypes.SET_SPEAKER,
     payload: time
 });
+
+export const setCourse = time =>({
+    type: StageActionsTypes.SET_COURSE,
+    payload: time
+});

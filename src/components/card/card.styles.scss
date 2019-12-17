@@ -99,10 +99,11 @@
   .blog-tags li + li {
     margin-left: .5rem;
   }
-  .blog-tags a {
+  .blog-tags div {
     border: 0px 1px solid lighten(#333, 40%);
     border-radius: 3px;
     color: rgb(12, 78, 153);
+    cursor: pointer;
     font-size: 1.2rem;
     height: 1.5rem;
     line-height: 1.5rem;

@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-import { setSpeaker } from '../../redux/stage/stage.actions';
+import { setSpeaker, setCourse } from '../../redux/stage/stage.actions';
 
 import './card.styles.scss';
 
-const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, children}) =>(
+const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, setCourse, history, children}) =>(
     <React.Fragment>
         <div className="blog-container">
   
@@ -25,11 +26,14 @@ const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, children}) =>(
             </div>
             <div className="blog-tags">
             <ul>
-                <li><a 
-                        href="/reservation" 
-                        onClick={()=>setSpeaker(speaker)} >
+                <li><div 
+                        onClick={()=>{
+                            setSpeaker(speaker)
+                            setCourse(speaker)
+                            history.push('/reservation')
+                            }} >
                         Incribirse al curso
-                    </a>
+                    </div>
                 </li>
             </ul>
             </div>
@@ -47,7 +51,8 @@ const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, children}) =>(
 );
 
 const mapDispatchToProps = dispatch =>({
-    setSpeaker: speaker => dispatch(setSpeaker(speaker))
+    setSpeaker: speaker => dispatch(setSpeaker(speaker)),
+    setCourse: course => dispatch(setCourse(course))
 });
 
-export default connect(null,mapDispatchToProps)(Card);
+export default withRouter(connect(null,mapDispatchToProps)(Card));
