@@ -35,7 +35,7 @@ const SelectCoursePage = ()=>(
                     <Card 
                         title={`Ambos Cursos`} 
                         imgURL={require(`../../assets/speakers/ambos_picture.jpeg`)}
-                        paragraph = {'Recibe un DESCUENTO en el segundo curso al inscribirte en ambos cursos, mientras duren existencias.'}
+                        paragraph = {'Recibe un DESCUENTO en el segundo curso de KANO al inscribirte en ambos cursos, mientras duren existencias.'}
                         speaker  ={CONST_SPEAKERS_ENUM.both}
                     >
                         <li className="published-date">SALA LOUNGE: <span className='published-date tached'>Q1800</span> Q1,400</li>

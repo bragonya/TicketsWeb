@@ -8,13 +8,13 @@
 .separator-bar-next-previus{    
     width: 40rem;
 }
-.previus{
+
+.next,.previus{
     line-height: bold;
-    text-shadow: 2px 2px rgb(223, 217, 217);
+    text-shadow: 1.5px 1.5px rgb(223, 217, 217);
     color: rgba(0, 0, 0, 0.719);
-}
-.next{
-    line-height: bold;
-    text-shadow: 2px 2px rgb(223, 217, 217);
-    color: rgba(0, 0, 0, 0.719);
+    cursor: pointer;
+    :active{
+        background-color: rgba(225, 231, 231, 0.596);
+    }
 }

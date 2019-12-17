@@ -10,3 +10,8 @@ export const CONST_SPEAKERS_ENUM={
     kano:'KANO',
     both:'AMBOS'
 }
+
+export const CONST_SPEAKERS_ORDER={
+    KIM:1,
+    KANO:2
+}

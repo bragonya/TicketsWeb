@@ -12,7 +12,7 @@ import NextPrevius from '../bar-next-previus/bar-next-previus.component';
 import { CONST_SPEAKERS_ENUM } from '../../assets/constants';
 
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { selectMainStage, selectCurrentCourse } from '../../redux/stage/stage.selectors';
+import { selectMainStage, selectCurrentCourse, selectSpeaker } from '../../redux/stage/stage.selectors';
 
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 import { ReactComponent as DentistX } from '../../assets/dentist.svg';
@@ -20,7 +20,7 @@ import { ReactComponent as ShootingX } from '../../assets/shooting_room.svg';
 
 import './croquis.styles.scss';
 
-const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
+const Croquis = ({ mainStage, currentUser, currentCourse, speaker }) =>{
     const {
             [currentCourse]:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}
           } = mainStage;
@@ -30,7 +30,9 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
         <div className="container-croquis">
         
             <div className="box-croquis">
-                <NextPrevius/>
+                {speaker===CONST_SPEAKERS_ENUM.both?
+                    <NextPrevius/>:null
+                }
                 <div className="grid-row-croquis vip">
                     
                     <h3><strong>Curso de { currentCourse }</strong> </h3>
@@ -100,7 +102,8 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
 const mapStateToProps = createStructuredSelector({
     mainStage: selectMainStage,
     currentUser: selectCurrentUser,
-    currentCourse: selectCurrentCourse
+    currentCourse: selectCurrentCourse,
+    speaker : selectSpeaker
 });
 
 export default connect(mapStateToProps)(Croquis);
