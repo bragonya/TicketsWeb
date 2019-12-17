@@ -4,50 +4,45 @@ import './select-course-page.styles.scss';
 import Card from '../../components/card/card.component';
 
 const SelectCoursePage = ()=>(
-    <div className='select-course'>
-        
-            <div className="row justify-content-around" style={{ marginTop:'7%', minWidth:'100%'}}>
+    <div className='select-course'>        
+            <div className="row row justify-content-center" style={{ margin:'auto', minWidth:'400px'}}>
                 <div className="col-auto">   
-                    <div className="card text-center" style={{'width': '20rem'}}>
-                        <ImageContainer imgURL={require('../../assets/speakers/kano_picture.jpeg')}/>
-                        <div className="card-body">
-                            <h5 className="card-title">Paulo Kano</h5>
-                            <button className='btn btn-success'>Inscribirse a curso de <strong>Paulo Kano</strong></button>
-                        </div>
-                    </div>
+                    <Card 
+                        title={`Dr. Syngkuc Kim`} 
+                        imgURL={require(`../../assets/speakers/kim_picture.jpeg`)}
+                        //paragraph = {PARAGRAPH_STRINGS.kim.card}
+                    >
+                        <li className="published-date lounge">SALA LOUNGE: 1,800</li>
+                        <li className="published-date">SALA VIP: 1,600</li>        
+                        <li className="published-date">PROFESIONALES: 1,450</li>
+                    </Card>
                 </div>
                 <div className="col-auto">   
-                    {/*<div className="card text-center" style={{'width': '20rem'}}>
-                        <ImageContainer imgURL={require('../../assets/speakers/kim_picture.jpeg')}/>
-                        <div className="card-body">
-                            <h5 class="card-title">Syngkuc Kim</h5>
-                            <p class="card-text">
-                                <a href="#" class="card-link">Inscribirse</a>
-                            </p>
-                        </div>
-</div>*/}
-                    <Card />
+                    <Card 
+                        title={`Dr. Paulo Kano`} 
+                        imgURL={require(`../../assets/speakers/kano_picture.jpeg`)}
+                        //paragraph = {PARAGRAPH_STRINGS.kano.card}
+                    >
+                        <li className="published-date lounge">SALA LOUNGE: 1,800</li>
+                        <li className="published-date">SALA VIP: 1,600</li>        
+                        <li className="published-date">PROFESIONALES: 1,450</li>
+                        <li className="published-date">ESTUDIANTES: 750</li>
+                    </Card>
                 </div>
                 <div className="col-auto">   
-                    <div className="card text-center" style={{'width': '20rem'}}>
-                        <ImageContainer imgURL={require('../../assets/speakers/ambos_picture.jpeg')}/>
-                        <div className="card-body">
-                        
-                        <button className='btn btn-dark'>Inscribirse a <strong>los dos cursos</strong></button>
-                        </div>
-                    </div>
+                    <Card 
+                        title={`Ambos Cursos`} 
+                        imgURL={require(`../../assets/speakers/ambos_picture.jpeg`)}
+                        paragraph = {'Recibe una descuento al inscribirte en ambos cursos, mientras duren existencias.'}
+                    >
+                        <li className="published-date lounge">SALA LOUNGE: 1,800</li>
+                        <li className="published-date">SALA VIP: 1,600</li>        
+                        <li className="published-date">PROFESIONALES: 1,450</li>
+                        <li className="published-date">ESTUDIANTES: 750</li>
+                    </Card>
                 </div>
             </div>
     </div>
 );
 
-const ImageContainer = ({ imgURL })=>(
-    <div>
-        <img 
-            style={{width:'100.3%',height:220}}
-            src={imgURL} 
-            alt="boohoo" 
-            />
-    </div>
-);
 export default SelectCoursePage
