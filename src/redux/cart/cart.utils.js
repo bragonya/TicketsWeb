@@ -1,4 +1,3 @@
-
 export const removeSeatFromCart = (items,seatToRemove)=>{
     const {fila,columna,seccion} = seatToRemove;
     return items.filter(seat=> seat.key !== Object.values({fila,columna,seccion}).join(""))

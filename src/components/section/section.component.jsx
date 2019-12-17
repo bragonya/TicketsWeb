@@ -5,7 +5,7 @@ import './section.styles.scss';
 import Seat from '../seat/seat.component';
 
 const Section = ({section}) =>{
-    const { key, name, seats_by_rows, price, course } = section;
+    const { key, name, seats_by_rows, course, idN } = section;
     const colsNames = seats_by_rows.map( ({row_name}) => row_name);
     const rowsSeats = seats_by_rows.map( ({seats}) => seats);
     const sizes = rowsSeats.map(row=> row.length);
@@ -30,7 +30,7 @@ const Section = ({section}) =>{
                                 {(rowsSeats[index]).map(({id,state})=>
                                     <td className='td-croquis' key={`${colname}'-'${id}'-'${index}`}>
                                         <div className={'seat-croquis seat-'+state} >
-                                            <Seat seatdata = {{id,colname,state,key,price,course}}/>                     
+                                            <Seat seatdata = {{id, idN ,colname,state,key,course}}/>                     
                                         </div>
                                     </td>
                                 )}    
