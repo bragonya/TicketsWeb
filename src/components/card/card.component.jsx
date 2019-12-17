@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { setSpeaker } from '../../redux/stage/stage.actions';
 
 import './card.styles.scss';
-const Card = ({ imgURL, title, paragraph, children }) =>(
+
+const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, children}) =>(
     <React.Fragment>
         <div className="blog-container">
   
@@ -21,7 +25,12 @@ const Card = ({ imgURL, title, paragraph, children }) =>(
             </div>
             <div className="blog-tags">
             <ul>
-                <li><a href="/reservation">Incribirse al curso</a></li>
+                <li><a 
+                        href="/reservation" 
+                        onClick={()=>setSpeaker(speaker)} >
+                        Incribirse al curso
+                    </a>
+                </li>
             </ul>
             </div>
         </div>
@@ -37,4 +46,8 @@ const Card = ({ imgURL, title, paragraph, children }) =>(
     </React.Fragment>
 );
 
-export default Card;
+const mapDispatchToProps = dispatch =>({
+    setSpeaker: speaker => dispatch(setSpeaker(speaker))
+});
+
+export default connect(null,mapDispatchToProps)(Card);

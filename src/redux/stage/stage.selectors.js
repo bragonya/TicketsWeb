@@ -17,3 +17,8 @@ export const selectCurrentCourse = createSelector(
     stage => stage.currentCourse
 );
 
+export const selectSpeaker = createSelector(
+    [selectStage],
+    stage => stage.speaker
+);
+
