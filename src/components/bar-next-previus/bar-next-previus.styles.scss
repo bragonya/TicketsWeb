@@ -1,0 +1,20 @@
+.bar-next-previus{
+    display: flex;
+    //float: center;
+    align-self: center;
+    margin: -1rem;
+}
+
+.separator-bar-next-previus{    
+    width: 40rem;
+}
+.previus{
+    line-height: bold;
+    text-shadow: 2px 2px rgb(223, 217, 217);
+    color: rgba(0, 0, 0, 0.719);
+}
+.next{
+    line-height: bold;
+    text-shadow: 2px 2px rgb(223, 217, 217);
+    color: rgba(0, 0, 0, 0.719);
+}

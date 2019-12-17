@@ -7,6 +7,7 @@ import LegendCroquis from '../legend-croquis/legend-croquis.component';
 import LegendDetails  from '../legend-details/legend-details.component';
 import LegendPrices from '../legend-prices/legend-prices.component';
 import Clock from '../clock/clock.component';
+import NextPrevius from '../bar-next-previus/bar-next-previus.component';
 
 import { CONST_SPEAKERS_ENUM } from '../../assets/constants';
 
@@ -29,7 +30,9 @@ const Croquis = ({ mainStage, currentUser, currentCourse }) =>{
         <div className="container-croquis">
         
             <div className="box-croquis">
+                <NextPrevius/>
                 <div className="grid-row-croquis vip">
+                    
                     <h3><strong>Curso de { currentCourse }</strong> </h3>
                 </div>
                 {currentUser?
