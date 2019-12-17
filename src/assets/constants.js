@@ -8,5 +8,5 @@ export const CONST_SEAT_STATES={
 export const CONST_SPEAKERS_ENUM={
     kim:'KIM',
     kano:'KANO',
-    between:'AMBOS'
+    both:'AMBOS'
 }

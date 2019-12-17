@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import { CONST_SPEAKERS_ENUM } from '../../assets/constants';
 import { setSpeaker, setCourse } from '../../redux/stage/stage.actions';
 
 import './card.styles.scss';
@@ -29,7 +30,10 @@ const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, setCourse, histor
                 <li><div 
                         onClick={()=>{
                             setSpeaker(speaker)
-                            setCourse(speaker)
+                            setCourse(
+                                speaker===CONST_SPEAKERS_ENUM.both?
+                                CONST_SPEAKERS_ENUM.kim
+                                :speaker)
                             history.push('/reservation')
                             }} >
                         Incribirse al curso

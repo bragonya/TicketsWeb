@@ -87,7 +87,7 @@
     color: lighten(#333, 10%);
     text-align: justify;
     text-justify: inter-word;
-    font-size: 12px;
+    font-size: 13px;
   }
   .blog-tags ul {
     display: flex;
@@ -140,6 +140,7 @@
     text-transform: uppercase;
     position: relative;
     white-space: nowrap;
+
     & a {
       color: lighten(#333, 40%);
     }
@@ -151,7 +152,10 @@
     //border: 1px solid lighten(#333, 40%);
     border-radius: 3px;
     padding: 0 .5rem;
-    
+    &.tached{
+      text-decoration:line-through;
+      color: #ff4d4d;
+    }
   }
   .numero {
     position: relative;
