@@ -43,7 +43,7 @@ export class App extends React.Component{
       secure: true
     });
     
-    const { setSocket, setStateSeat, setCurrentUser, setClockTime, history } = this.props;    
+    const { setSocket, setStateSeat, setCurrentUser, setClockTime, history, currentUser } = this.props;    
     setSocket(socket);
     socket.emit('connected',{},(initialStage)=>{
       initialStage.forEach(seat=>{
@@ -54,7 +54,7 @@ export class App extends React.Component{
 
     if (window.performance) {
       if (performance.navigation.type === 1) {
-        if(window.location.pathname==='/reservation'){
+        if(window.location.pathname==='/reservation' && currentUser){
           this.unlockAllSeats();
           socket.removeAllListeners('countdownStart');
           socket.on('countdownStart',function(time){
@@ -77,7 +77,7 @@ export class App extends React.Component{
     }
     
     history.listen((location, action) => {
-      if(location.pathname==='/reservation'){
+      if(location.pathname==='/reservation' && currentUser){
         this.unlockAllSeats();
         socket.removeAllListeners('countdownStart');
         socket.on('countdownStart',function(time){
