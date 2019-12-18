@@ -56,7 +56,7 @@ const Croquis = ({ mainStage, currentUser, currentCourse, speaker }) =>{
                     <DentistX className='img-dentis-croquis'/>            
                 </div>
                 <div className="grid-row-croquis vip" >
-                    <ShootingX className='img-shooting-croquis'/>            
+                    {currentCourse===CONST_SPEAKERS_ENUM.kano?<ShootingX className='img-shooting-croquis'/>:null}
                 </div>
 
                 <div className={`grid-row-croquis lounge ${currentCourse}`}>
@@ -65,7 +65,7 @@ const Croquis = ({ mainStage, currentUser, currentCourse, speaker }) =>{
                     <Section key={'SL2'} section = { {...SL2, course:currentCourse} }/>
                 </div>
                 <hr/>
-                <div className="grid-row-croquis vip KIM">
+                <div className={`grid-row-croquis vip ${currentCourse}`}>
                     <Section key={'VIP1'} section = { {...VIP1, course:currentCourse} }/>
                     <hr/>
                     <Section key={'VIP2'} section = { {...VIP2, course:currentCourse} }/>
