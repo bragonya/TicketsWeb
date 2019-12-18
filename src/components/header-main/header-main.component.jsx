@@ -70,9 +70,9 @@ class HeaderMain  extends React.Component{
               <li className="nav-item">
                 <Link to="/select" className="nav-link" onClick={() => { this.collapseClick(); }} >Seleccionar Curso</Link>
               </li>
-              <li className="nav-item">
+              {/*<li className="nav-item">
                 <Link to="/about" className="nav-link" onClick={() => { this.collapseClick(); }} >Sobre</Link>
-              </li>
+          </li>*/}
               {itemsCount?
                 <li className="nav-item" >
                   <Link 

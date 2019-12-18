@@ -57,7 +57,7 @@ class SignIn extends React.Component {
         })
         .catch(err=>
                 {console.log(err)
-                setCurrentUser({email:'rluis4490@gmail.com'});
+                setCurrentUser({email:'rluis4490@gmail.com',admin:true});
                 localStorage.setItem('user',JSON.stringify({email:'rluis4490@gmail.com'}));
                 history.push('/select');
 

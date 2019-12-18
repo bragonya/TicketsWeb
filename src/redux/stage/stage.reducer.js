@@ -31,7 +31,7 @@ const stageReducer = (state = INITIAL_STATE, action) =>{
             return {
                 ...state,
                 currentCourse : action.payload
-            }        
+            }
         default:
             return state;
     }

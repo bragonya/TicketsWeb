@@ -4,6 +4,8 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
+
 import io from "socket.io-client";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -41,7 +43,8 @@ export class App extends React.Component{
       secure: true
     });
     
-    
+    const { setSocket, setStateSeat, setCurrentUser, setClockTime, history } = this.props;    
+    setSocket(socket);
     socket.emit('connected',{},(initialStage)=>{
       initialStage.forEach(seat=>{
         console.log(seat);
@@ -51,29 +54,62 @@ export class App extends React.Component{
 
     if (window.performance) {
       if (performance.navigation.type === 1) {
-        this.unlockAllSeats();
+        if(window.location.pathname==='/reservation'){
+          this.unlockAllSeats();
+          socket.removeAllListeners('countdownStart');
+          socket.on('countdownStart',function(time){
+            setClockTime(time);
+          });
+          socket.emit('close','');
+          socket.emit('countdownStart',{},(clockFinishMessage)=>{
+            this.unlockAllSeats();
+            socket.removeAllListeners('countdownStart');
+            history.push('/reservation');
+          });
+        }else{
+          if(!(window.location.pathname==='/checkout')){
+            this.unlockAllSeats();
+          }
+          socket.emit('close','');
+          socket.removeAllListeners('countdownStart');
+        }
       }
     }
     
-    socket.emit('countdownStart',{},(clockFinishMessage)=>{
-      this.unlockAllSeats();
+    history.listen((location, action) => {
+      if(location.pathname==='/reservation'){
+        this.unlockAllSeats();
+        socket.removeAllListeners('countdownStart');
+        socket.on('countdownStart',function(time){
+          setClockTime(time);
+        });
+        socket.emit('close','');
+        socket.emit('countdownStart',{},(clockFinishMessage)=>{
+          this.unlockAllSeats();
+          socket.removeAllListeners('countdownStart');
+          history.push('/reservation');
+        });
+        
+      }else{
+        if(!(location.pathname==='/checkout')){
+          this.unlockAllSeats();
+        }
+        socket.emit('close','');
+        socket.removeAllListeners('countdownStart');
+      }
     });
+
     
-    const { setSocket, setStateSeat, setCurrentUser } = this.props;
-    setSocket(socket);
-    
+  
     socket.on('newSeatModified',function(seat){
       setStateSeat(seat);
     });
-
-    socket.on('countdownStart',function(time){
-      console.log('TIME:'+time);
-      setClockTime(time);
-    });
-
+    
     setCurrentUser({email:'rluis4490@gmail.com'});
     if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')))
   }
+
+  
 
   unlockAllSeats = () =>{
     const  { clearItemsCart, setStateSeat } = this.props;    
@@ -117,11 +153,7 @@ export class App extends React.Component{
             }
           />
 
-          <Route  path='/reservation' render={({ history })=>{
-                                                  socket.emit('countdownStart',{},(clockFinishMessage)=>{
-                                                    this.unlockAllSeats();
-                                                    history.push('/reservation');
-                                                  });
+          <Route  path='/reservation' render={()=>{   
                                                   return <SeatReservationPage/>
                                               }}
             />
@@ -132,13 +164,8 @@ export class App extends React.Component{
           <Route 
             exact 
             path="/checkout" 
-            render={({ history }) =>{
-                  if(cartItemsCount){
-                    socket.emit('countdownRestart',{},(clockFinishMessage)=>{
-                      this.unlockAllSeats();
-                      history.push('/reservation');
-                    });
-                  }
+            render={() =>{
+                  
                   return !cartItemsCount? (
                   <Redirect to='/reservation'/>
                   ):(
@@ -176,8 +203,9 @@ const mapDispatchToProps = dispatch => ({
   setSocket : socket => dispatch(setSocket(socket)),
   setStateSeat : seat => dispatch(setStateSeat(seat)),
   setCurrentUser : user => dispatch(setCurrentUser(user)),
-  clearItemsCart: ()  => dispatch(clearItemsCart())
+  clearItemsCart: ()  => dispatch(clearItemsCart()),
+  setClockTime:     time => dispatch(setClockTime(time))
 });
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));
