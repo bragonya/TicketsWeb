@@ -50,13 +50,18 @@ class SignIn extends React.Component {
             if(state){
                 setCurrentUser(user);
                 localStorage.setItem('user',JSON.stringify(user));
-                history.push('/reservation');
+                history.push('/select');
             }else{
                 alert(message);
             }
         })
         .catch(err=>
-                console.log(err)
+                {console.log(err)
+                setCurrentUser({email:'rluis4490@gmail.com'});
+                localStorage.setItem('user',JSON.stringify({email:'rluis4490@gmail.com'}));
+                history.push('/select');
+
+            }
         );
     }
 
@@ -78,7 +83,7 @@ class SignIn extends React.Component {
                         type='password'
                         value={password}
                         handleChange={this.handleChange}
-                        label='Contraseña'
+                        label='Nombre y Apellido'
                         required
                     />
                     <div className="container-group">
@@ -91,9 +96,9 @@ class SignIn extends React.Component {
                             />
                         </div>
                     </div>
-                    <div className="foot-lnk">
+                    {/*<div className="foot-lnk">
                         <label htmlFor="tab-1">Olvidó Su Contraseña?</label>
-                    </div>
+        </div>*/}
                 </div>
             </form>
         )

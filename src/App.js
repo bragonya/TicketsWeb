@@ -16,6 +16,7 @@ import CheckOutPage from './pages/checkout-page/checkout-page.component';
 import  SignInSignUpPage  from './pages/sign-in-sign-up-page/sign-in-sign-up-page.component';
 import AdminPage from './pages/admin-page/admin-page.component';
 import SelectCoursePage from './pages/select-course-page/select-course-page.component';
+import PaymentSuccess from './pages/payment-success/payment-success.component';
 
 import { setSocket, setCurrentUser } from './redux/user/user.actions';
 import { setStateSeat, setClockTime } from './redux/stage/stage.actions';
@@ -44,7 +45,7 @@ export class App extends React.Component{
     socket.emit('connected',{},(initialStage)=>{
       initialStage.forEach(seat=>{
         console.log(seat);
-        setStateSeat(seat);
+        //setStateSeat(seat);
       });
     });
 
@@ -127,7 +128,7 @@ export class App extends React.Component{
           <Route  path='/socket' component={SocketExample}/>
           <Route  path='/admin' component={AdminPage}/>
           <Route  path='/select' component={SelectCoursePage}/>
-
+          <Route  path='/paymentsuccess' component={PaymentSuccess}/>
           <Route 
             exact 
             path="/checkout" 
