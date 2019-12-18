@@ -32,15 +32,22 @@ let socket;
 export class App extends React.Component{
 
   unsubscribeFromAuth = null;
-
   constructor(props){
     super(props);
-    socket = io.connect("https://odontologiaindependiente.com:4001",{
-      secure: true
-    });
+    console.log('asdasdasdasd');
+    if (process.env.NODE_ENV == 'development') {
+      console.log('dev '+process.env.REACT_APP_SOCKET_URL)
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL);
+    }else {
+      console.log('else, is not dev '+process.env.REACT_APP_SOCKET_URL);
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
+        secure: true
+      });
+    }
     
     
     socket.emit('connected',{},(initialStage)=>{
+      console.log('emit connected');
       initialStage.forEach(seat=>{
         setStateSeat(seat);
       });
@@ -53,6 +60,7 @@ export class App extends React.Component{
     }
     
     socket.emit('countdownStart',{},(clockFinishMessage)=>{
+      console.log('emi countdownStart');
       this.unlockAllSeats();
     });
     
@@ -60,10 +68,12 @@ export class App extends React.Component{
     setSocket(socket);
     
     socket.on('newSeatModified',function(seat){
+      console.log('on newSeatModified');
       setStateSeat(seat);
     });
 
     socket.on('countdownStart',function(time){
+      console.log('on countdownStart');
       setClockTime(time);
     });
     

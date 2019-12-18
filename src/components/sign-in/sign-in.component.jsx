@@ -33,7 +33,7 @@ class SignIn extends React.Component {
 
     consumeApi = () => {
         const { props:{ history, setCurrentUser }, state:{ email, password } } = this;
-        fetch("https://odontologiaindependiente.com/login", {
+        fetch(process.env.REACT_APP_BASE_URL + "/login", {
             method: "post",
             headers: {
                 'Accept': 'application/json',
