@@ -6,23 +6,23 @@ import { setCurrentUser } from '../../redux/user/user.actions';
 
 import FormInput from "../form-input/form-input.component";
 
+let initialState = {
+    email: '',
+    fullname: ''
+};
 
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
-    
-        this.state = {
-          email: '',
-          password: ''
-        };
+        this.state = { ...initialState };
     }
 
     handleSubmit = event => {
         event.preventDefault();
         try {
-          this.setState({ email: '', password: '' });
+            this.consumeApi();
         } catch (error) {
-          console.log(error);
+            
         }
     };
 
@@ -32,34 +32,50 @@ class SignIn extends React.Component {
     };
 
     consumeApi = () => {
-        const { props:{ history, setCurrentUser }, state:{ email, password } } = this;
-        fetch(process.env.REACT_APP_BASE_URL + "/login", {
-            method: "post",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        })
-        .then( response => response.json())
-        .then( response =>{
-            const { state, message, user } = response;
-            if(state){
-                setCurrentUser(user);
-                localStorage.setItem('user',JSON.stringify(user));
-                history.push('/select');
+        const { props:{ history, setCurrentUser }, state:{ email, fullname } } = this;
+        let fullnameSplit =  fullname.trim().split(/(\s+)/);
+        console.log(fullnameSplit);
+        
+        if(fullnameSplit.length===3){
+            if(!(fullnameSplit[0].trim()==="") && !(fullnameSplit[2].trim()==="")){
+                fetch(process.env.REACT_APP_BASE_URL + "/login", {
+                    method: "post",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        firstname: fullnameSplit[0].trim(),
+                        lastname: fullnameSplit[2].trim()
+                    })
+                })
+                .then( response => response.json())
+                .then( response =>{
+                    const { state, message, user } = response;
+                    if(state){
+                        setCurrentUser(user);
+                        localStorage.setItem('user',JSON.stringify(user));
+                        history.push('/select');
+                    }else{
+                        alert(message);
+                    }
+                    this.setState({ ...initialState });
+                })
+                .catch(err=>{
+                    console.log(err);
+                    this.setState({ ...initialState });
+                });
             }else{
-                alert(message);
+                alert('No ha ingresado el primer nombre o primer apellido');
             }
-        })
-        .catch(err=>console.log(err));
+        }else{
+            alert('Verifique que ha ingresado su primer nombre y primer apellido');
+        }
     }
 
     render(){
-        const { email, password } = this.state;
+        const { email, fullname } = this.state;
         return(
             <form onSubmit={this.handleSubmit}>
                 <div className="sign-in-htm">
@@ -72,26 +88,22 @@ class SignIn extends React.Component {
                         required
                     />
                     <FormInput
-                        name='password'
-                        type='password'
-                        value={password}
+                        name='fullname'
+                        type='text'
+                        value={fullname}
                         handleChange={this.handleChange}
-                        label='Nombre y Apellido'
+                        label='Primer nombre y primer apellido'
                         required
                     />
                     <div className="container-group">
                         <div className="group">
                             <input 
                                 type="submit" 
-                                onClick = {this.consumeApi}
                                 className="button sign-in" 
                                 value="Entrar"
                             />
                         </div>
                     </div>
-                    {/*<div className="foot-lnk">
-                        <label htmlFor="tab-1">Olvidó Su Contraseña?</label>
-        </div>*/}
                 </div>
             </form>
         )

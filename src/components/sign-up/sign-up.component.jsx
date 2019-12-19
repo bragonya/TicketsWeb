@@ -1,20 +1,20 @@
 import React from 'react';
 import FormInput from '../form-input/form-input.component';
 
+
+let initialState ={
+    firstname:'',
+    lastname:'',
+    telephone:'',//number
+    email: '',
+    comment: '',
+    register_number: '',//number
+    university: ''
+};
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            firstname:'',
-            lastname:'',
-            telephone:'',//number
-            email: '',
-            comment: '',
-            register_number: '',//number
-            university: '',    
-            password: '',
-            confirmPassword: ''
-        };
+        this.state = { ...initialState };
     }
 
     handleSubmit = async event => {
@@ -22,17 +22,12 @@ class SignUp extends React.Component {
     
         const { state:{
                     firstname, lastname, telephone, email,
-                    comment, register_number, university, password, confirmPassword
+                    comment, register_number, university
                 },
                 props:{
                     goSignIn
                 }
               } = this;
-    
-        if (password !== confirmPassword) {
-          alert("passwords no son iguales");
-          return;
-        }
     
         try {
             let response = await fetch(process.env.REACT_APP_BASE_URL + "/register", {
@@ -48,24 +43,13 @@ class SignUp extends React.Component {
                     email:email,
                     comment:comment,
                     register_number:parseInt(register_number),
-                    university:university,    
-                    password:password
+                    university:university
                 })
             });
             let { state, message } = await response.json();
             if(state){
                 alert(message);
-                this.setState({
-                    firstname:'',
-                    lastname:'',
-                    telephone:'',//number
-                    email: '',
-                    comment: '',
-                    register_number: '',//number
-                    university: '',    
-                    password: '',
-                    confirmPassword: ''
-                });
+                this.setState({ ...initialState });
                 goSignIn();
             }else{
                 alert(message);    
@@ -84,7 +68,7 @@ class SignUp extends React.Component {
     
     render(){
         const { firstname, lastname, telephone, email,
-            comment, register_number, university, password, confirmPassword 
+            comment, register_number, university
           } = this.state;
 
         return (            
@@ -143,25 +127,8 @@ class SignUp extends React.Component {
                         name='comment'
                         value={comment}
                         onChange={this.handleChange}
-                        label='Comentario'
-                        
+                        label='Comentario'  
                     />
-                    {/*<FormInput
-                        type='password'
-                        name='password'
-                        value={password}
-                        onChange={this.handleChange}
-                        label='Contraseña'
-                        required
-                    />
-                    <FormInput
-                        type='password'
-                        name='confirmPassword'
-                        value={confirmPassword}
-                        onChange={this.handleChange}
-                        label='Confirmar Contraseña'
-                        required
-                    />*/}
                     <div className="group">
                         <input type="submit" className="button" value="Inscribeme"/>
                     </div>

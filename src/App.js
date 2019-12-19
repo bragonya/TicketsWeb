@@ -38,12 +38,9 @@ export class App extends React.Component{
   unsubscribeFromAuth = null;
   constructor(props){
     super(props);
-    console.log('asdasdasdasd');
     if (process.env.NODE_ENV === 'development') {
-      console.log('dev '+process.env.REACT_APP_SOCKET_URL)
       socket = io.connect(process.env.REACT_APP_SOCKET_URL);
     }else {
-      console.log('else, is not dev '+process.env.REACT_APP_SOCKET_URL);
       socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
         secure: true
       });
@@ -54,7 +51,6 @@ export class App extends React.Component{
     socket.emit('connected',{},(initialStage)=>{
       console.log('emit connected');
       initialStage.forEach(seat=>{
-        console.log(seat);
         setStateSeat(seat);
       });
     });
@@ -114,9 +110,7 @@ export class App extends React.Component{
     }
     
     history.listen((location, action) => {
-      console.log('push');
       if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
-        console.log('-1-');
         if(!(location.pathname==='/checkout')){
           this.unlockAllSeats();
         }
@@ -132,7 +126,6 @@ export class App extends React.Component{
         });
         
       }else{
-        console.log('-2-');
         if(!(location.pathname==='/checkout')){
           this.unlockAllSeats();
         }
