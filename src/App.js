@@ -36,16 +36,23 @@ let socket;
 export class App extends React.Component{
 
   unsubscribeFromAuth = null;
-
   constructor(props){
     super(props);
-    socket = io.connect("http://localhost:4001",{
-      secure: true
-    });
+    console.log('asdasdasdasd');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('dev '+process.env.REACT_APP_SOCKET_URL)
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL);
+    }else {
+      console.log('else, is not dev '+process.env.REACT_APP_SOCKET_URL);
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
+        secure: true
+      });
+    }
     
     const { setSocket, setStateSeat, setCurrentUser } = this.props;    
     setSocket(socket);
     socket.emit('connected',{},(initialStage)=>{
+      console.log('emit connected');
       initialStage.forEach(seat=>{
         console.log(seat);
         setStateSeat(seat);
@@ -53,6 +60,7 @@ export class App extends React.Component{
     });
 
     socket.on('newSeatModified',function(seat){
+      console.log('on newSeatModified');
       setStateSeat(seat);
     });
     if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')));

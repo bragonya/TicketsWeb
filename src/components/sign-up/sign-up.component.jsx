@@ -35,7 +35,7 @@ class SignUp extends React.Component {
         }
     
         try {
-            let response = await fetch("https://odontologiaindependiente.com/register", {
+            let response = await fetch(process.env.REACT_APP_BASE_URL + "/register", {
                 method: "post",
                 headers: {
                     'Accept': 'application/json',
