@@ -84,6 +84,33 @@ export class App extends React.Component{
     clearItemsCart();
     localStorage.removeItem('cartItems');
   }
+  
+  componentDidUpdate(){
+    history.listen((location, action) => {
+      if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
+        if(!(location.pathname==='/checkout')){
+          this.unlockAllSeats();
+        }
+        socket.removeAllListeners('countdownStart');
+        socket.on('countdownStart',function(time){
+          setClockTime(time);
+        });
+        socket.emit('close-timer','');
+        socket.emit('countdownStart',{},(clockFinishMessage)=>{
+          this.unlockAllSeats();
+          socket.removeAllListeners('countdownStart');
+          history.push('/reservation');
+        });
+        
+      }else{
+        if(!(location.pathname==='/checkout')){
+          this.unlockAllSeats();
+        }
+        socket.emit('close-timer','');
+        socket.removeAllListeners('countdownStart');
+      }
+    });
+  }
 
   componentDidMount(){
     const { setClockTime, history } = this.props;    
@@ -109,32 +136,7 @@ export class App extends React.Component{
           socket.removeAllListeners('countdownStart');
         }
       }
-    }
-    
-    history.listen((location, action) => {
-      if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
-        if(!(location.pathname==='/checkout')){
-          this.unlockAllSeats();
-        }
-        socket.removeAllListeners('countdownStart');
-        socket.on('countdownStart',function(time){
-          setClockTime(time);
-        });
-        socket.emit('close-timer','');
-        socket.emit('countdownStart',{},(clockFinishMessage)=>{
-          this.unlockAllSeats();
-          socket.removeAllListeners('countdownStart');
-          history.push('/reservation');
-        });
-        
-      }else{
-        if(!(location.pathname==='/checkout')){
-          this.unlockAllSeats();
-        }
-        socket.emit('close-timer','');
-        socket.removeAllListeners('countdownStart');
-      }
-    });
+    } 
   }
 
   componentWillUnmount() {
