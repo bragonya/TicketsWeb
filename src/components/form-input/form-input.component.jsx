@@ -1,7 +1,7 @@
 import React from 'react';
 
-const FormInput = ({ handleChange, label, ...otherProps }) => (
-  <div className='group'>
+const FormInput = ({ handleChange,className, label, ...otherProps }) => (
+  <div className={className?`group${className}`:'group'}>
     {label ? (
       <label
         className={'label'}
@@ -9,7 +9,12 @@ const FormInput = ({ handleChange, label, ...otherProps }) => (
         {label}
       </label>
     ) : null}
-    <input className='input' onChange={handleChange} {...otherProps} />
+    <input 
+      //onInput={evt=>evt.target.setCustomValidity('')} 
+      //onInvalid={evt=>evt.target.setCustomValidity('Este campo es requerido')} 
+      
+      className='input' 
+      onChange={handleChange} {...otherProps} />
   </div>
 );
 

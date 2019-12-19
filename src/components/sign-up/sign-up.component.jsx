@@ -146,7 +146,7 @@ class SignUp extends React.Component {
                         label='Comentario'
                         
                     />
-                    <FormInput
+                    {/*<FormInput
                         type='password'
                         name='password'
                         value={password}
@@ -161,7 +161,7 @@ class SignUp extends React.Component {
                         onChange={this.handleChange}
                         label='Confirmar Contraseña'
                         required
-                    />
+                    />*/}
                     <div className="group">
                         <input type="submit" className="button" value="Inscribeme"/>
                     </div>

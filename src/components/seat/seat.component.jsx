@@ -3,20 +3,22 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
-import { CONST_SEAT_STATES } from '../../assets/constants';
+import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from '../../assets/constants';
 import { setStateSeat } from '../../redux/stage/stage.actions';
 import { addSeatCart, removeSeatCart } from '../../redux/cart/cart.actions';
-import { selectConexionSocket }from '../../redux/user/user.selectors';
+import { selectConexionSocket, selectCurrentUser }from '../../redux/user/user.selectors';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectCurrentCourse,selectSpeaker } from '../../redux/stage/stage.selectors';
+import { CONST_PRICES } from '../../assets/constants';
 
 
 import PopoverGeneric from '../popover-generic/popover-generic.component';
 
 import './seat.styles.scss';
 
-const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, history}) =>{
-    const { id, colname, state , key , price} = seatdata;
+const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, currentCourse, speaker, history}) =>{
+    const { id, colname, state , key , idN, course} = seatdata;
+    
     var properties={
         key:`'span-'${key}${id}${colname}`,
             id:`${key}${id}${colname}`,
@@ -29,6 +31,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                         columna : id,
                         fila : colname,
                         seccion : key,
+                        curso: course,
                         estado : state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.selected
                     };
                     conexionSocket.emit(
@@ -42,9 +45,13 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                                     ...seatModified
                                 });
                                 if(state==='selected'){
-                                    removeSeatCart({...seatModified,price});
+                                    removeSeatCart({...seatModified,
+                                        price:CONST_PRICES[currentCourse][speaker=!CONST_SPEAKERS_ENUM.both?'only':CONST_SPEAKERS_ENUM.both][idN].PRICE
+                                    });
                                 }else{
-                                    addSeatCart({...seatModified,price});
+                                    addSeatCart({...seatModified,
+                                        price: CONST_PRICES[currentCourse][speaker=!CONST_SPEAKERS_ENUM.both?'only':CONST_SPEAKERS_ENUM.both][idN].PRICE
+                                    });
                                 }
                             }else{
                                 alert(message);
@@ -77,7 +84,9 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
 const mapStateToProps = createStructuredSelector({
     conexionSocket: selectConexionSocket,
     cartItems : selectCartItems,
-    currentUser : selectCurrentUser
+    currentUser : selectCurrentUser,
+    currentCourse: selectCurrentCourse,
+    speaker : selectSpeaker
 });
 
 const mapDispatchToProps = dispatch => ({

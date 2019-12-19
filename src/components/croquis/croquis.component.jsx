@@ -7,19 +7,22 @@ import LegendCroquis from '../legend-croquis/legend-croquis.component';
 import LegendDetails  from '../legend-details/legend-details.component';
 import LegendPrices from '../legend-prices/legend-prices.component';
 import Clock from '../clock/clock.component';
+import NextPrevius from '../bar-next-previus/bar-next-previus.component';
+
+import { CONST_SPEAKERS_ENUM } from '../../assets/constants';
 
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { selectMainStage } from '../../redux/stage/stage.selectors';
+import { selectMainStage, selectCurrentCourse, selectSpeaker } from '../../redux/stage/stage.selectors';
 
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 import { ReactComponent as DentistX } from '../../assets/dentist.svg';
+import { ReactComponent as ShootingX } from '../../assets/shooting_room.svg';
 
 import './croquis.styles.scss';
 
-const Croquis = ({ mainStage, currentUser }) =>{
+const Croquis = ({ mainStage, currentUser, currentCourse, speaker }) =>{
     const {
-            /*KIM:{SL1,SL2,VIP1,VIP2,PF1,PF2}*/
-            KANO:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}
+            [currentCourse]:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}
           } = mainStage;
     return (
         <React.Fragment>
@@ -27,8 +30,12 @@ const Croquis = ({ mainStage, currentUser }) =>{
         <div className="container-croquis">
         
             <div className="box-croquis">
+                {speaker===CONST_SPEAKERS_ENUM.both?
+                    <NextPrevius/>:!currentUser?<NextPrevius/>:null
+                }
                 <div className="grid-row-croquis vip">
-                    <h3><strong>Curso de KANO</strong> </h3>
+                    
+                    <h3><strong>Curso de { currentCourse }</strong> </h3>
                 </div>
                 {currentUser?
                     <div className="grid-row-croquis vip">
@@ -48,38 +55,44 @@ const Croquis = ({ mainStage, currentUser }) =>{
                 <div className="grid-row-croquis vip" >
                     <DentistX className='img-dentis-croquis'/>            
                 </div>
-                <div className="grid-row-croquis lounge KIM">
-                    <Section key={'SL1'}  section = { SL1 }/>
+                <div className="grid-row-croquis vip" >
+                    {currentCourse===CONST_SPEAKERS_ENUM.kano?<ShootingX className='img-shooting-croquis'/>:null}
+                </div>
+
+                <div className={`grid-row-croquis lounge ${currentCourse}`}>
+                    <Section key={'SL1'}  section = { {...SL1, course:currentCourse } }/>
                     <hr/>
-                    <Section key={'SL2'} section = { SL2 }/>
+                    <Section key={'SL2'} section = { {...SL2, course:currentCourse} }/>
                 </div>
                 <hr/>
-                <div className="grid-row-croquis vip KIM">
-                    <Section key={'VIP1'} section = { VIP1 }/>
+                <div className={`grid-row-croquis vip ${currentCourse}`}>
+                    <Section key={'VIP1'} section = { {...VIP1, course:currentCourse} }/>
                     <hr/>
-                    <Section key={'VIP2'} section = { VIP2 }/>
+                    <Section key={'VIP2'} section = { {...VIP2, course:currentCourse} }/>
                 </div>
                 <hr/>
-                <div className="grid-row-croquis profesionales KANO">
-                    <Section key={'P1'} section = { PF1 }/>
+                <div className={`grid-row-croquis profesionales ${currentCourse}`}>
+                    <Section key={'P1'} section = { {...PF1, course:currentCourse} }/>
                     <hr/>
-                    <Section key={'P2'} section = { PF2 }/>
-                    <hr/><hr/>
-                    <Section key={'P3'} section = { PF3 }/>
+                    <Section key={'P2'} section = { { ...PF2,course:currentCourse } }/>
+                    
+                    {currentCourse===CONST_SPEAKERS_ENUM.kano?<React.Fragment><hr/><hr/>
+                    <Section key={'P3'} section = { {...PF3, course:currentCourse} }/>
                     <hr/>
-                    <Section key={'P4'} section = { PF4 }/>    
+                    <Section key={'P4'} section = { {...PF4, course:currentCourse} }/>
+                    </React.Fragment>:null}
                 </div>
-                <hr/>
+                {currentCourse===CONST_SPEAKERS_ENUM.kano?<React.Fragment><hr/>
                 <div className="grid-row-croquis">
-                    <Section key={'E1'} section = { E1 }/>
+                    <Section key={'E1'} section = { {...E1, course:currentCourse} }/>
                     <hr/>
-                    <Section key={'E2'} section = { E2 }/>
+                    <Section key={'E2'} section = { {...E2, course:currentCourse} }/>
 
                     <hr/><hr/>
-                    <Section key={'E3'} section = { E3 }/>
+                    <Section key={'E3'} section = { {...E3,course:currentCourse} }/>
                     <hr/>
-                    <Section key={'E4'} section = { E4 }/>
-                </div>
+                    <Section key={'E4'} section = { {...E4, course:currentCourse} }/>
+                </div></React.Fragment>:null}
             </div>
         </div>
         </React.Fragment>
@@ -88,7 +101,9 @@ const Croquis = ({ mainStage, currentUser }) =>{
 
 const mapStateToProps = createStructuredSelector({
     mainStage: selectMainStage,
-    currentUser: selectCurrentUser
+    currentUser: selectCurrentUser,
+    currentCourse: selectCurrentCourse,
+    speaker : selectSpeaker
 });
 
 export default connect(mapStateToProps)(Croquis);

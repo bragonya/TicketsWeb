@@ -50,7 +50,13 @@
 
     &.KIM{
       margin-left: 14%;
-      margin-right: 9%;
+      margin-right: 16%;
+      justify-content: center;
+    }
+
+    &.KANO{
+      margin-left: 14%;
+      margin-right: 14%;
       justify-content: center;
     }
     
@@ -63,7 +69,12 @@
       margin-left: 31%;
       margin-right: 30.4%;
       justify-content: center;
-    }  
+    } 
+    &.KANO{
+      margin-left: 31%;
+      margin-right: 30.4%;
+      justify-content: center;
+    } 
   }
   &.profesionales{
     &.KIM{

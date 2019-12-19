@@ -12,3 +12,13 @@ export const selectClockTime = createSelector(
     stage => stage.clockTime
 );
 
+export const selectCurrentCourse = createSelector(
+    [selectStage],
+    stage => stage.currentCourse
+);
+
+export const selectSpeaker = createSelector(
+    [selectStage],
+    stage => stage.speaker
+);
+

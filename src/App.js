@@ -4,6 +4,8 @@ import {
   Switch,
   Redirect
 } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
+
 import io from "socket.io-client";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -15,6 +17,8 @@ import HeaderMain from './components/header-main/header-main.component';
 import CheckOutPage from './pages/checkout-page/checkout-page.component';
 import  SignInSignUpPage  from './pages/sign-in-sign-up-page/sign-in-sign-up-page.component';
 import AdminPage from './pages/admin-page/admin-page.component';
+import SelectCoursePage from './pages/select-course-page/select-course-page.component';
+import PaymentSuccess from './pages/payment-success/payment-success.component';
 
 import { setSocket, setCurrentUser } from './redux/user/user.actions';
 import { setStateSeat, setClockTime } from './redux/stage/stage.actions';
@@ -35,7 +39,7 @@ export class App extends React.Component{
   constructor(props){
     super(props);
     console.log('asdasdasdasd');
-    if (process.env.NODE_ENV == 'development') {
+    if (process.env.NODE_ENV === 'development') {
       console.log('dev '+process.env.REACT_APP_SOCKET_URL)
       socket = io.connect(process.env.REACT_APP_SOCKET_URL);
     }else {
@@ -45,40 +49,24 @@ export class App extends React.Component{
       });
     }
     
-    
+    const { setSocket, setStateSeat, setCurrentUser } = this.props;    
+    setSocket(socket);
     socket.emit('connected',{},(initialStage)=>{
       console.log('emit connected');
       initialStage.forEach(seat=>{
+        console.log(seat);
         setStateSeat(seat);
       });
     });
 
-    if (window.performance) {
-      if (performance.navigation.type === 1) {
-        this.unlockAllSeats();
-      }
-    }
-    
-    socket.emit('countdownStart',{},(clockFinishMessage)=>{
-      console.log('emi countdownStart');
-      this.unlockAllSeats();
-    });
-    
-    const { setSocket, setStateSeat, setCurrentUser } = this.props;
-    setSocket(socket);
-    
     socket.on('newSeatModified',function(seat){
       console.log('on newSeatModified');
       setStateSeat(seat);
     });
-
-    socket.on('countdownStart',function(time){
-      console.log('on countdownStart');
-      setClockTime(time);
-    });
-    
-    if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')))
+    if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')));
   }
+
+  
 
   unlockAllSeats = () =>{
     const  { clearItemsCart, setStateSeat } = this.props;    
@@ -95,6 +83,58 @@ export class App extends React.Component{
     });
     clearItemsCart();
     localStorage.removeItem('cartItems');
+  }
+
+  componentDidMount(){
+    const { setClockTime, history } = this.props;    
+    if (window.performance) {
+      if (performance.navigation.type === 1) {
+        if((window.location.pathname==='/reservation' || window.location.pathname==='/checkout') && localStorage.getItem('user')){
+          this.unlockAllSeats();
+          socket.removeAllListeners('countdownStart');
+          socket.on('countdownStart',function(time){
+            setClockTime(time);
+          });
+          socket.emit('close-timer','');
+          socket.emit('countdownStart',{},(clockFinishMessage)=>{
+            this.unlockAllSeats();
+            socket.removeAllListeners('countdownStart');
+            history.push('/reservation');
+          });
+        }else{
+          if(!(window.location.pathname==='/checkout')){
+            this.unlockAllSeats();
+          }
+          socket.emit('close-timer','');
+          socket.removeAllListeners('countdownStart');
+        }
+      }
+    }
+    
+    history.listen((location, action) => {
+      if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
+        if(!(location.pathname==='/checkout')){
+          this.unlockAllSeats();
+        }
+        socket.removeAllListeners('countdownStart');
+        socket.on('countdownStart',function(time){
+          setClockTime(time);
+        });
+        socket.emit('close-timer','');
+        socket.emit('countdownStart',{},(clockFinishMessage)=>{
+          this.unlockAllSeats();
+          socket.removeAllListeners('countdownStart');
+          history.push('/reservation');
+        });
+        
+      }else{
+        if(!(location.pathname==='/checkout')){
+          this.unlockAllSeats();
+        }
+        socket.emit('close-timer','');
+        socket.removeAllListeners('countdownStart');
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -122,27 +162,19 @@ export class App extends React.Component{
             }
           />
 
-          <Route  path='/reservation' render={({ history })=>{
-                                                  socket.emit('countdownStart',{},(clockFinishMessage)=>{
-                                                    this.unlockAllSeats();
-                                                    history.push('/reservation');
-                                                  });
+          <Route  path='/reservation' render={()=>{   
                                                   return <SeatReservationPage/>
                                               }}
             />
           <Route  path='/socket' component={SocketExample}/>
           <Route  path='/admin' component={AdminPage}/>
-
+          <Route  path='/select' component={SelectCoursePage}/>
+          <Route  path='/paymentsuccess' component={PaymentSuccess}/>
           <Route 
             exact 
             path="/checkout" 
-            render={({ history }) =>{
-                  if(cartItemsCount){
-                    socket.emit('countdownRestart',{},(clockFinishMessage)=>{
-                      this.unlockAllSeats();
-                      history.push('/reservation');
-                    });
-                  }
+            render={() =>{
+                  
                   return !cartItemsCount? (
                   <Redirect to='/reservation'/>
                   ):(
@@ -180,8 +212,9 @@ const mapDispatchToProps = dispatch => ({
   setSocket : socket => dispatch(setSocket(socket)),
   setStateSeat : seat => dispatch(setStateSeat(seat)),
   setCurrentUser : user => dispatch(setCurrentUser(user)),
-  clearItemsCart: ()  => dispatch(clearItemsCart())
+  clearItemsCart: ()  => dispatch(clearItemsCart()),
+  setClockTime:     time => dispatch(setClockTime(time))
 });
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));

@@ -51,4 +51,18 @@
 	transform: rotate(90deg) rotateY(150deg);;
 }
 
+.img-shooting-croquis{
+	width: 205px;
+	height: 205px;
+	
+	margin: -104px;
+	margin-right: 250px;
+	position: sticky;
+	
+	path{
+		fill:black;
+	}
+	clip-path: polygon(11% 0, 100% 0, 100% 100%, 11% 100%);
+}
+
 

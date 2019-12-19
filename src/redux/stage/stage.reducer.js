@@ -5,7 +5,9 @@ import {setStateToSeat} from './stage.utils';
 
 const INITIAL_STATE = {
     mainStage : event_seats_structure,
-    clockTime : '' 
+    currentCourse: 'KIM',
+    clockTime : 600,
+    speaker : null
 }
 
 const stageReducer = (state = INITIAL_STATE, action) =>{
@@ -20,6 +22,16 @@ const stageReducer = (state = INITIAL_STATE, action) =>{
                 ...state,
                 clockTime : action.payload
             }    
+        case StageActionsTypes.SET_SPEAKER:
+            return {
+                ...state,
+                speaker : action.payload
+            }        
+        case StageActionsTypes.SET_COURSE:
+            return {
+                ...state,
+                currentCourse : action.payload
+            }
         default:
             return state;
     }

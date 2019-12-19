@@ -1,9 +1,13 @@
 export const setStateToSeat = (mainStage,seatToSet) =>{
-    var refSeccion=mainStage[seatToSet.seccion];
-    if (!refSeccion) return mainStage
+    var refCurso=mainStage[seatToSet.curso];
+    if (!refCurso) return mainStage;
+    var refSeccion = refCurso[seatToSet.seccion];
+    if (!refSeccion) return mainStage;
     return{
         ...mainStage,
-        [seatToSet.seccion]:
+        [seatToSet.curso]:{
+            ...refCurso,
+            [seatToSet.seccion]:
             {
                 ...refSeccion,
                 seats_by_rows:refSeccion.seats_by_rows.map(row=>{
@@ -21,5 +25,6 @@ export const setStateToSeat = (mainStage,seatToSet) =>{
                     }
                 })
             }
+        }
     }
 }
