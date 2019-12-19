@@ -165,8 +165,21 @@ export class App extends React.Component{
                                               }}
             />
           <Route  path='/socket' component={SocketExample}/>
-          <Route  path='/admin' component={AdminPage}/>
-          <Route  path='/select' component={SelectCoursePage}/>
+          <Route  path='/admin' render={()=>{
+                    if(currentUser){
+                      if(currentUser.admin){
+                        return <AdminPage/>
+                      }
+                    }
+                    return (<Redirect to='/reservation'/>)
+            }}/>
+          <Route  path='/select' render={() =>
+              currentUser? (
+              <SelectCoursePage/>
+              ):(
+                <Redirect to='/reservation'/>
+              )}
+            />
           <Route  path='/paymentsuccess' component={PaymentSuccess}/>
           <Route 
             exact 

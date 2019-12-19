@@ -19,7 +19,8 @@ import './header-main.styles.scss';
 class HeaderMain  extends React.Component{
   constructor(props){
     super(props);
-    this.state={};
+    this.state = {
+    }
   }
 
   unlockAllSeats = () =>{
@@ -38,43 +39,37 @@ class HeaderMain  extends React.Component{
   }
 
   collapseClick = () => {
-    if(window.innerWidth<=767){
-      document.getElementById("toogleButton").click();
-    }
+    document.getElementById("menu-btn").checked = false;
   }
 
   render(){
     const { itemsCount, currentUser, history, setCurrentUser, conexionSocket } = this.props;
     return(
-    <nav className="navbar navbar-expand-md fixed-top">
-    <div className="row navbar-wrapper">
-      <button id = "toogleButton" className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarCollapse">
-        <ul className="navbar-nav mr-auto">
-          
-          {!currentUser?
-            <li className="nav-item active">
-              <Link to="/" className="nav-link" onClick={() => { this.collapseClick(); }}>Inicio</Link>
+      <div className="header-custom">
+        <span   className="logo-custom"></span>
+        <input className="menu-btn" type="checkbox" id="menu-btn" />
+        <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
+        <ul className="menu">
+        {!currentUser?
+            <li >
+              <Link to="/" onClick={() => { this.collapseClick(); }}>Inicio</Link>
             </li>:null
           }
-          <li className="nav-item">
+          <li>
                 <Link 
                       to="/reservation" 
-                      className="nav-link"
                       onClick={() => { this.collapseClick(); }}>Reservacion</Link>
           </li>
           {currentUser?
             <React.Fragment>    
-              <li className="nav-item">
-                <Link to="/select" className="nav-link" onClick={() => { this.collapseClick(); }} >Seleccionar Curso</Link>
+              <li >
+                <Link to="/select"  onClick={() => { this.collapseClick(); }} >Seleccionar Curso</Link>
               </li>
-              {currentUser.admin?<li className="nav-item">
-                <Link to="/about" className="nav-link" onClick={() => { this.collapseClick(); }} >Reporte</Link>
+              {currentUser.admin?<li >
+                <Link to="/about"  onClick={() => { this.collapseClick(); }} >Reporte</Link>
               </li>:null}
               {itemsCount?
-                <li className="nav-item" >
+                <li  >
                   <Link 
                         to="/checkout" 
                         className="nav-link btn btn-orange fadein"
@@ -102,12 +97,8 @@ class HeaderMain  extends React.Component{
           }
         </ul>
       </div>
-    </div>
-  </nav>
-)}
-
-  
-
+    )
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
@@ -122,5 +113,6 @@ const mapStateToProps = createStructuredSelector({
   cartItems   : selectCartItems,
   conexionSocket: selectConexionSocket
 });
+
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(HeaderMain));
