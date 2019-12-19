@@ -116,6 +116,7 @@ export class App extends React.Component{
     history.listen((location, action) => {
       console.log('push');
       if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
+        console.log('-1-');
         if(!(location.pathname==='/checkout')){
           this.unlockAllSeats();
         }
@@ -131,6 +132,7 @@ export class App extends React.Component{
         });
         
       }else{
+        console.log('-2-');
         if(!(location.pathname==='/checkout')){
           this.unlockAllSeats();
         }
