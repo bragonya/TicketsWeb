@@ -6,6 +6,7 @@
     position: fixed;
     width: 100%;
     z-index: 3;
+    min-width: 340px;
   }
   
   .header-custom ul {
@@ -54,9 +55,9 @@
   
   .header-custom .menu-icon {
     cursor: pointer;
-    display: inline-block;
-    //float: right;
-    padding: 28px 20px;
+    display: block;
+    float: right;
+    margin: 38px 20px;
     position: relative;
     user-select: none;
   }
@@ -64,10 +65,11 @@
   .header-custom .menu-icon .navicon {
     background: #333;
     display: block;
-    height: 2px;
+    height: 4px;
     position: relative;
     transition: background .2s ease-out;
-    width: 18px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.781);
   }
   
   .header-custom .menu-icon .navicon:before,
@@ -79,14 +81,15 @@
     position: absolute;
     transition: all .2s ease-out;
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.781);
   }
   
   .header-custom .menu-icon .navicon:before {
-    top: 5px;
+    top: 4.6px;
   }
   
   .header-custom .menu-icon .navicon:after {
-    top: -5px;
+    top: -4.6px;
   }
   
   /* menu btn */
@@ -98,6 +101,7 @@
   .header-custom .menu-btn:checked ~ .menu {
     max-height: 240px;
   }
+  
   
   .header-custom .menu-btn:checked ~ .menu-icon .navicon {
     background: transparent;
@@ -114,6 +118,8 @@
   .header-custom .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
   .header-custom .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     top: 0;
+    background-color: rgba(255, 255, 255, 0.781);
+    height: 8px;
   }
   
   /* 48em = 768px */
