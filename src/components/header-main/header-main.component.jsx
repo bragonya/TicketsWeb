@@ -44,7 +44,7 @@ class HeaderMain  extends React.Component{
   }
 
   render(){
-    const { itemsCount, currentUser, history, setCurrentUser } = this.props;
+    const { itemsCount, currentUser, history, setCurrentUser, conexionSocket } = this.props;
     return(
     <nav className="navbar navbar-expand-md fixed-top">
     <div className="row navbar-wrapper">
@@ -86,6 +86,8 @@ class HeaderMain  extends React.Component{
                 className="nav-item"
                 onClick={()=> 
                   { 
+                    conexionSocket.emit('close-timer','');
+                    conexionSocket.removeAllListeners('countdownStart');
                     this.unlockAllSeats();
                     setCurrentUser(null); 
                     localStorage.removeItem('user');

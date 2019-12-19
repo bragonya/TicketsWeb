@@ -43,70 +43,19 @@ export class App extends React.Component{
       secure: true
     });
     
-    const { setSocket, setStateSeat, setCurrentUser, setClockTime, history, currentUser } = this.props;    
+    const { setSocket, setStateSeat, setCurrentUser } = this.props;    
     setSocket(socket);
     socket.emit('connected',{},(initialStage)=>{
       initialStage.forEach(seat=>{
         console.log(seat);
-        //setStateSeat(seat);
+        setStateSeat(seat);
       });
     });
 
-    if (window.performance) {
-      if (performance.navigation.type === 1) {
-        if(window.location.pathname==='/reservation' && currentUser){
-          this.unlockAllSeats();
-          socket.removeAllListeners('countdownStart');
-          socket.on('countdownStart',function(time){
-            setClockTime(time);
-          });
-          socket.emit('close','');
-          socket.emit('countdownStart',{},(clockFinishMessage)=>{
-            this.unlockAllSeats();
-            socket.removeAllListeners('countdownStart');
-            history.push('/reservation');
-          });
-        }else{
-          if(!(window.location.pathname==='/checkout')){
-            this.unlockAllSeats();
-          }
-          socket.emit('close','');
-          socket.removeAllListeners('countdownStart');
-        }
-      }
-    }
-    
-    history.listen((location, action) => {
-      if(location.pathname==='/reservation' && currentUser){
-        this.unlockAllSeats();
-        socket.removeAllListeners('countdownStart');
-        socket.on('countdownStart',function(time){
-          setClockTime(time);
-        });
-        socket.emit('close','');
-        socket.emit('countdownStart',{},(clockFinishMessage)=>{
-          this.unlockAllSeats();
-          socket.removeAllListeners('countdownStart');
-          history.push('/reservation');
-        });
-        
-      }else{
-        if(!(location.pathname==='/checkout')){
-          this.unlockAllSeats();
-        }
-        socket.emit('close','');
-        socket.removeAllListeners('countdownStart');
-      }
-    });
-
-    
-  
     socket.on('newSeatModified',function(seat){
       setStateSeat(seat);
     });
-    
-    setCurrentUser({email:'rluis4490@gmail.com'});
-    if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')))
+    if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')));
   }
 
   
@@ -126,6 +75,58 @@ export class App extends React.Component{
     });
     clearItemsCart();
     localStorage.removeItem('cartItems');
+  }
+
+  componentDidMount(){
+    const { setClockTime, history } = this.props;    
+    if (window.performance) {
+      if (performance.navigation.type === 1) {
+        if((window.location.pathname==='/reservation' || window.location.pathname==='/checkout') && localStorage.getItem('user')){
+          this.unlockAllSeats();
+          socket.removeAllListeners('countdownStart');
+          socket.on('countdownStart',function(time){
+            setClockTime(time);
+          });
+          socket.emit('close-timer','');
+          socket.emit('countdownStart',{},(clockFinishMessage)=>{
+            this.unlockAllSeats();
+            socket.removeAllListeners('countdownStart');
+            history.push('/reservation');
+          });
+        }else{
+          if(!(window.location.pathname==='/checkout')){
+            this.unlockAllSeats();
+          }
+          socket.emit('close-timer','');
+          socket.removeAllListeners('countdownStart');
+        }
+      }
+    }
+    
+    history.listen((location, action) => {
+      if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
+        if(!(location.pathname==='/checkout')){
+          this.unlockAllSeats();
+        }
+        socket.removeAllListeners('countdownStart');
+        socket.on('countdownStart',function(time){
+          setClockTime(time);
+        });
+        socket.emit('close-timer','');
+        socket.emit('countdownStart',{},(clockFinishMessage)=>{
+          this.unlockAllSeats();
+          socket.removeAllListeners('countdownStart');
+          history.push('/reservation');
+        });
+        
+      }else{
+        if(!(location.pathname==='/checkout')){
+          this.unlockAllSeats();
+        }
+        socket.emit('close-timer','');
+        socket.removeAllListeners('countdownStart');
+      }
+    });
   }
 
   componentWillUnmount() {
