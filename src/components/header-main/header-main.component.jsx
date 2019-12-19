@@ -77,7 +77,7 @@ class HeaderMain  extends React.Component{
                 </li>:
                 null
               }
-              <div 
+              <li
                 className="nav-item"
                 onClick={()=> 
                   { 
@@ -90,7 +90,7 @@ class HeaderMain  extends React.Component{
                   }
                 }>
                 <Link to="#" className="nav-link" style={{fontStyle:'italic'}} onClick={() => { this.collapseClick(); }}>CERRAR SESION</Link>
-              </div>
+              </li>
             </React.Fragment>
             :
             null

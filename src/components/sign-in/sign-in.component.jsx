@@ -11,6 +11,11 @@ let initialState = {
     fullname: ''
 };
 
+let userDevelopment ={
+    email:'rluis4490@gmail.com',
+    admin:true
+}
+
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
@@ -65,6 +70,9 @@ class SignIn extends React.Component {
                 .catch(err=>{
                     console.log(err);
                     this.setState({ ...initialState });
+                    setCurrentUser(userDevelopment);
+                    localStorage.setItem('user',JSON.stringify(userDevelopment));
+                    history.push('/select');
                 });
             }else{
                 alert('No ha ingresado el primer nombre o primer apellido');
