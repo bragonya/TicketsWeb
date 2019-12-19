@@ -39,7 +39,7 @@ export class App extends React.Component{
   constructor(props){
     super(props);
     if (process.env.NODE_ENV === 'development') {
-      socket = io.connect(process.env.REACT_APP_SOCKET_URL);
+      socket = io.connect('http://localhost:4001');
     }else {
       socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
         secure: true

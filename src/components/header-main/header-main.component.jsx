@@ -69,10 +69,11 @@ class HeaderMain  extends React.Component{
                 <Link to="/about"  onClick={() => { this.collapseClick(); }} >Reporte</Link>
               </li>:null}
               {itemsCount?
-                <li  >
+                <li>
                   <Link 
                         to="/checkout" 
-                        className="nav-link btn btn-orange fadein"
+                        className="btn btn-orange fadein"
+                        style={{maxWidth:'200px'}}
                         onClick={() => { this.collapseClick(); }}>Comprar</Link>
                 </li>:
                 null
@@ -89,7 +90,7 @@ class HeaderMain  extends React.Component{
                     history.push('/reservation');
                   }
                 }>
-                <Link to="#" className="nav-link" style={{fontStyle:'italic'}} onClick={() => { this.collapseClick(); }}>CERRAR SESION</Link>
+                <Link to="#" className="signout" style={{fontStyle:'italic'}} onClick={() => { this.collapseClick(); }}>CERRAR SESION</Link>
               </li>
             </React.Fragment>
             :
