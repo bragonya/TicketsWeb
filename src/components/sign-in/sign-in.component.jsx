@@ -55,14 +55,7 @@ class SignIn extends React.Component {
                 alert(message);
             }
         })
-        .catch(err=>
-            {
-                console.log(err)
-                setCurrentUser({email:'rluis4490@gmail.com',admin:true});
-                localStorage.setItem('user',JSON.stringify({email:'rluis4490@gmail.com'}));
-                history.push('/select');
-            }
-        );
+        .catch(err=>console.log(err));
     }
 
     render(){
