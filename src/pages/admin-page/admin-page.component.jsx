@@ -1,11 +1,11 @@
 import React from 'react';
 
-import FormAdmin from '../../components/form-admin/form-admin.component';
+import Report from '../../components/report/report.component';
 
 import './admin-page.styles.scss';
 const AdminPage = () => (
     <div className='admin-page'>
-        <FormAdmin/>
+        <Report/>
     </div>
 );
 

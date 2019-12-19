@@ -165,7 +165,7 @@ export class App extends React.Component{
                                               }}
             />
           <Route  path='/socket' component={SocketExample}/>
-          <Route  path='/admin' render={()=>{
+          <Route  path='/report' render={()=>{
                     if(currentUser){
                       if(currentUser.admin){
                         return <AdminPage/>

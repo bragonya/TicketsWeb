@@ -66,7 +66,7 @@ class HeaderMain  extends React.Component{
                 <Link to="/select"  onClick={() => { this.collapseClick(); }} >Seleccionar Curso</Link>
               </li>
               {currentUser.admin?<li >
-                <Link to="/about"  onClick={() => { this.collapseClick(); }} >Reporte</Link>
+                <Link to="/report"  onClick={() => { this.collapseClick(); }} >Reporte</Link>
               </li>:null}
               {itemsCount?
                 <li>
