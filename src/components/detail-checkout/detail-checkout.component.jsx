@@ -41,7 +41,7 @@ class DetailCheckout extends React.Component{
     }
 
     render(){
-        const { props:{cartItems, cartTotal}, state:{ rowsInput } } = this;
+        const { props:{cartItems, cartTotal, currentUser}, state:{ rowsInput } } = this;
         return (
             <div className='container'>
                 <div className="row justify-content-center" style={{ marginTop:'130px', minWidth:'220px'}}>
