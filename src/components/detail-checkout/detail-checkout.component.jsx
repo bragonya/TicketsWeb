@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCartItems, selectCartTotal }  from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import FormInput from '../form-input/form-input.component';
 
@@ -64,6 +65,7 @@ class DetailCheckout extends React.Component{
                                         <th cope="col">Nombre Asistente</th>
                                         <th cope="col">Carnet/Colegiado Asistente</th>
                                         <th cope="col">Universidad Asistente</th>
+                                        {currentUser.admin?<th cope="col">Numero de Boleta</th>:null}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -105,6 +107,19 @@ class DetailCheckout extends React.Component{
                                                         required
                                                     />
                                                 </td>
+                                                {currentUser.admin?
+                                                    <td key={`no_document${key}`}>
+                                                    <FormInput
+                                                        name={`no_document${key}`}
+                                                        type='text'
+                                                        handleChange={this.handleChange}
+                                                        value={ rowsInput[`no_document${key}`]||""}
+                                                        label=''
+                                                        className=' detail'
+                                                        required
+                                                    />
+                                                    </td>:null
+                                                }
                                             </tr>
                                         ))
                                     }
@@ -116,7 +131,7 @@ class DetailCheckout extends React.Component{
                                         <td></td>
                                         <td></td>
                                         <td>
-                                            <h4 className=''>{`Total a pagar: ${cartTotal}`}</h4>    
+                                            <h4 className=''>{`Total ${currentUser.admin?"":"a pagar"}: ${cartTotal}`}</h4>    
                                         </td>
                                     </tr>
                                     <tr>
@@ -131,7 +146,7 @@ class DetailCheckout extends React.Component{
                                                 type="submit" 
                                                 onClick = {this.handleClickGoToPay}
                                                 className="button btn-success" 
-                                                value="Realizar Pago"
+                                                value={currentUser.admin?"Guardar":"Realizar Pago"} 
                                             />
                                         </td>
                                         
@@ -150,7 +165,8 @@ class DetailCheckout extends React.Component{
 
 const mapStateToProps = createStructuredSelector({
     cartItems : selectCartItems,
-    cartTotal : selectCartTotal
+    cartTotal : selectCartTotal,
+    currentUser: selectCurrentUser
 });
 
 export default connect(mapStateToProps)(DetailCheckout);
