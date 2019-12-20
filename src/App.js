@@ -44,21 +44,20 @@ export class App extends React.Component{
     super(props);
     this.state  = { ...initialState };
     if (process.env.NODE_ENV === 'development') {
-      socket = io.connect(process.env.REACT_APP_SOCKET_URL);
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL || 'http://localhost:4001');
     }else {
       socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
         secure: true
       });
-      socket.emit('connected',{},(initialStage)=>{
-        console.log('emit connected');
-        initialStage.forEach(seat=>{
-          console.log(seat);
-          setStateSeat(seat);
-        });
-        this.setState({ loading: false });
-      });  
     }
-    
+    socket.emit('connected',{},(initialStage)=>{
+      console.log('emit connected');
+      initialStage.forEach(seat=>{
+        console.log(seat);
+        setStateSeat(seat);
+      });
+      this.setState({ loading: false });
+    });  
     const { setSocket, setStateSeat, setCurrentUser, setSpeaker, setCourse } = this.props;    
     setSocket(socket);
     

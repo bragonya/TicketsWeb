@@ -9,7 +9,17 @@ import './card.styles.scss';
 
 const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, setCourse, history, children}) =>(
     <React.Fragment>
-        <div className="blog-container">
+        <div className="blog-container"
+            onClick={()=>{
+                localStorage.setItem('speaker',JSON.stringify({'speaker':speaker}));
+                setSpeaker(speaker)
+                setCourse(
+                    speaker===CONST_SPEAKERS_ENUM.both?
+                    CONST_SPEAKERS_ENUM.kim
+                    :speaker)
+                history.push('/reservation')
+                }}
+        >
   
         <div className="blog-header">
             <div className="blog-cover" style={{ backgroundImage: `url(${imgURL})`}}>
@@ -18,7 +28,7 @@ const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, setCourse, histor
 
         <div className="blog-body">
             <div className="blog-title">
-            <h1><a href="#!">{title}</a></h1>
+            <h1><span>{title}</span></h1>
             </div>
             <div className="blog-summary">
             <p>
@@ -27,16 +37,7 @@ const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, setCourse, histor
             </div>
             <div className="blog-tags">
             <ul>
-                <li><div 
-                        onClick={()=>{
-                            localStorage.setItem('speaker',JSON.stringify({'speaker':speaker}));
-                            setSpeaker(speaker)
-                            setCourse(
-                                speaker===CONST_SPEAKERS_ENUM.both?
-                                CONST_SPEAKERS_ENUM.kim
-                                :speaker)
-                            history.push('/reservation')
-                            }} >
+                <li><div>
                         Incribirse al curso
                     </div>
                 </li>
