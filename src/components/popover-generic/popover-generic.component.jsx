@@ -1,31 +1,94 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectConexionSocket } from '../../redux/user/user.selectors';
+import { setStateSeat } from '../../redux/stage/stage.actions';
+
+import FormInput from '../form-input/form-input.component';
+
+import { CONST_SEAT_STATES } from '../../assets/constants';
 
 import './popover-generic.styles.scss';
+
+let initialState = {
+    isPopoverOpen:false,
+    inputSeat:''
+};
 
 class PopoverGeneric extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            isPopoverOpen:false
-        }
+        this.state = { ...initialState };
     }
-    
+
+    handleChange = event => {
+        const { value, name } = event.target;
+        this.setState({ [name]: value });
+    };
+
+    handleAceptarButton = () =>{
+        const { 
+                state:{ inputSeat }, 
+                props:{ rowname, column, section, course, conexionSocket, setStateSeat } 
+              } = this;
+        if(inputSeat.trim() === `${rowname}-${column}`){
+            const seatModified = {
+                columna : column,
+                fila : rowname,
+                seccion : section,
+                curso: course,
+                estado : CONST_SEAT_STATES.free
+            };
+            conexionSocket.emit(
+                'seatModified',
+                { ...seatModified },
+                ({ status, message})=>{
+                    if(status){
+                        setStateSeat({
+                            ...seatModified
+                        });    
+                    }else{
+                        alert(message);
+                    }
+                }
+            );    
+        }else{
+            alert(`El codigo ingresado no es: ${rowname}-${column}`);
+        }
+        this.setState({ ...initialState });
+    }
 
     render(){
-        const { state:{ isPopoverOpen }, props:{ children,colname,column } } = this;
+        const { state:{ isPopoverOpen, inputSeat }, 
+                props:{ children,rowname,column,disablePopover } 
+              } = this;
         
         return(
             <React.Fragment>
                 <div id='overlay' style={{display:!isPopoverOpen?'none':'inline-block'}}>
                     <div id="confirm" >
-                        <div id='messagex'className="message">{`Liberar Asiento ${colname}-${column}`}</div><br/>
-                        <p className='text-plain'>{`Para liberar asiento ingrese escriba el CODIGO: ${colname}-${column}`}</p>
-                        <input type='text' />
-                        <button id='noxx' className="noxx">Aceptar</button>
+                        <div id='messagex'className="message">{`Liberar Asiento ${rowname}-${column}`}</div><br/>
+                        <p className='text-plain'>{`Para liberar asiento ingrese escriba el CODIGO: ${rowname}-${column}`}</p>
+                        <FormInput
+                            name='inputSeat'
+                            type='text'
+                            value={inputSeat}
+                            handleChange={this.handleChange}
+                            label=''
+                            required
+                        />
+                        <button id='noxx' className="noxx" onClick={this.handleAceptarButton}>Aceptar</button>
                         <button id='yesx' className="yes" onClick={ ()=> this.setState({ isPopoverOpen: !isPopoverOpen })} >Cancelar</button>
                     </div>
                 </div>
-                <div onClick={() => this.setState({ isPopoverOpen: !isPopoverOpen })}>
+                <div onClick={
+                    () => {
+                            if(!disablePopover){
+                                this.setState({ isPopoverOpen: !isPopoverOpen })
+                            }
+                        }}
+                >
                     {children}  
                 </div>
             </React.Fragment>
@@ -33,4 +96,12 @@ class PopoverGeneric extends React.Component{
     }
 };
 
-export default PopoverGeneric;
+const mapStateToProps = createStructuredSelector({
+    conexionSocket : selectConexionSocket
+});
+
+const mapDispatchToProps = dispatch => ({
+    setStateSeat: seat => dispatch(setStateSeat(seat))
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(PopoverGeneric);

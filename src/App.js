@@ -5,6 +5,8 @@ import {
   Redirect
 } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import io from "socket.io-client";
 import { connect } from 'react-redux';
@@ -21,23 +23,26 @@ import SelectCoursePage from './pages/select-course-page/select-course-page.comp
 import PaymentSuccess from './pages/payment-success/payment-success.component';
 
 import { setSocket, setCurrentUser } from './redux/user/user.actions';
-import { setStateSeat, setClockTime } from './redux/stage/stage.actions';
+import { setStateSeat, setClockTime, setSpeaker, setCourse } from './redux/stage/stage.actions';
 import { clearItemsCart } from './redux/cart/cart.actions';
 
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectCartItemsCount, selectCartItems } from './redux/cart/cart.selectors';
 
-import { CONST_SEAT_STATES } from './assets/constants';
+import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from './assets/constants';
 
 import  "./App.scss"
 
 let socket;
-
+let initialState={
+  loading: true
+};
 export class App extends React.Component{
 
   unsubscribeFromAuth = null;
   constructor(props){
     super(props);
+    this.state  = { ...initialState };
     if (process.env.NODE_ENV === 'development') {
       socket = io.connect(process.env.REACT_APP_SOCKET_URL);
     }else {
@@ -46,13 +51,14 @@ export class App extends React.Component{
       });
     }
     
-    const { setSocket, setStateSeat, setCurrentUser } = this.props;    
+    const { setSocket, setStateSeat, setCurrentUser, setSpeaker, setCourse } = this.props;    
     setSocket(socket);
     socket.emit('connected',{},(initialStage)=>{
       console.log('emit connected');
       initialStage.forEach(seat=>{
         setStateSeat(seat);
       });
+      this.setState({ loading: false });
     });
 
     socket.on('newSeatModified',function(seat){
@@ -60,6 +66,14 @@ export class App extends React.Component{
       setStateSeat(seat);
     });
     if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')));
+    if(localStorage.getItem('speaker')){
+      let speakerLocal = JSON.parse(localStorage.getItem('speaker'));
+      setSpeaker(speakerLocal.speaker);
+      setCourse(
+        speakerLocal.speaker===CONST_SPEAKERS_ENUM.both?
+        CONST_SPEAKERS_ENUM.kim
+        :speakerLocal.speaker);
+    }
   }
 
   
@@ -143,71 +157,80 @@ export class App extends React.Component{
   }
 
   render(){
-    const { currentUser, cartItemsCount } = this.props;
+    const { props:{currentUser, cartItemsCount}, state:{loading}  } = this;
+    
     return (
-      <div>
-        <HeaderMain/>
-        <Switch>
-        <Route 
-            exact 
-            path="/" 
-              render={() =>
-              currentUser? (
-              <Redirect to='/reservation'/>
-              ):(
-                <LandingPage/>
-              )
-            }
-          />
-
-          <Route  path='/reservation' render={()=>{   
-                                                  return <SeatReservationPage/>
-                                              }}
-            />
-          <Route  path='/socket' component={SocketExample}/>
-          <Route  path='/admin' render={()=>{
-                    if(currentUser){
-                      if(currentUser.admin){
-                        return <AdminPage/>
-                      }
-                    }
-                    return (<Redirect to='/reservation'/>)
-            }}/>
-          <Route  path='/select' render={() =>
-              currentUser? (
-              <SelectCoursePage/>
-              ):(
-                <Redirect to='/reservation'/>
-              )}
-            />
-          <Route  path='/paymentsuccess' component={PaymentSuccess}/>
+      <div >
+        {loading?(<div style={{marginTop:'20%',width:'100%',textAlign:'center'}}><Loader
+                type="TailSpin"
+                color="#00BFFF"
+                height={100}
+                width={100}
+            /></div>):
+        <React.Fragment>
+          <HeaderMain/>
+          <Switch>
           <Route 
-            exact 
-            path="/checkout" 
-            render={() =>{
-                  
-                  return !cartItemsCount? (
-                  <Redirect to='/reservation'/>
-                  ):(
-                    <CheckOutPage/>
-                  )
-                }
-              }
-          />
-
-          <Route 
-            exact 
-            path="/signinsignup" 
-            render={() =>
-              currentUser? (
+              exact 
+              path="/" 
+                render={() =>
+                currentUser? (
                 <Redirect to='/reservation'/>
                 ):(
-                  <SignInSignUpPage/>
+                  <LandingPage/>
                 )
               }
-          />
-          
-        </Switch>
+            />
+
+            <Route  path='/reservation' render={()=>{   
+                                                    return <SeatReservationPage/>
+                                                }}
+              />
+            <Route  path='/socket' component={SocketExample}/>
+            <Route  path='/report' render={()=>{
+                      if(currentUser){
+                        if(currentUser.admin){
+                          return <AdminPage/>
+                        }
+                      }
+                      return (<Redirect to='/reservation'/>)
+              }}/>
+            <Route  path='/select' render={() =>
+                currentUser? (
+                <SelectCoursePage/>
+                ):(
+                  <Redirect to='/reservation'/>
+                )}
+              />
+            <Route  path='/paymentsuccess' component={PaymentSuccess}/>
+            <Route 
+              exact 
+              path="/checkout" 
+              render={() =>{
+                    
+                    return !cartItemsCount? (
+                    <Redirect to='/reservation'/>
+                    ):(
+                      <CheckOutPage/>
+                    )
+                  }
+                }
+            />
+
+            <Route 
+              exact 
+              path="/signinsignup" 
+              render={() =>
+                currentUser? (
+                  <Redirect to='/reservation'/>
+                  ):(
+                    <SignInSignUpPage/>
+                  )
+                }
+            />
+            
+          </Switch>
+          </React.Fragment>}
       </div>
       )
   }
@@ -224,7 +247,9 @@ const mapDispatchToProps = dispatch => ({
   setStateSeat : seat => dispatch(setStateSeat(seat)),
   setCurrentUser : user => dispatch(setCurrentUser(user)),
   clearItemsCart: ()  => dispatch(clearItemsCart()),
-  setClockTime:     time => dispatch(setClockTime(time))
+  setClockTime:     time => dispatch(setClockTime(time)),
+  setSpeaker : speaker => dispatch(setSpeaker(speaker)),
+  setCourse  : course => dispatch(setCourse(course))
 });
 
 

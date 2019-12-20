@@ -10,9 +10,9 @@ import { selectCurrentUser, selectConexionSocket } from '../../redux/user/user.s
 
 import { setCurrentUser } from '../../redux/user/user.actions';
 import { clearItemsCart } from '../../redux/cart/cart.actions';
-import { setStateSeat } from '../../redux/stage/stage.actions';
+import { setStateSeat, setSpeaker, setCourse } from '../../redux/stage/stage.actions';
 
-import { CONST_SEAT_STATES } from '../../assets/constants';
+import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from '../../assets/constants';
 
 import './header-main.styles.scss';
 
@@ -43,7 +43,7 @@ class HeaderMain  extends React.Component{
   }
 
   render(){
-    const { itemsCount, currentUser, history, setCurrentUser, conexionSocket } = this.props;
+    const { itemsCount, currentUser, history, setCurrentUser, conexionSocket, setCourse, setSpeaker } = this.props;
     return(
       <div className="header-custom">
         <span   className="logo-custom"></span>
@@ -66,18 +66,19 @@ class HeaderMain  extends React.Component{
                 <Link to="/select"  onClick={() => { this.collapseClick(); }} >Seleccionar Curso</Link>
               </li>
               {currentUser.admin?<li >
-                <Link to="/about"  onClick={() => { this.collapseClick(); }} >Reporte</Link>
+                <Link to="/report"  onClick={() => { this.collapseClick(); }} >Reporte</Link>
               </li>:null}
               {itemsCount?
-                <li  >
+                <li>
                   <Link 
                         to="/checkout" 
-                        className="nav-link btn btn-orange fadein"
+                        className="btn btn-orange fadein"
+                        style={{maxWidth:'200px'}}
                         onClick={() => { this.collapseClick(); }}>Comprar</Link>
                 </li>:
                 null
               }
-              <div 
+              <li
                 className="nav-item"
                 onClick={()=> 
                   { 
@@ -85,12 +86,15 @@ class HeaderMain  extends React.Component{
                     conexionSocket.removeAllListeners('countdownStart');
                     this.unlockAllSeats();
                     setCurrentUser(null); 
+                    setSpeaker(CONST_SPEAKERS_ENUM.kim);
+                    setCourse(CONST_SPEAKERS_ENUM.kim);
                     localStorage.removeItem('user');
+                    localStorage.removeItem('speaker');
                     history.push('/reservation');
                   }
                 }>
-                <Link to="#" className="nav-link" style={{fontStyle:'italic'}} onClick={() => { this.collapseClick(); }}>CERRAR SESION</Link>
-              </div>
+                <Link to="#" className="signout" style={{fontStyle:'italic'}} onClick={() => { this.collapseClick(); }}>CERRAR SESION</Link>
+              </li>
             </React.Fragment>
             :
             null
@@ -104,7 +108,9 @@ class HeaderMain  extends React.Component{
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
   clearItemsCart: ()  => dispatch(clearItemsCart()),
-  setStateSeat  : seat => dispatch(setStateSeat(seat))
+  setStateSeat  : seat => dispatch(setStateSeat(seat)),
+  setSpeaker    : speaker => dispatch(setSpeaker(speaker)),
+  setCourse    : course => dispatch(setCourse(course))
 });
 
 const mapStateToProps = createStructuredSelector({

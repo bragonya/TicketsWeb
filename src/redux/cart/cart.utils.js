@@ -4,7 +4,7 @@ export const removeSeatFromCart = (items,seatToRemove)=>{
 };
 
 export const addSeatToCart = (items,seatToAdd)=>{
-    const {fila,columna,seccion} = seatToAdd;
-    localStorage.setItem('cartItems',JSON.stringify([...items,{...seatToAdd,key:Object.values({fila,columna,seccion}).join("")}]));
-    return [...items,{...seatToAdd,key:Object.values({fila,columna,seccion}).join("")}]
+    const {fila,columna,seccion,curso} = seatToAdd;
+    //localStorage.setItem('cartItems',JSON.stringify([...items,{...seatToAdd,key:Object.values({fila,columna,seccion,curso}).join("")}]));
+    return [...items,{...seatToAdd,key:Object.values({fila,columna,seccion,curso}).join("")}]
 }

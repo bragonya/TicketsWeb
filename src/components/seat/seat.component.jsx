@@ -18,7 +18,7 @@ import './seat.styles.scss';
 
 const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, currentCourse, speaker, history}) =>{
     const { id, colname, state , key , idN, course} = seatdata;
-    
+    const disablePopover = currentUser?(currentUser.admin?false:true):true;   
     var properties={
         key:`'span-'${key}${id}${colname}`,
             id:`${key}${id}${colname}`,
@@ -70,7 +70,14 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
         <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
         </span>:
         <span {...properties} >
-            <PopoverGeneric key={`Popover${key}${id}${colname}`} colname={colname} column={id} >
+            
+            <PopoverGeneric 
+                key={`Popover${key}${id}${colname}`} 
+                rowname = {colname} 
+                column  = {id} 
+                section = {key}
+                course  = {course}
+                disablePopover={disablePopover} >
                 <i 
                     key= {`i${key}${id}${colname}`} 
                     id={`i${key}${id}${colname}`} 
