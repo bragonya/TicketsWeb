@@ -50,11 +50,9 @@ class HeaderMain  extends React.Component{
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
         <ul className="menu">
-        {!currentUser?
-            <li >
-              <Link to="/" onClick={() => { this.collapseClick(); }}>Inicio</Link>
-            </li>:null
-          }
+          <li >
+            <Link to="/" onClick={() => { this.collapseClick(); }}>Inicio</Link>
+          </li>
           <li>
                 <Link 
                       to="/reservation" 

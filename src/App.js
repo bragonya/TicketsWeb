@@ -175,13 +175,7 @@ export class App extends React.Component{
           <Route 
               exact 
               path="/" 
-                render={() =>
-                currentUser? (
-                <Redirect to='/reservation'/>
-                ):(
-                  <LandingPage/>
-                )
-              }
+              component={LandingPage}
             />
 
             <Route  path='/reservation' render={()=>{   

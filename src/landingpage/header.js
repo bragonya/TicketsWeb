@@ -2,7 +2,7 @@ import React from "react";
 class Header extends React.Component {
     render() {
         return (
-            <div className="header" style={{position:'initial'}} >
+            <div className="header"  style={{marginTop:'-11px'}} /*style={{position:'initial'}}*/ >
                 <div className="background bg-3" alt="Photo by The Climate Reality Project on Unsplash"></div>
                 <div className="logo">
                     <h1>Flowable Injection Technique</h1>
