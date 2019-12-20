@@ -53,6 +53,7 @@ class SignIn extends React.Component {
                 .then( response => response.json())
                 .then( response =>{
                     const { state, message, user } = response;
+                    console.log(response);
                     if(state){
                         setCurrentUser(user);
                         localStorage.setItem('user',JSON.stringify(user));
