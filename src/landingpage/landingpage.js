@@ -1,10 +1,17 @@
 import React from "react";
+import { Suspense, lazy } from 'react';
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
+
 import Header from "./header";
 import Coursesinfo from "./courses-info";
 import CTA from "./cta";
 import MissionVision from "./mission-vision";
-import Gallery from "./gallery";
+
 import Contact from "./contact";
+
+const Gallery = lazy(() => import('./gallery'));
 
 class LandingPage extends React.Component {
     render() {
@@ -14,7 +21,20 @@ class LandingPage extends React.Component {
                 <Coursesinfo></Coursesinfo>
                 <CTA></CTA>
                 <MissionVision></MissionVision>
-                <Gallery></Gallery>
+                <Suspense 
+                    fallback={
+                        <div style={{width:'100%', /*marginTop:'20%',*/ alignSelf:'center'}}>
+                            <Loader
+                                type="Grid"
+                                color="#00BFFF"
+                                height={150}
+                                width={150}
+                            />
+                        </div>}
+                    >
+                        <Gallery/>
+                </Suspense>
+                
                 <CTA></CTA>
                 <Contact></Contact>
             </main>
