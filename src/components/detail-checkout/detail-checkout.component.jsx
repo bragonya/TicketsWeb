@@ -38,6 +38,7 @@ class DetailCheckout extends React.Component{
     handleClickGoToPay = () =>{
         const { props:{ currentUser, cartItems }, state: { rowsInput } } = this;
         if(currentUser.admin){  
+            console.log('->admin');
             let arrayDetail=cartItems.forEach(({fila,columna,seccion,curso,price,key})=>{
                 return{
                     fila:fila,
