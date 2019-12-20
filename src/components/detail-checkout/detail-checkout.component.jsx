@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
 
 import { selectCartItems, selectCartTotal }  from '../../redux/cart/cart.selectors';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectCurrentUser, selectConexionSocket } from '../../redux/user/user.selectors';
 
 import { clearItemsCart } from '../../redux/cart/cart.actions';
 
@@ -38,7 +39,7 @@ class DetailCheckout extends React.Component{
     };
 
     handleClickGoToPay = () =>{
-        const { props:{ currentUser, cartItems, clearItemsCart }, state: { rowsInput } } = this;
+        const { props:{ currentUser, cartItems, clearItemsCart, conexionSocket, history }, state: { rowsInput } } = this;
         if(currentUser.admin){  
             console.log('->admin');
             var arrayDetail=cartItems.map(({fila,columna,seccion,curso,price,key})=>{
@@ -67,8 +68,8 @@ class DetailCheckout extends React.Component{
             })
             .then( response => response.json())
             .then( response => { 
-                socket.removeAllListeners('countdownStart');
-                socket.emit('close-timer','');
+                conexionSocket.removeAllListeners('countdownStart');
+                conexionSocket.emit('close-timer','');
                 clearItemsCart(); 
                 history.push('/reservation');
                 console.log(response);
@@ -208,11 +209,12 @@ class DetailCheckout extends React.Component{
 const mapStateToProps = createStructuredSelector({
     cartItems : selectCartItems,
     cartTotal : selectCartTotal,
-    currentUser: selectCurrentUser
+    currentUser: selectCurrentUser,
+    conexionSocket : selectConexionSocket
 });
 
 const mapDispatchToProps = dispatch =>({
     clearItemsCart: () => dispatch(clearItemsCart())
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(DetailCheckout);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(DetailCheckout));
