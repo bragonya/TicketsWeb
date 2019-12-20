@@ -39,17 +39,30 @@ class DetailCheckout extends React.Component{
         const { props:{ currentUser, cartItems }, state: { rowsInput } } = this;
         if(currentUser.admin){  
             cartItems.forEach(({fila,columna,seccion,curso,price,key})=>{
-                console.log('_______________________________________');
-                console.log(`fila:${fila}`);
-                console.log(`columna:${columna}`);
-                console.log(`seccion:${seccion}`);
-                console.log(`curso:${curso}`);
-                console.log(`nombre:${rowsInput[`name${key}`]}`);
-                console.log(`Colegiado_Carnet:${rowsInput[`register_number${key}`]}`);
-                console.log(`Universidad:${rowsInput[`university${key}`]}`);
-                console.log(`Precio:${price}`);
-                console.log(`Boleta:${rowsInput[`no_document${key}`]}`);
-                console.log('_______________________________________');
+                let detailToSave ={
+                    fila:fila,
+                    columna:columna,
+                    seccion: seccion,
+                    curso: curso,
+                    precio: price,
+                    name: rowsInput[`name${key}`],
+                    register_number: rowsInput[`register_number${key}`],
+                    university: rowsInput[`university${key}`],
+                    no_document:rowsInput[`no_document${key}`]
+                };
+                fetch(process.env.REACT_APP_BASE_URL + "/save_order", {
+                    method: "post",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        ...detailToSave
+                    })
+                })
+                .then( response => response.json())
+                .then( response => console.log(response))
+                .catch(error => console.error(error));
             });
         }
         /* 
