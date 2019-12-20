@@ -49,18 +49,18 @@ export class App extends React.Component{
       socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
         secure: true
       });
+      socket.emit('connected',{},(initialStage)=>{
+        console.log('emit connected');
+        initialStage.forEach(seat=>{
+          setStateSeat(seat);
+        });
+        this.setState({ loading: false });
+      });  
     }
     
     const { setSocket, setStateSeat, setCurrentUser, setSpeaker, setCourse } = this.props;    
     setSocket(socket);
-    socket.emit('connected',{},(initialStage)=>{
-      console.log('emit connected');
-      initialStage.forEach(seat=>{
-        setStateSeat(seat);
-      });
-      this.setState({ loading: false });
-    });
-
+    
     socket.on('newSeatModified',function(seat){
       console.log('on newSeatModified');
       setStateSeat(seat);
