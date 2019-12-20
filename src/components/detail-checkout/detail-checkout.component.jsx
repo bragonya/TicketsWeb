@@ -51,6 +51,7 @@ class DetailCheckout extends React.Component{
                     no_document:rowsInput[`no_document${key}`]
                 };
             });
+            console.log(arrayDetail);
             fetch(process.env.REACT_APP_BASE_URL + "/save_order", {
                 method: "post",
                 headers: {
