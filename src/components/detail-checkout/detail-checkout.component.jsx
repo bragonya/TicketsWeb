@@ -5,6 +5,8 @@ import { createStructuredSelector } from 'reselect';
 import { selectCartItems, selectCartTotal }  from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
+import { clearItemsCart } from '../../redux/cart/cart.actions';
+
 import FormInput from '../form-input/form-input.component';
 
 import Clock from '../clock/clock.component';
@@ -39,7 +41,7 @@ class DetailCheckout extends React.Component{
         const { props:{ currentUser, cartItems }, state: { rowsInput } } = this;
         if(currentUser.admin){  
             console.log('->admin');
-            let arrayDetail=cartItems.forEach(({fila,columna,seccion,curso,price,key})=>{
+            var arrayDetail=cartItems.map(({fila,columna,seccion,curso,price,key})=>{
                 return{
                     fila:fila,
                     columna:columna,
@@ -64,7 +66,7 @@ class DetailCheckout extends React.Component{
                 })
             })
             .then( response => response.json())
-            .then( response => console.log(response))
+            .then( response => { clearItemsCart(); console.log(response);})
             .catch(error => console.error(error));
         }
         /* 
@@ -73,7 +75,7 @@ class DetailCheckout extends React.Component{
     }
 
     render(){
-        const { props:{cartItems, cartTotal, currentUser}, state:{ rowsInput } } = this;
+        const { props:{cartItems, cartTotal, currentUser, clearItemsCart}, state:{ rowsInput } } = this;
         return (
             <div className='container'>
                 <div className="row justify-content-center" style={{ marginTop:'130px', minWidth:'220px'}}>
@@ -201,4 +203,8 @@ const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(DetailCheckout);
+const mapDispatchToProps = dispatch =>({
+    clearItemsCart: () => dispatch(clearItemsCart())
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(DetailCheckout);
