@@ -21,6 +21,7 @@ class Report extends React.Component{
         })
         .then(response=> response.json())
         .then(response=>{
+                console.log(response);
                 this.setState({ seats_solds : response.seats_solds, loading:false });
              }
         )
