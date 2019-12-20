@@ -66,8 +66,16 @@ class DetailCheckout extends React.Component{
                 })
             })
             .then( response => response.json())
-            .then( response => { clearItemsCart(); console.log(response);})
-            .catch(error => console.error(error));
+            .then( response => { 
+                socket.removeAllListeners('countdownStart');
+                socket.emit('close-timer','');
+                clearItemsCart(); 
+                history.push('/reservation');
+                console.log(response);
+            })
+            .catch(error => {
+                console.error(error)
+            });
         }
         /* 
         NOTA: al primer asiento llenarle de forma automatica 
