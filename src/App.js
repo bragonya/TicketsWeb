@@ -21,13 +21,13 @@ import SelectCoursePage from './pages/select-course-page/select-course-page.comp
 import PaymentSuccess from './pages/payment-success/payment-success.component';
 
 import { setSocket, setCurrentUser } from './redux/user/user.actions';
-import { setStateSeat, setClockTime } from './redux/stage/stage.actions';
+import { setStateSeat, setClockTime, setSpeaker, setCourse } from './redux/stage/stage.actions';
 import { clearItemsCart } from './redux/cart/cart.actions';
 
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectCartItemsCount, selectCartItems } from './redux/cart/cart.selectors';
 
-import { CONST_SEAT_STATES } from './assets/constants';
+import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from './assets/constants';
 
 import  "./App.scss"
 
@@ -46,7 +46,7 @@ export class App extends React.Component{
       });
     }
     
-    const { setSocket, setStateSeat, setCurrentUser } = this.props;    
+    const { setSocket, setStateSeat, setCurrentUser, setSpeaker, setCourse } = this.props;    
     setSocket(socket);
     socket.emit('connected',{},(initialStage)=>{
       console.log('emit connected');
@@ -60,6 +60,14 @@ export class App extends React.Component{
       setStateSeat(seat);
     });
     if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')));
+    if(localStorage.getItem('speaker')){
+      let speakerLocal = JSON.parse(localStorage.getItem('speaker'));
+      setSpeaker(speakerLocal.speaker);
+      setCourse(
+        speakerLocal.speaker===CONST_SPEAKERS_ENUM.both?
+        CONST_SPEAKERS_ENUM.kim
+        :speakerLocal.speaker);
+    }
   }
 
   
@@ -224,7 +232,9 @@ const mapDispatchToProps = dispatch => ({
   setStateSeat : seat => dispatch(setStateSeat(seat)),
   setCurrentUser : user => dispatch(setCurrentUser(user)),
   clearItemsCart: ()  => dispatch(clearItemsCart()),
-  setClockTime:     time => dispatch(setClockTime(time))
+  setClockTime:     time => dispatch(setClockTime(time)),
+  setSpeaker : speaker => dispatch(setSpeaker(speaker)),
+  setCourse  : course => dispatch(setCourse(course))
 });
 
 

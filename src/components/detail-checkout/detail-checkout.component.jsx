@@ -21,6 +21,7 @@ class DetailCheckout extends React.Component{
     handleChange = event => {
         const { value, name } = event.target;
         const { rowsInput } = this.state;
+        console.log(rowsInput);
         var newrowsInput = {  ...rowsInput ,[name]: value};
         this.setState({ rowsInput : newrowsInput });
     };
@@ -35,6 +36,22 @@ class DetailCheckout extends React.Component{
     };
 
     handleClickGoToPay = () =>{
+        const { props:{ currentUser, cartItems }, state: { rowsInput } } = this;
+        if(currentUser.admin){  
+            cartItems.forEach(({fila,columna,seccion,curso,price,key})=>{
+                console.log('_______________________________________');
+                console.log(`fila:${fila}`);
+                console.log(`columna:${columna}`);
+                console.log(`seccion:${seccion}`);
+                console.log(`curso:${curso}`);
+                console.log(`nombre:${rowsInput[`name${key}`]}`);
+                console.log(`Colegiado_Carnet:${rowsInput[`register_number${key}`]}`);
+                console.log(`Universidad:${rowsInput[`university${key}`]}`);
+                console.log(`Precio:${price}`);
+                console.log(`Boleta:${rowsInput[`no_document${key}`]}`);
+                console.log('_______________________________________');
+            });
+        }
         /* 
         NOTA: al primer asiento llenarle de forma automatica 
         los campos requeridos para el diploma */

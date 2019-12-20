@@ -29,6 +29,7 @@ const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, setCourse, histor
             <ul>
                 <li><div 
                         onClick={()=>{
+                            localStorage.setItem('speaker',JSON.stringify({'speaker':speaker}));
                             setSpeaker(speaker)
                             setCourse(
                                 speaker===CONST_SPEAKERS_ENUM.both?

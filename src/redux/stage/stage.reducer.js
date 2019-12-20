@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     mainStage : event_seats_structure,
     currentCourse: 'KIM',
     clockTime : 600,
-    speaker : null
+    speaker : 'KIM'
 }
 
 const stageReducer = (state = INITIAL_STATE, action) =>{
