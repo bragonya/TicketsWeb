@@ -11,7 +11,7 @@ class Report extends React.Component{
         }
     }
     componentDidMount(){
-        fetch('http://localhost:4001/report', {
+        fetch(process.env.REACT_APP_BASE_URL + "/report", {
             method: "post",
             headers: {
                 'Accept': 'application/json',
@@ -21,8 +21,7 @@ class Report extends React.Component{
         })
         .then(response=> response.json())
         .then(response=>{
-                console.log(response);
-                this.setState({ seats_solds : response.seats_solds, loading:false })
+                this.setState({ seats_solds : response.seats_solds, loading:false });
              }
         )
         .catch(error=> console.error(error),this.setState({ seats_solds : [], loading:false }));
