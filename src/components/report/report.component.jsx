@@ -20,7 +20,11 @@ class Report extends React.Component{
             body: JSON.stringify({'data':''})
         })
         .then(response=> response.json())
-        .then(response=>this.setState({ seats_solds : response.seats_solds, loading:false }))
+        .then(response=>{
+                console.log(response);
+                this.setState({ seats_solds : response.seats_solds, loading:false })
+             }
+        )
         .catch(error=> console.error(error),this.setState({ seats_solds : [], loading:false }));
     }    
 
