@@ -38,7 +38,7 @@ class DetailCheckout extends React.Component{
     };
 
     handleClickGoToPay = () =>{
-        const { props:{ currentUser, cartItems }, state: { rowsInput } } = this;
+        const { props:{ currentUser, cartItems, clearItemsCart }, state: { rowsInput } } = this;
         if(currentUser.admin){  
             console.log('->admin');
             var arrayDetail=cartItems.map(({fila,columna,seccion,curso,price,key})=>{
@@ -75,7 +75,7 @@ class DetailCheckout extends React.Component{
     }
 
     render(){
-        const { props:{cartItems, cartTotal, currentUser, clearItemsCart}, state:{ rowsInput } } = this;
+        const { props:{cartItems, cartTotal, currentUser}, state:{ rowsInput } } = this;
         return (
             <div className='container'>
                 <div className="row justify-content-center" style={{ marginTop:'130px', minWidth:'220px'}}>
