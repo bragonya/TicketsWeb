@@ -162,7 +162,8 @@ export class App extends React.Component{
     
     return (
       <div >
-        {loading?(<div style={{marginTop:'20%',width:'100%',textAlign:'center'}}><Loader
+        {loading?(<div style={{marginTop:'20%',width:'100%',textAlign:'center'}}>
+            <Loader
                 type="TailSpin"
                 color="#00BFFF"
                 height={100}

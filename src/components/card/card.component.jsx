@@ -1,11 +1,18 @@
 import React from 'react';
+import { Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import { CONST_SPEAKERS_ENUM } from '../../assets/constants';
 import { setSpeaker, setCourse } from '../../redux/stage/stage.actions';
 
+
+
 import './card.styles.scss';
+
+const ImgLazy = lazy(() => import('../../components/img-lazy/img-lazy.component'));
 
 const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, setCourse, history, children}) =>(
     <React.Fragment>
@@ -22,8 +29,19 @@ const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, setCourse, histor
         >
   
         <div className="blog-header">
-            <div className="blog-cover" style={{ backgroundImage: `url(${imgURL})`}}>
-            </div>
+            <Suspense 
+                fallback={
+                    <div style={{width:'100%', marginTop:'20%', alignSelf:'center'}}>
+                        <Loader
+                            type="Grid"
+                            color="#00BFFF"
+                            height={50}
+                            width={50}
+                        />
+                    </div>}
+                >
+                    <ImgLazy imgURL={imgURL} className={'blog-cover'}/>
+            </Suspense>
         </div>
 
         <div className="blog-body">
