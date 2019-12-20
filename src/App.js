@@ -52,6 +52,7 @@ export class App extends React.Component{
       socket.emit('connected',{},(initialStage)=>{
         console.log('emit connected');
         initialStage.forEach(seat=>{
+          console.log(seat);
           setStateSeat(seat);
         });
         this.setState({ loading: false });
