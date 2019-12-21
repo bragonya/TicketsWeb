@@ -1,9 +1,10 @@
 import React from "react";
 
+import FormInput from '../components/form-input/form-input.component';
 
 var mailOptions = {
     from: 'rluis4490@gmail.com',
-    to: 'bragonya@gmail.com',
+    to: 'alan.hurtarte@gmail.com',
     subject: 'PeticionSoporteUNbiased',
     html: ''
 };
@@ -21,6 +22,7 @@ class Contact extends React.Component {
         const { fullname, email, message } = this.state;
         event.preventDefault();
         try {
+            
             mailOptions['html'] = `<h1>${fullname}</h1><h3>${email}</h3><p>${message}</p>`;
             fetch((process.env.REACT_APP_BASE_URL) + "/sendEmail", {
                 method: "post",
@@ -59,32 +61,33 @@ class Contact extends React.Component {
                         <div className="col-12 text-center">
                             <h2>Contactenos</h2>
                             <form onSubmit={this.handleSubmit}>
-                                <div className="form-group">
-                                    <label htmlFor="name">Nombre</label>
-                                    <input 
-                                        name='fullname' 
-                                        value={fullname}
-                                        handleChange={this.handleChange}    
-                                        type="text" className="form-control" id="name" aria-describedby="nameHelp" placeholder="John" required />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="email">Email</label>
-                                    <input 
-                                        name='email' 
-                                        value={email}
-                                        handleChange={this.handleChange}
-                                        type="email" 
-                                        className="form-control"
-                                        id="email" aria-describedby="emailHelp"
-                                        placeholder="john@doe.com" required/>
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="message">Mensaje</label>
-                                    <textarea 
-                                        value={message}
-                                        handleChange={this.handleChange}
-                                        name="message" id="message" rows="6" className="form-control" required></textarea>
-                                </div>
+                                <FormInput
+                                    name='fullname'
+                                    type='text'
+                                    value={fullname}
+                                    handleChange={this.handleChange}
+                                    label='Nombre'
+                                    required
+                                    classNameInput={'form-control'}
+                                />
+                                <FormInput
+                                    name='email'
+                                    type='text'
+                                    value={email}
+                                    handleChange={this.handleChange}
+                                    label='Email'
+                                    required
+                                    classNameInput={'form-control'}
+                                />
+                                <FormInput
+                                    name='message'
+                                    type='text'
+                                    value={message}
+                                    handleChange={this.handleChange}
+                                    label='Mensaje'
+                                    required
+                                    classNameInput={'form-control'}
+                                />
                                 <button type="submit" className="btn btn-orange">Enviar</button>
                             </form>
                         </div>
