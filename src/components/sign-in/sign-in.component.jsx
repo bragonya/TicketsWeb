@@ -55,17 +55,17 @@ class SignIn extends React.Component {
                     const { state, message, user } = response;
                     console.log(response);
                     if(state){
+                        this.setState({ ...initialState });
                         setCurrentUser(user);
                         localStorage.setItem('user',JSON.stringify(user));
                         history.push('/select');
                     }else{
                         alert(message);
                     }
-                    this.setState({ ...initialState });
                 })
                 .catch(err=>{
                     console.log(err);
-                    this.setState({ ...initialState });
+                    alert(err);
                 });
             }else{
                 alert('No ha ingresado el primer nombre o primer apellido');

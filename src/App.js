@@ -125,9 +125,11 @@ export class App extends React.Component{
         }
       }
     }
-    
+
     history.listen((location, action) => {
+      console.log('->');
       if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
+        console.log('->');
         if(!(location.pathname==='/checkout')){
           this.unlockAllSeats();
         }

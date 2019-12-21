@@ -37,10 +37,10 @@ const Croquis = ({ mainStage, currentUser, currentCourse, speaker }) =>{
                     
                     <h3><strong>Curso de { currentCourse }</strong> </h3>
                 </div>
-                {currentUser?
-                    <div className="grid-row-croquis vip">
+                {currentUser?!currentUser.admin?
+                    (<div className="grid-row-croquis vip">
                         <Clock/>
-                    </div>:null
+                    </div>):null:null
                 }
                 <div className="grid-row-croquis legends">
                     <LegendDetails/>

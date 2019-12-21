@@ -25,7 +25,7 @@ class Report extends React.Component{
                 this.setState({ seats_solds : response.seats_solds, loading:false });
              }
         )
-        .catch(error=> console.error(error),this.setState({ seats_solds : [], loading:false }));
+        .catch(error=> this.setState({ seats_solds : [], loading:false }));
     }    
 
     render(){

@@ -62,7 +62,9 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                             }
                         }
                     );
-                }:()=>{}
+                }:()=>{
+                    if (!currentUser) history.push('/signinsignup'); return;
+                }
                 
     }
     return (

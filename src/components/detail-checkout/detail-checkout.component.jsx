@@ -95,7 +95,11 @@ class DetailCheckout extends React.Component{
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <Clock/>
+                        {currentUser?!currentUser.admin?
+                            (<div className="grid-row-croquis vip">
+                                <Clock/>
+                            </div>):null:null
+                        }
                         <h2>Detalle de Compra</h2>
                         <form onSubmit={this.handleSubmit}>
                             <table className="table table-hover">
