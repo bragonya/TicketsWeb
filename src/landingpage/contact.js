@@ -23,7 +23,7 @@ class Contact extends React.Component {
         event.preventDefault();
         try {
             mailOptions['html'] = `<h1>${fullname}</h1><h3>${email}</h3><p>${message}</p>`;
-            fetch((process.env.REACT_APP_BASE_URL||'http://localhost:4001') + "/sendEmail", {
+            fetch((process.env.REACT_APP_BASE_URL) + "/sendEmail", {
                 method: "post",
                 headers: {
                     'Accept': 'application/json',
