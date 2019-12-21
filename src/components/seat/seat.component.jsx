@@ -69,6 +69,9 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
         </span>:state==='selected'?
         <span {...properties} >
         <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
+        </span>:state==='blocked'?
+        <span {...properties} >
+        <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
         </span>:
         <span {...properties} >
             
