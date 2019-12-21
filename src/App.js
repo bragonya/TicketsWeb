@@ -105,6 +105,7 @@ export class App extends React.Component{
       if (performance.navigation.type === 1) {
         if((window.location.pathname==='/reservation' || window.location.pathname==='/checkout') && localStorage.getItem('user')){
           this.unlockAllSeats();
+          if(JSON.parse(localStorage.getItem('user')).admin) return;//if admin then not timer
           socket.removeAllListeners('countdownStart');
           socket.on('countdownStart',function(time){
             setClockTime(time);
@@ -130,17 +131,18 @@ export class App extends React.Component{
         if(!(location.pathname==='/checkout')){
           this.unlockAllSeats();
         }
-        socket.removeAllListeners('countdownStart');
-        socket.on('countdownStart',function(time){
-          setClockTime(time);
-        });
-        socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
-        socket.emit('countdownStart',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(clockFinishMessage)=>{
-          this.unlockAllSeats();
+        if(!(JSON.parse(localStorage.getItem('user')).admin)){
           socket.removeAllListeners('countdownStart');
-          history.push('/reservation');
-        });
-        
+          socket.on('countdownStart',function(time){
+            setClockTime(time);
+          });
+          socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
+          socket.emit('countdownStart',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(clockFinishMessage)=>{
+            this.unlockAllSeats();
+            socket.removeAllListeners('countdownStart');
+            history.push('/reservation');
+          });
+        }
       }else{
         if(!(location.pathname==='/checkout')){
           this.unlockAllSeats();
