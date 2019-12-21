@@ -73,7 +73,9 @@ class HeaderMain  extends React.Component{
                         to="/checkout" 
                         className="btn btn-orange fadein"
                         style={{maxWidth:'200px'}}
-                        onClick={() => { this.collapseClick(); }}>Comprar</Link>
+                        onClick={() => { this.collapseClick(); }}>
+                        {currentUser.admin?"Reservar":"Comprar"}  
+                  </Link>
                 </li>:
                 null
               }
