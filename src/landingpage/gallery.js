@@ -71,7 +71,7 @@ class Gallery extends React.Component {
                                 items={imagesbyYear[currentYear]}  
                                 showBullets={true}
                                 thumbnailPosition = {'right'}
-                                //slideOnThumbnailOver = {false}
+                                slideOnThumbnailOver = {true}
                                 lazyLoad = {true}
                             /> 
                         </div>
