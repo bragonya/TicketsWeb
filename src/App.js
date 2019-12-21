@@ -50,7 +50,7 @@ export class App extends React.Component{
         secure: true
       });
     }
-    socket.emit('connected',{},(initialStage)=>{
+    socket.emit('connected',{ user:localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')):null },(initialStage)=>{
       console.log('emit connected');
       initialStage.forEach(seat=>{
         console.log(seat);
