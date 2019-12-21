@@ -42,7 +42,7 @@ class PopoverGeneric extends React.Component{
             };
             conexionSocket.emit(
                 'seatModified',
-                { ...seatModified },
+                { ...seatModified, user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null  },
                 ({ status, message})=>{
                     if(status){
                         setStateSeat({

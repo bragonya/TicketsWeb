@@ -88,7 +88,8 @@ export class App extends React.Component{
       socket.emit(
         'seatModified',
         {   ...item,
-          estado:CONST_SEAT_STATES.free
+          estado:CONST_SEAT_STATES.free,
+          user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null
         },()=>{}
       );
     });
@@ -108,8 +109,8 @@ export class App extends React.Component{
           socket.on('countdownStart',function(time){
             setClockTime(time);
           });
-          socket.emit('close-timer','');
-          socket.emit('countdownStart',{},(clockFinishMessage)=>{
+          socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
+          socket.emit('countdownStart',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(clockFinishMessage)=>{
             this.unlockAllSeats();
             socket.removeAllListeners('countdownStart');
             history.push('/reservation');
@@ -118,7 +119,7 @@ export class App extends React.Component{
           if(!(window.location.pathname==='/checkout')){
             this.unlockAllSeats();
           }
-          socket.emit('close-timer','');
+          socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
           socket.removeAllListeners('countdownStart');
         }
       }
@@ -133,8 +134,8 @@ export class App extends React.Component{
         socket.on('countdownStart',function(time){
           setClockTime(time);
         });
-        socket.emit('close-timer','');
-        socket.emit('countdownStart',{},(clockFinishMessage)=>{
+        socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
+        socket.emit('countdownStart',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(clockFinishMessage)=>{
           this.unlockAllSeats();
           socket.removeAllListeners('countdownStart');
           history.push('/reservation');
@@ -144,7 +145,7 @@ export class App extends React.Component{
         if(!(location.pathname==='/checkout')){
           this.unlockAllSeats();
         }
-        socket.emit('close-timer','');
+        socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
         socket.removeAllListeners('countdownStart');
       }
     });

@@ -37,7 +37,8 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                     conexionSocket.emit(
                         'seatModified',
                         {   ...seatModified,
-                            estado:state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.blocked
+                            estado:state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.blocked,
+                            user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null 
                         },
                         ({ status, message})=>{
                             if(status){

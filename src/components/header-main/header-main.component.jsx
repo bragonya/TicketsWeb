@@ -30,7 +30,8 @@ class HeaderMain  extends React.Component{
       conexionSocket.emit(
         'seatModified',
         {   ...item,
-          estado:CONST_SEAT_STATES.free
+          estado:CONST_SEAT_STATES.free,
+          user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null
         },()=>{}
       );
     });
@@ -80,7 +81,7 @@ class HeaderMain  extends React.Component{
                 className="nav-item"
                 onClick={()=> 
                   { 
-                    conexionSocket.emit('close-timer','');
+                    conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
                     conexionSocket.removeAllListeners('countdownStart');
                     this.unlockAllSeats();
                     setCurrentUser(null); 
