@@ -25,7 +25,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
             onClick:
                 state==='free' || state==='selected'?
                 (evt)=>{
-                    if(cartItems.length===5 && state==='free') return ;
+                    if(cartItems.length===5 && state==='free' && !(currentUser.admin)) return ;
                     if (!currentUser){ history.push('/signinsignup'); return; }
                     const seatModified = {
                         columna : id,
