@@ -152,6 +152,7 @@ export class App extends React.Component{
         socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
         socket.removeAllListeners('countdownStart');
       }
+      window.scrollTo(0, 0);
     });
   }
 

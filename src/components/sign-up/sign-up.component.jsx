@@ -1,5 +1,6 @@
 import React from 'react';
 import FormInput from '../form-input/form-input.component';
+import  { inputValidMessages } from '../../assets/constants';
 
 
 let initialState ={
@@ -80,6 +81,11 @@ class SignUp extends React.Component {
                         value={firstname}
                         onChange={this.handleChange}
                         label='Nombre'
+                        onInvalid={
+                            evt=>{if(firstname==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                } 
+                        matchMessage = {''}
+                        requiredMessage = {inputValidMessages.requiredMessage}
                         required
                     />
                     <FormInput
@@ -88,6 +94,11 @@ class SignUp extends React.Component {
                         value={lastname}
                         onChange={this.handleChange}
                         label='Apellido'
+                        onInvalid={
+                            evt=>{if(lastname==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                } 
+                        matchMessage = {''}
+                        requiredMessage = {inputValidMessages.requiredMessage}
                         required
                     />
                     <FormInput
@@ -96,6 +107,11 @@ class SignUp extends React.Component {
                         value={telephone}
                         onChange={this.handleChange}
                         label='Telefono'
+                        onInvalid={
+                            evt=>{if(telephone==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                } 
+                        matchMessage = {''}
+                        requiredMessage = {inputValidMessages.requiredMessage}
                         required
                     />
                     <FormInput
@@ -104,6 +120,11 @@ class SignUp extends React.Component {
                         value={email}
                         onChange={this.handleChange}
                         label='Correo Electronico'
+                        onInvalid={
+                            evt=>{if(email==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                } 
+                        matchMessage = {inputValidMessages.invalidEmailMessage}
+                        requiredMessage = {inputValidMessages.requiredMessage}
                         required
                     />
                     <FormInput
@@ -112,6 +133,11 @@ class SignUp extends React.Component {
                         value={register_number}
                         onChange={this.handleChange}
                         label='Numero Colegiado o Carnet'
+                        onInvalid={
+                            evt=>{if(register_number==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                } 
+                        matchMessage = {''}
+                        requiredMessage = {inputValidMessages.requiredMessage}
                         required
                     />
                     <FormInput
@@ -120,6 +146,11 @@ class SignUp extends React.Component {
                         value={university}
                         onChange={this.handleChange}
                         label='Universidad'
+                        onInvalid={
+                            evt=>{if(university==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                } 
+                        matchMessage = {''}
+                        requiredMessage = {inputValidMessages.requiredMessage}
                         required
                     />
                     <FormInput

@@ -72,3 +72,7 @@ export const CONST_PRICES={
         }
     }
 }
+export const inputValidMessages = {
+    requiredMessage : 'Este campo es requerido',
+    invalidEmailMessage : 'Ingrese un correo electronico valido'
+};
