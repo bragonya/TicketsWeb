@@ -98,9 +98,7 @@ export class App extends React.Component{
     localStorage.removeItem('cartItems');
   }
   
-  
-
-  componentDidUpdate(){
+  componentDidMount(){
     const { setClockTime, history } = this.props;    
     if (window.performance) {
       if (performance.navigation.type === 1) {
@@ -126,7 +124,10 @@ export class App extends React.Component{
         }
       }
     }
+  }
 
+  componentDidUpdate(){
+    const { setClockTime, history } = this.props;    
     history.listen((location, action) => {
       console.log('->');
       if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
