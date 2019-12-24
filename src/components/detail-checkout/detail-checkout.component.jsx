@@ -25,7 +25,6 @@ class DetailCheckout extends React.Component{
     handleChange = event => {
         const { value, name } = event.target;
         const { rowsInput } = this.state;
-        console.log(rowsInput);
         var newrowsInput = {  ...rowsInput ,[name]: value};
         this.setState({ rowsInput : newrowsInput });
     };
@@ -42,7 +41,6 @@ class DetailCheckout extends React.Component{
     handleClickGoToPay = () =>{
         const { props:{ currentUser, cartItems, clearItemsCart, conexionSocket, history }, state: { rowsInput } } = this;
         if(currentUser.admin){  
-            console.log('->admin');
             var arrayDetail=cartItems.map(({fila,columna,seccion,curso,price,key})=>{
                 return{
                     fila:fila,
@@ -56,7 +54,6 @@ class DetailCheckout extends React.Component{
                     no_document:rowsInput[`no_document${key}`]
                 };
             });
-            console.log(arrayDetail);
             fetch(process.env.REACT_APP_BASE_URL + "/save_order", {
                 method: "post",
                 mode: 'cors',

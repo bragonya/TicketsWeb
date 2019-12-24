@@ -42,9 +42,6 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                             user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null 
                         },
                         ({ status, message})=>{
-                            console.log('callback seatModified');
-                            console.log(status);
-                            console.log(message);
                             if(status){
                                 setStateSeat({
                                     ...seatModified

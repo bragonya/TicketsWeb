@@ -62,10 +62,7 @@ export class App extends React.Component{
     setSocket(socket);
     
     socket.on('newSeatModified',function(seat){
-      console.log('on newSeatModified');
-      console.log(seat);
       setStateSeat(seat);
-      
     });
     if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')));
     if(localStorage.getItem('speaker')){
@@ -129,11 +126,8 @@ export class App extends React.Component{
   componentWillMount(){
     const { setClockTime, history } = this.props;    
     this.unlisten = history.listen((location, action) => {
-      console.log('->');
       if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
-        console.log('->');
         if(!(location.pathname==='/checkout')){
-          console.log('->');
           this.unlockAllSeats();
         }
         if(!(JSON.parse(localStorage.getItem('user')).admin)){
