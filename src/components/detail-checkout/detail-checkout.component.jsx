@@ -59,6 +59,7 @@ class DetailCheckout extends React.Component{
             console.log(arrayDetail);
             fetch(process.env.REACT_APP_BASE_URL + "/save_order", {
                 method: "post",
+                mode: 'cors',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'

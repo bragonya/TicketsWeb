@@ -13,6 +13,7 @@ class Report extends React.Component{
     componentDidMount(){
         fetch(process.env.REACT_APP_BASE_URL + "/report", {
             method: "post",
+            mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

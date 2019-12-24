@@ -29,37 +29,46 @@ class SignUp extends React.Component {
                     goSignIn
                 }
               } = this;
-    
-        try {
-            let response = await fetch(process.env.REACT_APP_BASE_URL + "/register", {
-                method: "post",
-                mode: 'no-cors',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    firstname:firstname,
-                    lastname:lastname,
-                    telephone:parseInt(telephone),
-                    email:email,
-                    comment:comment,
-                    register_number:parseInt(register_number),
-                    university:university
-                })
-            });
-            let { state, message } = await response.json();
+            
+        fetch(process.env.REACT_APP_BASE_URL + "/register", {
+            method: "post",
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstname:firstname,
+                lastname:lastname,
+                telephone:parseInt(telephone),
+                email:email,
+                comment:comment,
+                register_number:parseInt(register_number),
+                university:university
+            })
+        })
+        .then( response => {
+            try {
+                return response.json(); 
+            } catch (error) {
+                response = { state:false, message: 'Formato invalido de respuesta'};
+                return response;
+            }
+        })
+        .then( response =>{
+            const { state, message } = response;
             if(state){
                 alert(message);
                 this.setState({ ...initialState });
                 goSignIn();
             }else{
-                alert(message);    
+                alert(message);
             }
-
-        } catch (error) {
-            console.error(error);
-        }
+        })
+        .catch(err=>{
+            console.log(err);
+            alert('Error de Servidor:\n'+err);
+        });
     };
     
     handleChange = event => {

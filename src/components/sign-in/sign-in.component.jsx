@@ -56,13 +56,12 @@ class SignIn extends React.Component {
                     try {
                         return response.json(); 
                     } catch (error) {
-                        console.log('error al convertir el json');
+                        console.log('Formato invalido de respuesta');
                         response = { state:false, message: error, user:null};
                         return response;
                     }
                 })
                 .then( response =>{
-                    console.log(response);
                     const { state, message, user } = response;
                     if(state){
                         this.setState({ ...initialState });
