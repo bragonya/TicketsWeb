@@ -11,6 +11,7 @@ import { clearItemsCart } from '../../redux/cart/cart.actions';
 import FormInput from '../form-input/form-input.component';
 
 import Clock from '../clock/clock.component';
+import  { inputValidMessages } from '../../assets/constants';
 
 import './detail-checkout.styles.scss';
 
@@ -130,6 +131,11 @@ class DetailCheckout extends React.Component{
                                                         handleChange={this.handleChange}
                                                         value={ rowsInput[`name${key}`]||""}
                                                         label=''
+                                                        onInvalid={
+                                                            evt=>{if(rowsInput[`name${key}`]||""==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                                                } 
+                                                        matchMessage = {''}
+                                                        requiredMessage = {inputValidMessages.requiredMessage}
                                                         required
                                                     />
                                                 </td>
@@ -140,6 +146,11 @@ class DetailCheckout extends React.Component{
                                                         handleChange={this.handleChange}
                                                         value={ rowsInput[`register_number${key}`]||""}
                                                         label=''
+                                                        onInvalid={
+                                                            evt=>{if(rowsInput[`register_number${key}`]||""==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                                                } 
+                                                        matchMessage = {''}
+                                                        requiredMessage = {inputValidMessages.requiredMessage}
                                                         required
                                                     />
                                                 </td>
@@ -151,6 +162,11 @@ class DetailCheckout extends React.Component{
                                                         value={ rowsInput[`university${key}`]||""}
                                                         label=''
                                                         className=' detail'
+                                                        onInvalid={
+                                                            evt=>{if(rowsInput[`university${key}`]||""==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                                                } 
+                                                        matchMessage = {''}
+                                                        requiredMessage = {inputValidMessages.requiredMessage}
                                                         required
                                                     />
                                                 </td>
@@ -163,6 +179,11 @@ class DetailCheckout extends React.Component{
                                                         value={ rowsInput[`no_document${key}`]||""}
                                                         label=''
                                                         className=' detail'
+                                                        onInvalid={
+                                                            evt=>{if(rowsInput[`no_document${key}`]||""==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
+                                                                } 
+                                                        matchMessage = {''}
+                                                        requiredMessage = {inputValidMessages.requiredMessage}
                                                         required
                                                     />
                                                     </td>:null
