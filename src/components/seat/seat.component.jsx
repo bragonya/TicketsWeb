@@ -34,7 +34,6 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                         curso: course,
                         estado : state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.selected
                     };
-                    alert('HOLA');
                     conexionSocket.emit(
                         'seatModified',
                         {   ...seatModified,
