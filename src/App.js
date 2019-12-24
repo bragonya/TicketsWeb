@@ -58,7 +58,7 @@ export class App extends React.Component{
       });
       this.setState({ loading: false });
     });  
-    const { setSocket, setStateSeat, setCurrentUser, setSpeaker, setCourse, cartItems } = this.props;    
+    const { setSocket, setStateSeat, setCurrentUser, setSpeaker, setCourse } = this.props;    
     setSocket(socket);
     
     socket.on('newSeatModified',function(seat){
@@ -132,6 +132,7 @@ export class App extends React.Component{
       if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
         console.log('->');
         if(!(location.pathname==='/checkout')){
+          console.log('LIBERAR');
           this.unlockAllSeats();
         }
         if(!(JSON.parse(localStorage.getItem('user')).admin)){
