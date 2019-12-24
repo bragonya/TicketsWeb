@@ -52,7 +52,7 @@ class SignIn extends React.Component {
                     })
                 })
                 .then( response => {
-                    console.log(response);
+                    console.log(response.text());
                     try {
                         response.json(); 
                     } catch (error) {
