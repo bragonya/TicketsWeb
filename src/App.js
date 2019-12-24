@@ -62,19 +62,6 @@ export class App extends React.Component{
     setSocket(socket);
     
     socket.on('newSeatModified',function(seat){
-      var finded=cartItems.map(
-        ({columna,fila,seccion,curso})=>{
-          if(seat.fila===fila 
-            && seat.columna===columna 
-            && seat.seccion===seccion
-            && seat.curso===curso ){
-              return true;
-          }else{
-            return;
-          }
-        }
-      );
-      console.log(finded);
       console.log('on newSeatModified');
       console.log(seat);
       setStateSeat(seat);
