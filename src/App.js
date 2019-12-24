@@ -100,7 +100,7 @@ export class App extends React.Component{
   
   
 
-  componentDidMount(){
+  componentDidUpdate(){
     const { setClockTime, history } = this.props;    
     if (window.performance) {
       if (performance.navigation.type === 1) {
