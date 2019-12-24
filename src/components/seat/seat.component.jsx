@@ -19,7 +19,7 @@ import './seat.styles.scss';
 const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, currentCourse, speaker, history}) =>{
     const { id, colname, state , key , idN, course} = seatdata;
     const disablePopover = currentUser?(currentUser.admin?false:true):true;   
-    
+    console.log(cartItems);
     var properties={
         key:`'span-'${key}${id}${colname}`,
             id:`${key}${id}${colname}`,
@@ -46,7 +46,6 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                                 setStateSeat({
                                     ...seatModified
                                 });
-                                console.log(state);
                                 if(state==='selected'){
                                     removeSeatCart({...seatModified,
                                         price:CONST_PRICES[currentCourse][speaker=!CONST_SPEAKERS_ENUM.both?'only':CONST_SPEAKERS_ENUM.both][idN].PRICE
