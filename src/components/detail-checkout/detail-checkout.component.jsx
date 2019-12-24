@@ -67,10 +67,10 @@ class DetailCheckout extends React.Component{
             })
             .then( response => response.json())
             .then( response => { 
-                this.setState({ ...initialState });
                 console.log('limpio carro');
                 clearItemsCart();
                 localStorage.removeItem('cartItems');
+                this.setState({ ...initialState });
                 conexionSocket.removeAllListeners('countdownStart');
                 conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
                 history.push('/reservation');
