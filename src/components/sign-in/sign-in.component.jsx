@@ -53,7 +53,7 @@ class SignIn extends React.Component {
                 })
                 .then( response => {
                     try {
-                        response.json(); 
+                        return response.json(); 
                     } catch (error) {
                         console.log('error al convertir el json');
                         response = { state:false, message: error, user:null};
