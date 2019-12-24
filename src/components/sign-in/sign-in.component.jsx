@@ -41,6 +41,7 @@ class SignIn extends React.Component {
             if(!(fullnameSplit[0].trim()==="") && !(fullnameSplit[2].trim()==="")){
                 fetch(process.env.REACT_APP_BASE_URL + "/login", {
                     method: "post",
+                    mode: 'no-cors',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
