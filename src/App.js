@@ -58,7 +58,7 @@ export class App extends React.Component{
       });
       this.setState({ loading: false });
     });  
-    const { setSocket, setStateSeat, setCurrentUser, setSpeaker, setCourse } = this.props;    
+    const { setSocket, setStateSeat, setCurrentUser, setSpeaker, setCourse, cartItems } = this.props;    
     setSocket(socket);
     
     socket.on('newSeatModified',function(seat){
