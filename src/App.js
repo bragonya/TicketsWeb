@@ -132,7 +132,7 @@ export class App extends React.Component{
       if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
         console.log('->');
         if(!(location.pathname==='/checkout')){
-          console.log('LIBERAR');
+          console.log('->');
           this.unlockAllSeats();
         }
         if(!(JSON.parse(localStorage.getItem('user')).admin)){

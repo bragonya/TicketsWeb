@@ -33,7 +33,7 @@ class DetailCheckout extends React.Component{
     handleSubmit = event => {
         event.preventDefault();
         try {
-          this.setState({ ...initialState });
+          handleClickGoToPay();
         } catch (error) {
           console.log(error);
         }
@@ -70,6 +70,7 @@ class DetailCheckout extends React.Component{
             })
             .then( response => response.json())
             .then( response => { 
+                this.setState({ ...initialState });
                 conexionSocket.removeAllListeners('countdownStart');
                 conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
                 clearItemsCart(); 
@@ -213,7 +214,6 @@ class DetailCheckout extends React.Component{
                                         <td>
                                             <input 
                                                 type="submit" 
-                                                onClick = {this.handleClickGoToPay}
                                                 className="button btn-success" 
                                                 value={currentUser.admin?"Guardar":"Realizar Pago"} 
                                             />
