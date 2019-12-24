@@ -62,6 +62,7 @@ export class App extends React.Component{
     setSocket(socket);
     
     socket.on('newSeatModified',function(seat){
+      console.log(seat);
       setStateSeat(seat);
     });
     if(localStorage.getItem('user')) setCurrentUser(JSON.parse(localStorage.getItem('user')));
