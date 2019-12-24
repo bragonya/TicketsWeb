@@ -61,8 +61,8 @@ class SignIn extends React.Component {
                     }
                 })
                 .then( response =>{
-                    const { state, message, user } = response;
                     console.log(response);
+                    const { state, message, user } = response;
                     if(state){
                         this.setState({ ...initialState });
                         setCurrentUser(user);
