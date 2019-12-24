@@ -33,7 +33,7 @@ class DetailCheckout extends React.Component{
     handleSubmit = event => {
         event.preventDefault();
         try {
-          handleClickGoToPay();
+          this.handleClickGoToPay();
         } catch (error) {
           console.log(error);
         }
