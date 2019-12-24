@@ -46,6 +46,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                                 setStateSeat({
                                     ...seatModified
                                 });
+                                console.log(state);
                                 if(state==='selected'){
                                     removeSeatCart({...seatModified,
                                         price:CONST_PRICES[currentCourse][speaker=!CONST_SPEAKERS_ENUM.both?'only':CONST_SPEAKERS_ENUM.both][idN].PRICE
