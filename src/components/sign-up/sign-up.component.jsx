@@ -33,6 +33,7 @@ class SignUp extends React.Component {
         try {
             let response = await fetch(process.env.REACT_APP_BASE_URL + "/register", {
                 method: "post",
+                mode: 'cors',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
