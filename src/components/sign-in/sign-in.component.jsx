@@ -52,6 +52,7 @@ class SignIn extends React.Component {
                     })
                 })
                 .then( response => {
+                    console.log(response);
                     try {
                         response.json(); 
                     } catch (error) {
