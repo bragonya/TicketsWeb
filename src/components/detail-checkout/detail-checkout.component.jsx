@@ -67,7 +67,7 @@ class DetailCheckout extends React.Component{
             })
             .then( response => response.json())
             .then( response => { 
-                console.log('limpio carro');
+                
                 localStorage.removeItem('cartItems');
                 this.setState({ ...initialState });
                 conexionSocket.removeAllListeners('countdownStart');

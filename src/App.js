@@ -82,7 +82,6 @@ export class App extends React.Component{
     const  { clearItemsCart, setStateSeat } = this.props;    
     var    { cartItems } = this.props;
     cartItems=cartItems.length? cartItems: JSON.parse(localStorage.getItem('cartItems')) || [] 
-    console.log(cartItems);
     cartItems.forEach(item=>{
       setStateSeat({...item, estado:CONST_SEAT_STATES.free })
       socket.emit(
