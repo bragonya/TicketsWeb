@@ -55,7 +55,6 @@ class SignIn extends React.Component {
                     try {
                         response.json(); 
                     } catch (error) {
-                        alert('EXAd');
                         return { state:false, message: error, user:null};
                     }
                 })
@@ -73,7 +72,7 @@ class SignIn extends React.Component {
                 })
                 .catch(err=>{
                     console.log(err);
-                    
+                    alert('Error de Servidor:\n'+err);
                 });
             }else{
                 alert('No ha ingresado el primer nombre o primer apellido');
