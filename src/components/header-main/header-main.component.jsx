@@ -59,11 +59,11 @@ class HeaderMain  extends React.Component{
                       to="/reservation" 
                       onClick={() => { this.collapseClick(); }}>Reservacion</Link>
           </li>
+          <li>
+                <Link to="/select"  onClick={() => { this.collapseClick(); }} >Seleccionar Curso</Link>
+          </li>
           {currentUser?
             <React.Fragment>    
-              <li >
-                <Link to="/select"  onClick={() => { this.collapseClick(); }} >Seleccionar Curso</Link>
-              </li>
               {currentUser.admin?<li >
                 <Link to="/report"  onClick={() => { this.collapseClick(); }} >Reporte</Link>
               </li>:null}
