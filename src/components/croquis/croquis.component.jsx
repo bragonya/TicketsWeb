@@ -31,7 +31,7 @@ const Croquis = ({ mainStage, currentUser, currentCourse, speaker }) =>{
         
             <div className="box-croquis">
                 {speaker===CONST_SPEAKERS_ENUM.both?
-                    <NextPrevius/>:!currentUser?<NextPrevius/>:null
+                    <NextPrevius/>:null
                 }
                 <div className="grid-row-croquis vip">
                     
