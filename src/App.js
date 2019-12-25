@@ -98,6 +98,7 @@ export class App extends React.Component{
   
   componentDidMount(){
     const { setClockTime, history } = this.props;    
+   
     if (window.performance) {
       if (performance.navigation.type === 1) {
         if((window.location.pathname==='/reservation' || window.location.pathname==='/checkout') && localStorage.getItem('user')){
@@ -123,32 +124,36 @@ export class App extends React.Component{
       }
     }
 
-    history.listen((location, action) => {
-      if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
-        if(!(location.pathname==='/checkout')){
-          this.unlockAllSeats();
-        }
-        if(!(JSON.parse(localStorage.getItem('user')).admin)){
-          socket.removeAllListeners('countdownStart');
-          socket.on('countdownStart',function(time){
-            setClockTime(time);
-          });
-          socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
-          socket.emit('countdownStart',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(clockFinishMessage)=>{
+    window.onpopstate = (event) =>{
+      if(event.state){
+
+      
+        if((window.location.pathname==='/reservation' || window.location.pathname==='/checkout') && localStorage.getItem('user')){
+          if(!(window.location.pathname==='/checkout')){
             this.unlockAllSeats();
+          }
+          if(!(JSON.parse(localStorage.getItem('user')).admin)){
             socket.removeAllListeners('countdownStart');
-            history.push('/reservation');
-          });
+            socket.on('countdownStart',function(time){
+              setClockTime(time);
+            });
+            socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
+            socket.emit('countdownStart',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(clockFinishMessage)=>{
+              this.unlockAllSeats();
+              socket.removeAllListeners('countdownStart');
+              history.push('/reservation');
+            });
+          }
+        }else{
+          if(!(window.location.pathname==='/checkout')){
+            this.unlockAllSeats();
+          }
+          socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
+          socket.removeAllListeners('countdownStart');
         }
-      }else{
-        if(!(location.pathname==='/checkout')){
-          this.unlockAllSeats();
-        }
-        socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
-        socket.removeAllListeners('countdownStart');
+        window.scrollTo(0, 0);
       }
-      window.scrollTo(0, 0);
-    });
+    };
   }
 
   
