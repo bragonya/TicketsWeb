@@ -35,7 +35,7 @@ import  "./App.scss"
 
 let socket;
 let initialState={
-  loading: !true
+  loading: true
 };
 export class App extends React.Component{
 
