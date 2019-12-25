@@ -129,7 +129,6 @@ export class App extends React.Component{
   
 
   componentWillUnmount() {
-    this.unlisten();
     socket.disconnect();
     this.unsubscribeFromAuth();
     localStorage.removeItem('user');
