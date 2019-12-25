@@ -54,11 +54,11 @@ class HeaderMain  extends React.Component{
           <li >
             <Link to="/" onClick={() => { this.collapseClick(); }}>Inicio</Link>
           </li>
-          <li>
+          {/*<li>
                 <Link 
                       to="/reservation" 
                       onClick={() => { this.collapseClick(); }}>Reservacion</Link>
-          </li>
+          </li>*/}
           <li>
               <Link to="/select"  onClick={() => { this.collapseClick(); }} >Seleccionar Curso</Link>
           </li>
