@@ -122,11 +122,8 @@ export class App extends React.Component{
         }
       }
     }
-  }
 
-  componentWillMount(){
-    const { setClockTime, history } = this.props;    
-    this.unlisten = history.listen((location, action) => {
+    history.listen((location, action) => {
       if((location.pathname==='/reservation' || location.pathname==='/checkout') && localStorage.getItem('user')){
         if(!(location.pathname==='/checkout')){
           this.unlockAllSeats();
@@ -153,6 +150,8 @@ export class App extends React.Component{
       window.scrollTo(0, 0);
     });
   }
+
+  
   
 
   componentWillUnmount() {
