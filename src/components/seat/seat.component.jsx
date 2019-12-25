@@ -26,7 +26,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                 state==='free' || state==='selected'?
                 (evt)=>{
                     if(!currentUser.admin){
-                        alert('La funcion de comprar por el momento se encuentra habilitada');
+                        alert('La función de comprar por el momento se encuentra deshabilitada.\nPara mas información contacta con el organizador del evento.');
                         return;
                     }
                     if(cartItems.length===5 && state==='free' && !(currentUser.admin)) return ;
