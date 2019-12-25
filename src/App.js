@@ -143,6 +143,7 @@ export class App extends React.Component{
   
   onRouteChanged(route_) {
     const { setClockTime, history } = this.props;    
+    console.log(route_);
     if((route_==='/reservation' || route_==='/checkout') && localStorage.getItem('user')){
       if(!(route_==='/checkout')){
         this.unlockAllSeats();
@@ -207,7 +208,7 @@ export class App extends React.Component{
               exact 
               path="/checkout" 
               render={() =>{
-                    
+                    console.log(cartItemsCount);
                     return !cartItemsCount? (
                     <Redirect to='/select'/>
                     ):(
