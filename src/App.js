@@ -144,7 +144,7 @@ export class App extends React.Component{
   onRouteChanged(route_) {
     const { setClockTime, history } = this.props;    
     if((route_==='/reservation' || route_==='/checkout') && localStorage.getItem('user')){
-      if(!(window.location.pathname==='/checkout')){
+      if(!(route_==='/checkout')){
         this.unlockAllSeats();
       }
       if(!(JSON.parse(localStorage.getItem('user')).admin)){
