@@ -137,7 +137,7 @@ export class App extends React.Component{
 
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
-      this.onRouteChanged(this.props.location);
+      this.onRouteChanged(this.props.location.pathname);
     }
   }
   
