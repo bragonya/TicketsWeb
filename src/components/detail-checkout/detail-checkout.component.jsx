@@ -16,12 +16,12 @@ import  { inputValidMessages } from '../../assets/constants';
 import './detail-checkout.styles.scss';
 
 var initialState = {
-    rowsInput : {}
+    rowsInput : {},
+    processing : false
 };
 
 class DetailCheckout extends React.Component{
     state = { ...initialState };
-
     handleChange = event => {
         const { value, name } = event.target;
         const { rowsInput } = this.state;
@@ -39,8 +39,10 @@ class DetailCheckout extends React.Component{
     };
 
     handleClickGoToPay = () =>{
-        const { props:{ currentUser, cartItems, clearItemsCart, conexionSocket, history }, state: { rowsInput } } = this;
-        if(currentUser.admin){  
+        const { props:{ currentUser, cartItems, clearItemsCart, conexionSocket, history }, 
+                state: { rowsInput} } = this;
+        if(currentUser.admin){
+            this.setState({ processing : true });
             var arrayDetail=cartItems.map(({fila,columna,seccion,curso,price,key})=>{
                 return{
                     fila:fila,
@@ -65,19 +67,31 @@ class DetailCheckout extends React.Component{
                     'seats': arrayDetail 
                 })
             })
-            .then( response => response.json())
+            .then( response => {
+                try {
+                    return response.json(); 
+                } catch (error) {
+                    response = { state:false, message: 'Formato invalido de respuesta'};
+                    return response;
+                }
+            })
             .then( response => { 
-                
-                localStorage.removeItem('cartItems');
-                this.setState({ ...initialState });
-                conexionSocket.removeAllListeners('countdownStart');
-                conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
-                clearItemsCart();
-                history.push('/reservation');
-                console.log(response);
+                const { status, message } = response;
+                alert(message);
+                if(status){
+                    localStorage.removeItem('cartItems');
+                    this.setState({ ...initialState });
+                    conexionSocket.removeAllListeners('countdownStart');
+                    conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
+                    clearItemsCart();
+                    history.push('/reservation');
+                    console.log(response);
+                }
             })
             .catch(error => {
-                console.error(error)
+                this.setState({ processing : false });
+                console.error(error);
+                alert('Error de Servidor:\n'+error);
             });
         }
         /* 
@@ -86,7 +100,7 @@ class DetailCheckout extends React.Component{
     }
 
     render(){
-        const { props:{cartItems, cartTotal, currentUser}, state:{ rowsInput } } = this;
+        const { props:{cartItems, cartTotal, currentUser}, state:{ rowsInput, processing } } = this;
         return (
             <div className='container'>
                 <div className="row justify-content-center" style={{ marginTop:'130px', minWidth:'220px'}}>
@@ -212,6 +226,7 @@ class DetailCheckout extends React.Component{
                                         <td></td>
                                         <td>
                                             <input 
+                                                disabled={ processing }
                                                 type="submit" 
                                                 className="button btn-success" 
                                                 value={currentUser.admin?"Guardar":"Realizar Pago"} 
