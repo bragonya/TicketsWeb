@@ -35,7 +35,7 @@ import  "./App.scss"
 
 let socket;
 let initialState={
-  loading: true
+  loading: !true
 };
 export class App extends React.Component{
 
@@ -123,37 +123,6 @@ export class App extends React.Component{
         }
       }
     }
-
-    window.onpopstate = (event) =>{
-      if(event.state){
-
-      
-        if((window.location.pathname==='/reservation' || window.location.pathname==='/checkout') && localStorage.getItem('user')){
-          if(!(window.location.pathname==='/checkout')){
-            this.unlockAllSeats();
-          }
-          if(!(JSON.parse(localStorage.getItem('user')).admin)){
-            socket.removeAllListeners('countdownStart');
-            socket.on('countdownStart',function(time){
-              setClockTime(time);
-            });
-            socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
-            socket.emit('countdownStart',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(clockFinishMessage)=>{
-              this.unlockAllSeats();
-              socket.removeAllListeners('countdownStart');
-              history.push('/reservation');
-            });
-          }
-        }else{
-          if(!(window.location.pathname==='/checkout')){
-            this.unlockAllSeats();
-          }
-          socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
-          socket.removeAllListeners('countdownStart');
-        }
-        window.scrollTo(0, 0);
-      }
-    };
   }
 
   
@@ -167,9 +136,41 @@ export class App extends React.Component{
     localStorage.removeItem('cartItems');
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.onRouteChanged(this.props.location);
+    }
+  }
+  
+  onRouteChanged(route_) {
+    const { setClockTime, history } = this.props;    
+    if((route_==='/reservation' || route_==='/checkout') && localStorage.getItem('user')){
+      if(!(window.location.pathname==='/checkout')){
+        this.unlockAllSeats();
+      }
+      if(!(JSON.parse(localStorage.getItem('user')).admin)){
+        socket.removeAllListeners('countdownStart');
+        socket.on('countdownStart',function(time){
+          setClockTime(time);
+        });
+        socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
+        socket.emit('countdownStart',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(clockFinishMessage)=>{
+          this.unlockAllSeats();
+          socket.removeAllListeners('countdownStart');
+          history.push('/reservation');
+        });
+      }
+    }else{
+      if(!(route_==='/checkout')){
+        this.unlockAllSeats();
+      }
+      socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
+      socket.removeAllListeners('countdownStart');
+    }
+    window.scrollTo(0, 0);
+  }
   render(){
     const { props:{currentUser, cartItemsCount}, state:{loading}  } = this;
-    
     return (
       <div >
         {loading?(<div style={{marginTop:'20%',width:'100%',textAlign:'center'}}>
