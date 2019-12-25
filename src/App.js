@@ -194,15 +194,9 @@ export class App extends React.Component{
                           return <AdminPage/>
                         }
                       }
-                      return (<Redirect to='/reservation'/>)
+                      return (<Redirect to='/select'/>)
               }}/>
-            <Route  path='/select' render={() =>
-                currentUser? (
-                <SelectCoursePage/>
-                ):(
-                  <Redirect to='/reservation'/>
-                )}
-              />
+            <Route  path='/select' render={() =><SelectCoursePage/>} />
             <Route  path='/paymentsuccess' component={PaymentSuccess}/>
             <Route 
               exact 
@@ -210,7 +204,7 @@ export class App extends React.Component{
               render={() =>{
                     
                     return !cartItemsCount? (
-                    <Redirect to='/reservation'/>
+                    <Redirect to='/select'/>
                     ):(
                       <CheckOutPage/>
                     )
@@ -223,7 +217,7 @@ export class App extends React.Component{
               path="/signinsignup" 
               render={() =>
                 currentUser? (
-                  <Redirect to='/reservation'/>
+                  <Redirect to='/select'/>
                   ):(
                     <SignInSignUpPage/>
                   )
