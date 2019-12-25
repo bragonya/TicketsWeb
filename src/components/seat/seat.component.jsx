@@ -25,12 +25,12 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
             onClick:
                 state==='free' || state==='selected'?
                 (evt)=>{
+                    if (!currentUser){ history.push('/signinsignup'); return; }
                     if(!currentUser.admin){
                         alert('La función de comprar por el momento se encuentra deshabilitada.\nPara mas información contacta con el organizador del evento.');
                         return;
                     }
                     if(cartItems.length===5 && state==='free' && !(currentUser.admin)) return ;
-                    if (!currentUser){ history.push('/signinsignup'); return; }
                     const seatModified = {
                         columna : id,
                         fila : colname,
