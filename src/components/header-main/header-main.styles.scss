@@ -1,3 +1,4 @@
+
 .header-custom {
   top: 0;
   background-color: black;
@@ -7,6 +8,7 @@
   z-index: 3;
   min-width: 340px;
 }
+
 
 .header-custom ul {
   margin: 0;
@@ -124,13 +126,20 @@
 
 /* 48em = 768px */
 
-@media (min-width: 64em) {
+@media (min-width: 66em) {
+  .nickname-user{
+    text-shadow: 0 0 3px rgb(0, 68, 255);
+    display: block;
+    color: rgb(245, 245, 245);
+    padding: 20px 30px;
+  }
   .header-custom li {
     float: left;
   }
   .header-custom li a {
     padding: 20px 30px;
   }
+  
   .header-custom .menu {
     clear: none;
     float: right;
@@ -141,9 +150,18 @@
   }
 }
 
-@media (max-width: 1033px) {
+@media (max-width: 1055px) {
   .header-custom li a{
-    font-size: 14px;
+    font-size: 15px;
+  }
+  .header-custom li span{
+    font-size: 15px;
+  }
+  .nickname-user{
+    text-shadow: 0 0 3px rgb(0, 68, 255);
+    display: block;
+    color: rgb(245, 245, 245);
+    padding: 5px 20px;
   }
 }
 

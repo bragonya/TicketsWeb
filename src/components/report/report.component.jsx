@@ -1,13 +1,16 @@
 import React from 'react';
 import Loader from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import BasicTable from '../datatable/datatable.component';
 
+import './report.styles.scss';
 class Report extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             seats_solds : [],
-            loading: true
+            loading: true,
+            total:''
         }
     }
     componentDidMount(){
@@ -22,6 +25,7 @@ class Report extends React.Component{
         })
         .then(response=> response.json())
         .then(response=>{
+                console.log(response.seats_solds);
                 this.setState({ seats_solds : response.seats_solds, loading:false });
              }
         )
@@ -40,38 +44,8 @@ class Report extends React.Component{
             />):seats_solds.length?
             <React.Fragment>
             <h3>Asientos Vendidos</h3>
-            <table className="table table-hover">
-                
-                <thead>
-                    <tr>
-                        <th cope="col">Fila</th>
-                        <th cope="col">Silla</th>
-                        <th cope="col">Seccion</th>
-                        <th cope="col">Curso</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        seats_solds.map(
-                            ({fila,columna,curso,seccion},ii)=>
-                            <tr key={`tr${ii}`}>
-                                <td key={`td${fila}${columna}${curso}`}>
-                                    {fila}
-                                </td>
-                                <td>
-                                    {columna}
-                                </td>
-                                <td>
-                                    {seccion}
-                                </td>
-                                <td>
-                                    {curso}
-                                </td>
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </table></React.Fragment>:<div><h1>Sin registros</h1></div>
+            {/*<span className='span-total'>Total:</span>*/}
+            <BasicTable seats_solds={seats_solds}/></React.Fragment>:<div><h1>Sin registros</h1></div>
             }
             </div>
         )

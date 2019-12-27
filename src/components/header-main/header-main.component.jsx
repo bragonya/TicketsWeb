@@ -47,10 +47,15 @@ class HeaderMain  extends React.Component{
     const { itemsCount, currentUser, history, setCurrentUser, conexionSocket, setCourse, setSpeaker } = this.props;
     return(
       <div className="header-custom">
+        
         <span  className="logo-custom" onClick={()=>history.push('/')}></span>
+        
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
         <ul className="menu">
+          <li>
+            <span className='nickname-user'>{currentUser?`Hola ${currentUser.firstname} `:''}</span>
+          </li>
           <li >
             <Link to="/" onClick={() => { this.collapseClick(); }}>Inicio</Link>
           </li>
