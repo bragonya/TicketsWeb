@@ -10,7 +10,7 @@ import { selectConexionSocket, selectCurrentUser }from '../../redux/user/user.se
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCurrentCourse,selectSpeaker } from '../../redux/stage/stage.selectors';
 import { CONST_PRICES } from '../../assets/constants';
-
+import { getAmountSeatsOfCourse } from '../../redux/cart/cart.utils';
 
 import PopoverGeneric from '../popover-generic/popover-generic.component';
 
@@ -50,12 +50,30 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                                     ...seatModified
                                 });
                                 if(state==='selected'){
-                                    removeSeatCart({...seatModified,
-                                        price:CONST_PRICES[currentCourse][speaker=!CONST_SPEAKERS_ENUM.both?'only':CONST_SPEAKERS_ENUM.both][idN].PRICE
-                                    });
+                                    removeSeatCart({...seatModified});
                                 }else{
-                                    addSeatCart({...seatModified,
-                                        price: CONST_PRICES[currentCourse][speaker=!CONST_SPEAKERS_ENUM.both?'only':CONST_SPEAKERS_ENUM.both][idN].PRICE
+                                    var priceSeat = CONST_PRICES[currentCourse]['only'][idN].PRICE;
+                                    if(speaker===CONST_SPEAKERS_ENUM.both){
+                                        let amountKANO = getAmountSeatsOfCourse(cartItems,'KANO');
+                                        let amountKIM  = getAmountSeatsOfCourse(cartItems,'KIM');
+                                        switch(currentCourse){
+                                            case 'KANO':
+                                                if(amountKIM>amountKANO){
+                                                    priceSeat = CONST_PRICES[currentCourse][CONST_SPEAKERS_ENUM.both][idN].PRICE;
+                                                }
+                                                break;
+                                            case 'KIM':    
+                                                if(amountKANO>amountKIM){
+                                                    priceSeat = CONST_PRICES[currentCourse][CONST_SPEAKERS_ENUM.both][idN].PRICE;
+                                                }
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    addSeatCart({
+                                        ...seatModified,
+                                        price: priceSeat
                                     });
                                 }
                             }else{

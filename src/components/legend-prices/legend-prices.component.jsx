@@ -10,7 +10,7 @@ import  { CONST_SPEAKERS_ENUM, CONST_PRICES } from '../../assets/constants';
 import './legend-prices.styles.scss';
 
 const LegendPrices = ({ currentCourse , speaker}) => {
-    const { LOUNGE,VIP,PROFESIONAL,ESTUDIANTE } =  CONST_PRICES[currentCourse][speaker===CONST_SPEAKERS_ENUM.both?CONST_SPEAKERS_ENUM.both:'only'];
+    const { LOUNGE,VIP,PROFESIONAL,ESTUDIANTE } =  CONST_PRICES[currentCourse]['only'];
     return(
         <div className='legend-prices'>
             <div className='row'>

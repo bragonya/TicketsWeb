@@ -31,13 +31,13 @@ export const CONST_PRICES={
         },
         'BOTH':{
             LOUNGE:{
-                PRICE: 1800
+                PRICE: 1400
             },
             VIP: {
-                PRICE:1600
+                PRICE:1200
             },
             PROFESIONAL: {
-                PRICE:1450
+                PRICE:1050
             }
         }
     },

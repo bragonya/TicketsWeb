@@ -8,3 +8,7 @@ export const addSeatToCart = (items,seatToAdd)=>{
     localStorage.setItem('cartItems',JSON.stringify([...items,{...seatToAdd,key:Object.values({fila,columna,seccion,curso}).join("")}]));
     return [...items,{...seatToAdd,key:Object.values({fila,columna,seccion,curso}).join("")}]
 }
+
+export const getAmountSeatsOfCourse = (items, courseName) =>{
+    return items.reduce((acc,cur) => cur.curso===courseName ? ++acc : acc, 0);
+}

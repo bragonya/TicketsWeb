@@ -53,9 +53,12 @@ class HeaderMain  extends React.Component{
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
         <ul className="menu">
-          <li>
-            <span className='nickname-user'>{currentUser?`Hola ${currentUser.firstname} `:''}</span>
-          </li>
+          {currentUser?
+            <li>
+              <span className='nickname-user'>{currentUser?`Hola ${currentUser.firstname} `:''}</span>
+            </li>
+            :null
+          }
           <li >
             <Link to="/" onClick={() => { this.collapseClick(); }}>Inicio</Link>
           </li>
