@@ -43,7 +43,7 @@ export class App extends React.Component{
     super(props);
     this.state  = { ...initialState };
     if (process.env.NODE_ENV === 'development') {
-      socket = io.connect(process.env.REACT_APP_SOCKET_URL || 'https://odontologiaindependiente.com:443');
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL);
     }else {
       socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
         secure: true
@@ -52,7 +52,6 @@ export class App extends React.Component{
     socket.emit('connected',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(initialStage)=>{
       console.log('emit connected');
       initialStage.forEach(seat=>{
-        console.log(seat);
         setStateSeat(seat);
       });
       this.setState({ loading: false });
@@ -129,7 +128,6 @@ export class App extends React.Component{
 
   componentWillUnmount() {
     socket.disconnect();
-    
     localStorage.removeItem('user');
     localStorage.removeItem('cartItems');
   }
@@ -142,7 +140,6 @@ export class App extends React.Component{
   
   onRouteChanged(route_) {
     const { setClockTime, history } = this.props;    
-    console.log(route_);
     if((route_==='/reservation' || route_==='/checkout') && localStorage.getItem('user')){
       if(!(route_==='/checkout')){
         this.unlockAllSeats();
