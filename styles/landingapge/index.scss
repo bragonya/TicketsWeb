@@ -29,7 +29,7 @@
         background-image: url(/img/header_bg2.jpg);
       }
       &.bg-3 {
-        background-image: url(/img/header_bg3.jpg);
+        background-image: url(/img/bannerprincipal.jpg);
         background-position: bottom center;
       }
     }
@@ -107,11 +107,16 @@
         color: white;
         font-size: 2.2em;
         font-weight: 400;
-        margin-top: 30px;
+        margin-top: 50px;
       }
       h2 {
         margin-top: 20px;
         font-size: 1.3em;
+        color: #bfbfbf;
+      }
+      h3 {
+        margin-top: 10px;
+        font-size: 1.8em;
         color: #bfbfbf;
       }
     }

@@ -5,8 +5,8 @@ class Header extends React.Component {
             <div className="header"  style={{marginTop:'-11px'}} /*style={{position:'initial'}}*/ >
                 <div className="background bg-3" alt="Photo by The Climate Reality Project on Unsplash"></div>
                 <div className="logo">
-                    <h1>Flowable Injection Technique</h1>
-                    <h2>Enrique Díaz - Odontología Independiente</h2>
+                    <h1>UnBiased 2020</h1>
+                    <h2>Dr. Kim Syngkuc - Dr. Paulo Kano - Dr. Julián Conejo</h2>
                 </div>
                 <div className="event-info">
                     <ul className="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
@@ -51,10 +51,9 @@ class Header extends React.Component {
                             </table>
 						</li>
                     </ul>
-                    <h1>2 dias para adquirir conocimientos de las técnicas más útiles.</h1>
-                    <h2>Técnicas que serán capaces de aplicar inmediatamente después del curso para incrementar la calidad de su trabajo,
-                        <br/> especialmente en cuanto a función y estética, pero siempre de una forma sencilla.
-                    </h2>
+                    <h1>Un Salto al Futuro.</h1>
+                    <h3> Conference, Course & Live Patient
+                    </h3>
                 </div>
 
             </div>
