@@ -39,7 +39,6 @@ let initialState={
 };
 export class App extends React.Component{
 
-  unsubscribeFromAuth = null;
   constructor(props){
     super(props);
     this.state  = { ...initialState };
@@ -130,7 +129,7 @@ export class App extends React.Component{
 
   componentWillUnmount() {
     socket.disconnect();
-    this.unsubscribeFromAuth();
+    
     localStorage.removeItem('user');
     localStorage.removeItem('cartItems');
   }

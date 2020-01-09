@@ -26,6 +26,17 @@ class Report extends React.Component{
         .then(response=> response.json())
         .then(response=>{
                 console.log(response.seats_solds);
+                response.seats_solds=response.seats_solds.map(
+                    item=>{ 
+                        return {
+                            ...item,
+                            seccion:item.seccion.includes('PF')?'Profesional':
+                            item.seccion.includes('E')?'Estudiante':
+                            item.seccion.includes('SL')?'Lounge':
+                            item.seccion.includes('VIP')?'VIP':item.seccion
+                        } 
+                    }
+                );
                 this.setState({ seats_solds : response.seats_solds, loading:false });
              }
         )

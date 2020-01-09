@@ -18,16 +18,16 @@ const SampleExpandedComponent = ({ data }) => (
     </div>
   );
   
-const FilterComponent = ({ filterText, onFilter, onClear }) => (
+const FilterComponent = ({ filterText, onFilter, onClear, name, placeholder }) => (
   <>
-    <input className='TextFieldStyle' id="search" type="text" placeholder="filtrar" value={filterText} onChange={onFilter} />
-    <button className='ClearButtonStyle etPcIV' onClick={onClear}>X</button>
+    <input className='TextFieldStyle' id="search" name={name}  type="text" placeholder={placeholder} value={filterText} onChange={onFilter} />
+    <button className='ClearButtonStyle etPcIV' name={name} onClick={onClear}>X</button>
   </>
 );
 
 const Export = ({ onExport }) => (
     <>
-    <button className='etPcIV' onClick={e => onExport(e.target.value)}>Export</button>
+    <button className='etPcIV' onClick={e => onExport(e.target.value)}>Descargar Excel</button>
     </>
 );
 
@@ -89,6 +89,10 @@ function convertArrayOfObjectsToCSV(array,data) {
   
     result = '';
     result += keys.join(columnDelimiter);
+    result = result.replace('name','nombre');
+    result = result.replace('register_number','carnet_colegiado');
+    result = result.replace('university','universidad');
+    result = result.replace('no_document','boleta');
     result += lineDelimiter;
   
     array.forEach(item => {
@@ -108,29 +112,104 @@ function convertArrayOfObjectsToCSV(array,data) {
   
 
 
-  
+let initialStateFilter={
+  filterTextByColumn : '',
+  filterTextByRow : '',
+  filterTextBySection : '',
+  filterTextByCourse : '',
+  filterTextByName : ''
+};  
 const BasicTable = ({seats_solds}) => {
-  const [filterText, setFilterText] = React.useState('');
+  const [filterTexts, setFilterTexts] = React.useState({
+    ...initialStateFilter
+  });
   
   const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
   const actionsMemo = <Export onExport={() => downloadCSV(seats_solds, seats_solds)} />;
   const filteredItems = seats_solds.filter(
       item => 
-        item.seccion.toUpperCase().includes(filterText.toUpperCase())  ||
-        item.curso.toUpperCase().includes(filterText.toUpperCase()) ||
-        item.fila.toUpperCase().includes(filterText.toUpperCase())
-        );
+        item.seccion.toUpperCase().includes(filterTexts.filterTextBySection.toUpperCase())  &&
+        item.curso.toUpperCase().includes(filterTexts.filterTextByCourse.toUpperCase()) &&
+        item.fila.toUpperCase().includes(filterTexts.filterTextByRow.toUpperCase()) &&
+        item.columna.toString().toUpperCase().includes(filterTexts.filterTextByColumn.toUpperCase()) &&
+        item.name.toString().toUpperCase().includes(filterTexts.filterTextByName.toUpperCase())
+    );
 
   const subHeaderComponentMemo = React.useMemo(() => {
-    const handleClear = () => {
-      if (filterText) {
+    const handleClear = (event) => {
+      if (filterTexts[event.target.name]) {
         setResetPaginationToggle(!resetPaginationToggle);
-        setFilterText('');
+        setFilterTexts({
+          ...filterTexts,
+          [event.target.name]: ''
+        });
       }
     };
 
-    return <FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />;
-  }, [filterText, resetPaginationToggle]);
+    return (
+            <div className='container'>
+              <div className='row justify-content-center'>
+                <div className='col-auto'>
+                  <div className='row main-filter-datatable'>
+                    <FilterComponent 
+                      name ={`filterTextByName`}  
+                      onFilter={e => setFilterTexts({...filterTexts,[e.target.name]:e.target.value})} 
+                      onClear={handleClear}
+                      placeholder={`filtrar por nombre`} 
+                      filterText={filterTexts.filterTextByName} 
+                    />
+                  </div>
+                </div>  
+              </div>
+              <div className='row justify-content-between'>
+                <div className='col-auto'>
+                  <div className='row'>
+                    <FilterComponent 
+                      name ={`filterTextByRow`}  
+                      onFilter={e => setFilterTexts({...filterTexts,[e.target.name]:e.target.value})} 
+                      onClear={handleClear}
+                      placeholder={`filtrar por fila`} 
+                      filterText={filterTexts.filterTextByRow} 
+                    />
+                  </div>
+                </div>
+                <div className='col-auto'>
+                  <div className='row'>
+                    <FilterComponent 
+                      name ={`filterTextByColumn`}  
+                      onFilter={e => setFilterTexts({...filterTexts,[e.target.name]:e.target.value})} 
+                      onClear={handleClear}
+                      placeholder={`filtrar por columna`} 
+                      filterText={filterTexts.filterTextByColumn} 
+                    />
+                  </div>
+                </div>
+                <div className='col-auto'>
+                  <div className='row'>
+                    <FilterComponent 
+                      name ={`filterTextByCourse`}  
+                      onFilter={e => setFilterTexts({...filterTexts,[e.target.name]:e.target.value})} 
+                      onClear={handleClear}
+                      placeholder={`filtrar por curso`} 
+                      filterText={filterTexts.filterTextByCourse} 
+                    />
+                  </div>
+                </div>
+                <div className='col-auto'>
+                  <div className='row'>
+                    <FilterComponent 
+                      name ={`filterTextBySection`}  
+                      onFilter={e => setFilterTexts({...filterTexts,[e.target.name]:e.target.value})} 
+                      onClear={handleClear}
+                      placeholder={`filtrar por seccion`} 
+                      filterText={filterTexts.filterTextBySection} 
+                    />
+                  </div>
+                </div>
+            </div>
+          </div>
+            );
+  }, [filterTexts, resetPaginationToggle]);
 
   return (
     <DataTable

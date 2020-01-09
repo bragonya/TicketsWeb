@@ -67,7 +67,7 @@ export const CONST_PRICES={
                 PRICE:1050
             },
             ESTUDIANTE: {
-                PRICE:600
+                PRICE:750
             }
         }
     }
