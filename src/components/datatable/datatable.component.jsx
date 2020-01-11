@@ -117,7 +117,10 @@ let initialStateFilter={
   filterTextByRow : '',
   filterTextBySection : '',
   filterTextByCourse : '',
-  filterTextByName : ''
+  filterTextByName : '',
+  filterTextByNoDoc : '',
+  filterTextByUniversity : '',
+  filterTextByregisterNumber : ''
 };  
 const BasicTable = ({seats_solds}) => {
   const [filterTexts, setFilterTexts] = React.useState({
@@ -132,7 +135,11 @@ const BasicTable = ({seats_solds}) => {
         item.curso.toUpperCase().includes(filterTexts.filterTextByCourse.toUpperCase()) &&
         item.fila.toUpperCase().includes(filterTexts.filterTextByRow.toUpperCase()) &&
         item.columna.toString().toUpperCase().includes(filterTexts.filterTextByColumn.toUpperCase()) &&
-        item.name.toString().toUpperCase().includes(filterTexts.filterTextByName.toUpperCase())
+        item.name.toString().toUpperCase().includes(filterTexts.filterTextByName.toUpperCase()) &&
+        item.no_document.toString().toUpperCase().includes(filterTexts.filterTextByNoDoc.toUpperCase()) &&
+        item.university.toString().toUpperCase().includes(filterTexts.filterTextByUniversity.toUpperCase()) &&
+        item.register_number.toString().toUpperCase().includes(filterTexts.filterTextByregisterNumber.toUpperCase()) 
+        
     );
 
   const subHeaderComponentMemo = React.useMemo(() => {
@@ -148,16 +155,49 @@ const BasicTable = ({seats_solds}) => {
 
     return (
             <div className='container'>
-              <div className='row justify-content-center'>
+              <div className='row justify-content-between'>
                 <div className='col-auto'>
-                  <div className='row main-filter-datatable'>
+                  <div className='row'>
+                    <FilterComponent 
+                      name ={`filterTextByregisterNumber`}  
+                      onFilter={e => setFilterTexts({...filterTexts,[e.target.name]:e.target.value})} 
+                      onClear={handleClear}
+                      placeholder={`filtrar x colegiado/carnet`} 
+                      filterText={filterTexts.filterTextByregisterNumber} 
+                    />  
+                  </div>
+                </div>
+                <div className='col-auto'>
+                  <div className='row'>
                     <FilterComponent 
                       name ={`filterTextByName`}  
                       onFilter={e => setFilterTexts({...filterTexts,[e.target.name]:e.target.value})} 
                       onClear={handleClear}
                       placeholder={`filtrar por nombre`} 
                       filterText={filterTexts.filterTextByName} 
-                    />
+                    />  
+                  </div>
+                </div>
+                <div className='col-auto'>
+                  <div className='row'>
+                      <FilterComponent 
+                        name ={`filterTextByNoDoc`}  
+                        onFilter={e => setFilterTexts({...filterTexts,[e.target.name]:e.target.value})} 
+                        onClear={handleClear}
+                        placeholder={`filtrar por boleta`} 
+                        filterText={filterTexts.filterTextByNoDoc} 
+                      />
+                  </div>
+                </div> 
+                <div className='col-auto'>
+                  <div className='row'>
+                      <FilterComponent 
+                        name ={`filterTextByUniversity`}  
+                        onFilter={e => setFilterTexts({...filterTexts,[e.target.name]:e.target.value})} 
+                        onClear={handleClear}
+                        placeholder={`filtrar por universidad`} 
+                        filterText={filterTexts.filterTextByUniversity} 
+                      />
                   </div>
                 </div>  
               </div>

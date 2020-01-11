@@ -25,7 +25,6 @@ class Report extends React.Component{
         })
         .then(response=> response.json())
         .then(response=>{
-                console.log(response.seats_solds);
                 response.seats_solds=response.seats_solds.map(
                     item=>{ 
                         return {
@@ -47,12 +46,14 @@ class Report extends React.Component{
         const { seats_solds, loading } = this.state;
         return (
             <div className='container-fluid'>
-            {loading?(<Loader
-                type="TailSpin"
-                color="#00BFFF"
-                height={100}
-                width={100}
-            />):seats_solds.length?
+            {loading?(<div style={{marginTop:'40vh',width:'100%',textAlign:'center'}}>
+                <Loader
+                    type="TailSpin"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                />
+            </div>):seats_solds.length?
             <React.Fragment>
             <h3>Asientos Vendidos</h3>
             {/*<span className='span-total'>Total:</span>*/}
