@@ -20,7 +20,7 @@ import CheckOutPage from './pages/checkout-page/checkout-page.component';
 import  SignInSignUpPage  from './pages/sign-in-sign-up-page/sign-in-sign-up-page.component';
 import AdminPage from './pages/admin-page/admin-page.component';
 import SelectCoursePage from './pages/select-course-page/select-course-page.component';
-import PaymentSuccess from './pages/payment-success/payment-success.component';
+import TransactionResultPage from './pages/transaction-result-page/transaction-result-page.component';
 
 import { setSocket, setCurrentUser } from './redux/user/user.actions';
 import { setStateSeat, setClockTime, setSpeaker, setCourse } from './redux/stage/stage.actions';
@@ -199,7 +199,7 @@ export class App extends React.Component{
                       return (<Redirect to='/select'/>)
               }}/>
             <Route  path='/select' render={() =><SelectCoursePage/>} />
-            <Route  path='/paymentsuccess' component={PaymentSuccess}/>
+            <Route  path='/paymentresult/:id' component={TransactionResultPage}/>
             <Route 
               exact 
               path="/checkout" 

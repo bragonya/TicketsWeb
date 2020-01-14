@@ -8,7 +8,7 @@ import './select-course-page.styles.scss';
 
 const SelectCoursePage = ()=>(
     <div className='select-course'>        
-            <div className="row row justify-content-center" style={{ margin:'auto', minWidth:'400px'}}>
+            <div className="row row justify-content-center" style={{ margin:'auto', minWidth:'340px'}}>
                 <div className="col-auto">   
                     
                         <Card 
