@@ -1,7 +1,7 @@
 export const PreXmlInfo=
 '<HostedPagePreprocessRequest xmlns="http://schemas.firstatlanticcommerce.com/gateway/data"\n'+
 ' xmlns:i="http://www.w3.org/2001/XMLSchema-instance">\n'+
-'   <CardHolderResponseURL>https://google.com</CardHolderResponseURL>\n'+
+'   <CardHolderResponseURL>https://odontologiaindependiente.com/payment-callback</CardHolderResponseURL>\n'+
 '   <RecurringDetails>\n'+
 '		<ExecutionDate/>\n'+
 '		<Frequency/>\n'+
