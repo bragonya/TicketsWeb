@@ -1,0 +1,18 @@
+.iframe-payment{
+    width: 100%;
+    display: inline-block;
+    margin: 0 auto; 
+    min-width: 200px;
+}
+.col{
+    &.centering{
+        align-items: center;
+        margin: 0 auto;
+        margin-left: 5%;
+    }
+}
+.iframe-loader{
+    margin: 0 auto;
+    margin-left: 40%;
+    margin-top: 20%;
+}

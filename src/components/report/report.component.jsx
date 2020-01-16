@@ -1,6 +1,5 @@
 import React from 'react';
-import Loader from 'react-loader-spinner'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Spinner from 'react-spinkit';
 import BasicTable from '../datatable/datatable.component';
 
 import './report.styles.scss';
@@ -14,7 +13,7 @@ class Report extends React.Component{
         }
     }
     componentDidMount(){
-        fetch(process.env.REACT_APP_BASE_URL + "/report", {
+        fetch(process.env.REACT_APP_BASE_URL || 'https://odontologiaindependiente.com' + "/report", {
             method: "post",
             mode: 'cors',
             headers: {
@@ -45,21 +44,26 @@ class Report extends React.Component{
     render(){
         const { seats_solds, loading } = this.state;
         return (
-            <div className='container-fluid'>
-            {loading?(<div style={{marginTop:'40vh',width:'100%',textAlign:'center'}}>
-                <Loader
-                    type="TailSpin"
-                    color="#00BFFF"
-                    height={100}
-                    width={100}
+            <div>
+                {loading?(<div style={{marginTop:'42vh',marginLeft:'48vw',width:'100%',textAlign:'center'}}>
+                    <Spinner 
+                    name='cube-grid' 
+                    color="black"
+                    fadeIn="none"
+                    style={{height:'30px', width:'30px'}}
                 />
-            </div>):seats_solds.length?
-            <React.Fragment>
-            <h3>Asientos Vendidos</h3>
-            {/*<span className='span-total'>Total:</span>*/}
-            <BasicTable seats_solds={seats_solds}/></React.Fragment>:<div><h1>Sin registros</h1></div>
-            }
+                </div>):seats_solds.length?
+                    <div className='container-fluid'>   
+                        <React.Fragment>
+                            <h3>Asientos Vendidos</h3>
+                            {/*<span className='span-total'>Total:</span>*/}
+                            <BasicTable seats_solds={seats_solds}/>
+                        </React.Fragment>
+                    </div>:<div><h1>Sin registros</h1></div>   
+                }
+                
             </div>
+                
         )
     }
 }

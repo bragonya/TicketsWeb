@@ -5,8 +5,7 @@ import {
   Redirect
 } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
-import Loader from 'react-loader-spinner'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Spinner from 'react-spinkit';
 
 import io from "socket.io-client";
 import { connect } from 'react-redux';
@@ -43,7 +42,7 @@ export class App extends React.Component{
     super(props);
     this.state  = { ...initialState };
     if (process.env.NODE_ENV === 'development') {
-      socket = io.connect(process.env.REACT_APP_SOCKET_URL);
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL || 'https://odontologiaindependiente.com:443');
     }else {
       socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
         secure: true
@@ -169,13 +168,13 @@ export class App extends React.Component{
     const { props:{currentUser, cartItemsCount}, state:{loading}  } = this;
     return (
       <div >
-        {loading?(<div style={{marginTop:'40vh',width:'100%',textAlign:'center'}}>
-            <Loader
-                type="TailSpin"
-                color="#00BFFF"
-                height={100}
-                width={100}
-            /></div>):
+        {loading?(<div style={{marginTop:'45vh',marginLeft:'50vw',width:'100%',textAlign:'center'}}>
+              <Spinner 
+                  name='ball-scale-multiple' 
+                  color="black"
+                  fadeIn="none"
+                  style={{height:'50px', width:'50px'}}
+              /></div>):
         <React.Fragment>
           <HeaderMain/>
           <Switch>
