@@ -42,7 +42,7 @@ export class App extends React.Component{
     super(props);
     this.state  = { ...initialState };
     if (process.env.NODE_ENV === 'development') {
-      socket = io.connect(process.env.REACT_APP_SOCKET_URL || 'https://odontologiaindependiente.com:443');
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL);
     }else {
       socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
         secure: true
@@ -198,7 +198,7 @@ export class App extends React.Component{
                       return (<Redirect to='/select'/>)
               }}/>
             <Route  path='/select' render={() =><SelectCoursePage/>} />
-            <Route  path='/paymentresult/:id' component={TransactionResultPage}/>
+            <Route  path='/paymentresult/:status/:reason' component={TransactionResultPage}/>
             <Route 
               exact 
               path="/checkout" 

@@ -147,30 +147,28 @@ class DetailCheckout extends React.Component{
             SignatureRef.nodeValue = Signature;
 
             var self = this;
-            fetch('https://ecm.firstatlanticcommerce.com/PGServiceXML/HostedPagePreprocess',{
-                    method: 'post',
-                    headers: {
-                        'Content-type': 'application/x-www-form-urlencoded',
-                        
-                    },
-                    body: (new XMLSerializer()).serializeToString(xmlDoc)
-            })
-            .then(response => response.text())
-            .then(response => {
-                console.log('XML RESPONSE:');
-                console.log(response);
-                var xmlDocResponse = self.StringToXML(response);
-                var token=xmlDocResponse.getElementsByTagName("SecurityToken")[0].childNodes[0].nodeValue;
-                const iframe = `https://ecm.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PayPage/${token}`; 
-                self.setState({ processing : true, showIframePayment : true, iframeUrl: iframe });
-            })
-            .catch(error => console.error(error));
-            /*conexionSocket.emit('sendOrderNumber',{
+            conexionSocket.emit('sendOrderNumber',{
                 user: JSON.parse(localStorage.getItem('user')),
                 order: OrderNumberRef.nodeValue
             },()=>{
-                
-            }); */           
+                fetch('https://ecm.firstatlanticcommerce.com/PGServiceXML/HostedPagePreprocess',{
+                    method: 'post',
+                    headers: {
+                        'Content-type': 'application/x-www-form-urlencoded'
+                    },
+                    body: (new XMLSerializer()).serializeToString(xmlDoc)
+                })
+                .then(response => response.text())
+                .then(response => {
+                    console.log('XML RESPONSE:');
+                    console.log(response);
+                    var xmlDocResponse = self.StringToXML(response);
+                    var token=xmlDocResponse.getElementsByTagName("SecurityToken")[0].childNodes[0].nodeValue;
+                    const iframe = `https://ecm.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PayPage/${token}`; 
+                    self.setState({ processing : true, showIframePayment : true, iframeUrl: iframe });
+                })
+                .catch(error => console.error(error)); 
+            });
         }
         /* 
         NOTA: al primer asiento llenarle de forma automatica 
@@ -185,20 +183,11 @@ class DetailCheckout extends React.Component{
         });
     }
     componentDidMount(){
-        const { props : { conexionSocket, currentUser:{ id } } } = this;
+        const { props : { history,conexionSocket, currentUser:{ id } } } = this;
         conexionSocket.removeAllListeners(`payment.result.${id}`);
         conexionSocket.on(`payment.result.${id}`,({reason, status})=>{
-            switch(status){
-                case 1:
-                    //exitoso
-                    break;
-                case 2:
-                    //denegado
-                    break;    
-                case 3:
-                    //error
-                    break;    
-            }
+            history.push(`/paymentresult/${status}/${reason}`);
+            //1:exitoso 2:denegado 3:error
         });
     }
 

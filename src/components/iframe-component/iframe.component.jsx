@@ -8,8 +8,6 @@ export default class IframeComponent extends React.Component {
         this.state = { loading: true }
     }
     hideSpinner = (evt) => {
-        
-        console.log(evt);
         this.setState({
           loading: false
         });
@@ -35,11 +33,7 @@ export default class IframeComponent extends React.Component {
                     height={height} 
                     width={width}  
                     className='iframe-payment'
-                    
-                    onLoad={()=>{
-                        this.hideSpinner(src);    
-                    }}
-                    
+                    onLoad={this.hideSpinner}
                     frameBorder="0"
                     sandbox={`allow-popups allow-forms allow-scripts allow-same-origin`}
                 />
