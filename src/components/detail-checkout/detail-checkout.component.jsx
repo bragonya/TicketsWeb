@@ -152,6 +152,7 @@ class DetailCheckout extends React.Component{
                 order: OrderNumberRef.nodeValue
             },()=>{
                 fetch('https://ecm.firstatlanticcommerce.com/PGServiceXML/HostedPagePreprocess',{
+                    mode : 'no-cors',
                     method: 'post',
                     headers: {
                         'Content-type': 'application/x-www-form-urlencoded'
