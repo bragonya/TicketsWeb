@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
-import sha1  from 'sha1';
 
 import { selectCartItems, selectCartTotal }  from '../../redux/cart/cart.selectors';
 import { selectCurrentUser, selectConexionSocket } from '../../redux/user/user.selectors';
@@ -14,7 +13,6 @@ import IframeComponent from '../iframe-component/iframe.component';
 
 import Clock from '../clock/clock.component';
 import  { inputValidMessages } from '../../assets/constants';
-import { PreXmlInfo } from '../../assets/xml-source/preprocessingtoken';
 import './detail-checkout.styles.scss';
 
 
@@ -125,50 +123,38 @@ class DetailCheckout extends React.Component{
                     no_document:rowsInput[`no_document${key}`]
                 };
             });
-
-            var xmlDoc = this.StringToXML(PreXmlInfo);
-
-            var AmountRef=xmlDoc.getElementsByTagName("Amount")[0].childNodes[0];
-            var cartTotalString = `${cartTotal.toString()}00`;
-            var arrayStr = cartTotalString.split('');
-            var amountStr = Array.from({length:12-arrayStr.length}).map(x=>'0').join(''); 
-            AmountRef.nodeValue = amountStr+cartTotalString;
-
-            var OrderNumberRef=xmlDoc.getElementsByTagName("OrderNumber")[0].childNodes[0];
-            OrderNumberRef.nodeValue = this.generateOrderNumber();
-            //generating signature
-            var ProcessingPass = 'KI73nt6s';
-            var MerchantId = '88801272';
-            var AcquirerId = '464748';
-            var Currency   = '320'; 
-            var Signature = (new Buffer(sha1(`${ProcessingPass}${MerchantId}${AcquirerId}${OrderNumberRef.nodeValue}${AmountRef.nodeValue}${Currency}`), "hex").toString('base64')); 
-            
-            var SignatureRef=xmlDoc.getElementsByTagName("Signature")[0].childNodes[0];
-            SignatureRef.nodeValue = Signature;
-
             var self = this;
-            conexionSocket.emit('sendOrderNumber',{
-                user: JSON.parse(localStorage.getItem('user')),
-                order: OrderNumberRef.nodeValue
-            },()=>{
-                fetch('https://ecm.firstatlanticcommerce.com/PGServiceXML/HostedPagePreprocess',{
-                    method: 'post',
-                    headers: {
-                        'Content-type': 'application/x-www-form-urlencoded',
-                        'Access-Control-Allow-Origin': 'https://odontologiaindependiente.com'
-                    },
-                    body: (new XMLSerializer()).serializeToString(xmlDoc)
+            fetch(process.env.REACT_APP_BASE_URL + "/get-payment-form", {
+                method: "post",
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    cartTotal: cartTotal.toString(),
+                    user: JSON.parse(localStorage.getItem('user'))
                 })
-                .then(response => response.text())
-                .then(response => {
-                    console.log('XML RESPONSE:');
-                    console.log(response);
-                    var xmlDocResponse = self.StringToXML(response);
-                    var token=xmlDocResponse.getElementsByTagName("SecurityToken")[0].childNodes[0].nodeValue;
-                    const iframe = `https://ecm.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PayPage/${token}`; 
+            })
+            .then( response => {
+                try {
+                    return response.json(); 
+                } catch (error) {
+                    console.log('Formato invalido de respuesta');
+                    response = { securityToken:''};
+                    return response;
+                }
+            })
+            .then( response =>{
+                const { securityToken } = response;
+                if(securityToken){
+                    const iframe = `https://ecm.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PayPage/${securityToken}`; 
                     self.setState({ processing : true, showIframePayment : true, iframeUrl: iframe });
-                })
-                .catch(error => console.error(error)); 
+                }
+                
+            })
+            .catch(err=>{
+                console.log(err);
             });
         }
         /* 
