@@ -158,6 +158,8 @@ class DetailCheckout extends React.Component{
             })
             .then(response => response.text())
             .then(response => {
+                console.log('XML RESPONSE:');
+                console.log(response);
                 var xmlDocResponse = self.StringToXML(response);
                 var token=xmlDocResponse.getElementsByTagName("SecurityToken")[0].childNodes[0].nodeValue;
                 const iframe = `https://ecm.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PayPage/${token}`; 
