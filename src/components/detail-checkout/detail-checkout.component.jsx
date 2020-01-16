@@ -186,6 +186,11 @@ class DetailCheckout extends React.Component{
         const { props : { history,conexionSocket, currentUser:{ id } } } = this;
         conexionSocket.removeAllListeners(`payment.result.${id}`);
         conexionSocket.on(`payment.result.${id}`,({reason, status})=>{
+            localStorage.removeItem('cartItems');
+            this.setState({ ...initialState });
+            conexionSocket.removeAllListeners('countdownStart');
+            conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
+            clearItemsCart();
             history.push(`/paymentresult/${status}/${reason}`);
             //1:exitoso 2:denegado 3:error
         });
