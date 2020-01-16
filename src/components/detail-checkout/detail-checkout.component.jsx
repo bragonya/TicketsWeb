@@ -154,7 +154,8 @@ class DetailCheckout extends React.Component{
                 fetch('https://ecm.firstatlanticcommerce.com/PGServiceXML/HostedPagePreprocess',{
                     method: 'post',
                     headers: {
-                        'Content-type': 'application/x-www-form-urlencoded'
+                        'Content-type': 'application/x-www-form-urlencoded',
+                        'Access-Control-Allow-Origin': 'https://odontologiaindependiente.com'
                     },
                     body: (new XMLSerializer()).serializeToString(xmlDoc)
                 })
