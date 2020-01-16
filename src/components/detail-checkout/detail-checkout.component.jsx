@@ -148,6 +148,7 @@ class DetailCheckout extends React.Component{
             .then( response =>{
                 const { securityToken } = response;
                 if(securityToken){
+                    console.log(securityToken);
                     const iframe = `https://ecm.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PayPage/${securityToken}`; 
                     self.setState({ processing : true, showIframePayment : true, iframeUrl: iframe });
                 }
@@ -173,6 +174,7 @@ class DetailCheckout extends React.Component{
         const { props : { history,conexionSocket, currentUser:{ id } } } = this;
         conexionSocket.removeAllListeners(`payment.result.${id}`);
         conexionSocket.on(`payment.result.${id}`,({reason, status})=>{
+            console.log(reason);
             localStorage.removeItem('cartItems');
             this.setState({ ...initialState });
             conexionSocket.removeAllListeners('countdownStart');

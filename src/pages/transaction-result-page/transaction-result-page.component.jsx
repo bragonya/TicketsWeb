@@ -15,10 +15,11 @@ const TransactionResultPage = ({match}) => {
                 </>
                 :
                 <>
-                <div  style={{color:'#721c24'}} role="alert">
+                <div  style={{color:'#721c24',marginTop:'10%'}} role="alert">
                     <h1>Error al realizar el pago</h1>
                 </div>
                 <span>Intenta de nuevo, de persistir el error contacta con el organizador del evento.</span>
+                <br/>
                 <span>{reason}</span>
                 </>
             }
