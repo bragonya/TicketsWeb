@@ -149,10 +149,9 @@ class DetailCheckout extends React.Component{
             var self = this;
             fetch('https://ecm.firstatlanticcommerce.com/PGServiceXML/HostedPagePreprocess',{
                     method: 'post',
-                    mode: 'no-cors',
                     headers: {
                         'Content-type': 'application/x-www-form-urlencoded',
-
+                        
                     },
                     body: (new XMLSerializer()).serializeToString(xmlDoc)
             })

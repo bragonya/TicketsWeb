@@ -21,7 +21,7 @@ export const PreXmlInfo=
 '      <CurrencyExponent>2</CurrencyExponent>\n'+
 '      <CustomData />\n'+
 '      <CustomerReference>FAC Web Tools HPP: 99901061</CustomerReference>\n'+
-'      <IPAddress>127.0.0.1</IPAddress>\n'+
+'      <IPAddress>52.70.18.213</IPAddress>\n'+
 '      <MerchantId>88801272</MerchantId>\n'+
 '      <OrderNumber>FMHPP_Demo</OrderNumber>\n'+
 '      <Signature>Gp12m0eVjcDkEcRu5ZyhnHfZioI%3d</Signature>\n'+
