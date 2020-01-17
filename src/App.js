@@ -77,10 +77,9 @@ export class App extends React.Component{
 
   unlockAllSeats = () =>{
     const  { clearItemsCart, setStateSeat } = this.props;    
-    console.log('TO-FREE-ALL->');
     var    { cartItems } = this.props;
     cartItems=cartItems.length? cartItems: JSON.parse(localStorage.getItem('cartItems')) || [] 
-    console.log(cartItems);
+    
     cartItems.forEach(item=>{
       setStateSeat({...item, estado:CONST_SEAT_STATES.free })
       socket.emit(
@@ -139,11 +138,18 @@ export class App extends React.Component{
     }
   }
   
-  onRouteChanged(route_) {
+  async onRouteChanged(route_) {
     const { setClockTime, history } = this.props;    
     if((route_==='/reservation' || route_==='/checkout') && localStorage.getItem('user')){
       if(!(route_==='/checkout')){
-        this.unlockAllSeats();
+        await this.unlockAllSeats();
+      }
+      if(route_==='/reservation'){
+        await socket.emit('connected',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(initialStage)=>{
+          initialStage.forEach(seat=>{
+            setStateSeat(seat);
+          });  
+        }); 
       }
       if(!(JSON.parse(localStorage.getItem('user')).admin)){
         socket.removeAllListeners('countdownStart');
