@@ -332,16 +332,19 @@ class DetailCheckout extends React.Component{
                     </div>
                     
                 </div>
-                {showIframePayment? 
+                {showIframePayment?
                         <div className="row justify-content-center">
                             <div className="col">
                                 <div className="alert alert-primary alert-dismissible fade show" role="alert">
-                                    <strong>{orderNumberGenerated}</strong> ¡Atención! Es importante que guardes este código en caso de que suceda algún error y tu dinero sea debitado, solo con este código podrás reclamar tu entrada.
+                                    ¡Atención! Es importante que guardes este código <strong>{orderNumberGenerated}</strong> en caso de que suceda algún error y tu dinero sea debitado, solo con este código podrás reclamar tu entrada.
                                     <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            </div>
+                            </div> 
+                        </div> 
+                        <div className="row justify-content-center">
+                            
                             <div className='col centering'>
                                 <IframeComponent src={iframeUrl} height="650px" width="100%"/>            
                             </div>    
