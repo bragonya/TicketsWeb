@@ -171,7 +171,7 @@ class DetailCheckout extends React.Component{
         });
     }
     componentDidMount(){
-        const { props : { history,conexionSocket, currentUser:{ id } } } = this;
+        const { props : { clearItemsCart,history,conexionSocket, currentUser:{ id } } } = this;
         conexionSocket.removeAllListeners(`payment.result.${id}`);
         conexionSocket.on(`payment.result.${id}`,async (response)=>{
             console.log('socket: payment.result.id');
