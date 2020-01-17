@@ -21,7 +21,8 @@ var initialState = {
     rowsInput : {},
     processing : false,
     showIframePayment : false,
-    iframeUrl:''
+    iframeUrl:'',
+    orderNumberGenerated : ''
 };
 
 class DetailCheckout extends React.Component{
@@ -146,11 +147,11 @@ class DetailCheckout extends React.Component{
                 }
             })
             .then( response =>{
-                const { securityToken } = response;
+                const { securityToken, order_id } = response;
                 if(securityToken){
                     console.log(securityToken);
                     const iframe = `https://ecm.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PaySelective/${securityToken}`; 
-                    self.setState({ processing : true, showIframePayment : true, iframeUrl: iframe });
+                    self.setState({ orderNumberGenerated : order_id ,processing : true, showIframePayment : true, iframeUrl: iframe });
                 }
                 
             })
@@ -191,7 +192,7 @@ class DetailCheckout extends React.Component{
     }
 
     render(){
-        const { props:{cartItems, cartTotal, currentUser}, state:{ rowsInput, processing, showIframePayment, iframeUrl } } = this;
+        const { props:{cartItems, cartTotal, currentUser}, state:{ orderNumberGenerated, rowsInput, processing, showIframePayment, iframeUrl } } = this;
 
         return (
             <div className='container'>
@@ -333,6 +334,14 @@ class DetailCheckout extends React.Component{
                 </div>
                 {showIframePayment? 
                         <div className="row justify-content-center">
+                            <div className="col">
+                                <div className="alert alert-primary alert-dismissible fade show" role="alert">
+                                    <strong>{orderNumberGenerated}</strong> ¡Atención! Es importante que guardes este código en caso de que suceda algún error y tu dinero sea debitado, solo con este código podrás reclamar tu entrada.
+                                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
                             <div className='col centering'>
                                 <IframeComponent src={iframeUrl} height="450px" width="100%"/>            
                             </div>    
