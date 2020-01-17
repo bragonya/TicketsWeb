@@ -1,11 +1,13 @@
-.col-auto{
+.col-sm-2{
 
   &.col-nav-bar-custom{
     min-height:'100%'; 
     //background-color:  grey;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    
+
   }
 }
 
