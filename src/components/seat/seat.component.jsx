@@ -26,7 +26,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                 state==='free' || state==='selected'?
                 (evt)=>{
                     if (!currentUser){ history.push('/signinsignup'); return; }
-                    if(!currentUser.admin && !(currentUser.email==='ferclass1@hotmail.com' || currentUser.email==='alan220193@gmail.com')){
+                    if(!currentUser.admin && !(currentUser.email==='ferclass1@hotmail.com' || currentUser.email==='alan220193@gmail.com' || currentUser.email==='bragonya@gmail.com')){
                         alert('La función de comprar por el momento se encuentra deshabilitada.\nPara mas información contacta con el organizador del evento.');
                         return;
                     }
