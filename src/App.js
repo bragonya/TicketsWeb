@@ -77,9 +77,10 @@ export class App extends React.Component{
 
   unlockAllSeats = () =>{
     const  { clearItemsCart, setStateSeat } = this.props;    
-    console.log('FREE-ALL');
+    console.log('TO-FREE-ALL->');
     var    { cartItems } = this.props;
     cartItems=cartItems.length? cartItems: JSON.parse(localStorage.getItem('cartItems')) || [] 
+    console.log(cartItems);
     cartItems.forEach(item=>{
       setStateSeat({...item, estado:CONST_SEAT_STATES.free })
       socket.emit(
