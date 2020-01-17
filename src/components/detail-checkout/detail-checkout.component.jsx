@@ -149,7 +149,7 @@ class DetailCheckout extends React.Component{
                 const { securityToken } = response;
                 if(securityToken){
                     console.log(securityToken);
-                    const iframe = `https://ecm.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PayPage/${securityToken}`; 
+                    const iframe = `https://ecm.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PaySelective/${securityToken}`; 
                     self.setState({ processing : true, showIframePayment : true, iframeUrl: iframe });
                 }
                 
