@@ -333,6 +333,7 @@ class DetailCheckout extends React.Component{
                     
                 </div>
                 {showIframePayment?
+                        <>
                         <div className="row justify-content-center">
                             <div className="col">
                                 <div className="alert alert-primary alert-dismissible fade show" role="alert">
@@ -349,6 +350,7 @@ class DetailCheckout extends React.Component{
                                 <IframeComponent src={iframeUrl} height="650px" width="100%"/>            
                             </div>    
                         </div>   
+                        </>
                     :null
                 }
             </div>
