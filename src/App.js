@@ -42,7 +42,7 @@ export class App extends React.Component{
     super(props);
     this.state  = { ...initialState };
     if (process.env.NODE_ENV === 'development') {
-      socket = io.connect(process.env.REACT_APP_SOCKET_URL || 'https://odontologiaindependiente.com:443');
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL);
     }else {
       socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
         secure: true
@@ -77,6 +77,7 @@ export class App extends React.Component{
 
   unlockAllSeats = () =>{
     const  { clearItemsCart, setStateSeat } = this.props;    
+    console.log('FREE-ALL');
     var    { cartItems } = this.props;
     cartItems=cartItems.length? cartItems: JSON.parse(localStorage.getItem('cartItems')) || [] 
     cartItems.forEach(item=>{
