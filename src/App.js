@@ -139,7 +139,7 @@ export class App extends React.Component{
   }
   
   async onRouteChanged(route_) {
-    const {  setClockTime, history } = this.props;    
+    const { setStateSeat, setClockTime, history } = this.props;    
     if((route_==='/reservation' || route_==='/checkout') && localStorage.getItem('user')){
       if(!(route_==='/checkout')){
         await this.unlockAllSeats();
@@ -147,7 +147,6 @@ export class App extends React.Component{
       if(route_==='/reservation'){
         await socket.emit('connected',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(initialStage)=>{
           initialStage.forEach(seat=>{
-            console.log(seat);
             setStateSeat(seat);
           });  
         }); 
