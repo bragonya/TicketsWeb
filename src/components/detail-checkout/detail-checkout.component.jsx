@@ -343,7 +343,7 @@ class DetailCheckout extends React.Component{
                                 </div>
                             </div>
                             <div className='col centering'>
-                                <IframeComponent src={iframeUrl} height="450px" width="100%"/>            
+                                <IframeComponent src={iframeUrl} height="650px" width="100%"/>            
                             </div>    
                         </div>   
                     :null
