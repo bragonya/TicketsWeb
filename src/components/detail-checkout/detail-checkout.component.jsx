@@ -178,11 +178,13 @@ class DetailCheckout extends React.Component{
             console.log(response);
             const {reason, status} = response;
             await localStorage.removeItem('cartItems');
+            console.log('items removed from localStorage');
             await clearItemsCart();
+            console.log('clear Items Cart');
             //this.setState({ ...initialState });
             conexionSocket.removeAllListeners('countdownStart');
             conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
-            
+            console.log('history push');  
             history.push(`/paymentresult/${status}/${reason}`);
             //1:exitoso 2:denegado 3:error
         });
