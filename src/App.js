@@ -191,7 +191,6 @@ export class App extends React.Component{
               path="/" 
               component={LandingPage}
             />
-
             <Route  path='/reservation' render={()=>{   
                                                     return <SeatReservationPage/>
                                                 }}

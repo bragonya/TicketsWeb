@@ -57,7 +57,17 @@ class HeaderMain  extends React.Component{
             <li>
               <span className='nickname-user'>{currentUser?`Hola ${currentUser.firstname} `:''}</span>
             </li>
-            :null
+            :
+            <li>
+              <Link 
+                to="/signinsignup" 
+                className="btn btn-orange fadein"
+                style={{maxWidth:'200px'}}
+                onClick={() => { this.collapseClick(); }}>
+                Registrarme 
+              </Link>
+            </li>
+            
           }
           <li >
             <Link to="/" onClick={() => { this.collapseClick(); }}>Inicio</Link>
@@ -79,7 +89,7 @@ class HeaderMain  extends React.Component{
                 <li>
                   <Link 
                         to="/checkout" 
-                        className="btn btn-orange fadein"
+                        className="btn btn-orange fadein buy-btn"
                         style={{maxWidth:'200px'}}
                         onClick={() => { this.collapseClick(); }}>
                         {currentUser.admin?"Reservar":"Comprar"}  

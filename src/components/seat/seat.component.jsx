@@ -30,7 +30,29 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                         alert('La función de comprar por el momento se encuentra deshabilitada.\nPara mas información contacta con el organizador del evento.');
                         return;
                     }
-                    if(cartItems.length===5 && state==='free' && !(currentUser.admin)) return ;
+                    let amount_KANO = getAmountSeatsOfCourse(cartItems,'KANO');
+                    let amount_KIM  = getAmountSeatsOfCourse(cartItems,'KIM');
+                    let conditionNotAdmin = state==='free' && !(currentUser.admin);    
+                    if(speaker===CONST_SPEAKERS_ENUM.both){
+                        if(currentCourse===CONST_SPEAKERS_ENUM.kim){
+                            if(amount_KIM===1 && conditionNotAdmin){
+                                alert('No se pueden seleccionar mas asientos.');
+                                return;
+                            }
+                        }else{
+                            if(amount_KANO===1 && conditionNotAdmin){
+                                alert('No se pueden seleccionar mas asientos');
+                                return;
+                            }
+                        }
+                    }else{
+                        if( ((speaker===CONST_SPEAKERS_ENUM.kim && amount_KIM===1) ||
+                            (speaker===CONST_SPEAKERS_ENUM.kano && amount_KANO===1)) && conditionNotAdmin){
+                                alert('No se pueden seleccionar mas asientos');
+                                return;
+                        }    
+                    }
+                    //if(cartItems.length===5 && state==='free' && !(currentUser.admin)) return ;
                     const seatModified = {
                         columna : id,
                         fila : colname,

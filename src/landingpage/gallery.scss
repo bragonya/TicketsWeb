@@ -12,3 +12,26 @@
   padding-bottom: 100%;
   width: 100%;
 }
+@media(min-width: 992px){
+  .col-md-10{
+    &.custom-slider{
+      flex:0 0 68.333333%
+    }
+  }
+}
+
+@media(min-width: 1125px){
+  .col-md-10{
+    &.custom-slider{
+      flex:0 0 69.333333%
+    }
+  }
+}
+
+@media(min-width: 1175px){
+  .col-md-10{
+    &.custom-slider{
+      flex:0 0 58.333333%
+    }
+  }
+}

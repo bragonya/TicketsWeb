@@ -4,8 +4,8 @@ import NavBarCustom  from '../components/nav-bar-custom/nav-bar-custom.component
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import AwesomeSlider from 'react-awesome-slider';
-import AwesomeSliderStyles from 'react-awesome-slider/src/styled/fold-out-animation';
+//import AwesomeSlider from 'react-awesome-slider';
+//import AwesomeSliderStyles from 'react-awesome-slider/src/styled/fold-out-animation';
 
 import { urlBrochures }  from '../assets/constants';
 
@@ -61,7 +61,7 @@ class Gallery extends React.Component {
                                     defaultYear = {currentYear}
                                 />
                         </div>    
-                        <div className='col-md-10'>
+                        <div className='col-md-10 custom-slider'>
                          {/*   <AwesomeSlider animation="foldOutAnimation" cssModule={AwesomeSliderStyles}>
                                 {imagesbyYear[currentYear]}
         </AwesomeSlider>*/}
@@ -71,6 +71,7 @@ class Gallery extends React.Component {
                                 thumbnailPosition = {'right'}
                                 slideOnThumbnailOver = {true}
                                 lazyLoad = {true}
+                                showPlayButton = {false}
                             />
                         </div>
                     </div>
