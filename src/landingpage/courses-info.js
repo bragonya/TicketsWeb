@@ -37,35 +37,33 @@ endodónticas modernas, y se realizarán dos cirugías en vivo de la mano del Dr
                     <div className="col-12 mt-5 pt-4">
                         <h3>Itinerario curso Dr. Kim - 6 de Marzo</h3>
                     </div>
-                    <div className="col-12 mt-4">
+                    <div className="container-fluid content-row">
                         <div className="row">
                             {/* <div className="col-1 col-sm-hidden"></div> */}
-                            <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 ml-auto card-wrapper">
-                                <div className="card">
+                            <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto card-wrapper">
+                                <div className="card h-100">
                                     <div className="card-body text-left">
                                         <h5 className="card-title">Por la mañana</h5>
                                         <ul className="card-text">
-                                            <li>8:40 a.m. Bienvenida. Dr. Erick Hernández.</li>
-                                            <li>8:50 a.m. Presentación Del Conferencista.Dra. Gabriela Paredes, Maestra de ceremonias.</li>
-                                            <li>9: 00   Teórico  Syngcuk KIM
-Actualización en Endodoncia Avanzada; Metodología Enseñada y Practicada en PENN Endo Parte I</li>
+                                            <li>8:40 Bienvenida. Dr. Erick Hernández.</li>
+                                            <li>8:50 Presentación Del Conferencista.Dra. Gabriela Paredes</li>
+                                            <li>9:00 Teórico  Syngcuk KIM Actualización en Endodoncia Avanzada; Metodología Enseñada y Practicada en PENN Endo Parte I</li>
                                             <li>11:00 Coffee Break</li>
-                                            <li>11:30  Demostración: Syngcuk KIM
-Primera Cirugía en Vivo. </li>
+                                            <li>11:30 Demostración: Syngcuk KIM Primera Cirugía en Vivo. </li>
                                         </ul>
                                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto mt-sm-4 mt-4 mt-md-auto mt-lg-auto mt-xl-auto card-wrapper">
-                                <div className="card">
+                                <div className="card h-100">
                                     <div className="card-body text-left">
                                         <h5 className="card-title">Por la tarde</h5>
                                         <ul className="card-text">
                                             <li>1:00 Almuerzo </li>
-                                            <li>2: 30   Teórico  Syngcuk KIM Actualización en Endodoncia Avanzada; Metodología Enseñada y Practicada en PENN Endo Parte II</li>
-                                            <li>5:00  Demostración: Syngcuk KIMSegunda Cirugía en Vivo. </li>
-                                            <li>6:00 :Restauración de Dientes con Endodoncia. Julián Conejo. ¿Qué dice la Ciencia en el 2020?</li>
+                                            <li>2:30 Teórico  Syngcuk KIM Actualización en Endodoncia Avanzada; Metodología Enseñada y Practicada en PENN Endo Parte II</li>
+                                            <li>5:00 Demostración: Syngcuk KIMSegunda Cirugía en Vivo. </li>
+                                            <li>6:00 Restauración de Dientes con Endodoncia. Julián Conejo. ¿Qué dice la Ciencia en el 2020?</li>
                                         </ul>
                                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
@@ -82,13 +80,13 @@ Primera Cirugía en Vivo. </li>
                         <div className="row">
                             {/* <div className="col-1 col-sm-hidden"></div> */}
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto card-wrapper">
-                                <div className="card">
+                                <div className="card h-100">
                                     <div className="card-body text-left">
                                         <h5 className="card-title">Por la mañana</h5>
                                         <ul className="card-text">
-                                            <li>8:00 a.m. Bienvenida. Dr. Erick Hernández. </li>
-                                            <li>8:10 a.m. Presentación Del Conferencista. Selvyn Mejicanos, maestro de ceremonias.</li>
-                                            <li>11:00 a.m Coffee Break</li>
+                                            <li>8:00 Bienvenida. Dr. Erick Hernández. </li>
+                                            <li>8:10 Presentación Del Conferencista. Selvyn Mejicanos, maestro de ceremonias.</li>
+                                            <li>11:00 Coffee Break</li>
                                             <li>11:30  Demostración: Chairside Motivational Mockup. Paulo Kano </li>
                                         </ul>
                                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
@@ -96,7 +94,7 @@ Primera Cirugía en Vivo. </li>
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto mt-sm-4 mt-4 mt-md-auto mt-lg-auto mt-xl-auto card-wrapper">
-                                <div className="card">
+                                <div className="card h-100">
                                     <div className="card-body text-left">
                                         <h5 className="card-title">Por la tarde</h5>
                                         <ul className="card-text">
