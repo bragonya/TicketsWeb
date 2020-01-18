@@ -10,7 +10,7 @@ class Speakers extends React.Component {
     render() {
         return (
             <div class="section text-align--center">
-                <h2>Conoce a los speakers</h2>
+                <h2>Conoce a los speakers 🎤</h2>
                 <div class="content content--tall ">
                 <Speaker description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer " image = {imgKano} name ="Dr. Paulo Kano" tag="Desarrollador del Método Cllones."/>
                 <Speaker description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer " image = {imgKim} name ="Dr. Syngcuk Kim" tag="PhD en Fisiología MIcrocirculatoria."/>
