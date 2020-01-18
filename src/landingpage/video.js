@@ -5,7 +5,7 @@ class Video extends React.Component {
         return (
             <div class="section text-align--center">  
             <h2>¡Bienvenidos a Unbiased 2020!</h2>
-            <div class="card bg-gray-light" >
+            <div class="card" style={{marginLeft:'5%',marginRight:'5%'}} >
             <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/kBsj8C7bGs8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
