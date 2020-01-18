@@ -39,7 +39,7 @@ class SignIn extends React.Component {
         let fullnameSplit =  fullname.trim().split(/(\s+)/);
         if(fullnameSplit.length===3){
             if(!(fullnameSplit[0].trim()==="") && !(fullnameSplit[2].trim()==="")){
-                fetch(process.env.REACT_APP_BASE_URL || 'https://odontologiaindependiente.com' + "/login", {
+                fetch(process.env.REACT_APP_BASE_URL+ "/login", {
                     method: "post",
                     mode: 'cors',
                     headers: {
