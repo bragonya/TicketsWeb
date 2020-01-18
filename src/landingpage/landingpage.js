@@ -5,6 +5,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 
 import Header from "./header";
+import Video from "./video";
 import Speakers from "./speakers"
 import Coursesinfo from "./courses-info";
 //import MissionVision from "./mission-vision";
@@ -18,6 +19,7 @@ class LandingPage extends React.Component {
         return (
             <main role="main" className="landingpage">
                 <Header></Header>
+                <Video></Video>
                 <Coursesinfo></Coursesinfo>
                 <Speakers></Speakers>
                <Suspense 
