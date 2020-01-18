@@ -124,6 +124,16 @@
   height: 8px;
 }
 
+.header-custom .buy-btn {
+  max-width: 200px;
+  position: absolute;
+  top: 95px;
+  right: 50px;
+  height: 60px;
+  border-radius: 5px;
+  padding: 19px;
+}
+
 /* 48em = 768px */
 
 @media (min-width: 66em) {
