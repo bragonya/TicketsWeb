@@ -20,7 +20,6 @@ class LandingPage extends React.Component {
                 <Header></Header>
                 <Coursesinfo></Coursesinfo>
                 <CTA></CTA>
-                <MissionVision></MissionVision>
                 <Suspense 
                     fallback={
                         <div style={{width:'100%', /*marginTop:'20%',*/ alignSelf:'center'}}>
