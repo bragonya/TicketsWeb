@@ -6,10 +6,16 @@ class Coursesinfo extends React.Component {
                 <h2>Acerca de los cursos</h2>
                 <div className="row">
                     <div className="col-6">
-                        <h3>Objetivos del curso</h3>
-                        <p className="text-left">Este curso tiene como principal objetivo dar al participante los conocimientos de las técnicas más útiles
-                            que serán capaces de aplicar inmediatamente después del curso para incrementar la calidad de su
-                            trabajo, especialmente en cuanto a función y estética, pero siempre de una forma sencilla.</p>
+                        <h3>Actualización en 
+Endodoncia Avanzada
+Metodología Enseñada 
+y Practicada 
+en PENN Endo
+</h3>
+                        <p className="text-left">Con los rápidos avances en tecnología y biomateriales, la terapia endodóntica ha cambiado significativamente. Algunas de las principales áreas de estos avances son: microscopía, tomografía
+computarizada, sistemas rotatorios y reciprocantes, biología pulpar y cementos biocerámicos. Actualmente la microcirugía ha reemplazado los procedimientos de cirugía endodónticatradicional, debido a su alto porcentaje de éxito. Esta conferencia se enfocará en las terapias
+endodónticas modernas, y se realizarán dos cirugías en vivo de la mano del Dr. Kim.
+</p>
                     </div>
                     <div className="col-6 d-flex">
                         <img src="/svg/undraw_detailed_analysis_xn7y.svg" alt="" className="img-fluid" />
@@ -18,14 +24,14 @@ class Coursesinfo extends React.Component {
                         <img src="/svg/undraw_windy_day_x63l.svg" alt="" className="img-fluid" />
                     </div>
                     <div className="col-6 my-5">
-                        <h3>El participante aprenderá:</h3>
-                        <ul className="text-left my-4 mx-auto" style={{ 'maxWidth': '400px' }}>
-                            <li>Diseño de sonrisa digital DSD.</li>
-                            <li>Fotografia & video en odontología.</li>
-                            <li>Mock Up | Maqueta | Prototipo | APT</li>
-                            <li>Preparaciones para carillas Central, Lateral, Canino, Premolar</li>
-                            <li>Técnica de Inyección en sector anterior y posterior</li>
-                        </ul>
+                        <h3>Immersion Day</h3>
+                        <p className="text-left my-4 mx-auto" style={{ 'maxWidth': '400px' }}>
+                        Es un curso dirigido a dentistas que utilizan CAD CAM en Outsourcing  y muestra  paso  paso con dos pacientes en vivo como manejar los protocolos clínicos y los protocolos digitales. Basicamente le enseña a usar las ventajas de los flujos de trabajo digitales, sin encerados manuales ni estratificación de porcelana. 
+                        Utilizando Cllones un concepto que reúne varias técnicas clínicas y de laboratorio que permiten recrear morfología dental con mayor naturalidad y previsibilidad a la hora de elaborar restauraciones estéticas, Paulo Kano los guiará desde la evaluación, la fotografía, el diseño y la cementación de un Mock up impreso en vivo.  El estado del arte en restauraciones cerámicas adhesivas será explicado durante esta conferencia. 
+
+
+
+                        </p>
                     </div>
                     <div className="py-4 my-5"><br /></div>
                     <div className="col-12 mt-5 pt-4">
