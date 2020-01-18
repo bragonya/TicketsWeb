@@ -4,8 +4,8 @@ import NavBarCustom  from '../components/nav-bar-custom/nav-bar-custom.component
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import AwesomeSlider from 'react-awesome-slider';
-import AwesomeSliderStyles from 'react-awesome-slider/src/styled/fold-out-animation';
+//import AwesomeSlider from 'react-awesome-slider';
+//import AwesomeSliderStyles from 'react-awesome-slider/src/styled/fold-out-animation';
 
 import { urlBrochures }  from '../assets/constants';
 
