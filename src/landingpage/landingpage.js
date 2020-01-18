@@ -5,6 +5,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 
 import Header from "./header";
+import Speakers from "./speakers"
 import Coursesinfo from "./courses-info";
 import CTA from "./cta";
 import MissionVision from "./mission-vision";
@@ -20,6 +21,7 @@ class LandingPage extends React.Component {
                 <Header></Header>
                 <Coursesinfo></Coursesinfo>
                 <CTA></CTA>
+                <Speakers></Speakers>
                 <Suspense 
                     fallback={
                         <div style={{width:'100%', /*marginTop:'20%',*/ alignSelf:'center'}}>
