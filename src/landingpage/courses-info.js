@@ -35,7 +35,7 @@ endodónticas modernas, y se realizarán dos cirugías en vivo de la mano del Dr
                     </div>
                     <div className="py-4 my-5"><br /></div>
                     <div className="col-12 mt-5 pt-4">
-                        <h3>Día 1</h3>
+                        <h3>Itinerario curso Dr. Kim - 6 de Marzo</h3>
                     </div>
                     <div className="col-12 mt-4">
                         <div className="row">
@@ -43,27 +43,16 @@ endodónticas modernas, y se realizarán dos cirugías en vivo de la mano del Dr
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 ml-auto card-wrapper">
                                 <div className="card">
                                     <div className="card-body text-left">
-                                        <h5 className="card-title">Primera parte</h5>
-                                        <h6>Diseño Sonrisa Digital</h6>
-                                        <p className="card-text">
-                                            Concepto. <br />
-                                            Protocolo fotografico.<br />
-                                            Protocolo de video.<br />
-                                            Planeación.<br />
-                                            Flujo de trabajo digital.<br />
-                                            Planos de referencia.<br />
-                                            Plano oclusal.<br />
-                                            Arco facial digital.<br />
-                                            Plano horizontal.<br />
-                                            Plano vertical.<br />
-                                            Visagismo.<br />
-                                            Proporción aurea.<br />
-                                            Regla digital uso y manejo.<br />
-                                            Comunicación interdisciplinaria.<br />
-                                            Mock up: Motivacional, substractivo, ideal.<br />
-                                            <br />
-                                            <br />
-                                        </p>
+                                        <h5 className="card-title">Por la mañana</h5>
+                                        <ul className="card-text">
+                                            <li>8:40 a.m. Bienvenida. Dr. Erick Hernández.</li>
+                                            <li>8:50 a.m. Presentación Del Conferencista.Dra. Gabriela Paredes, Maestra de ceremonias.</li>
+                                            <li>9: 00   Teórico  Syngcuk KIM
+Actualización en Endodoncia Avanzada; Metodología Enseñada y Practicada en PENN Endo Parte I</li>
+                                            <li>11:00 Coffee Break</li>
+                                            <li>11:30  Demostración: Syngcuk KIM
+Primera Cirugía en Vivo. </li>
+                                        </ul>
                                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
@@ -71,27 +60,13 @@ endodónticas modernas, y se realizarán dos cirugías en vivo de la mano del Dr
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto mt-sm-4 mt-4 mt-md-auto mt-lg-auto mt-xl-auto card-wrapper">
                                 <div className="card">
                                     <div className="card-body text-left">
-                                        <h5 className="card-title">Segunda parte</h5>
-                                        <h6>Fotografia Video Dental</h6>
-                                        <p className="card-text">
-                                            Protocolo fotografico completo: 23 fotografias. <br />
-                                            Protocolo de video completo.<br />
-                                            Equipo basico y avanzado.<br />
-                                            Instrumental para toma fotografica.<br />
-                                            Camara DSLR clasificación y modelos.<br />
-                                            Tipos de lentes.<br />
-                                            Tipos de flash.<br />
-                                            Estudio fotografico.<br />
-                                            Iluminación LED.<br />
-                                            Soportes y tripodes.<br />
-                                            Accesorios para edición.<br />
-                                            Conceptos básicos de fotografia.<br />
-                                            Tiempo de Exposición, apertura, ISO.<br />
-                                            Balance de blancos WB.<br />
-                                            Configuración basica & avanzada para fotografia.<br />
-                                            Configuración basica & avanzada para video.<br />
-                                            y mas...
-                                        </p>
+                                        <h5 className="card-title">Por la tarde</h5>
+                                        <ul className="card-text">
+                                            <li>1:00 Almuerzo </li>
+                                            <li>2: 30   Teórico  Syngcuk KIM Actualización en Endodoncia Avanzada; Metodología Enseñada y Practicada en PENN Endo Parte II</li>
+                                            <li>5:00  Demostración: Syngcuk KIMSegunda Cirugía en Vivo. </li>
+                                            <li>6:00 :Restauración de Dientes con Endodoncia. Julián Conejo. ¿Qué dice la Ciencia en el 2020?</li>
+                                        </ul>
                                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
@@ -101,7 +76,7 @@ endodónticas modernas, y se realizarán dos cirugías en vivo de la mano del Dr
                     </div>
 
                     <div className="col-12 mt-5 pt-4">
-                        <h3>Día 2</h3>
+                        <h3>Itinerario curso Dr. Kano - 7 de Marzo</h3>
                     </div>
                     <div className="col-12 mt-4">
                         <div className="row">
@@ -109,20 +84,13 @@ endodónticas modernas, y se realizarán dos cirugías en vivo de la mano del Dr
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto card-wrapper">
                                 <div className="card">
                                     <div className="card-body text-left">
-                                        <h5 className="card-title">Introducción Teoría</h5>
-                                        <h6>Flowable Injection Technique</h6>
-                                        <p className="card-text">
-                                            Comunicación y entrevista con paciente. <br />
-                                            Fotografía y video. <br />
-                                            Análisis Estético. <br />
-                                            Diseño de Sonrisa. <br />
-                                            Toma de Impresión. <br />
-                                            Articuladores. <br />
-                                            Arcos faciales. <br />
-                                            Relación céntrica. <br />
-                                            Oclusión céntrica. <br />
-                                            Y mas...
-                                        </p>
+                                        <h5 className="card-title">Por la mañana</h5>
+                                        <ul className="card-text">
+                                            <li>8:00 a.m. Bienvenida. Dr. Erick Hernández. </li>
+                                            <li>8:10 a.m. Presentación Del Conferencista. Selvyn Mejicanos, maestro de ceremonias.</li>
+                                            <li>11:00 a.m Coffee Break</li>
+                                            <li>11:30  Demostración: Chairside Motivational Mockup. Paulo Kano </li>
+                                        </ul>
                                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
@@ -130,19 +98,16 @@ endodónticas modernas, y se realizarán dos cirugías en vivo de la mano del Dr
                             <div className="col-12 col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12 mr-auto mt-sm-4 mt-4 mt-md-auto mt-lg-auto mt-xl-auto card-wrapper">
                                 <div className="card">
                                     <div className="card-body text-left">
-                                        <h5 className="card-title">Hands-onPractica</h5>
-                                        <h6>Flowable Injection Technique</h6>
-                                        <p className="card-text">
-                                            Preparaciones para carilla tipo cerámica clasificación I,II,III. <br />
-                                            Cubeta transparente como realizarla paso a paso. <br />
-                                            Silicona transparente uso y diferencias en marcas. <br />
-                                            Detallado y acabo de silicona transparente. <br />
-                                            Descontaminación de material para mejor adhesion. <br />
-                                            Protocolo adhesivo. <br />
-                                            Inyección de resina. <br />
-                                            Acabado y terminado. <br />
-                                            Pulido y alto brillo. <br />
-                                        </p>
+                                        <h5 className="card-title">Por la tarde</h5>
+                                        <ul className="card-text">
+                                            <li>1:30 Almuerzo    </li>
+                                            <li>3:00 Teórico: Paulo Kano</li>
+                                            <li>4:15 Demostración:  Chairside Motivational Mockup</li>
+                                            <li>5:15  Demostración: Outsourced SKIN Motivational Mockup. Paulo Kano</li>
+                                            <li>6:00  Actualización en Implantologia digital y odontologia restaurativa 20/20. Julián Conejo.  </li>
+                                            <li>7:00  Preguntas y Respuestas. Paulo Kano y Julián Conejo. </li>
+                                            <li>7:30  Clausura  🍷</li>
+                                        </ul>
                                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>
                                 </div>
