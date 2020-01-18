@@ -200,12 +200,13 @@ class DetailCheckout extends React.Component{
                     
                     <div className="col">
                         {!showIframePayment?
+                        <div>
                         <div className="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>¡AVISO!</strong> Asegurese de que los datos estan correctos, estos serán tomados para la generación de los diplomas.
                             <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                        </div>:null
+                        </div></div>:null
                         }
                         {currentUser?!currentUser.admin?
                             (<div className="row">
