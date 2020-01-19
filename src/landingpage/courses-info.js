@@ -104,7 +104,7 @@ endodónticas modernas, y se realizarán dos cirugías en vivo de la mano del Dr
                                             <li>5:15  Demostración: Outsourced SKIN Motivational Mockup. Paulo Kano</li>
                                             <li>6:00  Actualización en Implantologia digital y odontologia restaurativa 20/20. Julián Conejo.  </li>
                                             <li>7:00  Preguntas y Respuestas. Paulo Kano y Julián Conejo. </li>
-                                            <li>7:30  Clausura  🍷</li>
+                                            <li>7:30  Clausura  <span role="img" aria-label="wine">🍷</span></li>
                                         </ul>
                                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                                     </div>

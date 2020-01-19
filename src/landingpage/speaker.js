@@ -5,15 +5,15 @@ class Speaker extends React.Component {
     
     render() {
         return (
-                <div class="content content--tall ">
-                <div class="speakercontainer">
+                <div className="content content--tall ">
+                <div className="speakercontainer">
                     <blockquote>
                         {this.props.description}
-                        <cite>{this.props.name}  <span class="color--accent font-weight--bold space--small">//</span> {this.props.tag} </cite>
+                        <cite>{this.props.name}  <span className="color--accent font-weight--bold space--small">{`//`}</span> {this.props.tag} </cite>
                     </blockquote>
                 </div>
-                <p class="space-top--large">
-                    <img class="avatar space-right--medium" src={this.props.image} alt="Avatar"/>
+                <p className="space-top--large">
+                    <img className="avatar space-right--medium" src={this.props.image} alt="Avatar"/>
                 </p>
             </div>
         );

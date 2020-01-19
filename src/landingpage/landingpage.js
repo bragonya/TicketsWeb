@@ -9,7 +9,7 @@ import Video from "./video";
 import Speakers from "./speakers"
 import Coursesinfo from "./courses-info";
 //import MissionVision from "./mission-vision";
-
+import Separator from './separator';
 import Contact from "./contact";
 
 const Gallery = lazy(() => import('./gallery'));
@@ -20,7 +20,9 @@ class LandingPage extends React.Component {
             <main role="main" className="landingpage">
                 <Header></Header>
                 <Video></Video>
+                <Separator/>
                 <Coursesinfo></Coursesinfo>
+                <Separator/>
                 <Speakers></Speakers>
                <Suspense 
                     fallback={
@@ -33,8 +35,9 @@ class LandingPage extends React.Component {
                             />
                         </div>}
                     >
-                        <Gallery/>
+                <Gallery/>
                 </Suspense>
+                <Separator/>
                 <Contact></Contact>
             </main>
         );

@@ -9,9 +9,9 @@ class Speakers extends React.Component {
     
     render() {
         return (
-            <div class="section text-align--center">
-                <h2>Conoce a los speakers 🎤</h2>
-                <div class="content content--tall ">
+            <div className="section text-align--center">
+                <h2>Conoce a los speakers <span role="img" aria-label="microphone">🎤</span></h2>
+                <div className="content content--tall ">
                 <Speaker description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer " image = {imgKano} name ="Dr. Paulo Kano" tag="Desarrollador del Método Cllones."/>
                 <Speaker description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer " image = {imgKim} name ="Dr. Syngcuk Kim" tag="PhD en Fisiología MIcrocirculatoria."/>
                 <Speaker description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer " image = {imgConejo} name ="Dr. Julián Conejo" tag="Director Clínico de CAD/CAM de la Universidad de Pennsylvania."/>
