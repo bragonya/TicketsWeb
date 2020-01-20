@@ -7,12 +7,14 @@ import { withRouter } from 'react-router-dom';
 
 import { selectCartItemsCount, selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser, selectConexionSocket } from '../../redux/user/user.selectors';
+import { selectSpeaker } from '../../redux/stage/stage.selectors';
 
 import { setCurrentUser } from '../../redux/user/user.actions';
 import { clearItemsCart } from '../../redux/cart/cart.actions';
 import { setStateSeat, setSpeaker, setCourse } from '../../redux/stage/stage.actions';
 
 import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from '../../assets/constants';
+import { getAmountSeatsOfCourse } from '../../redux/cart/cart.utils';
 
 import './header-main.styles.scss';
 
@@ -44,7 +46,10 @@ class HeaderMain  extends React.Component{
   }
 
   render(){
-    const { itemsCount, currentUser, history, setCurrentUser, conexionSocket, setCourse, setSpeaker } = this.props;
+    const { itemsCount, currentUser, history, setCurrentUser, conexionSocket, setCourse, setSpeaker, cartItems, speaker } = this.props;
+    let amount_KANO = getAmountSeatsOfCourse(cartItems,'KANO');
+    let amount_KIM  = getAmountSeatsOfCourse(cartItems,'KIM');
+    let conditionButtonShop = speaker===CONST_SPEAKERS_ENUM.both? (amount_KANO===1 && amount_KIM===1): (itemsCount?true:false);
     return(
       <div className="header-custom">
         
@@ -85,7 +90,7 @@ class HeaderMain  extends React.Component{
               {currentUser.admin?<li >
                 <Link to="/report"  onClick={() => { this.collapseClick(); }} >Reporte</Link>
               </li>:null}
-              {itemsCount?
+              {conditionButtonShop?
                 <li>
                   <Link 
                         to="/checkout" 
@@ -136,7 +141,8 @@ const mapStateToProps = createStructuredSelector({
   itemsCount  : selectCartItemsCount,
   currentUser : selectCurrentUser,
   cartItems   : selectCartItems,
-  conexionSocket: selectConexionSocket
+  conexionSocket: selectConexionSocket,
+  speaker: selectSpeaker
 });
 
 

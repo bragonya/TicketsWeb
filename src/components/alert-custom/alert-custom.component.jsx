@@ -7,7 +7,7 @@ import './alert-custom.styles.scss';
 const AlertCustom = ({title,text,id}) =>{
     const dispatch = useDispatch();
     return(
-        <div id='overlay-alert' style={{display:'inline-block'}}>
+        <div id='overlay-alert' style={{display:'inline-block'}} onDrag={()=>alert('draged')}>
             <div className='container-alert-custom bounceInDown'>
                 <span className="close-alert-custom" onClick={()=>dispatch(removeAlert({id}))}>×</span>
                 <span className='span-alert-custom'><strong>{title}</strong></span>
