@@ -72,7 +72,7 @@ class SignIn extends React.Component {
                         localStorage.setItem('user',JSON.stringify(user));
                         history.push('/select');
                     }else{
-                        //alert.show(message);
+                        addAlert({text:message,style:'style',title:'Usuario no encontrado'});
                     }
                 })
                 .catch(err=>{
