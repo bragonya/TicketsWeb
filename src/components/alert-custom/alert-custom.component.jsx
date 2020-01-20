@@ -1,15 +1,22 @@
 import React from 'react';
+import { useDispatch} from "react-redux";
+
+import {removeAlert} from '../../redux/alert/alert.actions';
 
 import './alert-custom.styles.scss';
-const AlertCustom = ({message, title}) =>(
-    <div id="popup1" class="overlay">
-        <div class="popup">
-            <h2>{title}</h2>
-            <span class="close">&times;</span>
-            <div class="content">
-                {message}
+const AlertCustom = ({title,text,id}) =>{
+    const dispatch = useDispatch();
+    return(
+        <div id='overlay-alert' style={{display:'inline-block'}}>
+            <div className='container-alert-custom bounceInDown'>
+                <span className="close-alert-custom" onClick={()=>dispatch(removeAlert({id}))}>×</span>
+                <span className='span-alert-custom'><strong>{title}</strong></span>
+                <div className='hr-alert-custom'></div>
+                <div className='content-alert-custom'>
+                    {text}
+                </div>
             </div>
-        </div>
-    </div>
-);
+        </div>    
+    );
+}
 export default AlertCustom;

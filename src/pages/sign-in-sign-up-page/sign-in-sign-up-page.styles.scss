@@ -1,13 +1,13 @@
 .sign-in-and-sign-up {
     margin: 40px auto;
-    min-width: 450px;
+    min-width: 430px;
 }
 
 .login-wrap{
 	width:100%;
 	margin: auto;
 	height: 80%;
-	max-width:525px;
+	max-width:430px;
 	min-height:450px;
 	max-height: 450px;
 	position: relative;
@@ -170,4 +170,29 @@
 .foot-lnk{
 	text-align:center;
 	color: #000000;
+}
+
+@media only screen and (max-width : 444px) {
+	.login-html{
+		padding: 0;
+		padding-top: 70px;
+		width: 85%;		
+		display: inline-block;
+		margin-left: 5%;
+	}
+	.sign-in-and-sign-up{
+		min-width: 368px;
+	}
+}
+@media only screen and (min-width : 444px) {
+	.login-html{
+		padding: 0;
+		padding-top: 70px;
+		width: 90%;		
+		display: inline-block;
+		
+	}
+	.sign-in-and-sign-up{
+		min-width: 368px;
+	}
 }

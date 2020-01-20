@@ -7,6 +7,8 @@ import {
 import { withRouter } from 'react-router-dom';
 import Spinner from 'react-spinkit';
 
+
+
 import io from "socket.io-client";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -20,13 +22,15 @@ import  SignInSignUpPage  from './pages/sign-in-sign-up-page/sign-in-sign-up-pag
 import AdminPage from './pages/admin-page/admin-page.component';
 import SelectCoursePage from './pages/select-course-page/select-course-page.component';
 import TransactionResultPage from './pages/transaction-result-page/transaction-result-page.component';
+import AlertCustom  from './components/alert-custom/alert-custom.component';
 
 import { setSocket, setCurrentUser } from './redux/user/user.actions';
 import { setStateSeat, setClockTime, setSpeaker, setCourse } from './redux/stage/stage.actions';
 import { clearItemsCart } from './redux/cart/cart.actions';
-
+import { removeAllAlerts } from './redux/alert/alert.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectCartItemsCount, selectCartItems } from './redux/cart/cart.selectors';
+import { selectAlertItems } from './redux/alert/alert.selectors';
 
 import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from './assets/constants';
 
@@ -139,7 +143,8 @@ export class App extends React.Component{
   }
   
   async onRouteChanged(route_) {
-    const { setStateSeat, setClockTime, history } = this.props;    
+    const { setStateSeat, setClockTime, history, removeAllAlerts } = this.props;    
+    removeAllAlerts();
     if((route_==='/reservation' || route_==='/checkout') && localStorage.getItem('user')){
       if(!(route_==='/checkout')){
         await this.unlockAllSeats();
@@ -173,9 +178,10 @@ export class App extends React.Component{
     window.scrollTo(0, 0);
   }
   render(){
-    const { props:{currentUser, cartItemsCount}, state:{loading}  } = this;
+    const { props:{currentUser, cartItemsCount, alerts}, state:{loading}  } = this;
     return (
       <div >
+        
         {loading?(<div style={{marginTop:'45vh',marginLeft:'50vw',width:'100%',textAlign:'center'}}>
               <Spinner 
                   name='ball-scale-multiple' 
@@ -233,6 +239,10 @@ export class App extends React.Component{
             />
             
           </Switch>
+          {alerts.length?alerts.map(({text,title,id})=>
+              <AlertCustom  key={`alertCustom${id}`} id={id} text={text} title={title}/>
+          ):null}
+      
           </React.Fragment>}
       </div>
       )
@@ -242,7 +252,8 @@ export class App extends React.Component{
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   cartItemsCount  : selectCartItemsCount,
-  cartItems   : selectCartItems
+  cartItems   : selectCartItems,
+  alerts: selectAlertItems
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -252,8 +263,10 @@ const mapDispatchToProps = dispatch => ({
   clearItemsCart: ()  => dispatch(clearItemsCart()),
   setClockTime:     time => dispatch(setClockTime(time)),
   setSpeaker : speaker => dispatch(setSpeaker(speaker)),
-  setCourse  : course => dispatch(setCourse(course))
+  setCourse  : course => dispatch(setCourse(course)),
+  removeAllAlerts : () => dispatch(removeAllAlerts())
 });
+
 
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));

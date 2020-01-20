@@ -2,8 +2,9 @@ import React from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 
+import { addAlert }  from '../../redux/alert/alert.actions';
 import { setCurrentUser } from '../../redux/user/user.actions';
-import  { inputValidMessages } from '../../assets/constants';
+import { inputValidMessages } from '../../assets/constants';
 
 
 import FormInput from "../form-input/form-input.component";
@@ -35,7 +36,9 @@ class SignIn extends React.Component {
     };
 
     consumeApi = () => {
-        const { props:{ history, setCurrentUser }, state:{ email, fullname } } = this;
+        const { props:{ history, setCurrentUser, addAlert}, state:{ email, fullname } } = this;
+        
+
         let fullnameSplit =  fullname.trim().split(/(\s+)/);
         if(fullnameSplit.length===3){
             if(!(fullnameSplit[0].trim()==="") && !(fullnameSplit[2].trim()==="")){
@@ -69,23 +72,22 @@ class SignIn extends React.Component {
                         localStorage.setItem('user',JSON.stringify(user));
                         history.push('/select');
                     }else{
-                        alert(message);
+                        //alert.show(message);
                     }
                 })
                 .catch(err=>{
-                    console.log(err);
-                    alert('Error de Servidor:\n'+err);
+                    addAlert({text:err.toString(),style:'style',title:'Error de Servidor'});
                 });
             }else{
-                alert('No ha ingresado el primer nombre o primer apellido');
+                addAlert({text:'No ha ingresado el primer nombre o primer apellido',style:'style',title:'Faltan datos'});
             }
         }else{
-            alert('Verifique que ha ingresado su primer nombre y primer apellido');
+            addAlert({text:'Verifique que ha ingresado su primer nombre y primer apellido',style:'style',title:'Faltan datos'});
         }
     }
 
     render(){
-        const { email, fullname } = this.state;
+        const { state: { email, fullname } } = this;
         return(
             <>
             <form onSubmit={this.handleSubmit}>
@@ -133,7 +135,9 @@ class SignIn extends React.Component {
 }
 
 const mapDispatchToProps = dispatch =>({
-    setCurrentUser: user => dispatch(setCurrentUser(user))
+    setCurrentUser: user => dispatch(setCurrentUser(user)),
+    addAlert      : _alert =>dispatch(addAlert(_alert))
 });
+
 
 export default withRouter(connect(null,mapDispatchToProps)(SignIn));
