@@ -150,8 +150,10 @@ export class App extends React.Component{
         await this.unlockAllSeats();
       }
       if(route_==='/reservation'){
+        console.log('########################');
         await socket.emit('connected',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(initialStage)=>{
           initialStage.forEach(seat=>{
+            console.log(seat);
             setStateSeat(seat);
           });  
         }); 
