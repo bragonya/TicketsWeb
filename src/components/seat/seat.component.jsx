@@ -11,12 +11,13 @@ import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCurrentCourse,selectSpeaker } from '../../redux/stage/stage.selectors';
 import { CONST_PRICES } from '../../assets/constants';
 import { getAmountSeatsOfCourse } from '../../redux/cart/cart.utils';
+import { addAlert } from '../../redux/alert/alert.actions';
 
 import PopoverGeneric from '../popover-generic/popover-generic.component';
 
 import './seat.styles.scss';
 
-const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, currentCourse, speaker, history}) =>{
+const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, currentCourse, speaker, history, addAlert}) =>{
     const { id, colname, state , key , idN, course} = seatdata;
     const disablePopover = currentUser?(currentUser.admin?false:true):true;   
     var properties={
@@ -36,19 +37,19 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                     if(speaker===CONST_SPEAKERS_ENUM.both){
                         if(currentCourse===CONST_SPEAKERS_ENUM.kim){
                             if(amount_KIM===1 && conditionNotAdmin){
-                                alert('No se pueden seleccionar mas asientos.');
+                                addAlert({text:'No se pueden seleccionar mas asientos.',style:'style',title:'Restriccion'});
                                 return;
                             }
                         }else{
                             if(amount_KANO===1 && conditionNotAdmin){
-                                alert('No se pueden seleccionar mas asientos');
+                                addAlert({text:'No se pueden seleccionar mas asientos.',style:'style',title:'Restriccion'});
                                 return;
                             }
                         }
                     }else{
                         if( ((speaker===CONST_SPEAKERS_ENUM.kim && amount_KIM===1) ||
                             (speaker===CONST_SPEAKERS_ENUM.kano && amount_KANO===1)) && conditionNotAdmin){
-                                alert('No se pueden seleccionar mas asientos');
+                                addAlert({text:'No se pueden seleccionar mas asientos.',style:'style',title:'Restriccion'});
                                 return;
                         }    
                     }
@@ -149,7 +150,8 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => ({
     setStateSeat: seat => dispatch(setStateSeat(seat)),
     addSeatCart:  seat => dispatch(addSeatCart(seat)),
-    removeSeatCart:  seat => dispatch(removeSeatCart(seat))
+    removeSeatCart:  seat => dispatch(removeSeatCart(seat)),
+    addAlert      : _alert => dispatch(addAlert(_alert))
 });
 
 
