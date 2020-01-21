@@ -27,7 +27,7 @@ import AlertCustom  from './components/alert-custom/alert-custom.component';
 import { setSocket, setCurrentUser } from './redux/user/user.actions';
 import { setStateSeat, setClockTime, setSpeaker, setCourse } from './redux/stage/stage.actions';
 import { clearItemsCart } from './redux/cart/cart.actions';
-import { removeAllAlerts } from './redux/alert/alert.actions';
+import { removeAllAlerts, addAlert } from './redux/alert/alert.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectCartItemsCount, selectCartItems } from './redux/cart/cart.selectors';
 import { selectAlertItems } from './redux/alert/alert.selectors';
@@ -36,6 +36,7 @@ import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from './assets/constants';
 
 import  "./App.scss"
 
+let amountConected=0;
 let socket;
 let initialState={
   loading: true
@@ -46,12 +47,27 @@ export class App extends React.Component{
     super(props);
     this.state  = { ...initialState };
     if (process.env.NODE_ENV === 'development') {
-      socket = io.connect(process.env.REACT_APP_SOCKET_URL || 'https://odontologiaindependiente.com:443');
+      socket = io.connect(process.env.REACT_APP_SOCKET_URL || 'http://localhost:4001');
     }else {
       socket = io.connect(process.env.REACT_APP_SOCKET_URL,{
         secure: true
       });
     }
+    socket.on( 'connect', function () {
+      amountConected++;
+      if(amountConected>1){
+        props.addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
+        setTimeout(()=>{
+          window.location.reload();  
+        },4000);
+      }
+      console.log( 'connected to server' );
+    });
+  
+    socket.on( 'disconnect', function () {
+      console.log( 'disconnected to server' );
+    });
+
     socket.emit('connected',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(initialStage)=>{
       console.log('emit connected');
       initialStage.forEach(seat=>{
@@ -266,7 +282,8 @@ const mapDispatchToProps = dispatch => ({
   setClockTime:     time => dispatch(setClockTime(time)),
   setSpeaker : speaker => dispatch(setSpeaker(speaker)),
   setCourse  : course => dispatch(setCourse(course)),
-  removeAllAlerts : () => dispatch(removeAllAlerts())
+  removeAllAlerts : () => dispatch(removeAllAlerts()),
+  addAlert        : _alert => dispatch(addAlert(_alert))
 });
 
 
