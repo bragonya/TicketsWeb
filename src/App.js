@@ -191,11 +191,8 @@ export class App extends React.Component{
       socket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
       socket.removeAllListeners('countdownStart');
     }
-    if(route_==='/reservation'){
-      window.scrollTo(50, 0);
-    }else{
-      window.scrollTo(0, 0);
-    }
+    window.scrollTo(0, 0);
+    
     
   }
   render(){
