@@ -49,7 +49,7 @@ class HeaderMain  extends React.Component{
     const { itemsCount, currentUser, history, setCurrentUser, conexionSocket, setCourse, setSpeaker, cartItems, speaker } = this.props;
     let amount_KANO = getAmountSeatsOfCourse(cartItems,'KANO');
     let amount_KIM  = getAmountSeatsOfCourse(cartItems,'KIM');
-    let conditionButtonShop = speaker===CONST_SPEAKERS_ENUM.both? (amount_KANO===1 && amount_KIM===1): (itemsCount?true:false);
+    let conditionButtonShop = (speaker===CONST_SPEAKERS_ENUM.both? (amount_KANO===1 && amount_KIM===1): (itemsCount?true:false)) && window.location.pathname!=='/checkout';
     return(
       <div className="header-custom">
         
