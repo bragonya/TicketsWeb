@@ -53,7 +53,7 @@ class HeaderMain  extends React.Component{
     return(
       <div className="header-custom">
         
-        <span  className="logo-custom" onClick={()=>history.push('/')}></span>
+        <span  className="logo-custom" onClick={()=>{this.collapseClick(); history.push('/');}}></span>
         
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
