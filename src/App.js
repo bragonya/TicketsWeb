@@ -56,10 +56,13 @@ export class App extends React.Component{
     socket.on( 'connect', function () {
       amountConected++;
       if(amountConected>1){
-        props.addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
-        setTimeout(()=>{
-          window.location.reload();  
-        },4000);
+        if(window.location.pathname==='/reservation'){
+          props.addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
+          setTimeout(()=>{
+            removeAllAlerts();
+            window.location.reload();  
+          },4000);
+        }
       }
       console.log( 'connected to server' );
     });
