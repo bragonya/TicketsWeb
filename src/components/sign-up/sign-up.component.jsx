@@ -189,4 +189,4 @@ const mapDispatchToProps = dispatch =>({
     addAlert      : _alert =>dispatch(addAlert(_alert))
 });
 
-export default connect(mapDispatchToProps)(SignUp);
+export default connect(null,mapDispatchToProps)(SignUp);
