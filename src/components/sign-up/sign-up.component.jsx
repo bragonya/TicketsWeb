@@ -52,7 +52,6 @@ class SignUp extends React.Component {
         })
         .then( response => {
             try {
-                console.log(response);
                 return response.json(); 
             } catch (error) {
                 response = { state:false, message: 'Formato invalido de respuesta'};
