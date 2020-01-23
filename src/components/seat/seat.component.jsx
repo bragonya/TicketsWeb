@@ -110,7 +110,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                                     
                                 }
                             }else{
-                                alert(message);
+                                addAlert({text:message,style:'style',title:'Informacion de Asiento'});
                             }
                             setProcesingSeat();
                         }
