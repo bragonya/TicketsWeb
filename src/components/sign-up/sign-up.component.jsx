@@ -41,17 +41,18 @@ class SignUp extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                firstname:firstname,
-                lastname:lastname,
-                telephone:parseInt(telephone),
-                email:email,
+                firstname:firstname.trim(),
+                lastname:lastname.trim(),
+                telephone:parseInt(telephone.trim()),
+                email:email.trim(),
                 comment:comment,
-                register_number:parseInt(register_number),
-                university:university
+                register_number:parseInt(register_number.trim()),
+                university:university.trim()
             })
         })
         .then( response => {
             try {
+                console.log(response);
                 return response.json(); 
             } catch (error) {
                 response = { state:false, message: 'Formato invalido de respuesta'};
@@ -75,12 +76,8 @@ class SignUp extends React.Component {
     
     handleChange = event => {
         const { name, value } = event.target;
-        var valueTrim = value;
-        try {
-            valueTrim = value.trim();
-        } catch (error) {
-        }
-        this.setState({ [name]: valueTrim });
+        
+        this.setState({ [name]: value });
     };
     
     render(){

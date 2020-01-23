@@ -50,7 +50,7 @@ class SignIn extends React.Component {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        email: email,
+                        email: email.trim(),
                         firstname: fullnameSplit[0].trim(),
                         lastname: fullnameSplit[2].trim()
                     })
