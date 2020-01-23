@@ -7,7 +7,8 @@ const INITIAL_STATE = {
     mainStage : event_seats_structure,
     currentCourse: 'KIM',
     clockTime : 600,
-    speaker : 'KIM'
+    speaker : 'KIM',
+    procesingSeat : false
 }
 
 const stageReducer = (state = INITIAL_STATE, action) =>{
@@ -32,6 +33,11 @@ const stageReducer = (state = INITIAL_STATE, action) =>{
                 ...state,
                 currentCourse : action.payload
             }
+        case StageActionsTypes.SET_PROCESING_SEAT:
+            return {
+                ...state,
+                procesingSeat : !state.procesingSeat
+            }    
         default:
             return state;
     }

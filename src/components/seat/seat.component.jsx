@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 
 import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from '../../assets/constants';
-import { setStateSeat } from '../../redux/stage/stage.actions';
+import { setStateSeat, setProcesingSeat } from '../../redux/stage/stage.actions';
 import { addSeatCart, removeSeatCart, updatePriceSeat } from '../../redux/cart/cart.actions';
 import { selectConexionSocket, selectCurrentUser }from '../../redux/user/user.selectors';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
@@ -17,7 +17,7 @@ import PopoverGeneric from '../popover-generic/popover-generic.component';
 
 import './seat.styles.scss';
 
-const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, currentCourse, speaker, history, addAlert, updatePriceSeat}) =>{
+const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, currentCourse, speaker, history, addAlert, updatePriceSeat, setProcesingSeat}) =>{
     const { id, colname, state , key , idN, course} = seatdata;
     const disablePopover = currentUser?(currentUser.admin?false:true):true;   
     var properties={
@@ -62,6 +62,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                         curso: course,
                         estado : state==='selected'?CONST_SEAT_STATES.free:CONST_SEAT_STATES.selected
                     };
+                    setProcesingSeat();
                     conexionSocket.emit(
                         'seatModified',
                         {   ...seatModified,
@@ -106,10 +107,12 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                                         ...seatModified,
                                         price: priceSeat
                                     });
+                                    
                                 }
                             }else{
                                 alert(message);
                             }
+                            setProcesingSeat();
                         }
                     );
                 }:()=>{
@@ -121,10 +124,12 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
         state==='free'?
         <span {...properties} >
             <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
-        </span>:state==='selected'?
+        </span>
+        :state==='selected'?
         <span {...properties} >
         <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
-        </span>:state==='blocked'?
+        </span>
+        :state==='blocked'?
         <span {...properties} >
         <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
         </span>:
@@ -160,7 +165,8 @@ const mapDispatchToProps = dispatch => ({
     addSeatCart:  seat => dispatch(addSeatCart(seat)),
     removeSeatCart:  seat => dispatch(removeSeatCart(seat)),
     addAlert      : _alert => dispatch(addAlert(_alert)),
-    updatePriceSeat : seat => dispatch(updatePriceSeat(seat))
+    updatePriceSeat : seat => dispatch(updatePriceSeat(seat)),
+    setProcesingSeat: ()=>dispatch(setProcesingSeat())
 });
 
 

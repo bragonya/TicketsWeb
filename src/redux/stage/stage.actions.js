@@ -18,3 +18,7 @@ export const setCourse = time =>({
     type: StageActionsTypes.SET_COURSE,
     payload: time
 });
+
+export const setProcesingSeat = () =>({
+    type: StageActionsTypes.SET_PROCESING_SEAT
+});

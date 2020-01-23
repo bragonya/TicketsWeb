@@ -12,7 +12,7 @@ import NextPrevius from '../bar-next-previus/bar-next-previus.component';
 import { CONST_SPEAKERS_ENUM } from '../../assets/constants';
 
 import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { selectMainStage, selectCurrentCourse, selectSpeaker } from '../../redux/stage/stage.selectors';
+import { selectMainStage, selectCurrentCourse, selectSpeaker,selectProcesingSeat } from '../../redux/stage/stage.selectors';
 
 import { ReactComponent as StageX } from '../../assets/stage.svg';
 import { ReactComponent as DentistX } from '../../assets/dentist.svg';
@@ -20,13 +20,30 @@ import { ReactComponent as ShootingX } from '../../assets/shooting_room.svg';
 
 import './croquis.styles.scss';
 
-const Croquis = ({ mainStage, currentUser, currentCourse, speaker }) =>{
+const Croquis = ({ mainStage, currentUser, currentCourse, speaker, procesingSeat }) =>{
     const {
             [currentCourse]:{SL1,SL2,VIP1,VIP2,PF1,PF2,PF3,PF4,E1,E2,E3,E4}
           } = mainStage;
     return (
-        <React.Fragment>
-            
+        <>
+        <div id='procesing_overlay' style={{display:!procesingSeat?'none':'inline-block'}}>
+            <div className='procesing_content'>
+                <div class="sk-circle">
+                    <div class="sk-circle1 sk-child"></div>
+                    <div class="sk-circle2 sk-child"></div>
+                    <div class="sk-circle3 sk-child"></div>
+                    <div class="sk-circle4 sk-child"></div>
+                    <div class="sk-circle5 sk-child"></div>
+                    <div class="sk-circle6 sk-child"></div>
+                    <div class="sk-circle7 sk-child"></div>
+                    <div class="sk-circle8 sk-child"></div>
+                    <div class="sk-circle9 sk-child"></div>
+                    <div class="sk-circle10 sk-child"></div>
+                    <div class="sk-circle11 sk-child"></div>
+                    <div class="sk-circle12 sk-child"></div>
+                </div>
+            </div>
+        </div>    
         <div className="container-croquis">
         
             <div className="box-croquis">
@@ -95,15 +112,17 @@ const Croquis = ({ mainStage, currentUser, currentCourse, speaker }) =>{
                 </div></React.Fragment>:null}
             </div>
         </div>
-        </React.Fragment>
+        </>
     )
 };
+
 
 const mapStateToProps = createStructuredSelector({
     mainStage: selectMainStage,
     currentUser: selectCurrentUser,
     currentCourse: selectCurrentCourse,
-    speaker : selectSpeaker
+    speaker : selectSpeaker,
+    procesingSeat : selectProcesingSeat
 });
 
 export default connect(mapStateToProps)(Croquis);

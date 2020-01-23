@@ -22,3 +22,7 @@ export const selectSpeaker = createSelector(
     stage => stage.speaker
 );
 
+export const selectProcesingSeat = createSelector(
+    [selectStage],
+    stage => stage.procesingSeat
+);
