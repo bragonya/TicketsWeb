@@ -54,9 +54,9 @@ export class App extends React.Component{
       });
     }
     socket.on( 'connect', function () {
-      amountConected++;
-      if(amountConected>1){
-        if(window.location.pathname==='/reservation'){
+      if(window.location.pathname==='/reservation'){
+        amountConected++;
+        if(amountConected>1){
           props.addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
           setTimeout(()=>{
             props.removeAllAlerts();
@@ -77,7 +77,8 @@ export class App extends React.Component{
         setStateSeat(seat);
       });
       this.setState({ loading: false });
-    });  
+    });
+      
     const { setSocket, setStateSeat, setCurrentUser, setSpeaker, setCourse } = this.props;    
     setSocket(socket);
     
@@ -164,17 +165,18 @@ export class App extends React.Component{
   async onRouteChanged(route_) {
     const { setStateSeat, setClockTime, history, removeAllAlerts } = this.props;    
     removeAllAlerts();
+    if(route_==='/reservation'){
+      await socket.emit('connected',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(initialStage)=>{
+        initialStage.forEach(seat=>{
+          setStateSeat(seat);
+        });  
+      }); 
+    }
     if((route_==='/reservation' || route_==='/checkout') && localStorage.getItem('user')){
       if(!(route_==='/checkout')){
         await this.unlockAllSeats();
       }
-      if(route_==='/reservation'){
-        await socket.emit('connected',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(initialStage)=>{
-          initialStage.forEach(seat=>{
-            setStateSeat(seat);
-          });  
-        }); 
-      }
+      
       if(!(JSON.parse(localStorage.getItem('user')).admin)){
         socket.removeAllListeners('countdownStart');
         socket.on('countdownStart',function(time){
