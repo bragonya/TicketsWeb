@@ -5,19 +5,19 @@ import { withRouter } from 'react-router-dom';
 
 import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from '../../assets/constants';
 import { setStateSeat } from '../../redux/stage/stage.actions';
-import { addSeatCart, removeSeatCart } from '../../redux/cart/cart.actions';
+import { addSeatCart, removeSeatCart, updatePriceSeat } from '../../redux/cart/cart.actions';
 import { selectConexionSocket, selectCurrentUser }from '../../redux/user/user.selectors';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { selectCurrentCourse,selectSpeaker } from '../../redux/stage/stage.selectors';
 import { CONST_PRICES } from '../../assets/constants';
-import { getAmountSeatsOfCourse } from '../../redux/cart/cart.utils';
+import { getAmountSeatsOfCourse, getSeatsOfCourse, getSeccionName } from '../../redux/cart/cart.utils';
 import { addAlert } from '../../redux/alert/alert.actions';
 
 import PopoverGeneric from '../popover-generic/popover-generic.component';
 
 import './seat.styles.scss';
 
-const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, currentCourse, speaker, history, addAlert}) =>{
+const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, removeSeatCart, currentUser, currentCourse, speaker, history, addAlert, updatePriceSeat}) =>{
     const { id, colname, state , key , idN, course} = seatdata;
     const disablePopover = currentUser?(currentUser.admin?false:true):true;   
     var properties={
@@ -28,32 +28,33 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                 (evt)=>{
                     if (!currentUser){ history.push('/signinsignup'); return; }
                     if(!currentUser.admin && !(currentUser.email==='ferclass1@hotmail.com' || currentUser.email==='alan220193@gmail.com' || currentUser.email==='bragonya@gmail.com')){
-                        alert('La función de comprar por el momento se encuentra deshabilitada.\nPara mas información contacta con el organizador del evento.');
+                        addAlert({text:'La función de comprar por el momento se encuentra deshabilitada.\nPara mas información contacta con el organizador del evento.',style:'style',title:'Lo sentimos'});
                         return;
                     }
-                    let amount_KANO = getAmountSeatsOfCourse(cartItems,'KANO');
-                    let amount_KIM  = getAmountSeatsOfCourse(cartItems,'KIM');
-                    let conditionNotAdmin = state==='free' && !(currentUser.admin);    
+                    let amount_KANO = getAmountSeatsOfCourse(cartItems,CONST_SPEAKERS_ENUM.kano);
+                    let amount_KIM  = getAmountSeatsOfCourse(cartItems,CONST_SPEAKERS_ENUM.kim);
+                    let conditionSeatFree = state==='free';    
                     if(speaker===CONST_SPEAKERS_ENUM.both){
                         if(currentCourse===CONST_SPEAKERS_ENUM.kim){
-                            if(amount_KIM===1 && conditionNotAdmin){
+                            if(amount_KIM===1 && conditionSeatFree){
                                 addAlert({text:'No se pueden seleccionar mas asientos.',style:'style',title:'Restriccion'});
                                 return;
                             }
                         }else{
-                            if(amount_KANO===1 && conditionNotAdmin){
+                            if(amount_KANO===1 && conditionSeatFree){
                                 addAlert({text:'No se pueden seleccionar mas asientos.',style:'style',title:'Restriccion'});
                                 return;
                             }
                         }
                     }else{
-                        if( ((speaker===CONST_SPEAKERS_ENUM.kim && amount_KIM===1) ||
-                            (speaker===CONST_SPEAKERS_ENUM.kano && amount_KANO===1)) && conditionNotAdmin){
+                        if(!currentUser.admin){
+                            if( ((speaker===CONST_SPEAKERS_ENUM.kim && amount_KIM===1) ||
+                            (speaker===CONST_SPEAKERS_ENUM.kano && amount_KANO===1)) && conditionSeatFree){
                                 addAlert({text:'No se pueden seleccionar mas asientos.',style:'style',title:'Restriccion'});
                                 return;
-                        }    
+                            }
+                        }
                     }
-                    //if(cartItems.length===5 && state==='free' && !(currentUser.admin)) return ;
                     const seatModified = {
                         columna : id,
                         fila : colname,
@@ -73,20 +74,27 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                                     ...seatModified
                                 });
                                 if(state==='selected'){
+                                    if(speaker===CONST_SPEAKERS_ENUM.both){
+                                        var seatsByCourse=getSeatsOfCourse(cartItems,currentCourse===CONST_SPEAKERS_ENUM.kim?CONST_SPEAKERS_ENUM.kano:CONST_SPEAKERS_ENUM.kim);
+                                        var firstSeat = seatsByCourse.length? {...(seatsByCourse.find(() => true))}:null;
+                                        if(firstSeat){
+                                            var sectionName = getSeccionName(firstSeat.seccion);
+                                            var newPriceSeat = CONST_PRICES[firstSeat.curso]['only'][sectionName.toUpperCase()].PRICE;
+                                            updatePriceSeat({...firstSeat,price:newPriceSeat});
+                                        }
+                                    }
                                     removeSeatCart({...seatModified});
                                 }else{
                                     var priceSeat = CONST_PRICES[currentCourse]['only'][idN].PRICE;
                                     if(speaker===CONST_SPEAKERS_ENUM.both){
-                                        let amountKANO = getAmountSeatsOfCourse(cartItems,'KANO');
-                                        let amountKIM  = getAmountSeatsOfCourse(cartItems,'KIM');
                                         switch(currentCourse){
-                                            case 'KANO':
-                                                if(amountKIM>amountKANO){
+                                            case CONST_SPEAKERS_ENUM.kano:
+                                                if(amount_KIM>amount_KANO){
                                                     priceSeat = CONST_PRICES[currentCourse][CONST_SPEAKERS_ENUM.both][idN].PRICE;
                                                 }
                                                 break;
-                                            case 'KIM':    
-                                                if(amountKANO>amountKIM){
+                                            case CONST_SPEAKERS_ENUM.kim:    
+                                                if(amount_KANO>amount_KIM){
                                                     priceSeat = CONST_PRICES[currentCourse][CONST_SPEAKERS_ENUM.both][idN].PRICE;
                                                 }
                                                 break;
@@ -151,7 +159,8 @@ const mapDispatchToProps = dispatch => ({
     setStateSeat: seat => dispatch(setStateSeat(seat)),
     addSeatCart:  seat => dispatch(addSeatCart(seat)),
     removeSeatCart:  seat => dispatch(removeSeatCart(seat)),
-    addAlert      : _alert => dispatch(addAlert(_alert))
+    addAlert      : _alert => dispatch(addAlert(_alert)),
+    updatePriceSeat : seat => dispatch(updatePriceSeat(seat))
 });
 
 

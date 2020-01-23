@@ -1,5 +1,5 @@
 import { CartActionsTypes } from './cart.types';
-import { removeSeatFromCart, addSeatToCart } from './cart.utils';
+import { removeSeatFromCart, addSeatToCart, updatePriceSeat } from './cart.utils';
 
 const INITIAL_STATE = {
     items : []
@@ -21,6 +21,11 @@ const cartReducer = (state = INITIAL_STATE,action) =>{
             return{
                 ...state,
                 items: []
+            }    
+        case CartActionsTypes.UPDATE_PRICE_SEAT:
+            return{
+                ...state,
+                items: updatePriceSeat(state.items,action.payload)//items, seatToUpdate, newPrice
             }    
         default:
             return state;

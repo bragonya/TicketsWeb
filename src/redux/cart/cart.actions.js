@@ -14,3 +14,8 @@ export const removeSeatCart = seat =>({
 export const clearItemsCart =  () =>({
     type: CartActionsTypes.CLEAR_SEATS_CART
 });
+
+export const updatePriceSeat = seat =>({
+    type: CartActionsTypes.UPDATE_PRICE_SEAT,
+    payload : seat
+});
