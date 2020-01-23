@@ -59,7 +59,7 @@ export class App extends React.Component{
         if(window.location.pathname==='/reservation'){
           props.addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
           setTimeout(()=>{
-            removeAllAlerts();
+            props.removeAllAlerts();
             window.location.reload();  
           },4000);
         }
