@@ -8,19 +8,28 @@ import { selectCurrentCourse }  from '../../redux/stage/stage.selectors';
 import { CONST_SPEAKERS_ORDER } from '../../assets/constants';
 
 import './bar-next-previus.styles.scss';
-const NextPrevius = ({ currenCourse, setCourse }) => (
+
+const NextPrevius = ({ currenCourse, setCourse }) => {
+    
+return(    
     <div className='bar-next-previus'>
-        <div className='previus'>
-            <p onClick={()=>
-                setCourse(getPreviusCourse(currenCourse))}>Anterior curso &#8617;</p>
+        <div className='previus' 
+            style={{display:getPreviusCourse(currenCourse)===currenCourse?'none':'inline-block'}}
+            onClick={()=>
+                setCourse(getPreviusCourse(currenCourse))}
+        >
+                <p>Anterior curso &#8617;</p>
         </div>
         <div className='separator-bar-next-previus'></div>
-        <div className='next'>
-            <p onClick={()=>
-                setCourse(getNextCourse(currenCourse))}>&#8618; Siguiente curso</p>
+        <div className='next'
+             style={{display:getNextCourse(currenCourse)===currenCourse?'none':'block'}}
+             onClick={()=>
+                setCourse(getNextCourse(currenCourse))}
+        >
+                <p>&#8618; Siguiente curso</p>
         </div>
     </div>
-);
+)}
 
 const getNextCourse = (current_course) =>{
     var order=CONST_SPEAKERS_ORDER[current_course]||0;
