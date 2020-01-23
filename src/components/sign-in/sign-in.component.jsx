@@ -127,7 +127,7 @@ class SignIn extends React.Component {
                             />
                         </div>
                     </div>
-                    <div className="foot-lnk"><label htmlFor="tab-2">Aun no eres miembro?</label></div>
+                    <div className="foot-lnk"><label htmlFor="tab-2">¿Aún no eres miembro?</label></div>
                 </div>
             </form>
             </>

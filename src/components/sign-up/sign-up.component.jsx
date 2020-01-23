@@ -177,7 +177,7 @@ class SignUp extends React.Component {
                         <input type="submit" className="button" value="Inscribirse"/>
                     </div>
                     <div className="foot-lnk">
-                        <label htmlFor="tab-1">Ya eres miembro?</label>
+                        <label htmlFor="tab-1">¿Ya eres miembro?</label>
                     </div>
                 </div>
             </form>
