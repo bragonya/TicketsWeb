@@ -8,7 +8,8 @@
     display: flex;
     flex-direction: row;
     grid-template-columns: 3fr 3fr 5fr; /* Size of items defined inside container */
-    //position: relative;
+    position: relative;
+    z-index: 2;
 }
 
 
