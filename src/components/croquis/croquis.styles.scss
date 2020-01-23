@@ -172,11 +172,11 @@
 }
 
 .img-stage-croquis{
-	z-index: -1;
 	width: 400px;
 	height: 400px;
 	margin: -145px;
 	position: sticky;
+	z-index: -1;
 	
 	path{
 		fill: rgb(10, 8, 6);

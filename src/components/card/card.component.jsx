@@ -56,7 +56,7 @@ const Card = ({ imgURL, title, paragraph, speaker, setSpeaker, setCourse, histor
             <div className="blog-tags">
             <ul>
                 <li><div>
-                        Incribirse al curso
+                        Inscribirse al curso
                     </div>
                 </li>
             </ul>

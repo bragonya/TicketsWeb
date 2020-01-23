@@ -1,7 +1,9 @@
 import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import  { inputValidMessages } from '../../assets/constants';
+import { connect } from 'react-redux';
 
+import { addAlert }  from  '../../redux/alert/alert.actions';
 
 let initialState ={
     firstname:'',
@@ -26,7 +28,8 @@ class SignUp extends React.Component {
                     comment, register_number, university
                 },
                 props:{
-                    goSignIn
+                    goSignIn,
+                    addAlert
                 }
               } = this;
             
@@ -58,23 +61,25 @@ class SignUp extends React.Component {
         .then( response =>{
             const { state, message } = response;
             if(state){
-                alert(message);
                 this.setState({ ...initialState });
                 goSignIn();
             }else{
-                alert(message);
+                addAlert({text:message,style:'style',title:'Error en el registro'});
             }
         })
         .catch(err=>{
-            console.log(err);
-            alert('Error de Servidor:\n'+err);
+            addAlert({text:err.toString(),style:'style',title:'Error de servidor'});
         });
     };
     
     handleChange = event => {
         const { name, value } = event.target;
-
-        this.setState({ [name]: value });
+        var valueTrim = value;
+        try {
+            valueTrim = value.trim();
+        } catch (error) {
+        }
+        this.setState({ [name]: valueTrim });
     };
     
     render(){
@@ -171,7 +176,7 @@ class SignUp extends React.Component {
                         label='Comentario'  
                     />
                     <div className="group">
-                        <input type="submit" className="button" value="Inscribeme"/>
+                        <input type="submit" className="button" value="Inscribirse"/>
                     </div>
                     <div className="foot-lnk">
                         <label htmlFor="tab-1">Ya eres miembro?</label>
@@ -181,4 +186,9 @@ class SignUp extends React.Component {
         )
     }
 }
-export default SignUp;
+
+const mapDispatchToProps = dispatch =>({
+    addAlert      : _alert =>dispatch(addAlert(_alert))
+});
+
+export default connect(mapDispatchToProps)(SignUp);
