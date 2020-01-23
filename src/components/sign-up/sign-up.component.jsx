@@ -61,6 +61,7 @@ class SignUp extends React.Component {
         .then( response =>{
             const { state, message } = response;
             if(state){
+                console.log(response);    
                 this.setState({ ...initialState });
                 goSignIn();
             }else{
