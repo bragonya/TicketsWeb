@@ -1,18 +1,22 @@
 .iframe-payment{
-    width: 100%;
+    width: 490px;
     display: inline-block;
     margin: 0 auto; 
-    min-width: 200px;
+    //min-width: 100px;
+    height: 900px;
 }
 .col{
     &.centering{
         align-items: center;
         margin: 0 auto;
         margin-left: 5%;
+        width: 100%;
     }
 }
 .iframe-loader{
+    //display: inline-block;
     margin: 0 auto;
-    margin-left: 40%;
-    margin-top: 20%;
+    margin-left: 12%;
+    margin-top: 20vh;
+    //width: 100%;
 }

@@ -25,7 +25,6 @@ export default class IframeComponent extends React.Component {
                     :
                     null
                 }
-                <div className="embed-responsive embed-responsive-16by9">
                 <iframe
                     key='iframe-FAC-Unbiased'
                     id='iframe-FAC' 
@@ -33,13 +32,11 @@ export default class IframeComponent extends React.Component {
                     src={src} 
                     height={height} 
                     width={width}  
-                    className='embed-responsive-item'
+                    className='iframe-payment'
                     onLoad={this.hideSpinner}
                     frameBorder="0"
                     sandbox={`allow-popups allow-forms allow-scripts allow-same-origin`}
                 />
-                </div>
-                
         </>
         )
   }

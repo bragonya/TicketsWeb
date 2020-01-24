@@ -318,7 +318,8 @@ class DetailCheckout extends React.Component{
                                                 <input 
                                                     disabled={ processing }
                                                     type="submit" 
-                                                    className="button btn-success" 
+                                                    className="button" 
+                                                    style={{backgroundColor:'#f74819', color:'white'}}
                                                     value={currentUser.admin?"Guardar":"Realizar Pago"} 
                                                 />
                                             </td>
