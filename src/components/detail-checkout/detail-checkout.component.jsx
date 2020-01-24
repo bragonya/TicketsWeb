@@ -165,11 +165,14 @@ class DetailCheckout extends React.Component{
     }
     componentWillMount(){
         const {  props :{ cartItems, currentUser }, state : { rowsInput } } = this;        
-        cartItems.forEach(({key})=>{
-            rowsInput[`register_number${key}`] = `${currentUser.register_number}`; 
-            rowsInput[`university${key}`] = `${currentUser.university}`; 
-            rowsInput[`name${key}`]=`${currentUser.firstname} ${currentUser.lastname}`;
-        });
+        if(!currentUser.admin){
+            cartItems.forEach(({key})=>{
+                rowsInput[`register_number${key}`] = `${currentUser.register_number}`; 
+                rowsInput[`university${key}`] = `${currentUser.university}`; 
+                rowsInput[`name${key}`]=`${currentUser.firstname} ${currentUser.lastname}`;
+            });
+        }
+        
     }
     componentDidMount(){
         const { props : { clearItemsCart,history,conexionSocket, currentUser:{ id } } } = this;
