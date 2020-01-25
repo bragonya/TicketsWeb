@@ -15,7 +15,7 @@ import Clock from '../clock/clock.component';
 import  { inputValidMessages } from '../../assets/constants';
 import './detail-checkout.styles.scss';
 
-var enviroment = "marlin";
+var enviroment = "ecm";
 
 var initialState = {
     rowsInput : {},
