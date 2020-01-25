@@ -2,8 +2,10 @@ import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import  { inputValidMessages } from '../../assets/constants';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 
 import { addAlert }  from  '../../redux/alert/alert.actions';
+import { setCurrentUser } from '../../redux/user/user.actions';
 
 let initialState ={
     firstname:'',
@@ -28,8 +30,9 @@ class SignUp extends React.Component {
                     comment, register_number, university
                 },
                 props:{
-                    goSignIn,
-                    addAlert
+                    addAlert,
+                    history, 
+                    setCurrentUser
                 }
               } = this;
             
@@ -59,12 +62,12 @@ class SignUp extends React.Component {
             }
         })
         .then( response =>{
-            const { state, message } = response;
-            console.log(response);
-            if(state){
-                 
+            const { state, message, user } = response;
+            if(state){     
                 this.setState({ ...initialState });
-                goSignIn();
+                setCurrentUser(user);
+                localStorage.setItem('user',JSON.stringify(user));
+                history.push('/select');
             }else{
                 addAlert({text:message,style:'style',title:'Error en el registro'});
             }
@@ -186,7 +189,8 @@ class SignUp extends React.Component {
 }
 
 const mapDispatchToProps = dispatch =>({
+    setCurrentUser: user => dispatch(setCurrentUser(user)),
     addAlert      : _alert =>dispatch(addAlert(_alert))
 });
 
-export default connect(null,mapDispatchToProps)(SignUp);
+export default withRouter(connect(null,mapDispatchToProps)(SignUp));

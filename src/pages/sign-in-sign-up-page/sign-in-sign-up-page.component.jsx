@@ -13,10 +13,6 @@ class SignInSigUpPage  extends React.Component{
         }
     }
 
-    goSignIn = () =>{
-        document.getElementById('lb-tab-1').click();
-        window.scrollTo(0, 0);
-    }
 
     render(){
         const { check } =  this.state;
@@ -32,7 +28,7 @@ class SignInSigUpPage  extends React.Component{
                     <div className="login-form">
                         
                         <SignIn/>       
-                        <SignUp goSignIn={this.goSignIn}/>
+                        <SignUp/>
                     </div>
                 </div>
             </div>
