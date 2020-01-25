@@ -8,7 +8,8 @@ const INITIAL_STATE = {
     currentCourse: 'KIM',
     clockTime : 600,
     speaker : 'KIM',
-    procesingSeat : false
+    procesingSeat : false,
+    optionSignInSignUp: true //signin=true, signup=false
 }
 
 const stageReducer = (state = INITIAL_STATE, action) =>{
@@ -38,6 +39,11 @@ const stageReducer = (state = INITIAL_STATE, action) =>{
                 ...state,
                 procesingSeat : !state.procesingSeat
             }    
+        case StageActionsTypes.SET_OPTION_SIGNIN_SIGNUP:
+            return {
+                ...state,
+                optionSignInSignUp : action.payload
+            }        
         default:
             return state;
     }

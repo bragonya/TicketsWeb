@@ -11,7 +11,7 @@ import { selectSpeaker } from '../../redux/stage/stage.selectors';
 
 import { setCurrentUser } from '../../redux/user/user.actions';
 import { clearItemsCart } from '../../redux/cart/cart.actions';
-import { setStateSeat, setSpeaker, setCourse } from '../../redux/stage/stage.actions';
+import { setStateSeat, setSpeaker, setCourse, setOptionSigninSignup } from '../../redux/stage/stage.actions';
 
 import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from '../../assets/constants';
 import { getAmountSeatsOfCourse } from '../../redux/cart/cart.utils';
@@ -46,7 +46,7 @@ class HeaderMain  extends React.Component{
   }
 
   render(){
-    const { itemsCount, currentUser, history, setCurrentUser, conexionSocket, setCourse, setSpeaker, cartItems, speaker } = this.props;
+    const { itemsCount, currentUser, history, setCurrentUser, conexionSocket, setCourse, setSpeaker, cartItems, speaker, setOptionSigninSignup } = this.props;
     let amount_KANO = getAmountSeatsOfCourse(cartItems,'KANO');
     let amount_KIM  = getAmountSeatsOfCourse(cartItems,'KIM');
     let conditionButtonShop = (speaker===CONST_SPEAKERS_ENUM.both? (amount_KANO===1 && amount_KIM===1): (itemsCount?true:false)) && window.location.pathname!=='/checkout';
@@ -68,7 +68,7 @@ class HeaderMain  extends React.Component{
                 to="/signinsignup" 
                 className="btn btn-orange fadein"
                 style={{maxWidth:'200px'}}
-                onClick={() => { this.collapseClick(); }}>
+                onClick={() => { this.collapseClick(); setOptionSigninSignup(false);}}>
                 Registrarme 
               </Link>
             </li>
@@ -134,7 +134,8 @@ const mapDispatchToProps = dispatch => ({
   clearItemsCart: ()  => dispatch(clearItemsCart()),
   setStateSeat  : seat => dispatch(setStateSeat(seat)),
   setSpeaker    : speaker => dispatch(setSpeaker(speaker)),
-  setCourse    : course => dispatch(setCourse(course))
+  setCourse    : course => dispatch(setCourse(course)),
+  setOptionSigninSignup : option => dispatch(setOptionSigninSignup(option)) 
 });
 
 const mapStateToProps = createStructuredSelector({

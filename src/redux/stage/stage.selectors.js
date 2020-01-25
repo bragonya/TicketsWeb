@@ -26,3 +26,8 @@ export const selectProcesingSeat = createSelector(
     [selectStage],
     stage => stage.procesingSeat
 );
+
+export const selectOptionSigninSignup = createSelector(
+    [selectStage],
+    stage => stage.optionSignInSignUp
+);

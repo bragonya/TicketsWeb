@@ -22,3 +22,8 @@ export const setCourse = time =>({
 export const setProcesingSeat = () =>({
     type: StageActionsTypes.SET_PROCESING_SEAT
 });
+
+export const setOptionSigninSignup = option =>({
+    type: StageActionsTypes.SET_OPTION_SIGNIN_SIGNUP,
+    payload: option
+});
