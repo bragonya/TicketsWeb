@@ -1,10 +1,10 @@
 #overlay-alert {
+  display: inline-block;
   margin-top: 14vh; 
   position: fixed;
   top: 0;
-  left: 0;
+  left: 12vw;
   text-align: center;
-  width: 56%;
   border-color: #333;
   margin-left: 1%;
   margin-right: 2%;
@@ -23,7 +23,7 @@
   text-align: justify;
   color: #333;
   display: inline-block;
-  //width: 70%;
+  width: 100%;
 }
 .close-alert-custom {
   position: static;

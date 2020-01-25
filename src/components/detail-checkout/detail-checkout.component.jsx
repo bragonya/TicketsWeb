@@ -28,10 +28,19 @@ var initialState = {
 class DetailCheckout extends React.Component{
     state = { ...initialState };
     handleChange = event => {
-        const { value, name } = event.target;
-        const { rowsInput } = this.state;
+        const { value, name, title } = event.target;
+        const { state: { rowsInput }, props: { currentUser } } = this;
+        
         var newrowsInput = {  ...rowsInput ,[name]: value};
-        this.setState({ rowsInput : newrowsInput });
+        if(!currentUser.admin){
+            Object.keys(rowsInput).forEach((key)=>{
+                if(key.includes(title)){
+                    newrowsInput = {...newrowsInput ,[key]: value}
+                }
+            });
+        }
+        this.setState({ rowsInput : newrowsInput });    
+        
     };
 
     handleSubmit = event => {
@@ -41,16 +50,6 @@ class DetailCheckout extends React.Component{
         } catch (error) {
           console.log(error);
         }
-    };
-
-    StringToXML = (oString) => {
-        return (new DOMParser()).parseFromString(oString, "text/xml");
-    };
-    
-    generateOrderNumber = () =>{
-        var numberRandom = Math.floor(Math.random()*(999-100+1)+100);
-        var orderNumberGenerated= `UNB${(+ new Date())}${numberRandom}`;
-        return  orderNumberGenerated;
     };
 
     handleClickGoToPay = () =>{
@@ -237,7 +236,7 @@ class DetailCheckout extends React.Component{
                                     </thead>
                                     <tbody>
                                         {
-                                            cartItems.map(({fila,columna,seccion,price,key})=>(
+                                            cartItems.map( ({fila,columna,seccion,price,key},index)=>(
                                                 <tr key={key}>
                                                     <td key={`${fila}${key}`}>{fila}</td>
                                                     <td key={`${columna}${key}`}>{columna}</td>
@@ -256,6 +255,8 @@ class DetailCheckout extends React.Component{
                                                             matchMessage = {''}
                                                             requiredMessage = {inputValidMessages.requiredMessage}
                                                             required
+                                                            disabled={(index>0 && !currentUser.admin)?true:false}
+                                                            title={`name`}
                                                         />
                                                     </td>
                                                     <td key={`register_number${key}`}>
@@ -271,6 +272,8 @@ class DetailCheckout extends React.Component{
                                                             matchMessage = {''}
                                                             requiredMessage = {inputValidMessages.requiredMessage}
                                                             required
+                                                            disabled={(index>0 && !currentUser.admin)?true:false}
+                                                            title={`register_number`}
                                                         />
                                                     </td>
                                                     <td key={`university${key}`}>
@@ -287,6 +290,8 @@ class DetailCheckout extends React.Component{
                                                             matchMessage = {''}
                                                             requiredMessage = {inputValidMessages.requiredMessage}
                                                             required
+                                                            disabled={(index>0 && !currentUser.admin)?true:false}
+                                                            title={`university`}
                                                         />
                                                     </td>
                                                     {currentUser.admin?
@@ -304,6 +309,8 @@ class DetailCheckout extends React.Component{
                                                             matchMessage = {''}
                                                             requiredMessage = {inputValidMessages.requiredMessage}
                                                             required
+                                                            disabled={(index>0 && !currentUser.admin)?true:false}
+                                                            title={`no_document`}
                                                         />
                                                         </td>:null
                                                     }

@@ -1,4 +1,4 @@
-#overlay {
+#overlay-popover {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,6 +10,8 @@
     -moz-opacity: 0.8;
     opacity: 0.98;    
     display: none;
+    z-index: 4;
+    cursor: default;
   }
 #confirm {
     background-color: #000000;
@@ -20,11 +22,10 @@
     width: 320px;
     height: 170px;
     left: 35%;
-    right: 35%;
     top: 40%;
     box-sizing: border-box;
     text-align: center;
-    
+    margin: 0 auto;
  }
 
  .text-plain{
@@ -47,4 +48,16 @@
 
  #confirm .message {
     text-align: center;
+ }
+
+ @media (max-width:657px){
+   #confirm {
+      left: 23%;
+   }  
+ }
+
+ @media (max-width:464px){
+   #confirm {
+      left: 12%;
+   }  
  }

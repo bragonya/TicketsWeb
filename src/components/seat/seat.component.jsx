@@ -117,7 +117,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                         }
                     );
                 }:()=>{
-                    if (!currentUser) setOptionSigninSignup(true); history.push('/signinsignup'); return;
+                    if (!currentUser){setOptionSigninSignup(true); history.push('/signinsignup'); return;}
                 }
                 
     }
