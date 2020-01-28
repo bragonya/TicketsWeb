@@ -121,7 +121,18 @@ let initialStateFilter={
   filterTextByNoDoc : '',
   filterTextByUniversity : '',
   filterTextByregisterNumber : ''
-};  
+};
+
+const removeNullValues = (seats_solds) =>{
+  return seats_solds.map(seat=>{
+    Object.keys(seat).forEach(key=>{
+      if(seat[key]===null){
+        seat[key]='';
+      }
+    });
+    return seat;
+  });
+}
 const BasicTable = ({seats_solds}) => {
   const [filterTexts, setFilterTexts] = React.useState({
     ...initialStateFilter
@@ -129,17 +140,17 @@ const BasicTable = ({seats_solds}) => {
   
   const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
   const actionsMemo = <Export onExport={() => downloadCSV(seats_solds, seats_solds)} />;
+  seats_solds = removeNullValues(seats_solds);
   const filteredItems = seats_solds.filter(
       item => 
-        item.seccion.toUpperCase().includes(filterTexts.filterTextBySection.toUpperCase())  &&
+        item.seccion.toUpperCase().includes(filterTexts.filterTextBySection.toUpperCase()) &&
         item.curso.toUpperCase().includes(filterTexts.filterTextByCourse.toUpperCase()) &&
         item.fila.toUpperCase().includes(filterTexts.filterTextByRow.toUpperCase()) &&
         item.columna.toString().toUpperCase().includes(filterTexts.filterTextByColumn.toUpperCase()) &&
         item.name.toString().toUpperCase().includes(filterTexts.filterTextByName.toUpperCase()) &&
         item.no_document.toString().toUpperCase().includes(filterTexts.filterTextByNoDoc.toUpperCase()) &&
         item.university.toString().toUpperCase().includes(filterTexts.filterTextByUniversity.toUpperCase()) &&
-        item.register_number.toString().toUpperCase().includes(filterTexts.filterTextByregisterNumber.toUpperCase()) 
-        
+        item.register_number.toString().toUpperCase().includes(filterTexts.filterTextByregisterNumber.toUpperCase())
     );
 
   const subHeaderComponentMemo = React.useMemo(() => {

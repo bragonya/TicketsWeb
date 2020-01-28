@@ -133,7 +133,8 @@ class DetailCheckout extends React.Component{
                 },
                 body: JSON.stringify({
                     cartTotal: cartTotal.toString(),
-                    user: JSON.parse(localStorage.getItem('user'))
+                    user: JSON.parse(localStorage.getItem('user')),
+                    seats: arrayDetail 
                 })
             })
             .then( response => {
@@ -151,8 +152,7 @@ class DetailCheckout extends React.Component{
                     console.log(securityToken);
                     const iframe = `https://${enviroment}.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PaySelective/${securityToken}`; 
                     self.setState({ orderNumberGenerated : order_id ,processing : true, showIframePayment : true, iframeUrl: iframe });
-                }
-                
+                }                
             })
             .catch(err=>{
                 console.log(err);
