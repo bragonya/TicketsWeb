@@ -44,10 +44,10 @@ const SelectCoursePage = ()=>(
                             paragraph = {'Recibe un DESCUENTO en el segundo curso del Dr. Paulo Kano al inscribirte en ambos cursos, mientras duren existencias.'}
                             speaker  ={CONST_SPEAKERS_ENUM.both}
                         >
-                            <li className="published-date">SALA LOUNGE: <span className='published-date tached'>Q1800</span> Q1,400</li>
-                            <li className="published-date">SALA VIP: <span className='published-date tached'>Q1,600</span> Q1,200</li>        
-                            <li className="published-date">PROFESIONALES: <span className='published-date tached'>Q1,450</span> Q1,050</li>
-                            <li className="published-date">ESTUDIANTES: <span className='published-date tached'>Q750</span> Q600</li>
+                            <li className="published-date">SALA LOUNGE: <span className='published-date tached'>Q3600</span> Q3200</li>
+                            <li className="published-date">SALA VIP: <span className='published-date tached'>Q3200</span> Q2800</li>        
+                            <li className="published-date">PROFESIONALES: <span className='published-date tached'>Q2900</span> Q2500</li>
+                            <li className="published-date">ESTUDIANTES: <strong style={{color:'#333'}}>No aplica descuento</strong></li>
                         </Card>
                     
                 </div>

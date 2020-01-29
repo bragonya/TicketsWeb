@@ -35,12 +35,12 @@ class Header extends React.Component {
                                 <tbody>
                                     <tr>
                                         <td><i className="fa fa-microphone"></i></td>
-                                        <td>8 Expositores</td>
+                                        <td>3 Expositores</td>
                                     </tr>
                                 </tbody>
                             </table>
 						</li>
-                        <li>
+                        {/*<li>
                             <table>
                                 <tbody>
                                     <tr>
@@ -49,7 +49,7 @@ class Header extends React.Component {
                                     </tr>
                                 </tbody>
                             </table>
-						</li>
+						</li>*/}
                     </ul>
                     <h1>Un Salto al Futuro.</h1>
                     <h3> Conference, Course & Live Patient
