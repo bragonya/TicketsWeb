@@ -109,7 +109,15 @@ const Croquis = ({ mainStage, currentUser, currentCourse, speaker, procesingSeat
                     <Section key={'E3'} section = { {...E3,course:currentCourse} }/>
                     <hr/>
                     <Section key={'E4'} section = { {...E4, course:currentCourse} }/>
-                </div></React.Fragment>:null}
+                </div></React.Fragment>:currentCourse===CONST_SPEAKERS_ENUM.kim?
+                <React.Fragment><hr/>
+                <div className={`grid-row-croquis estudiantes ${currentCourse}`}>
+                    <Section key={'E1'} section = { {...E1, course:currentCourse} }/>
+                    <hr/><hr/><hr/><hr/>
+                    <Section key={'E2'} section = { {...E2, course:currentCourse} }/>
+                    <hr/>
+                </div></React.Fragment>:null
+                }
             </div>
         </div>
         </>

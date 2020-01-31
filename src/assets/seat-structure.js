@@ -3105,18 +3105,194 @@ E4:{
         }
     ,
     
-    E1:{}
-    ,
+        E1:{
+            idN:'ESTUDIANTE',
+            key:'E1',
+            name:'Estudiantes',
+            price: 4000.23,
+            seats_by_rows:[
+                {
+                    row_name: 'A',
+                    seats:[
+                        {
+                            id:1,
+                            state:'free'
+                        },
+                        {
+                            id:2,
+                            state:'free'
+                        },
+                        {
+                            id:3,
+                            state:'free'
+                        },
+                        {
+                            id:4,
+                            state:'free'
+                        },
+                        {
+                            id:5,
+                            state:'free'
+                        },
+                        {
+                            id:6,
+                            state:'free'
+                        },
+                        {
+                            id:7,
+                            state:'free'
+                        },
+                        {
+                            id:8,
+                            state:'free'
+                        },
+                        {
+                            id:9,
+                            state:'free'
+                        }
+                    ]
+                },
+                {
+                    row_name: 'B',
+                    seats:[
+                        {
+                            id:1,
+                            state:'free'
+                        },
+                        {
+                            id:2,
+                            state:'free'
+                        },
+                        {
+                            id:3,
+                            state:'free'
+                        },
+                        {
+                            id:4,
+                            state:'free'
+                        },
+                        {
+                            id:5,
+                            state:'free'
+                        },
+                        {
+                            id:6,
+                            state:'free'
+                        },
+                        {
+                            id:7,
+                            state:'free'
+                        },
+                        {
+                            id:8,
+                            state:'free'
+                        },
+                        {
+                            id:9,
+                            state:'free'
+                        }
+                    ]
+                }
+            ]
+        },
+
+        E2:{
+            idN:'ESTUDIANTE',
+            key:'E2',
+            name:'Estudiantes',
+            price: 4000.23,
+            seats_by_rows:[
+                {
+                    row_name: 'A',
+                    seats:[
+                        {
+                            id:10,
+                            state:'free'
+                        },
+                        {
+                            id:11,
+                            state:'free'
+                        },
+                        {
+                            id:12,
+                            state:'free'
+                        },
+                        {
+                            id:13,
+                            state:'free'
+                        },
+                        {
+                            id:14,
+                            state:'free'
+                        },
+                        {
+                            id:15,
+                            state:'free'
+                        },
+                        {
+                            id:16,
+                            state:'free'
+                        },
+                        {
+                            id:17,
+                            state:'free'
+                        },
+                        {
+                            id:18,
+                            state:'free'
+                        }
+                    ]
+                },
+                {
+                    row_name: 'B',
+                    seats:[
+                        {
+                            id:10,
+                            state:'free'
+                        },
+                        {
+                            id:11,
+                            state:'free'
+                        },
+                        {
+                            id:12,
+                            state:'free'
+                        },
+                        {
+                            id:13,
+                            state:'free'
+                        },
+                        {
+                            id:14,
+                            state:'free'
+                        },
+                        {
+                            id:15,
+                            state:'free'
+                        },
+                        {
+                            id:16,
+                            state:'free'
+                        },
+                        {
+                            id:17,
+                            state:'free'
+                        },
+                        {
+                            id:18,
+                            state:'free'
+                        }
+                    ]
+                }
+            ]
+        },
     
-    E2:{}
-    ,
+        E3:{}
+        ,
+        
+        E4:{}
     
-    E3:{}
-    ,
-    
-    E4:{}
-    
-}
+    }
 };
 
 export default event_seats_structure;
