@@ -25,7 +25,11 @@ class Header extends React.Component {
                                 <tbody>
                                     <tr>
                                         <td><i className="fa fa-calendar"></i></td>
-                                        <td>25/05/2020</td>
+                                        <td>06/03/2020</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i className="fa fa-calendar"></i></td>
+                                        <td>07/03/2020</td>
                                     </tr>
                                 </tbody>
                             </table>
