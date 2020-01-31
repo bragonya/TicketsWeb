@@ -102,5 +102,5 @@ export const urlBrochures = {
 export const descriptionSpeakers = {
     conejo:'Este es el mejor momento para incorporarse al mundo digital de la odontología, porque los software son más fáciles de usar que en años anteriores y porque en este momento existe una gran cantidad de materiales cerámicos para restaurar una gran variedad de escenarios clínicos.',
     kano:'Cuando el paciente se le da a elegir un trabajo producido bajo la tecnología digital y uno producido bajo trabajo manual; siempre prefiere lo producido por la tecnología Digital.',
-    kim : 'Endodontic surgery, while generally recognized as an important treatment modality within the endodon- tic specialty, is not sufficiently taught in the endodon- tic postgraduate programs, nor covered adequately in textbooks.'
+    kim : 'La cirugía endodóntica; aunque es generalmente reconocida como una importante modalidad de tratamiento dentro de la especialidad de endodoncia, no es suficientemente enseñada en los programas de postrado endodónticos ni cubierto adecuadamente en los libros de texto.'
 };
