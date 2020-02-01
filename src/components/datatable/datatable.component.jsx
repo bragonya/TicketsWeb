@@ -13,6 +13,10 @@ const SampleExpandedComponent = ({ data }) => (
         {`Carnet/Colegiado: ${data.register_number}`}
         <br/>
         {`Universidad: ${data.university}`}
+        <br/>
+        {`Email del comprador: ${data.email}`}
+        <br/>
+        {`Precio: ${data.precio}`}
       </p>
       
     </div>
