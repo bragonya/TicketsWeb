@@ -79,7 +79,8 @@ class DetailCheckout extends React.Component{
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    'seats': arrayDetail 
+                    'seats': arrayDetail ,
+                    'user': JSON.parse(localStorage.getItem('user'))
                 })
             })
             .then( response => {
