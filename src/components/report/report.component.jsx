@@ -68,6 +68,3 @@ class Report extends React.Component{
     }
 }
 export default Report;
-/*{
-                fila,columna,seccion,name,curso,register_number,university,no_document
-            }*/

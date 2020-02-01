@@ -129,6 +129,9 @@ const removeNullValues = (seats_solds) =>{
       if(seat[key]===null){
         seat[key]='';
       }
+      if(key.includes('no_document')){
+        seat[key]=encodeURI(seat[key]);
+      }
     });
     return seat;
   });

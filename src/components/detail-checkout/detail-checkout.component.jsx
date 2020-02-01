@@ -68,7 +68,7 @@ class DetailCheckout extends React.Component{
                     name: rowsInput[`name${key}`],
                     register_number: rowsInput[`register_number${key}`],
                     university: rowsInput[`university${key}`],
-                    no_document:rowsInput[`no_document${key}`]
+                    no_document:encodeURI(rowsInput[`no_document${key}`])
                 };
             });
             fetch(process.env.REACT_APP_BASE_URL + "/save_order", {
@@ -120,7 +120,7 @@ class DetailCheckout extends React.Component{
                     name: rowsInput[`name${key}`],
                     register_number: rowsInput[`register_number${key}`],
                     university: rowsInput[`university${key}`],
-                    no_document:rowsInput[`no_document${key}`]
+                    no_document: encodeURI(rowsInput[`no_document${key}`])
                 };
             });
             var self = this;
