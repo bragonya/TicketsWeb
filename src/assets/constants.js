@@ -20,54 +20,60 @@ export const CONST_PRICES={
     KIM:{
         'only':{
                 LOUNGE:{
-                    PRICE: 1800
+                    PRICE:1//PRICE: 1800
                 },
                 VIP: {
-                    PRICE:1600
+                    PRICE:1//PRICE:1600
                 },
                 PROFESIONAL: {
-                    PRICE:1450
+                    PRICE:1//PRICE:1450
+                },
+                ESTUDIANTE: {
+                    PRICE:1//PRICE:750
                 }
         },
         'BOTH':{
             LOUNGE:{
-                PRICE: 1400
+                PRICE:1//PRICE: 1400
             },
             VIP: {
-                PRICE:1200
+                PRICE:1//PRICE:1200
             },
             PROFESIONAL: {
-                PRICE:1050
+                PRICE:1//PRICE:1050
+            },
+            ESTUDIANTE: {
+                PRICE:1//PRICE:750
             }
         }
     },
     KANO:{
         'only':{
             LOUNGE:{
-                PRICE: 1800
+                PRICE:1//PRICE: 1800
             },
             VIP: {
-                PRICE:1600
+                PRICE:1//PRICE:1600
             },
             PROFESIONAL: {
-                PRICE:1450
+                PRICE:1//PRICE:1450
             },
             ESTUDIANTE: {
-                PRICE:750
+                PRICE:1//PRICE:750
             }
         },
         'BOTH':{
             LOUNGE:{
-                PRICE: 1400
+                PRICE:1//PRICE: 1400
             },
             VIP: {
-                PRICE:1200
+                PRICE:1//PRICE:1200
             },
             PROFESIONAL: {
-                PRICE:1050
+                PRICE:1//PRICE:1050
             },
             ESTUDIANTE: {
-                PRICE:750
+                PRICE:1//PRICE:750
             }
         }
     }
