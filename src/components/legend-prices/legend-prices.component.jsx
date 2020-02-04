@@ -4,12 +4,12 @@ import { createStructuredSelector } from 'reselect';
 
 import { selectCurrentCourse, selectSpeaker } from '../../redux/stage/stage.selectors';
 
-import  { CONST_SPEAKERS_ENUM, CONST_PRICES } from '../../assets/constants';
+import  {  CONST_PRICES } from '../../assets/constants';
 
 
 import './legend-prices.styles.scss';
 
-const LegendPrices = ({ currentCourse , speaker}) => {
+const LegendPrices = ({ currentCourse }) => {
     const { LOUNGE,VIP,PROFESIONAL,ESTUDIANTE } =  CONST_PRICES[currentCourse]['only'];
     return(
         <div className='legend-prices'>
@@ -24,10 +24,9 @@ const LegendPrices = ({ currentCourse , speaker}) => {
                     <div className='name'>
                             PROFESIONAL: Q{PROFESIONAL.PRICE}
                     </div>
-                    { currentCourse===CONST_SPEAKERS_ENUM.kano? <div className='name'>
+                    <div className='name'>
                             ESTUDIANTE: Q{ESTUDIANTE.PRICE}
-                        </div>:null
-                    }
+                    </div>
                 </div>
             </div>
         </div>
