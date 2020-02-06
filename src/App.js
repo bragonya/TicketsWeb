@@ -64,7 +64,7 @@ export class App extends React.Component{
           },3500);
         }
       }
-      console.log( 'connected to server' );
+      console.log( 'connected to server - ' );
     });
   
     socket.on( 'disconnect', function () {
