@@ -28,7 +28,7 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                 (evt)=>{
                     if (!currentUser){  setOptionSigninSignup(true); history.push('/signinsignup'); return; }
                     if(!currentUser.admin && 
-                        !(currentUser.email==='ferclass1@hotmail.com' || currentUser.email==='alan220193@gmail.com' || currentUser.email==='bragonya@gmail.com' || currentUser.email==='jordy.g2012@gmail.com' || currentUser.email==='luciacorado1309@gmail.com' || currentUser.email==='luciacorado1309@gmail.com' || currentUser.email === 'osalternative@gmail.com')){
+                        !(currentUser.email==='ferclass1@hotmail.com' || currentUser.email==='juanarnoldoperezsosa@gmail.com' || currentUser.email==='alan220193@gmail.com' || currentUser.email==='bragonya@gmail.com' || currentUser.email==='jordy.g2012@gmail.com' || currentUser.email==='luciacorado1309@gmail.com' || currentUser.email==='luciacorado1309@gmail.com' || currentUser.email === 'osalternative@gmail.com')){
                         addAlert({text:'Estaremos de vuelta en un par de horas ;).',style:'style',title:'Lo sentimos'});
                         return;
                     }
