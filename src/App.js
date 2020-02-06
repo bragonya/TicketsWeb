@@ -118,9 +118,16 @@ export class App extends React.Component{
     localStorage.removeItem('cartItems');
   }
   
+  onFocus = () => {
+    const {addAlert} = this.props;
+    addAlert({text:'SEGUNDO PLANO',style:'style',title:'Test'});
+  }
+
   componentDidMount(){
     const { setClockTime, history } = this.props;    
-   
+    
+    window.addEventListener("focus", this.onFocus);
+
     if (window.performance) {
       if (performance.navigation.type === 1) {
         if((window.location.pathname==='/reservation' || window.location.pathname==='/checkout') && localStorage.getItem('user')){
@@ -147,13 +154,12 @@ export class App extends React.Component{
     }
   }
 
-  
-  
 
   componentWillUnmount() {
     socket.disconnect();
     localStorage.removeItem('user');
     localStorage.removeItem('cartItems');
+    window.removeEventListener("focus", this.onFocus);
   }
 
   componentDidUpdate(prevProps) {
