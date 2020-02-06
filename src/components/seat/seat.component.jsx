@@ -27,11 +27,11 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                 state==='free' || state==='selected'?
                 (evt)=>{
                     if (!currentUser){  setOptionSigninSignup(true); history.push('/signinsignup'); return; }
-                    /*if(!currentUser.admin && 
+                    if(!currentUser.admin && 
                         !(currentUser.email==='ferclass1@hotmail.com' || currentUser.email==='alan220193@gmail.com' || currentUser.email==='bragonya@gmail.com' || currentUser.email==='luciacorado1309@gmail.com' || currentUser.email==='luciacorado1309@gmail.com' || currentUser.email === 'osalternative@gmail.com')){
                         addAlert({text:'Estaremos de vuelta en un par de horas ;).',style:'style',title:'Lo sentimos'});
                         return;
-                    }*/
+                    }
                     let amount_KANO = getAmountSeatsOfCourse(cartItems,CONST_SPEAKERS_ENUM.kano);
                     let amount_KIM  = getAmountSeatsOfCourse(cartItems,CONST_SPEAKERS_ENUM.kim);
                     let conditionSeatFree = state==='free';    
