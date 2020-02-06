@@ -54,14 +54,14 @@ export class App extends React.Component{
       });
     }
     socket.on( 'connect', function () {
-      if(window.location.pathname==='/reservation'){
+      if(window.location.pathname==='/reservation' || window.location.pathname==='/checkout'){
         amountConected++;
         if(amountConected>1){
           props.addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
           setTimeout(()=>{
             props.removeAllAlerts();
             window.location.reload();  
-          },4000);
+          },3500);
         }
       }
       console.log( 'connected to server' );
