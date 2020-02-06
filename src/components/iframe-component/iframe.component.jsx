@@ -48,9 +48,9 @@ export default class IframeComponent extends React.Component {
     }
 
     componentDidMount(){
-        this.iframeURLChange(document.getElementById("iframe-FAC"), function (newURL) {
+        /*this.iframeURLChange(document.getElementById("iframe-FAC"), function (newURL) {
             console.log("URL changed:", newURL);
-        });
+        });*/
     }
     render() {
         const { props: { src, height, width }, state: { loading } } = this;
@@ -64,6 +64,7 @@ export default class IframeComponent extends React.Component {
                     null
                 }
                 <iframe     
+                    onChange={()=>{console.log('URL changed')}}
                     key='iframe-FAC-Unbiased'
                     id='iframe-FAC' 
                     title="FAC Payment"
