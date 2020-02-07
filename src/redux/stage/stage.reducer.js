@@ -6,7 +6,7 @@ import {setStateToSeat} from './stage.utils';
 const INITIAL_STATE = {
     mainStage : event_seats_structure,
     currentCourse: 'KIM',
-    clockTime : 600,
+    clockTime : 540,
     speaker : 'KIM',
     procesingSeat : false,
     optionSignInSignUp: true //signin=true, signup=false
