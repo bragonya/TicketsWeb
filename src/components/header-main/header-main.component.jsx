@@ -111,10 +111,10 @@ class HeaderMain  extends React.Component{
                     await setCourse(CONST_SPEAKERS_ENUM.kim);
                     await localStorage.removeItem('user');
                     await localStorage.removeItem('speaker');
-                    await this.unlockAllSeats();
                     await setCurrentUser(null); 
                     conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
                     conexionSocket.removeAllListeners('countdownStart');
+                    await this.unlockAllSeats();
                     history.push('/reservation');
                   }
                 }>
