@@ -121,6 +121,7 @@ export class App extends React.Component{
   onFocus = () => {
     const {addAlert, removeAllAlerts} = this;
     if(window.location.pathname==='/checkout'){
+      alert('consultando');
       fetch(process.env.REACT_APP_BASE_URL + "/checkSeatsByUser", {
         method: "post",
         mode: 'cors',
