@@ -53,7 +53,7 @@ export class App extends React.Component{
         secure: true
       });
     }
-    
+
     socket.on( 'connect', function () {
       console.log( 'connected to server - ' );
     });
@@ -61,7 +61,7 @@ export class App extends React.Component{
     socket.on( 'disconnect', function () {
       if(window.location.pathname==='/reservation' || window.location.pathname==='/checkout'){
         amountConected++;
-        if(amountConected>1){
+        if(amountConected>=1){
           props.addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
           setTimeout(()=>{
             props.removeAllAlerts();
