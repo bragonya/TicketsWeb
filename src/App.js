@@ -119,7 +119,7 @@ export class App extends React.Component{
   }
   
   onFocus = () => {
-    const {addAlert} = this;
+    const {addAlert, removeAllAlerts} = this;
     if(window.location.pathname==='/checkout'){
       fetch(process.env.REACT_APP_BASE_URL + "/checkSeatsByUser", {
         method: "post",
@@ -147,7 +147,7 @@ export class App extends React.Component{
         if(!status){
           addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
           setTimeout(()=>{
-            props.removeAllAlerts();
+            removeAllAlerts();
             window.location.reload();  
           },3500);
         }
