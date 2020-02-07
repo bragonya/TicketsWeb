@@ -119,51 +119,9 @@ export class App extends React.Component{
     localStorage.removeItem('cartItems');
   }
   
-  onFocus = () => {
-    const {addAlert, removeAllAlerts} = this;
-    /*if(window.location.pathname==='/checkout'){
-      alert('consultando');
-      fetch(process.env.REACT_APP_BASE_URL + "/checkSeatsByUser", {
-        method: "post",
-        mode: 'cors',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          'seats': JSON.parse(localStorage.getItem('cartItems')) ,
-          'user': JSON.parse(localStorage.getItem('user'))
-        })
-      })
-      .then(response=>{
-        try {
-          return response.json(); 
-        } catch (error) {
-            console.log('Formato invalido de respuesta');
-            response = { state:false, message: error, user:null};
-            return response;
-        }
-      })
-      .then(response=>{
-        const {status} = response;
-        alert(`endpoint response:${status}`);
-        if(!status){
-          addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
-          setTimeout(()=>{
-            removeAllAlerts();
-            window.location.reload();  
-          },3500);
-        }
-      })
-      .catch(error=>console.log(error));
-    }*/
-  }
-
   componentDidMount(){
     const { setClockTime, history } = this.props;    
     
-    window.addEventListener("focus", this.onFocus);
-
     if (window.performance) {
       if (performance.navigation.type === 1) {
         if((window.location.pathname==='/reservation' || window.location.pathname==='/checkout') && localStorage.getItem('user')){
@@ -195,7 +153,6 @@ export class App extends React.Component{
     socket.disconnect();
     localStorage.removeItem('user');
     localStorage.removeItem('cartItems');
-    window.removeEventListener("focus", this.onFocus);
   }
 
   componentDidUpdate(prevProps) {

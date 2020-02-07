@@ -104,16 +104,15 @@ class HeaderMain  extends React.Component{
               }
               <li
                 className="nav-item"
-                onClick={()=> 
-                  { 
+                onClick={ async ()=> { 
                     conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
                     conexionSocket.removeAllListeners('countdownStart');
-                    this.unlockAllSeats();
-                    setCurrentUser(null); 
-                    setSpeaker(CONST_SPEAKERS_ENUM.kim);
-                    setCourse(CONST_SPEAKERS_ENUM.kim);
-                    localStorage.removeItem('user');
-                    localStorage.removeItem('speaker');
+                    await this.unlockAllSeats();
+                    await setCurrentUser(null); 
+                    await setSpeaker(CONST_SPEAKERS_ENUM.kim);
+                    await setCourse(CONST_SPEAKERS_ENUM.kim);
+                    await localStorage.removeItem('user');
+                    await localStorage.removeItem('speaker');
                     history.push('/reservation');
                   }
                 }>
