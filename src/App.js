@@ -119,8 +119,38 @@ export class App extends React.Component{
   }
   
   onFocus = () => {
-    const {addAlert} = this.props;
-    addAlert({text:'SEGUNDO PLANO',style:'style',title:'Test'});
+    const {history} = this;
+    if(window.location.pathname==='/checkout'){
+      fetch(process.env.REACT_APP_BASE_URL + "/checkSeatsByUser", {
+        method: "post",
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email.trim(),
+            firstname: fullnameSplit[0].trim(),
+            lastname: fullnameSplit[2].trim()
+        })
+      })
+      .then(response=>{
+        try {
+          return response.json(); 
+        } catch (error) {
+            console.log('Formato invalido de respuesta');
+            response = { state:false, message: error, user:null};
+            return response;
+        }
+      })
+      .then(response=>{
+        const {status} = response;
+        if(!status){
+          history.push('/select');
+        }
+      })
+      .catch(error=>console.log(error));
+    }
   }
 
   componentDidMount(){
