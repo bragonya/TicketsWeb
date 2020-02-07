@@ -119,7 +119,7 @@ export class App extends React.Component{
   }
   
   onFocus = () => {
-    const {history} = this;
+    const {addAlert} = this;
     if(window.location.pathname==='/checkout'){
       fetch(process.env.REACT_APP_BASE_URL + "/checkSeatsByUser", {
         method: "post",
@@ -145,7 +145,11 @@ export class App extends React.Component{
       .then(response=>{
         const {status} = response;
         if(!status){
-          history.push('/select');
+          addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
+          setTimeout(()=>{
+            props.removeAllAlerts();
+            window.location.reload();  
+          },3500);
         }
       })
       .catch(error=>console.log(error));
