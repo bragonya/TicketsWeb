@@ -53,7 +53,12 @@ export class App extends React.Component{
         secure: true
       });
     }
+    
     socket.on( 'connect', function () {
+      console.log( 'connected to server - ' );
+    });
+  
+    socket.on( 'disconnect', function () {
       if(window.location.pathname==='/reservation' || window.location.pathname==='/checkout'){
         amountConected++;
         if(amountConected>1){
@@ -64,10 +69,6 @@ export class App extends React.Component{
           },3500);
         }
       }
-      console.log( 'connected to server - ' );
-    });
-  
-    socket.on( 'disconnect', function () {
       console.log( 'disconnected to server' );
     });
 
@@ -120,7 +121,7 @@ export class App extends React.Component{
   
   onFocus = () => {
     const {addAlert, removeAllAlerts} = this;
-    if(window.location.pathname==='/checkout'){
+    /*if(window.location.pathname==='/checkout'){
       alert('consultando');
       fetch(process.env.REACT_APP_BASE_URL + "/checkSeatsByUser", {
         method: "post",
@@ -155,7 +156,7 @@ export class App extends React.Component{
         }
       })
       .catch(error=>console.log(error));
-    }
+    }*/
   }
 
   componentDidMount(){
