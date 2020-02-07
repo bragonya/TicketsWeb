@@ -144,6 +144,7 @@ export class App extends React.Component{
       })
       .then(response=>{
         const {status} = response;
+        alert(`endpoint response:${status}`);
         if(!status){
           addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
           setTimeout(()=>{
