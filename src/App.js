@@ -129,9 +129,8 @@ export class App extends React.Component{
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            email: email.trim(),
-            firstname: fullnameSplit[0].trim(),
-            lastname: fullnameSplit[2].trim()
+          'seats': JSON.parse(localStorage.getItem('cartItems')) ,
+          'user': JSON.parse(localStorage.getItem('user'))
         })
       })
       .then(response=>{
