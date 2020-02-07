@@ -108,6 +108,7 @@ class HeaderMain  extends React.Component{
                     conexionSocket.emit('close-timer',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null });
                     conexionSocket.removeAllListeners('countdownStart');
                     await this.unlockAllSeats();
+                    console.log('CERRANDO SESION ASIENTOS LIBERADOS');
                     await setCurrentUser(null); 
                     await setSpeaker(CONST_SPEAKERS_ENUM.kim);
                     await setCourse(CONST_SPEAKERS_ENUM.kim);
