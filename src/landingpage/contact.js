@@ -4,7 +4,7 @@ import FormInput from '../components/form-input/form-input.component';
 
 var mailOptions = {
     from: 'rluis4490@gmail.com',
-    to: 'alan.hurtarte@gmail.com',
+    to: 'erickimpladent@gmail.com',
     subject: 'PeticionSoporteUNbiased',
     html: ''
 };
