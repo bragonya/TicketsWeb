@@ -23,6 +23,7 @@ import AdminPage from './pages/admin-page/admin-page.component';
 import SelectCoursePage from './pages/select-course-page/select-course-page.component';
 import TransactionResultPage from './pages/transaction-result-page/transaction-result-page.component';
 import AlertCustom  from './components/alert-custom/alert-custom.component';
+import OneSinglePaymentPage from './pages/one-single-payment-page/one-single-payment-page.component';
 
 import { setSocket, setCurrentUser } from './redux/user/user.actions';
 import { setStateSeat, setClockTime, setSpeaker, setCourse } from './redux/stage/stage.actions';
@@ -218,6 +219,10 @@ export class App extends React.Component{
               exact 
               path="/" 
               component={LandingPage}
+            />
+            <Route 
+              path='/one-single-payment' 
+              render={()=><OneSinglePaymentPage/>} 
             />
             <Route  path='/reservation' render={()=>{   
                                                     return <SeatReservationPage/>
