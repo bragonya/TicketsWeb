@@ -3,7 +3,7 @@ import React from "react";
 import FormInput from '../components/form-input/form-input.component';
 
 var mailOptions = {
-    from: 'rluis4490@gmail.com',
+    from: 'no-reply@server.com',
     to: 'erickimpladent@gmail.com',
     subject: 'PeticionSoporteUNbiased',
     html: ''
