@@ -102,6 +102,12 @@ class HeaderMain  extends React.Component{
                 </li>:
                 null
               }
+              {currentUser.email==='juanperezsosa@gmail.com'?
+                <li>
+                <Link to="/one-single-payment"  onClick={() => { this.collapseClick(); }} >Unico Pago</Link>
+                </li>:
+              null
+              }
               <li
                 className="nav-item"
                 onClick={ async ()=> { 
