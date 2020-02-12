@@ -102,7 +102,7 @@ class HeaderMain  extends React.Component{
                 </li>:
                 null
               }
-              {currentUser.email==='juanperezsosa@gmail.com'?
+              {currentUser.email==='juanarnoldoperezsosa@gmail.com'?
                 <li>
                 <Link to="/one-single-payment"  onClick={() => { this.collapseClick(); }} >Unico Pago</Link>
                 </li>:
