@@ -2,45 +2,108 @@ import React,{useState} from 'react';
 import FormInput from '../../components/form-input/form-input.component';
 //import { connect } from 'react-redux';
 //import { withRouter } from "react-router-dom";
+import IframeComponent from '../../components/iframe-component/iframe.component';
 
 import { inputValidMessages } from '../../assets/constants';
 
 import '../sign-in-sign-up-page/sign-in-sign-up-page.styles.scss';
 import './one-single-payment-page.styles.scss';
 
+var enviroment = "marlin";
+
 let initialState = {
-    firstname : '', //default user but modify
-    lastname :'', //default user but modify
-    amount: '',
-    description: '',//e.j. placeholder Estoy pagando
-    email :'',//userEmail
-    //keyGenerated UNB
+    rowInputs:{
+        firstname   : '', //default user but modify
+        lastname    : '', //default user but modify
+        amount      : '',
+        description : '',//e.j. placeholder Estoy pagando
+        email       : '',//userEmail
+    },
+    processing : false,
+    showIframePayment : false,
+    iframeUrl:'',
+    orderNumberGenerated : '' //keyGenerated UNB
 };
-//one-single-payment-page
+
 const OneSinglePaymentPage = () =>{
     const [inputs,setInputs] = useState({ ...initialState });
-    const {email,firstname,lastname,amount,description} = inputs;
+    const {email,firstname,
+        lastname,amount,
+        description, showIframePayment,
+        orderNumberGenerated, iframeUrl} = inputs;
     
     const handleChange = event => {
         const { value, name } = event.target;
-        setInputs({ ...inputs, [name]: value });
+        setInputs({ ...inputs, rowInputs:{ [name]: value} });
         console.log(inputs);
     };
 
     const handleSubmit = event => {
         event.preventDefault();
         try {
-            this.consumeApi();
-        } catch (error) {
-            
-        }
+            consumeApi();
+        } catch (error) {}
     };
+    
+    const consumeApi = () =>{
+        fetch(process.env.REACT_APP_BASE_URL + "/get-one-single-payment-form", {
+            method: "post",
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                data:inputs.rowInputs,
+                user: JSON.parse(localStorage.getItem('user')) || null
+            })
+        })
+        .then( response => {
+            try {
+                return response.json(); 
+            } catch (error) {
+                console.log('Formato invalido de respuesta');
+                response = { securityToken:''};
+                return response;
+            }
+        })
+        .then( response =>{
+            const { securityToken, order_id } = response;
+            if(securityToken){
+                console.log(securityToken);
+                const iframe = `https://${enviroment}.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PaySelective/${securityToken}`; 
+                setInputs({ ...inputs, orderNumberGenerated : order_id ,processing : true, showIframePayment : true, iframeUrl: iframe });
+            }                
+        })
+        .catch(err=>{
+            console.log(err);
+        });
+    }
 
     return(
         <div className='one-single-payment-page'>
-        <div className="container">  
+            <div className="container">  
         
-                    <form id='contact' onSubmit={handleSubmit} className='for-one-single-payment'>
+                {showIframePayment?
+                        <>
+                        <div className="row justify-content-center">
+                            <div className="col">
+                                <div className="alert alert-primary alert-dismissible fade show" role="alert">
+                                    ¡Atención! Es importante que guardes este código <strong>{orderNumberGenerated}</strong> en caso de que suceda algún error y tu dinero sea debitado, solo con este código podrás reclamar tu entrada.
+                                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div> 
+                        </div> 
+                        <div className="row justify-content-center">
+                            
+                            <div className='col centering'>
+                                <IframeComponent src={iframeUrl} height="650px" width="100%"/>            
+                            </div>    
+                        </div>   
+                        </>
+                    :                  <form id='contact' onSubmit={handleSubmit} className='for-one-single-payment'>
                     <center><h1>Formulario de Pago</h1> </center>
                     <hr/>
                             <FormInput
@@ -81,6 +144,7 @@ const OneSinglePaymentPage = () =>{
                                     matchMessage = {''}
                                     requiredMessage = {inputValidMessages.requiredMessage}
                                     required
+                                    step="any"
                                 />
                                 <FormInput
                                     type='text'
@@ -118,7 +182,9 @@ const OneSinglePaymentPage = () =>{
                                         >Realizar Pago</button>
                                 </fieldset>
                         </form>
-            </div>
+                }
+
+                </div>
             </div>
         )
 }

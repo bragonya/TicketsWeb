@@ -14,9 +14,15 @@
     }
 }
 .iframe-loader{
+    position: absolute;
+    top:10%;
+    left: 45%;
     //display: inline-block;
-    margin: 0 auto;
-    margin-left: 12%;
-    margin-top: 20vh;
+    //margin: 0 auto;
+    //margin-left: 12%;
+    //margin-top: 20vh;
     //width: 100%;
+}
+.iframe-container{
+    border: 1px solid black;
 }
