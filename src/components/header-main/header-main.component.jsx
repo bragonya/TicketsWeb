@@ -104,7 +104,7 @@ class HeaderMain  extends React.Component{
               }
               {currentUser.email==='juanarnoldoperezsosa@gmail.com'?
                 <li>
-                <Link to="/one-single-payment"  onClick={() => { this.collapseClick(); }} >Unico Pago</Link>
+                <Link to="/one-single-payment"  onClick={() => { this.collapseClick(); }} >Pagos Manuales</Link>
                 </li>:
               null
               }
