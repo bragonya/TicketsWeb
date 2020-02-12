@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect,useRef} from 'react';
 import FormInput from '../../components/form-input/form-input.component';
 //import { connect } from 'react-redux';
 //import { withRouter } from "react-router-dom";
@@ -25,16 +25,32 @@ let initialState = {
     orderNumberGenerated : '' //keyGenerated UNB
 };
 
+
+const useComponentWillMount = func => {
+    const willMount = useRef(true);
+    if (willMount.current) {
+      func();
+    }
+    useComponentDidMount(() => {
+      willMount.current = false;
+    });
+};
+
+const useComponentDidMount = func => useEffect(func, []);
+
 const OneSinglePaymentPage = () =>{
+    useComponentWillMount(() => initialState.rowInputs.email= localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')).email : '');
+
     const [inputs,setInputs] = useState({ ...initialState });
-    const {email,firstname,
+    
+    const {rowInputs:{email,firstname,
         lastname,amount,
-        description, showIframePayment,
+        description}, showIframePayment,
         orderNumberGenerated, iframeUrl} = inputs;
     
     const handleChange = event => {
         const { value, name } = event.target;
-        setInputs({ ...inputs, rowInputs:{ [name]: value} });
+        setInputs({ ...inputs, rowInputs:{...inputs.rowInputs, [name]: value} });
         console.log(inputs);
     };
 
@@ -82,7 +98,7 @@ const OneSinglePaymentPage = () =>{
             console.log(err);
         });
     }
-
+    console.log(email);
     return(
         <div className='one-single-payment-page'>
             <div className="container-one-single-payment">  
