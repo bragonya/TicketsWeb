@@ -9,7 +9,7 @@ import { inputValidMessages } from '../../assets/constants';
 import '../sign-in-sign-up-page/sign-in-sign-up-page.styles.scss';
 import './one-single-payment-page.styles.scss';
 
-var enviroment = "marlin";
+var enviroment = "ecm";
 
 let initialState = {
     rowInputs:{
