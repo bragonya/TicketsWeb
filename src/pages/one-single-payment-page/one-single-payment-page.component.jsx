@@ -82,7 +82,7 @@ const OneSinglePaymentPage = () =>{
 
     return(
         <div className='one-single-payment-page'>
-            <div className="container">  
+            <div className="container-one-single-payment">  
         
                 {showIframePayment?
                         <>
