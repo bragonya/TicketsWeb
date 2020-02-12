@@ -69,6 +69,8 @@ const OneSinglePaymentPage = () =>{
         })
         .then( response =>{
             const { securityToken, order_id } = response;
+            console.log('-response');
+            console.log(response);
             if(securityToken){
                 console.log(securityToken);
                 const iframe = `https://${enviroment}.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PaySelective/${securityToken}`; 
@@ -76,6 +78,7 @@ const OneSinglePaymentPage = () =>{
             }                
         })
         .catch(err=>{
+            console.log('err-');
             console.log(err);
         });
     }
