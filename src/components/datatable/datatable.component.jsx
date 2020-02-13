@@ -35,7 +35,15 @@ const Export = ({ onExport }) => (
     </>
 );
 
-const columns = [
+let payloadInit={payloadEdit:null,payloadDelete:null}
+const getColumns = (setPayloadAction) =>{ return [
+  {
+    name:'',
+    button:true,
+    cell: (row)=><> <button onClick={()=>setPayloadAction({...payloadInit,payloadEdit:row})}  className='btn-report-circle edit'><span role='img' aria-label='edit'>&#9997;</span></button>
+                    <button onClick={()=>setPayloadAction({...payloadInit,payloadDelete:row})}  className='btn-report-circle delete'><span role='img' aria-label='delete'>&#10006;</span></button>
+                 </>
+  },
   {
     name: 'Fila',
     selector: 'fila',
@@ -56,7 +64,7 @@ const columns = [
     selector: 'seccion',
     sortable: true,
   },
-];
+];}
 
 const customStyles = {
     headCells: {
@@ -141,7 +149,7 @@ const BasicTable = ({seats_solds}) => {
   const [filterTexts, setFilterTexts] = React.useState({
     ...initialStateFilter
   });
-  
+  const [payloadAction,setPayloadAction] = React.useState({payloadEdit:null,payloadDelete:null});
   const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
   const actionsMemo = <Export onExport={() => downloadCSV(seats_solds, seats_solds)} />;
   seats_solds = removeNullValues(seats_solds);
@@ -167,9 +175,15 @@ const BasicTable = ({seats_solds}) => {
         });
       }
     };
-
+    console.log(payloadAction);
     return (
             <div className='container'>
+              {payloadAction.payloadEdit?
+                <div>EDIT</div>
+               :payloadAction.payloadDelete?
+               <div>DELETE</div>:
+               null 
+              }
               <div className='row justify-content-between'>
                 <div className='col-auto'>
                   <div className='row'>
@@ -264,11 +278,11 @@ const BasicTable = ({seats_solds}) => {
             </div>
           </div>
             );
-  }, [filterTexts, resetPaginationToggle]);
+  }, [filterTexts, resetPaginationToggle,payloadAction]);
 
   return (
     <DataTable
-      columns={columns}
+      columns={getColumns(setPayloadAction)}
       data={filteredItems}
       pagination
       paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
