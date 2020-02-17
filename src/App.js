@@ -166,11 +166,14 @@ export class App extends React.Component{
     const { setStateSeat, setClockTime, history, removeAllAlerts } = this.props;    
     removeAllAlerts();
     if(route_==='/reservation'){
+      await this.setState({ loading: true });
       await socket.emit('connected',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(initialStage)=>{
         initialStage.forEach(seat=>{
           setStateSeat(seat);
-        });  
+        });
+        this.setState({ loading: false });  
       }); 
+      //
     }
     if((route_==='/reservation' || route_==='/checkout') && localStorage.getItem('user')){
       if(!(route_==='/checkout')){

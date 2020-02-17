@@ -1,6 +1,8 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
 
+import PopoverGeneric from '../popover-generic/popover-generic.component';
+
 import './datatable.styles.scss';
 
 const SampleExpandedComponent = ({ data }) => (
@@ -41,7 +43,25 @@ const getColumns = (setPayloadAction) =>{ return [
     name:'',
     button:true,
     cell: (row)=><> <button onClick={()=>setPayloadAction({...payloadInit,payloadEdit:row})}  className='btn-report-circle edit'><span role='img' aria-label='edit'>&#9997;</span></button>
-                    <button onClick={()=>setPayloadAction({...payloadInit,payloadDelete:row})}  className='btn-report-circle delete'><span role='img' aria-label='delete'>&#10006;</span></button>
+                    <span
+                    >
+                    <PopoverGeneric 
+                          key={`Popover${row.seccion_prev}${row.fila}${row.columna}${row.curso}`} 
+                          rowname = {row.fila} 
+                          column  = {row.columna} 
+                          section = {row.seccion_prev}
+                          course  = {row.curso}
+                          disablePopover={false}
+                          >  
+                          <span  role='img' aria-label='delete'
+                                  className='btn-report-circle delete' 
+                          >
+                            &#10006;       
+                          </span>   
+                          
+                    </PopoverGeneric>
+                    
+                    </span>
                  </>
   },
   {
