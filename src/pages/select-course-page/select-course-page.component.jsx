@@ -20,6 +20,7 @@ const SelectCoursePage = ()=>(
                             <li className="published-date lounge">SALA LOUNGE: Q1,800</li>
                             <li className="published-date">SALA VIP: Q1,600</li>        
                             <li className="published-date">PROFESIONALES: Q1,450</li>
+                            <li className="published-date">ESTUDIANTES: Q750</li>
                         </Card>
                     
                 </div>
