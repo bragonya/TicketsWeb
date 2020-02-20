@@ -1,7 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react';
 import FormInput from '../../components/form-input/form-input.component';
-//import { connect } from 'react-redux';
-//import { withRouter } from "react-router-dom";
 import IframeComponent from '../../components/iframe-component/iframe.component';
 
 import { inputValidMessages } from '../../assets/constants';
@@ -9,7 +7,7 @@ import { inputValidMessages } from '../../assets/constants';
 import '../sign-in-sign-up-page/sign-in-sign-up-page.styles.scss';
 import './one-single-payment-page.styles.scss';
 
-var enviroment = "ecm";
+var enviroment = "marlin";
 
 let initialState = {
     rowInputs:{
@@ -88,7 +86,6 @@ const OneSinglePaymentPage = () =>{
             console.log('-response');
             console.log(response);
             if(securityToken){
-                console.log(securityToken);
                 const iframe = `https://${enviroment}.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PaySelective/${securityToken}`; 
                 setInputs({ ...inputs, orderNumberGenerated : order_id ,processing : true, showIframePayment : true, iframeUrl: iframe });
             }                
@@ -163,15 +160,14 @@ const OneSinglePaymentPage = () =>{
                                     matchMessage = {''}
                                     requiredMessage = {inputValidMessages.requiredMessage}
                                     required
-                                    step="any"
                                 />
                                 <FormInput
                                     type='text'
                                     name='description'
                                     value={description}
                                     onChange={handleChange}
-                                    label='Description'
-                                    placeholder={'e.j. placeholder estoy pagando el curso...'}
+                                    label='Descripción'
+                                    placeholder={'e.j. estoy pagando el curso...'}
                                     onInvalid={
                                         evt=>{if(description==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
                                             } 
@@ -179,6 +175,9 @@ const OneSinglePaymentPage = () =>{
                                     requiredMessage = {inputValidMessages.requiredMessage}
                                     required
                                 />
+                                <div style={{paddingTop:'16px', paddingBottom:'6px'}}>
+                                    <strong style={{color:'#bd2130',fontSize:"12px"}}>Asegurate que tu correo esté bien escrito, ya que allí se enviará tu comprobante de pago.</strong>
+                                </div>
                                 <FormInput
                                     type='email'
                                     name='email'
