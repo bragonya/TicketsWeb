@@ -26,7 +26,7 @@ import AlertCustom  from './components/alert-custom/alert-custom.component';
 import OneSinglePaymentPage from './pages/one-single-payment-page/one-single-payment-page.component';
 
 import { setSocket, setCurrentUser } from './redux/user/user.actions';
-import { setStateSeat, setClockTime, setSpeaker, setCourse,setOptionSigninSignup } from './redux/stage/stage.actions';
+import { setStateSeat, setClockTime, setSpeaker, setCourse } from './redux/stage/stage.actions';
 import { clearItemsCart } from './redux/cart/cart.actions';
 import { removeAllAlerts, addAlert } from './redux/alert/alert.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
@@ -204,7 +204,7 @@ export class App extends React.Component{
     
   }
   render(){
-    const { props:{currentUser, cartItemsCount,setOptionSigninSignup, alerts}, state:{loading}  } = this;
+    const { props:{currentUser, cartItemsCount, alerts}, state:{loading}  } = this;
     return (
       <div >
         
@@ -225,15 +225,7 @@ export class App extends React.Component{
             />
             <Route 
               path='/one-single-payment' 
-              render={()=>{
-                if(currentUser){
-                  return <OneSinglePaymentPage/>;
-                }else{
-                  setOptionSigninSignup(true); 
-                  return(<Redirect to='/signinsignup'/>);
-                }
-              }
-            } 
+              render={()=><OneSinglePaymentPage/>} 
             />
             <Route  path='/reservation' render={()=>{   
                                                     return <SeatReservationPage/>
@@ -303,8 +295,7 @@ const mapDispatchToProps = dispatch => ({
   setSpeaker : speaker => dispatch(setSpeaker(speaker)),
   setCourse  : course => dispatch(setCourse(course)),
   removeAllAlerts : () => dispatch(removeAllAlerts()),
-  addAlert        : _alert => dispatch(addAlert(_alert)),
-  setOptionSigninSignup : option  => dispatch(setOptionSigninSignup(option))
+  addAlert        : _alert => dispatch(addAlert(_alert))
 });
 
 

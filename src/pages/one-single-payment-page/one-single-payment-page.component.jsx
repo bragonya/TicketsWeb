@@ -2,6 +2,10 @@ import React,{useState,useEffect,useRef} from 'react';
 import FormInput from '../../components/form-input/form-input.component';
 import IframeComponent from '../../components/iframe-component/iframe.component';
 
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+import { setOptionSigninSignup } from '../../redux/stage/stage.actions';
 import { inputValidMessages } from '../../assets/constants';
 
 import '../sign-in-sign-up-page/sign-in-sign-up-page.styles.scss';
@@ -38,7 +42,8 @@ const useComponentDidMount = func => useEffect(func, []);
 
 const OneSinglePaymentPage = () =>{
     useComponentWillMount(() => initialState.rowInputs.email= localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')).email : '');
-
+    const dispatch = useDispatch();
+    let history = useHistory();
     const [inputs,setInputs] = useState({ ...initialState });
     
     const {rowInputs:{email,firstname,
@@ -95,12 +100,33 @@ const OneSinglePaymentPage = () =>{
             console.log(err);
         });
     }
-    console.log(email);
+    
+    const redirectToSignIn = () =>{
+        dispatch(setOptionSigninSignup(true));
+        history.push('/signinsignup');
+    }
+
     return(
         <div className='one-single-payment-page'>
             <div className="container-one-single-payment">  
-        
-                {showIframePayment?
+                {!localStorage.getItem('user')?
+                    <>
+                        <div className="row justify-content-center">
+                                <div className="col">
+                                    <div className="alert alert-primary alert-dismissible fade show" role="alert">
+                                    Para realizar pagos manuales, tienes que loguearte.
+                                        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div> 
+                        </div> 
+                        <div className="row justify-content-center">
+                                <button className='btn btn-orange' onClick={redirectToSignIn}>Ir a Login</button>
+                        </div>
+                        
+                    </>
+                :showIframePayment?
                         <>
                         <div className="row justify-content-center">
                             <div className="col">
