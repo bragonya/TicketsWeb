@@ -77,11 +77,11 @@ class HeaderMain  extends React.Component{
           <li >
             <Link to="/" onClick={() => { this.collapseClick(); }}>Inicio</Link>
           </li>
-          {/*<li>
-                <Link 
-                      to="/reservation" 
-                      onClick={() => { this.collapseClick(); }}>Reservacion</Link>
-          </li>*/}
+          
+          <li>
+                <Link to="/one-single-payment"  onClick={() => { this.collapseClick(); }} >Pagos Manuales</Link>
+          </li>
+              
           <li>
               <Link to="/select"  onClick={() => { this.collapseClick(); }} >Seleccionar Curso</Link>
           </li>
@@ -103,9 +103,6 @@ class HeaderMain  extends React.Component{
                 null
               }
               
-              <li>
-                <Link to="/one-single-payment"  onClick={() => { this.collapseClick(); }} >Pagos Manuales</Link>
-              </li>
               
               <li
                 className="nav-item"
