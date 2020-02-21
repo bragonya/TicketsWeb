@@ -102,12 +102,11 @@ class HeaderMain  extends React.Component{
                 </li>:
                 null
               }
-              {currentUser.email==='juanarnoldoperezsosa@gmail.com' || currentUser.email==='erick@impladent.com.gt' || currentUser.email==='jennifergarcialam@gmail.com'?
-                <li>
+              
+              <li>
                 <Link to="/one-single-payment"  onClick={() => { this.collapseClick(); }} >Pagos Manuales</Link>
-                </li>:
-              null
-              }
+              </li>
+              
               <li
                 className="nav-item"
                 onClick={ async ()=> { 
