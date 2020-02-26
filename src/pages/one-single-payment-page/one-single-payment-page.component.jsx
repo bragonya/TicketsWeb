@@ -60,7 +60,13 @@ const OneSinglePaymentPage = () =>{
     const handleSubmit = event => {
         event.preventDefault();
         try {
-            consumeApi();
+            const { amount } = inputs.rowInputs; 
+            var amountParsed = Number(amount);
+            if(amountParsed % 1 === 0){
+                consumeApi();
+            }else{
+                alert('Cantidad invalida, asegurate de no ingresar decimales');
+            }
         } catch (error) {}
     };
     
