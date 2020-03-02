@@ -1,6 +1,8 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
 
+/*import EditSeat from '../edit-seat/edit-seat.component';*/
+
 import PopoverGeneric from '../popover-generic/popover-generic.component';
 
 import './datatable.styles.scss';
@@ -199,9 +201,11 @@ const BasicTable = ({seats_solds}) => {
     return (
             <div className='container'>
               {payloadAction.payloadEdit?
-                <div>EDIT</div>
+                <>
+                
+                </>
                :payloadAction.payloadDelete?
-               <div>DELETE</div>:
+               <div></div>:
                null 
               }
               <div className='row justify-content-between'>
