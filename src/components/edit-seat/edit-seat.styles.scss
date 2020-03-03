@@ -16,3 +16,47 @@
 .one-single-payment-page{
     margin-top: 15px;
 }
+
+.close-alert-custom-edit-seat {
+    position: static;
+    float: right;
+    width: 30px;
+
+    margin-right: 0px;
+    margin-top: 0px;
+    transition: all 200ms;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color:white;
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: black;
+    &:hover{
+        background-color: aliceblue;
+        color:red;
+    }
+  }
+
+  .btn-cancel-edit-seat{
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background-color: #2979ff;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+  }
+  #contact button[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #f74819;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+}

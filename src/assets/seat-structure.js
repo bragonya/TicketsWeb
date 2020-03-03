@@ -88,14 +88,6 @@ const event_seats_structure = {
                         {
                             id:10,
                             state:'free'
-                        },
-                        {
-                            id:11,
-                            state:'free'
-                        },
-                        {
-                            id:12,
-                            state:'free'
                         }
                     ]
                 },
@@ -2303,6 +2295,14 @@ E4:{
                         },
                         {
                             id:10,
+                            state:'free'
+                        },
+                        {
+                            id:11,
+                            state:'free'
+                        },
+                        {
+                            id:12,
                             state:'free'
                         }
                     ]

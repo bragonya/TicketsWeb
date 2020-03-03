@@ -21,13 +21,15 @@ let initialState = {
     university: ''
 };
 
-const EditSeatForm = ({seatData}) =>{
-    const [inputs,setInputs] = useState({ ...initialState, 
+const EditSeatForm = ({seatData,setPayloadAction}) =>{
+    const [inputs,setInputs] = useState({ ...initialState,
+                                        email: seatData.email,
+                                        precio: seatData.precio, estado: seatData.estado,
                                         name:seatData.name, no_document: seatData.no_document,
                                         register_number: seatData.register_number, 
                                         university: seatData.university,
                                         fila:seatData.fila,
-                                        seccion:seatData.seccion,
+                                        seccion:seatData.seccion_prev,
                                         columna: seatData.columna,
                                         curso: seatData.curso
                                         });
@@ -38,7 +40,6 @@ const EditSeatForm = ({seatData}) =>{
     const handleChange = event => {
         const { value, name } = event.target;
         setInputs({ ...inputs, [name]: value });
-        console.log(inputs);
     };
 
     const handleSubmit = event => {
@@ -49,8 +50,7 @@ const EditSeatForm = ({seatData}) =>{
     };
     
     const consumeApi = () =>{
-        /*
-        fetch(process.env.REACT_APP_BASE_URL + "/get-one-single-payment-form", {
+        fetch(process.env.REACT_APP_BASE_URL + "/updateSeatData", {
             method: "post",
             mode: 'cors',
             headers: {
@@ -58,39 +58,34 @@ const EditSeatForm = ({seatData}) =>{
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                data:inputs.rowInputs,
-                user: JSON.parse(localStorage.getItem('user')) || null
+                seat:{...inputs}
             })
         })
         .then( response => {
             try {
                 return response.json(); 
             } catch (error) {
-                console.log('Formato invalido de respuesta');
-                response = { securityToken:''};
+                response = { message:'Error al parsear Json', state: false};
                 return response;
             }
         })
         .then( response =>{
-            /*const { securityToken, order_id } = response;
-            console.log('-response');
-            console.log(response);
-            if(securityToken){
-                console.log(securityToken);
-                const iframe = `https://${enviroment}.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PaySelective/${securityToken}`; 
-                setInputs({ ...inputs, orderNumberGenerated : order_id ,processing : true, showIframePayment : true, iframeUrl: iframe });
-            } 
+            const { message } = response;
+            setPayloadAction({payloadDelete:null,payloadEdit:null});
+            alert(message);
         })
         .catch(err=>{
             console.log('err-');
             console.log(err);
-        });*/
+            setPayloadAction({payloadDelete:null,payloadEdit:null});
+        });
     }
     
     return(
         <div id="overlay-edit-seat">
             <div className='one-single-payment-page'>
                 <div className="container-one-single-payment">  
+                    <span className="close-alert-custom-edit-seat" onClick={()=>setPayloadAction({payloadDelete:null,payloadEdit:null})}>X</span>
                     <form id='contact' onSubmit={handleSubmit} className='for-one-single-payment'>
                         <center><h1>Editar Asiento</h1> </center>
                         <hr/>
@@ -164,8 +159,8 @@ const EditSeatForm = ({seatData}) =>{
                                                 id="contact-submit"
                                             >Editar</button>
                                     </fieldset>
-                                        <button className='btn btn-danger'
-                                                type="submit" 
+                                        <button className="btn-cancel-edit-seat"
+                                                onClick={()=>setPayloadAction({payloadDelete:null,payloadEdit:null})} 
                                             >Cancelar</button>
                                     
                             </form>

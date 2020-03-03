@@ -1,7 +1,7 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
 
-/*import EditSeat from '../edit-seat/edit-seat.component';*/
+import EditSeat from '../edit-seat/edit-seat.component';
 
 import PopoverGeneric from '../popover-generic/popover-generic.component';
 
@@ -197,12 +197,12 @@ const BasicTable = ({seats_solds}) => {
         });
       }
     };
-    console.log(payloadAction);
+    
     return (
             <div className='container'>
               {payloadAction.payloadEdit?
                 <>
-                
+                  <EditSeat seatData={payloadAction.payloadEdit} setPayloadAction={setPayloadAction}/>
                 </>
                :payloadAction.payloadDelete?
                <div></div>:
