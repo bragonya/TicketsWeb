@@ -61,15 +61,18 @@ class PopoverGeneric extends React.Component{
 
     render(){
         const { state:{ isPopoverOpen, inputSeat }, 
-                props:{ children,rowname,column,disablePopover } 
+                props:{ children,rowname,column,section,course,disablePopover } 
               } = this;
         
         return(
             <React.Fragment>
                 <div id='overlay-popover' style={{display:!isPopoverOpen?'none':'inline-block'}}>
                     <div id="confirm" >
-                        <div id='messagex'className="message">{`Liberar Asiento ${rowname}-${column}`}</div><br/>
-                        <p className='text-plain'>{`Para liberar asiento ingrese escriba el CODIGO: ${rowname}-${column}`}</p>
+                        <div id='messagex' className="message">{`Liberar Asiento ${rowname}-${column}`}</div>
+                        <p className="message">{`${section}-${course}`}</p>
+                        <span className='text-plain'>{`Libera el asiento escribiendo el CODIGO:`}</span>
+                        <br/>
+                        <span className='text-plain'>{`${rowname}-${column}`}</span>
                         <FormInput
                             name='inputSeat'
                             type='text'

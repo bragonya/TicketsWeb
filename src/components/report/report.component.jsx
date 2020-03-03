@@ -28,6 +28,7 @@ class Report extends React.Component{
                     item=>{ 
                         return {
                             ...item,
+                            seccion_prev:item.seccion,
                             seccion:item.seccion.includes('PF')?'Profesional':
                             item.seccion.includes('E')?'Estudiante':
                             item.seccion.includes('SL')?'Lounge':
@@ -54,11 +55,11 @@ class Report extends React.Component{
                 />
                 </div>):seats_solds.length?
                     <div className='container-fluid'>   
-                        <React.Fragment>
+                        <>
                             <h3>Asientos Vendidos</h3>
                             {/*<span className='span-total'>Total:</span>*/}
                             <BasicTable seats_solds={seats_solds}/>
-                        </React.Fragment>
+                        </>
                     </div>:<div><h1>Sin registros</h1></div>   
                 }
                 

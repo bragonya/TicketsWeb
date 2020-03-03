@@ -54,3 +54,46 @@
         cursor: pointer;
     }
 }
+
+.btn-report-circle {
+    display:block;
+    color: rgb(6, 6, 128);
+    background-color: white;
+    height: 30px;
+    width: 35px;
+    font-size: 19px;
+    
+    border: none;
+    &.edit{
+        &:active{
+            border-radius: 50%;
+            transform: rotate(-25deg);
+        }   
+    }
+    &.delete{
+        color: rgb(216, 25, 25);
+        &:active{
+            margin-bottom: 7px;
+        }
+    }
+    &:hover{
+        cursor: pointer;
+        /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+        /* IE 5-7 */
+        filter: alpha(opacity=50);
+
+        /* Netscape */
+        -moz-opacity: 0.5;
+
+        /* Safari 1.x */
+        -khtml-opacity: 0.5;
+
+        /* Good browsers */
+        opacity: 0.5;
+    }
+    &:focus{
+        outline:0;
+    }
+}

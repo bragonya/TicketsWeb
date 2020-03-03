@@ -1,15 +1,17 @@
 import React,{useState,useEffect,useRef} from 'react';
 import FormInput from '../../components/form-input/form-input.component';
-//import { connect } from 'react-redux';
-//import { withRouter } from "react-router-dom";
 import IframeComponent from '../../components/iframe-component/iframe.component';
 
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+import { setOptionSigninSignup } from '../../redux/stage/stage.actions';
 import { inputValidMessages } from '../../assets/constants';
 
 import '../sign-in-sign-up-page/sign-in-sign-up-page.styles.scss';
 import './one-single-payment-page.styles.scss';
 
-var enviroment = "ecm";
+var enviroment = "marlin";
 
 let initialState = {
     rowInputs:{
@@ -40,7 +42,8 @@ const useComponentDidMount = func => useEffect(func, []);
 
 const OneSinglePaymentPage = () =>{
     useComponentWillMount(() => initialState.rowInputs.email= localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')).email : '');
-
+    const dispatch = useDispatch();
+    let history = useHistory();
     const [inputs,setInputs] = useState({ ...initialState });
     
     const {rowInputs:{email,firstname,
@@ -57,7 +60,13 @@ const OneSinglePaymentPage = () =>{
     const handleSubmit = event => {
         event.preventDefault();
         try {
-            consumeApi();
+            const { amount } = inputs.rowInputs; 
+            var amountParsed = Number(amount);
+            if(amountParsed % 1 === 0){
+                consumeApi();
+            }else{
+                alert('Cantidad invalida, asegurate de no ingresar decimales');
+            }
         } catch (error) {}
     };
     
@@ -88,7 +97,6 @@ const OneSinglePaymentPage = () =>{
             console.log('-response');
             console.log(response);
             if(securityToken){
-                console.log(securityToken);
                 const iframe = `https://${enviroment}.firstatlanticcommerce.com/MerchantPages/PaymentUnbiased/PaySelective/${securityToken}`; 
                 setInputs({ ...inputs, orderNumberGenerated : order_id ,processing : true, showIframePayment : true, iframeUrl: iframe });
             }                
@@ -98,12 +106,33 @@ const OneSinglePaymentPage = () =>{
             console.log(err);
         });
     }
-    console.log(email);
+    
+    const redirectToSignIn = () =>{
+        dispatch(setOptionSigninSignup(true));
+        history.push('/signinsignup');
+    }
+
     return(
         <div className='one-single-payment-page'>
             <div className="container-one-single-payment">  
-        
-                {showIframePayment?
+                {!localStorage.getItem('user')?
+                    <>
+                        <div className="row justify-content-center">
+                                <div className="col">
+                                    <div className="alert alert-primary alert-dismissible fade show" role="alert">
+                                    Para realizar pagos manuales, tienes que loguearte.
+                                        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div> 
+                        </div> 
+                        <div className="row justify-content-center">
+                                <button className='btn btn-orange' onClick={redirectToSignIn}>Ir a Login</button>
+                        </div>
+                        
+                    </>
+                :showIframePayment?
                         <>
                         <div className="row justify-content-center">
                             <div className="col">
@@ -163,15 +192,14 @@ const OneSinglePaymentPage = () =>{
                                     matchMessage = {''}
                                     requiredMessage = {inputValidMessages.requiredMessage}
                                     required
-                                    step="any"
                                 />
                                 <FormInput
                                     type='text'
                                     name='description'
                                     value={description}
                                     onChange={handleChange}
-                                    label='Description'
-                                    placeholder={'e.j. placeholder estoy pagando el curso...'}
+                                    label='Descripción'
+                                    placeholder={'e.j. estoy pagando el curso...'}
                                     onInvalid={
                                         evt=>{if(description==='')evt.target.setCustomValidity(inputValidMessages.requiredMessage)}
                                             } 
@@ -179,6 +207,9 @@ const OneSinglePaymentPage = () =>{
                                     requiredMessage = {inputValidMessages.requiredMessage}
                                     required
                                 />
+                                <div style={{paddingTop:'16px', paddingBottom:'6px'}}>
+                                    <strong style={{color:'#bd2130',fontSize:"12px"}}>Asegurate que tu correo esté bien escrito, ya que allí se enviará tu comprobante de pago.</strong>
+                                </div>
                                 <FormInput
                                     type='email'
                                     name='email'

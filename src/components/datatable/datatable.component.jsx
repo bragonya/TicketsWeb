@@ -1,6 +1,10 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
 
+import EditSeat from '../edit-seat/edit-seat.component';
+
+import PopoverGeneric from '../popover-generic/popover-generic.component';
+
 import './datatable.styles.scss';
 
 const SampleExpandedComponent = ({ data }) => (
@@ -35,7 +39,33 @@ const Export = ({ onExport }) => (
     </>
 );
 
-const columns = [
+let payloadInit={payloadEdit:null,payloadDelete:null}
+const getColumns = (setPayloadAction) =>{ return [
+  {
+    name:'',
+    button:true,
+    cell: (row)=><> <button onClick={()=>setPayloadAction({...payloadInit,payloadEdit:row})}  className='btn-report-circle edit'><span role='img' aria-label='edit'>&#9997;</span></button>
+                    <span
+                    >
+                    <PopoverGeneric 
+                          key={`Popover${row.seccion_prev}${row.fila}${row.columna}${row.curso}`} 
+                          rowname = {row.fila} 
+                          column  = {row.columna} 
+                          section = {row.seccion_prev}
+                          course  = {row.curso}
+                          disablePopover={false}
+                          >  
+                          <span  role='img' aria-label='delete'
+                                  className='btn-report-circle delete' 
+                          >
+                            &#10006;       
+                          </span>   
+                          
+                    </PopoverGeneric>
+                    
+                    </span>
+                 </>
+  },
   {
     name: 'Fila',
     selector: 'fila',
@@ -56,7 +86,7 @@ const columns = [
     selector: 'seccion',
     sortable: true,
   },
-];
+];}
 
 const customStyles = {
     headCells: {
@@ -141,7 +171,7 @@ const BasicTable = ({seats_solds}) => {
   const [filterTexts, setFilterTexts] = React.useState({
     ...initialStateFilter
   });
-  
+  const [payloadAction,setPayloadAction] = React.useState({payloadEdit:null,payloadDelete:null});
   const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
   const actionsMemo = <Export onExport={() => downloadCSV(seats_solds, seats_solds)} />;
   seats_solds = removeNullValues(seats_solds);
@@ -167,9 +197,17 @@ const BasicTable = ({seats_solds}) => {
         });
       }
     };
-
+    
     return (
             <div className='container'>
+              {payloadAction.payloadEdit?
+                <>
+                  <EditSeat seatData={payloadAction.payloadEdit} setPayloadAction={setPayloadAction}/>
+                </>
+               :payloadAction.payloadDelete?
+               <div></div>:
+               null 
+              }
               <div className='row justify-content-between'>
                 <div className='col-auto'>
                   <div className='row'>
@@ -264,11 +302,11 @@ const BasicTable = ({seats_solds}) => {
             </div>
           </div>
             );
-  }, [filterTexts, resetPaginationToggle]);
+  }, [filterTexts, resetPaginationToggle,payloadAction]);
 
   return (
     <DataTable
-      columns={columns}
+      columns={getColumns(setPayloadAction)}
       data={filteredItems}
       pagination
       paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
