@@ -105,9 +105,9 @@ function downloadCSV(array,data) {
   
     const filename = 'export.csv';
   
-    if (!csv.match(/^data:text\/csv/i)) {
-      csv = `data:text/csv;charset=utf-8,${csv}`;
-    }
+    //if (!csv.match(/^data:text\/csv/i)) {
+      csv = `data:text/csv;charset=ANSI,${csv}`;
+    //}
   
     link.setAttribute('href', encodeURI(csv));
     link.setAttribute('download', filename);
