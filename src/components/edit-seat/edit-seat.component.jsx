@@ -50,6 +50,7 @@ const EditSeatForm = ({seatData,setPayloadAction}) =>{
     };
     
     const consumeApi = () =>{
+    
         fetch(process.env.REACT_APP_BASE_URL + "/updateSeatData", {
             method: "post",
             mode: 'cors',
@@ -58,7 +59,16 @@ const EditSeatForm = ({seatData,setPayloadAction}) =>{
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                seat:{...inputs}
+                columna: inputs.columna,
+                curso: inputs.curso,
+                estado: inputs.estado,
+                fila: inputs.fila,
+                name: inputs.name,
+                no_document: inputs.no_document,
+                precio : inputs.precio,
+                register_number: inputs.register_number,
+                seccion: inputs.seccion,
+                university: inputs.university          
             })
         })
         .then( response => {
@@ -71,8 +81,9 @@ const EditSeatForm = ({seatData,setPayloadAction}) =>{
         })
         .then( response =>{
             const { message } = response;
-            setPayloadAction({payloadDelete:null,payloadEdit:null});
             alert(message);
+            setPayloadAction({payloadDelete:null,payloadEdit:null});
+            window.location.reload();
         })
         .catch(err=>{
             console.log('err-');
