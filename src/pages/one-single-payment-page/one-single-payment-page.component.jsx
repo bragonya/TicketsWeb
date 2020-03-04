@@ -62,7 +62,9 @@ const OneSinglePaymentPage = () =>{
         try {
             const { amount } = inputs.rowInputs; 
             var amountParsed = Number(amount);
+            console.log(amountParsed);
             if(amountParsed % 1 === 0){
+                inputs.rowInputs.amount = Math.trunc(amountParsed);
                 consumeApi();
             }else{
                 alert('Cantidad invalida, asegurate de no ingresar decimales');
