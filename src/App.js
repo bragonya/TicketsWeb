@@ -33,7 +33,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { selectCartItemsCount, selectCartItems } from './redux/cart/cart.selectors';
 import { selectAlertItems } from './redux/alert/alert.selectors';
 
-import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM } from './assets/constants';
+import { CONST_SEAT_STATES, CONST_SPEAKERS_ENUM,STRINGS_ALERTS } from './assets/constants';
 
 import  "./App.scss"
 
@@ -63,7 +63,11 @@ export class App extends React.Component{
       if(window.location.pathname==='/reservation' || window.location.pathname==='/checkout'){
         amountConected++;
         if(amountConected>=1){
-          props.addAlert({text:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.',style:'style',title:'Lo sentimos'});
+          const {DISCONNECT_SOCKET,DISCONNECT_SOCKET_NOT_USER_LOGGED} = STRINGS_ALERTS;
+          const { title, description} = localStorage.getItem('user')?
+                                        {title:DISCONNECT_SOCKET.title, description: DISCONNECT_SOCKET.description}
+                                        :{title:DISCONNECT_SOCKET_NOT_USER_LOGGED.title, description: DISCONNECT_SOCKET_NOT_USER_LOGGED.description};
+          props.addAlert({text:description,style:'style',title:title});
           setTimeout(()=>{
             props.removeAllAlerts();
             window.location.reload();  
@@ -74,7 +78,6 @@ export class App extends React.Component{
     });
 
     socket.emit('connected',{ user:localStorage.getItem('user')?{...JSON.parse(localStorage.getItem('user'))}:null },(initialStage)=>{
-      console.log('emit connected');
       initialStage.forEach(seat=>{
         setStateSeat(seat);
       });

@@ -110,3 +110,24 @@ export const descriptionSpeakers = {
     kano:'Cuando el paciente se le da a elegir un trabajo producido bajo la tecnología digital y uno producido bajo trabajo manual; siempre prefiere lo producido por la tecnología Digital.',
     kim : 'La cirugía endodóntica; aunque es generalmente reconocida como una importante modalidad de tratamiento dentro de la especialidad de endodoncia, no es suficientemente enseñada en los programas de postrado endodónticos ni cubierto adecuadamente en los libros de texto.'
 };
+
+export const STRINGS_ALERTS = {
+    COURSE_CLOSED:{
+        title:'¡Inscripción cerrada!',
+        description: 'Si desea inscribirse a este curso hágalo por medio de pago manual o contacte con el organizador del evento, su diploma será enviado digitalmente.'
+    },
+    DISCONNECT_SOCKET:{
+        title:'Lo sentimos',
+        description:'¡Oops, no eres tú, somos nosotros! por motivos de seguridad se recargará la pagina.'
+    },
+    DISCONNECT_SOCKET_NOT_USER_LOGGED:{
+        title:'¡Actualizando!',
+        description:'Para cargar la información mas reciente, se recargará la pagina.'
+    },
+}
+export const FLAGS_COURSES = {
+    COURSE_CLOSED:{
+        KIM: true,
+        KANO : true
+    }
+}

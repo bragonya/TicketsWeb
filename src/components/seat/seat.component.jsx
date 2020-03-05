@@ -12,7 +12,7 @@ import { selectCurrentCourse,selectSpeaker } from '../../redux/stage/stage.selec
 import { CONST_PRICES } from '../../assets/constants';
 import { getAmountSeatsOfCourse, getSeatsOfCourse, getSeccionName } from '../../redux/cart/cart.utils';
 import { addAlert } from '../../redux/alert/alert.actions';
-
+import { STRINGS_ALERTS,FLAGS_COURSES } from '../../assets/constants';
 import PopoverGeneric from '../popover-generic/popover-generic.component';
 
 import './seat.styles.scss';
@@ -26,6 +26,11 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
             onClick:
                 state==='free' || state==='selected'?
                 (evt)=>{
+                    if(FLAGS_COURSES.COURSE_CLOSED[currentCourse] && currentUser && !currentUser.admin){
+                        const { COURSE_CLOSED : { description, title } } = STRINGS_ALERTS;
+                        addAlert({text:description,style:'style',title:title});
+                        return;
+                    }
                     if (!currentUser){  setOptionSigninSignup(true); history.push('/signinsignup'); return; }
                     
                     let amount_KANO = getAmountSeatsOfCourse(cartItems,CONST_SPEAKERS_ENUM.kano);
@@ -113,9 +118,13 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
                         }
                     );
                 }:()=>{
+                    if(FLAGS_COURSES.COURSE_CLOSED[currentCourse] && currentUser && !currentUser.admin){
+                        const { COURSE_CLOSED : { description, title } } = STRINGS_ALERTS;
+                        addAlert({text:description,style:'style',title:title});
+                        return;
+                    }
                     if (!currentUser){setOptionSigninSignup(true); history.push('/signinsignup'); return;}
                 }
-                
     }
     return (
         state==='free'?
@@ -131,7 +140,6 @@ const Seat = ({ seatdata, setStateSeat, conexionSocket, cartItems, addSeatCart, 
         <i id={`i${key}${id}${colname}`} className="seat-element">A</i>
         </span>:
         <span {...properties} >
-            
             <PopoverGeneric 
                 key={`Popover${key}${id}${colname}`} 
                 rowname = {colname} 
@@ -167,5 +175,5 @@ const mapDispatchToProps = dispatch => ({
     setOptionSigninSignup : option  => dispatch(setOptionSigninSignup(option))
 });
 
-
+/* <span className="tooltiptext">Tooltip text</span> */
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Seat));
