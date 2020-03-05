@@ -94,7 +94,7 @@ const EditSeatForm = ({seatData,setPayloadAction}) =>{
     
     return(
         <div id="overlay-edit-seat">
-            <div className='one-single-payment-page'>
+            <div className='one-single-payment-page-edit-seat'>
                 <div className="container-one-single-payment">  
                     <span className="close-alert-custom-edit-seat" onClick={()=>setPayloadAction({payloadDelete:null,payloadEdit:null})}>X</span>
                     <form id='contact' onSubmit={handleSubmit} className='for-one-single-payment'>
